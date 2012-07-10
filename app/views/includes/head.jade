@@ -1,0 +1,34 @@
+// meta
+
+title= title
+
+meta(http-equiv='Content-type', content='text/html;charset=UTF-8')
+
+meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+meta(name="apple-mobile-web-app-capable", content="yes")
+
+meta(name="keywords", content="spinly")
+meta(name="description", content="An app illustrating the usage of Spinly framework")
+
+css = '/vendor/css/'
+
+link(rel='stylesheet', href= css + 'bootstrap.min.css')
+
+link(rel='stylesheet', href= 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600')
+link(rel='stylesheet', href= css + 'font-awesome.css')
+
+link(rel='stylesheet', href='/css/style.css')
+
+js  = '/vendor/js/'
+temp = '/vendor/TEMP/'
+
+scripts = [ 'base', 'bootstrap.min', 'excanvas.min', 'faq', 'jquery-1.7.2.min', 'jquery.flot', 'jquery.flot.orderBars', 'jquery.flot.pie', 'jquery.flot.resize', 'jquery.form', 'signin', 'jquery.isotope' ]
+
+each script in scripts
+  script(src= js + script + '.js')
+
+script(src='/js/form-validators/accountValidator.js')
+script(src='/js/form-validators/loginValidator.js')
+script(src='/js/form-validators/emailValidator.js')
+
+script(src='/js/views/clock.js')

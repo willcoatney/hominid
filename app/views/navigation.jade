@@ -1,0 +1,50 @@
+
+div.navbar.navbar-fixed-top
+
+  div.navbar-inner
+
+    div.container:.container-inner
+
+      a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+      .brand-container
+        a.inner(href='./')
+          .brand spinly
+          canvas#canvas(width='200', height='200')
+
+      .nav-collapse.collapse(style="height: 0px")
+        ul.nav.pull-right
+          li 
+            a(href='/labs')
+              i.icon-beaker
+              | Labs
+          li 
+            a(href='/faq')
+              i.icon-question-sign
+              | Help
+
+          if user != undefined
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.icon-user.
+                #{user} 
+                b.caret
+              ul.dropdown-menu
+                li 
+                  a(href='/home')
+                    i.icon-home
+                    | Home
+                li.divider
+                li 
+                  a(href='#')#btn-logout
+                    i.icon-signout
+                    | Logout
+
+          else
+            li 
+              a(href='/login')
+                i.icon-signin
+                | Login

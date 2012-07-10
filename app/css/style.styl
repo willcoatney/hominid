@@ -1,0 +1,1320 @@
+
+@import 'nib'
+  
+pad1 = 10px
+
+
+// bootstrap
+
+.clearfix
+  *zoom: 1
+
+.clearfix:before,.clearfix:after
+  display: table
+  content: ""
+
+.clearfix:after
+  clear: both
+
+.hide-text
+  overflow: hidden
+  text-indent: 100%
+  white-space: nowrap
+
+.input-block-level
+  display: block
+  width: 100%
+  min-height: 28px
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  -ms-box-sizing: border-box
+  box-sizing: border-box
+
+.hidden
+  display: none
+  visibility: hidden
+
+.visible-phone
+  display: none
+
+.visible-tablet
+  display: none
+
+.visible-desktop
+  display: block
+
+.hidden-phone
+  display: block
+
+.hidden-tablet
+  display: block
+
+.hidden-desktop
+  display: none
+
+@media (max-width:767px)
+  .visible-phone
+    display: block
+
+  .hidden-phone
+    display: none
+
+  .hidden-desktop
+    display: block
+
+  .visible-desktop
+    display: none
+
+@media (min-width:768px) and (max-width:979px)
+  .visible-tablet
+    display: block
+
+  .hidden-tablet
+    display: none
+
+  .hidden-desktop
+    display: block
+
+  .visible-desktop
+    display: none
+
+@media (max-width:480px)
+  .nav-collapse
+    -webkit-transform: translate3d(0, 0, 0)
+
+  .page-header h1 small
+    display: block
+    line-height: 18px
+
+  input[type="checkbox"],input[type="radio"]
+    border: 1px solid #ccc
+
+  .form-horizontal .control-group>label
+    float: none
+    width: auto
+    padding-top: 0
+    text-align: left
+
+  .form-horizontal .controls
+    margin-left: 0
+
+  .form-horizontal .control-list
+    padding-top: 0
+
+  .form-horizontal .form-actions
+    padding-left: 10px
+    padding-right: 10px
+
+  .modal
+    position: absolute
+    top: 10px
+    left: 10px
+    right: 10px
+    width: auto
+    margin: 0
+
+  .modal.fade.in
+    top: auto
+
+  .modal-header .close
+    padding: 10px
+    margin: -10px
+
+  .carousel-caption
+    position: static
+
+@media (max-width:767px)
+  body
+    padding-left: 20px
+    padding-right: 20px
+
+  .navbar-fixed-top
+    margin-left: -20px
+    margin-right: -20px
+
+  .container
+    width: auto
+
+  .row-fluid
+    width: 100%
+
+  .row
+    margin-left: 0
+
+  .row>[class*="span"],.row-fluid>[class*="span"]
+    float: none
+    display: block
+    width: auto
+    margin: 0
+
+  .thumbnails [class*="span"]
+    width: auto
+
+  input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input
+    display: block
+    width: 100%
+    min-height: 28px
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -ms-box-sizing: border-box
+    box-sizing: border-box
+
+  .input-prepend input[class*="span"],.input-append input[class*="span"]
+    width: auto
+
+@media (min-width:768px) and (max-width:979px)
+  .row
+    margin-left: -20px
+    *zoom: 1
+
+  .row:before,.row:after
+    display: table
+    content: ""
+
+  .row:after
+    clear: both
+
+  [class*="span"]
+    float: left
+    margin-left: 20px
+
+  .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container
+    width: 724px
+
+  .span12
+    width: 724px
+
+  .span11
+    width: 662px
+
+  .span10
+    width: 600px
+
+  .span9
+    width: 538px
+
+  .span8
+    width: 476px
+
+  .span7
+    width: 414px
+
+  .span6
+    width: 352px
+
+  .span5
+    width: 290px
+
+  .span4
+    width: 228px
+
+  .span3
+    width: 166px
+
+  .span2
+    width: 104px
+
+  .span1
+    width: 42px
+
+  .offset12
+    margin-left: 764px
+
+  .offset11
+    margin-left: 702px
+
+  .offset10
+    margin-left: 640px
+
+  .offset9
+    margin-left: 578px
+
+  .offset8
+    margin-left: 516px
+
+  .offset7
+    margin-left: 454px
+
+  .offset6
+    margin-left: 392px
+
+  .offset5
+    margin-left: 330px
+
+  .offset4
+    margin-left: 268px
+
+  .offset3
+    margin-left: 206px
+
+  .offset2
+    margin-left: 144px
+
+  .offset1
+    margin-left: 82px
+
+  .row-fluid
+    width: 100%
+    *zoom: 1
+
+  .row-fluid:before,.row-fluid:after
+    display: table
+    content: ""
+
+  .row-fluid:after
+    clear: both
+
+  .row-fluid>[class*="span"]
+    float: left
+    margin-left: 2.762430939%
+
+  .row-fluid>[class*="span"]:first-child
+    margin-left: 0
+
+  .row-fluid > .span12
+    width: 99.999999993%
+
+  .row-fluid > .span11
+    width: 91.436464082%
+
+  .row-fluid > .span10
+    width: 82.87292817100001%
+
+  .row-fluid > .span9
+    width: 74.30939226%
+
+  .row-fluid > .span8
+    width: 65.74585634900001%
+
+  .row-fluid > .span7
+    width: 57.182320438000005%
+
+  .row-fluid > .span6
+    width: 48.618784527%
+
+  .row-fluid > .span5
+    width: 40.055248616%
+
+  .row-fluid > .span4
+    width: 31.491712705%
+
+  .row-fluid > .span3
+    width: 22.928176794%
+
+  .row-fluid > .span2
+    width: 14.364640883%
+
+  .row-fluid > .span1
+    width: 5.801104972%
+
+  input,textarea,.uneditable-input
+    margin-left: 0
+
+  input.span12, textarea.span12, .uneditable-input.span12
+    width: 714px
+
+  input.span11, textarea.span11, .uneditable-input.span11
+    width: 652px
+
+  input.span10, textarea.span10, .uneditable-input.span10
+    width: 590px
+
+  input.span9, textarea.span9, .uneditable-input.span9
+    width: 528px
+
+  input.span8, textarea.span8, .uneditable-input.span8
+    width: 466px
+
+  input.span7, textarea.span7, .uneditable-input.span7
+    width: 404px
+
+  input.span6, textarea.span6, .uneditable-input.span6
+    width: 342px
+
+  input.span5, textarea.span5, .uneditable-input.span5
+    width: 280px
+
+  input.span4, textarea.span4, .uneditable-input.span4
+    width: 218px
+
+  input.span3, textarea.span3, .uneditable-input.span3
+    width: 156px
+
+  input.span2, textarea.span2, .uneditable-input.span2
+    width: 94px
+
+  input.span1, textarea.span1, .uneditable-input.span1
+    width: 32px
+
+@media (max-width:979px)
+  body
+    padding-top: 0
+
+  .navbar-fixed-top
+    position: static
+    // margin-bottom: 18px
+
+  // .navbar-fixed-top .navbar-inner
+  //   padding: 5px
+
+  .navbar .container
+    width: auto
+    padding: 0
+
+  .navbar .brand
+    padding-left: 10px
+    padding-right: 10px
+    margin: 0 0 0 -5px
+
+  .navbar .nav-collapse
+    clear: left
+
+  .navbar .nav
+    float: none
+    margin: 0 0 9px
+
+  .navbar .nav>li
+    float: none
+
+  .navbar .nav>li>a
+    margin-bottom: 2px
+
+  .navbar .nav>.divider-vertical
+    display: none
+
+  .navbar .nav .nav-header
+    color: #999999
+    text-shadow: none
+
+  .navbar .nav>li>a,.navbar .dropdown-menu a
+    padding: 6px 15px
+    font-weight: bold
+    color: #999999
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    border-radius: 3px
+
+  .navbar .dropdown-menu li+li a
+    margin-bottom: 2px
+
+  .navbar .nav>li>a:hover,.navbar .dropdown-menu a:hover
+    background-color: #222222
+
+  .navbar .dropdown-menu
+    position: static
+    top: auto
+    left: auto
+    float: none
+    display: block
+    max-width: none
+    margin: 0 15px
+    padding: 0
+    background-color: transparent
+    border: none
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+
+  .navbar .dropdown-menu:before,.navbar .dropdown-menu:after
+    display: none
+
+  .navbar .dropdown-menu .divider
+    display: none
+
+  .navbar-form,.navbar-search
+    float: none
+    padding: 9px 15px
+    margin: 9px 0
+    border-top: 1px solid #222222
+    border-bottom: 1px solid #222222
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 0 rgba(255, 255, 255, 0.1)
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 0 rgba(255, 255, 255, 0.1)
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 0 rgba(255, 255, 255, 0.1)
+
+  .navbar .nav.pull-right
+    float: none
+    margin-left: 0
+
+  .navbar-static .navbar-inner
+    padding-left: 10px
+    padding-right: 10px
+
+  .btn-navbar
+    display: block
+    background none
+    &:hover
+      background none
+      box-shadow inset 0 2px 20px rgba(0, 0, 0, 0.1),0 1px 3px rgba(255, 255, 255, 0.05)
+
+  .nav-collapse
+    overflow: hidden
+    height: 0
+
+@media (min-width:980px)
+  .nav-collapse.collapse
+    height: auto
+    overflow: visible
+
+@media (min-width:1200px)
+  .row
+    margin-left: -30px
+    *zoom: 1
+
+  .row:before,.row:after
+    display: table
+    content: ""
+
+  .row:after
+    clear: both
+
+  [class*="span"]
+    float: left
+    margin-left: 30px
+
+  .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container
+    width: 1170px
+
+  .span12
+    width: 1170px
+
+  .span11
+    width: 1070px
+
+  .span10
+    width: 970px
+
+  .span9
+    width: 870px
+
+  .span8
+    width: 770px
+
+  .span7
+    width: 670px
+
+  .span6
+    width: 570px
+
+  .span5
+    width: 470px
+
+  .span4
+    width: 370px
+
+  .span3
+    width: 270px
+
+  .span2
+    width: 170px
+
+  .span1
+    width: 70px
+
+  .offset12
+    margin-left: 1230px
+
+  .offset11
+    margin-left: 1130px
+
+  .offset10
+    margin-left: 1030px
+
+  .offset9
+    margin-left: 930px
+
+  .offset8
+    margin-left: 830px
+
+  .offset7
+    margin-left: 730px
+
+  .offset6
+    margin-left: 630px
+
+  .offset5
+    margin-left: 530px
+
+  .offset4
+    margin-left: 430px
+
+  .offset3
+    margin-left: 330px
+
+  .offset2
+    margin-left: 230px
+
+  .offset1
+    margin-left: 130px
+
+  .row-fluid
+    width: 100%
+    *zoom: 1
+
+  .row-fluid:before,.row-fluid:after
+    display: table
+    content: ""
+
+  .row-fluid:after
+    clear: both
+
+  .row-fluid>[class*="span"]
+    float: left
+    margin-left: 2.564102564%
+
+  .row-fluid>[class*="span"]:first-child
+    margin-left: 0
+
+  .row-fluid > .span12
+    width: 100%
+
+  .row-fluid > .span11
+    width: 91.45299145300001%
+
+  .row-fluid > .span10
+    width: 82.905982906%
+
+  .row-fluid > .span9
+    width: 74.358974359%
+
+  .row-fluid > .span8
+    width: 65.81196581200001%
+
+  .row-fluid > .span7
+    width: 57.264957265%
+
+  .row-fluid > .span6
+    width: 48.717948718%
+
+  .row-fluid > .span5
+    width: 40.170940171000005%
+
+  .row-fluid > .span4
+    width: 31.623931624%
+
+  .row-fluid > .span3
+    width: 23.076923077%
+
+  .row-fluid > .span2
+    width: 14.529914530000001%
+
+  .row-fluid > .span1
+    width: 5.982905983%
+
+  input,textarea,.uneditable-input
+    margin-left: 0
+
+  input.span12, textarea.span12, .uneditable-input.span12
+    width: 1160px
+
+  input.span11, textarea.span11, .uneditable-input.span11
+    width: 1060px
+
+  input.span10, textarea.span10, .uneditable-input.span10
+    width: 960px
+
+  input.span9, textarea.span9, .uneditable-input.span9
+    width: 860px
+
+  input.span8, textarea.span8, .uneditable-input.span8
+    width: 760px
+
+  input.span7, textarea.span7, .uneditable-input.span7
+    width: 660px
+
+  input.span6, textarea.span6, .uneditable-input.span6
+    width: 560px
+
+  input.span5, textarea.span5, .uneditable-input.span5
+    width: 460px
+
+  input.span4, textarea.span4, .uneditable-input.span4
+    width: 360px
+
+  input.span3, textarea.span3, .uneditable-input.span3
+    width: 260px
+
+  input.span2, textarea.span2, .uneditable-input.span2
+    width: 160px
+
+  input.span1, textarea.span1, .uneditable-input.span1
+    width: 60px
+
+  .thumbnails
+    margin-left: -30px
+
+  .thumbnails>li
+    margin-left: 30px
+
+
+// ISOTOPE STYLES
+
+.thingy
+  border-radius 0
+
+
+.isotope-item
+  z-index 2
+
+.isotope-hidden.isotope-item
+  pointer-events none
+  z-index 1
+
+.isotope,
+.isotope .isotope-item
+  transition-duration 0.5s
+
+.isotope
+  transition-property height, width
+
+.isotope .isotope-item
+  -webkit-transition-property -webkit-transform, opacity
+  -moz-transition-property -moz-transform, opacity
+  -ms-transition-property -ms-transform, opacity
+  -o-transition-property top, left, opacity
+  transition-property transform, opacity
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition
+  transition-duration 0s
+
+.isotope.infinite-scrolling
+  transition none
+
+//    MAIN
+
+.main-inner
+  padding-top 30px
+
+.centered
+  margin 0 auto
+  float none
+
+//    FORMS
+
+form
+.form-actions
+#login-form
+  margin-bottom 0
+
+//    COUPON-CONTAINER
+
+.coupon-container
+  margin 20px auto 0
+
+
+//    COUPON
+
+Coup = 235px
+
+.coupon
+  width Coup
+  // height Coup
+  background white
+  float left
+  margin 10px
+  padding 10px
+  border 1px solid #d5d5d5
+
+.large
+  background lightblue
+
+raiseText()
+	color grey
+	text-shadow: -1px 1px 0 white
+	-moz-text-shadow: -1px 1px 0 white
+	-webkit-text-shadow: -1px 1px 0 white
+
+body 
+	margin  0
+	padding  0
+	height  100%
+	background rgb(242,249,254)
+
+.wrapper
+  .inner
+   background #fbfbfb
+
+
+// account form on signup & home page //
+
+#account-form-container
+	width 460px
+	margin 100px auto
+#country-list
+	width 280px
+.modal-form-errors li
+	raiseText()
+	color #D8000C
+
+// retrieve password window //
+
+.modal-single-input
+	width 452px	
+	margin -200px 0 0 -232px
+	form
+		raiseText()
+		margin-bottom 0		
+ 		button
+			width 80px
+			top 213px
+			position absolute
+		#cancel
+			right 110px
+		#submit
+			right 18px
+	.modal-body
+		height 140px
+		overflow hidden	
+		padding-bottom 0
+	.modal-footer
+		height 20px
+
+.modal-alert{
+	width 310px
+	margin -200px 0 0 -150px
+}
+
+// support pages //
+
+#print
+	padding 20px
+#four04
+	padding:20px	
+    
+// general shared rules //
+.clear-fix
+	clear both
+.well
+	margin-left 0
+	border 1px solid #CCC
+.form-horizontal .control-label
+	width 80px
+.form-horizontal .controls
+	margin-left 120px
+.form-horizontal .form-actions
+	// padding 17px 0 0 270px
+label
+	raiseText()	
+.subheading
+	raiseText()
+	margin-top 3px
+button i
+	padding-left 8px	
+
+// BASE ADMIN
+
+body
+  background: #E9E9E9 url(../img/body-bg.png) repeat 0 0
+  font: 13px/1.7em 'Open Sans'
+
+
+p
+  font: 13px/1.7em 'Open Sans'
+
+input,
+button,
+select,
+textarea
+  font-family: 'Open Sans'
+
+.dropdown .dropdown-menu
+  -webkit-border-radius: 6px
+  -moz-border-radius: 6px
+  border-radius: 6px
+
+.btn-icon-only
+  padding-right: 3px
+  padding-left: 3px
+
+.table td
+  vertical-align: middle
+
+.table-bordered th
+  background: linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%)
+  // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')
+  // -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')"
+  font-size: 10px
+  color: #444
+  text-transform: uppercase
+
+
+
+
+//    FONT AWESOME ICONS
+
+li [class^="icon-"] 
+li [class*=" icon-"]
+  display inline-block
+  width 1.75em
+  text-align center
+
+
+
+//    ORDER
+
+padtop = 250px
+
+Col1 = #0099EB
+Col2 = #30B753
+Col3 = #FFD100
+Col4 = #FF8B00
+
+Supra( Colx )
+  n = lighten( Colx, 10%) 
+  bottomColor = darken(n,20%)
+  background-color bottomColor
+  background-image linear-gradient(top, n, bottomColor)
+  color desaturate(darken(n,70%),10%)
+  &.active
+    background-image n
+    color #222
+  // &:active
+  //   background darken(n,35%)
+  &.inactive
+    b = desaturate( darken(n, 10%), 96%)
+    background rgba( b, 0.5)
+    color desaturate(darken(n,70%),99%)
+    &:hover
+      background desaturate( darken(n, 10%), 60%)
+      color desaturate( darken(n, 75%), 90%)
+
+
+.order-wrapper
+  box-shadow inset 0 -20px 35px -10px rgba(255,255,255,0.3), inset 0 13px 16px -10px #000
+  background #454545 url(../img/low_contrast_linen.png) repeat 0 0
+  padding 20px
+
+  .order-container
+    text-align center
+    width 80%
+    max-width 1080px
+    margin 0 auto
+
+    .btn-group
+      padding 0
+    #supras
+      width 100%
+      #eat
+        Supra(Col1)
+      #drink
+        Supra(Col2)
+      #get
+        Supra(Col3)
+      #do
+        Supra(Col4)
+      .supra
+        text-shadow 0 1px -1px rgba(#fff, 0.25)
+        border-color rgba(white, 0.2) rgba(black, 0.2) rgba(black, 0.35)
+        width w = 21.5%
+        min-height 40px
+        margin 0 0.5%
+        padding 2% 1%
+        font-size f = 24px
+        i
+          width 100%
+        span
+          line-height f
+          font-size floor(f * 0.8)
+        &.inactive
+          // transition width 1s
+          // width 10%
+          box-shadow none
+        &.active
+          // transition width 1s
+          // width 28%
+          text-shadow 0 0 60px white, 0 1px 0px rgba(#fff, 0.35)
+          border-color rgba(white, 0.4) rgba(black, 0.1) rgba(black, 0.3)
+          box-shadow inset 0 2px 4px rgba(white, 0.15),0 1px 2px rgba(0, 0, 0, 0.05), 0 3px 15px 0 rgba(0,0,0,0.5)
+        &.active
+          &:hover
+            background-position 0
+        &:hover
+          background-position 0 -15px
+          transition background-position .1s linear
+
+    #categories
+      .btn
+        font-size 18px
+        padding 8px 15px
+    #sorts
+      w = 300px
+      .sort
+        width w
+
+
+
+//    NAVIGATION
+
+.navbar-inner
+  background none
+  border-radius 0
+  box-shadow none
+  padding 15px 0 0 0
+  // box-shadow inset 0 -30px 50px -40px white, 0 0px 10px -1px black
+  .container
+    box-shadow 0 20px 30px -25px #000,0 10px 20px -45px #000
+    border-bottom 1px solid #fff
+    padding 15px 0
+    // .container-inner
+    //   border-bottom 1px solid #ebeeed
+    //   min-height 45px
+
+.navbar-fixed-top
+  position: static
+
+HL = #0b61a4
+
+.navbar 
+  .nav 
+    font-size 14px
+    font-weight 400
+    margin-bottom 0
+    li
+    .dropdown
+    .dropdown.open
+      text-align left
+      a
+        padding 10px 17px 11px
+        text-shadow none
+        color #777
+        &:hover
+          background none
+          color HL
+    .dropdown-menu
+      padding 8px 0
+      a
+        padding 3px 15px!important
+  .btn
+  .btn-group
+    margin 10px
+  &.pull-right
+    width 100%
+    text-align center
+    margin-bottom 0
+  .brand-container
+    position absolute
+    .inner
+      &:hover
+        .brand
+          color HL
+      text-decoration none
+      display block
+      position relative
+      width 100px
+      top -10px
+      left 20px
+      .brand
+        right -40px
+        top 6px
+        position absolute
+        padding 0
+        margin 0
+        font-family "mic-32-new-web"
+        font-size 32px
+        font-weight 600
+        color desaturate(HL, 100%)
+        text-shadow 0 1px -7px white
+        letter-spacing -1px
+        z-index 20
+      #canvas
+        top -75px
+        left -65px
+        position absolute
+        transform scale(0.3)
+
+  .search-query
+    background-color: #444
+    width: 150px
+    font-size: 11px
+    font-weight: bold
+
+.navbar .search-query::-webkit-input-placeholder
+  color: #666
+
+.navbar .search-query:-moz-placeholder
+  color: #666
+
+.nav-collapse
+  // &.in
+  width 100%
+  text-align center
+  
+
+//    SUBNAVBAR
+
+.subnavbar
+  margin-bottom: 2.5em
+  border-top: 1px solid #595959
+
+.subnavbar-inner
+  height: 80px
+  background: #3A3A3A
+  background-image: linear-gradient(top, #414141, #323232)
+  background-repeat: repeat-x
+  // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#414141', endColorstr='#323232', GradientType=0)
+  border-bottom: 1px solid #000
+
+.subnavbar .container > ul
+  display: inline-block
+  height: 80px
+  padding: 0
+  margin: 0
+  border-left: 1px solid #292929
+  border-right: 1px solid #4A4A4A
+
+.subnavbar .container > ul > li
+  float: left
+  min-width: 90px
+  height: 80px
+  padding: 0
+  margin: 0
+  text-align: center
+  list-style: none
+  border-left: 1px solid #4A4A4A
+  border-right: 1px solid #292929
+
+.subnavbar .container > ul > li > a
+  display: block
+  height: 100%
+  padding: 0 15px
+  font-size: 12px
+  font-weight: bold
+  color: #636363
+  text-shadow: 1px 1px 1px rgba(0,0,0,.2)
+
+.subnavbar .container > ul > li > a:hover
+  color: #888
+  text-decoration: none
+
+.subnavbar .container > ul > li > a > i
+  display: inline-block
+  width: 24px
+  height: 24px
+  margin-top: 17px
+  margin-bottom: .25em
+  font-size: 28px
+
+.subnavbar .container > ul > li > a > span
+  display: block
+
+.subnavbar .container > ul > li.active > a
+  background: #333
+  color: #F90
+
+.subnavbar .dropdown .dropdown-menu a
+  font-size: 12px
+
+.subnavbar .dropdown .dropdown-menu
+  text-align: left
+  -webkit-border-top-left-radius: 0
+  -webkit-border-top-right-radius: 0
+  -moz-border-radius-topleft: 0
+  -moz-border-radius-topright: 0
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.subnavbar .dropdown-menu::before
+  content: ''
+  display: inline-block
+  border-left: 7px solid transparent
+  border-right: 7px solid transparent
+  border-bottom: 7px solid #CCC
+  border-bottom-color: rgba(0, 0, 0, 0.2)
+  position: absolute
+  top: -7px
+  left: 9px
+
+.subnavbar .dropdown-menu::after
+  content: ''
+  display: inline-block
+  border-left: 6px solid transparent
+  border-right: 6px solid transparent
+  border-bottom: 6px solid white
+  position: absolute
+  top: -6px
+  left: 10px
+
+.subnavbar .caret
+  margin-top: 4px
+  border-top-color: white
+  border-bottom-color: white
+
+.subnavbar .dropdown.open .caret
+  display: none
+
+.main
+  padding-bottom: 2em
+  border-bottom: 1px solid #000
+
+.extra
+  border-top: 1px solid #585858
+  border-bottom: 1px solid #000
+
+.extra-inner
+  padding: 20px 0
+  font-size: 11px
+  color: #BBB
+  background: #1A1A1A
+
+.extra a
+  color: #666
+
+.extra h4
+  margin-bottom: 1em
+  font-weight: 400
+
+.extra ul
+  padding: 0
+  margin: 0
+
+.extra li
+  margin-bottom: .6em
+  list-style: none
+
+.footer
+  margin-top: 0
+  border-top: 1px solid #292929
+
+.footer-inner
+  padding: 15px 0
+  font-size: 12px
+  background: #111
+  color: #999
+
+.footer a
+  color: #999
+
+.footer a:hover
+  color: #FFF
+  text-decoration: none
+
+.widget
+  position: relative
+  clear: both
+  width: auto
+  margin-bottom: 2em
+  overflow: hidden
+
+.widget-header
+  position: relative
+  height: 40px
+  line-height: 40px
+  background: linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%)
+  // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')
+  // -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')"
+  border: 1px solid #D5D5D5
+  -webkit-border-top-left-radius: 4px
+  -webkit-border-top-right-radius: 4px
+  -moz-border-radius-topleft: 4px
+  -moz-border-radius-topright: 4px
+  border-top-left-radius: 4px
+  border-top-right-radius: 4px
+  -webkit-background-clip: padding-box
+
+.widget-header h3
+  position: relative
+  top: 2px
+  left: 10px
+  display: inline-block
+  margin-right: 3em
+  font-size: 14px
+  font-weight: 800
+  color: #555
+  line-height: 18px
+  text-shadow: 1px 1px 2px rgba(255,255,255,.5)
+
+.widget-header [class^="icon-"], .widget-header [class*=" icon-"]
+  display: inline-block
+  margin-left: 13px
+  margin-right: -2px
+  font-size: 16px
+  color: #555
+  vertical-align: middle
+
+.widget-content
+  padding: 20px 15px 15px
+  background: #FFF
+  border: 1px solid #D5D5D5
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  border-radius: 5px
+
+.widget-header+.widget-content
+  border-top: none
+  -webkit-border-top-left-radius: 0
+  -webkit-border-top-right-radius: 0
+  -moz-border-radius-topleft: 0
+  -moz-border-radius-topright: 0
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.widget-nopad .widget-content
+  padding: 0
+
+.widget-content:before,
+.widget-content:after
+  content: ""
+  display: table
+
+.widget-content:after
+  clear: both
+
+.widget-content
+  zoom: 1
+
+.widget-table .widget-content
+  padding: 0
+
+.widget-table .table
+  margin-bottom: 0
+  border: none
+
+.widget-table .table tr td:first-child
+  border-left: none
+
+.widget-table .table tr th:first-child
+  border-left: none
+
+.widget-plain
+  background: transparent
+  border: none
+
+.widget-plain .widget-content
+  padding: 0
+  background: transparent
+  border: none
+
+.widget-box
+
+.widget-box .widget-content
+  background: #FFF
+
+.error-container
+  margin-top: 4em
+  margin-bottom: 4em
+  text-align: center
+
+.error-container h1
+  margin-bottom: .5em
+  font-size: 120px
+  line-height: 1em
+
+.error-container h2
+  margin-bottom: .75em
+  font-size: 28px
+
+.error-container .error-details
+  margin-bottom: 1.5em
+  font-size: 16px
+
+.error-container .error-actions a
+  margin: 0 .5em
+
+.chart-holder
+  width: 100%
+  height: 250px
+

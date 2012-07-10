@@ -1,0 +1,49 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href= './vendor/css/pages/signin.css')
+
+block content
+
+  #login-container.account-container:.content.clearfix
+    form(method="post", action='./')#login-form.clearfix
+
+      h1 Sign In
+
+      .login-fields
+        p Please Login To Your Account
+        .field
+          label Username:
+          input.login.username-field(type="text", name="user", id='user-tf', placeholder='Username')
+        .field
+          label Password
+          input.login.password-field(type="password", name="pass", id='pass-tf', placeholder='Password')  
+
+      .login-actions
+        span.login-checkbox
+          input#Field.field.login-checkbox(type="checkbox", value="First Choice", tabindex="4", checked="checked")
+          label#remember-me.checkbox.choice(for="Field") Remember Me
+        button#btn-login.account-form-btn2.button.btn.btn-warning.btn-large(type="submit") Sign In
+
+      // .login-social
+      //   p Sign in using social network
+      //   .twitter
+      //     a.btn_1(href='#') Login with Twitter
+      //   .fb
+      //     a.btn_2(href='#') Login with Facebook
+
+  .login-extra
+    | Need an account? 
+    a(href='/signup')#create-account Register
+    br
+    | Are you forgetful? 
+    a(href='#')#forgot-password Reset Password
+
+
+  include modals/alert
+  include modals/lost-password
+
+block scripts
+  script(src='/js/views/login.js')
+  script(src='/js/controllers/loginController.js')
+

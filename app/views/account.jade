@@ -1,0 +1,134 @@
+if user != undefined
+  u = 'span8' 
+  d = ''
+else
+  u ='span8 centered'
+  d ='display:none'
+
+.row
+  .span8:.widget
+    .widget-header
+      i.icon-user
+      h3 Your Account
+
+    .widget-content:.tabbable
+      ul.nav.nav-tabs
+        li.active
+          a(href='#profile', data-toggle='tab') Profile
+        li
+          a(href='#settings', data-toggle='tab') Settings
+
+      br
+
+      - user = typeof(udata) != 'undefined' ? udata : {}
+      input(type='hidden', value= user._id)#userId
+
+      - cities = ["Kansas City", "Lenexa", "Overland Park"]
+      - states = ["KS", "MO"]
+      - types = ["now", "discount", "free"]
+
+      form(method="post")#account-form.form-horizontal.tab-content
+        #profile.tab-pane.active: fieldset
+            #name-cg.control-group
+              label.control-label(for='name-tf') Name
+              .controls
+                input#name-tf.input-medium(type='text', name='name', value= user.name)
+            #email-cg.control-group
+              label.control-label(for='email-tf') Email
+              .controls
+                input#email-tf.input-large(type='text', name='email', value= user.email)
+                p.help-block We'll email you if you ever forget your password. Otherwise, you'll never get a single email from us.
+            hr
+            p#sub2.subheading
+            #user-cg.control-group
+              label.control-label(for='user-tf') Username
+              .controls
+                input#user-tf.input-medium.disabled(type='text', name='user', value=user.user)
+            #pass-cg.control-group
+              label.control-label(for='pass-tf') Password
+              .controls
+                input#pass-tf.input-medium(type='password', name='pass', value='')
+
+        #settings.tab-pane: fieldset
+          #business_name-cg.control-group
+            label.control-label(for='business_name-tf') Business Name
+            .controls
+              input.input-medium(type='text', name='business_name', value= user.business_name, placeholder='Burger King')
+          #business_phone.control-group
+            label.control-label(for='business_phone-tf') Business Phone
+            .controls
+              input.input-medium(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
+          p#sub4.subheading
+          #coupon_title-cg.control-group
+            label.control-label(for='coupon_title-tf') Coupon Title
+            .controls
+              input.input-medium(type='text', name='coupon_title', value= user.coupon_title, placeholder='Free Burger!')
+          #coupon_body-cg.control-group
+            label.control-label(for='coupon_body-tf') Coupon Body
+            .controls
+              input.input-medium(type='text', name='coupon_body', value= user.coupon_body, placeholder='Come in today for a free burger! Seriously.... free!')
+          .control-group
+            label.control-label Supra
+            .controls
+              select(name='coupon_supra', value= user.coupon_supra, placeholder= "")
+                each c in categories.supra
+                  option= c.name
+
+          #coupon_category-cg.control-group
+            label.control-label(for='coupon_category-tf') Coupon Category
+            .controls
+              select(name='coupon_sub', value= user.coupon_sub)
+                each c in categories.sub_1
+                  option= c.name
+                each c in categories.sub_2
+                  option= c.name
+                each c in categories.sub_3
+                  option= c.name
+                each c in categories.sub_4
+                  option= c.name
+          #coupon_type-cg.control-group
+            label.control-label(for='coupon_type-tf') Coupon Type
+            .controls
+              select(name='coupon_type', value= user.coupon_type)
+                each type in types
+                  option= type
+
+          #address_street-cg.control-group
+            label.control-label(for='address_street-tf') Address Street
+            .controls
+              input.input-medium(type='text', name='address_street', value= user.address_street, placeholder='200 Main Street')
+          #address_city-cg.control-group
+            label.control-label(for='address_city-tf') Address City
+            .controls
+              select(name='address_city', value= user.address_city)
+                each city in cities
+                  option= city
+          #address_state-cg.control-group
+            label.control-label(for='address_city-tf') Address State
+            .controls
+              select(name='address_state', value= user.address_state)
+                each state in states
+                  option= state
+          #address_zip-cg.control-group
+            label.control-label(for='address_zip-tf') Address Zip
+            .controls: input.input-medium(type='text', name='address_zip', value= user.address_zip, placeholder='64105')
+
+        .form-actions
+          button(type='button').account-form-btn1.btn.btn-danger Delete
+          button(type='submit').account-form-btn2.btn Update
+
+  .span4:.widget.widget-box
+    .widget-header
+      h3 Extra Info
+
+    .widget-content
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                // display form errors in a custom modal window //
+
+include modals/form-errors
+
+script(src='/vendor/jquery.min.js')
+script(src='/vendor/jquery.form.js')
+script(src='/vendor/bootstrap-modal.js')
+script(src='/vendor/bootstrap-transition.js')

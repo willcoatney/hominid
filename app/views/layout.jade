@@ -1,0 +1,16 @@
+logged = null
+
+!!!
+html
+  head
+    include ./includes/head
+    block stylesheets
+    block scripts
+    include ./includes/footer
+  body
+    .wrapper
+      .inner
+        .navigation
+          include navigation
+        // .container
+        block content

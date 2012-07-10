@@ -1,0 +1,51 @@
+C = categories
+
+.order-wrapper:.order-container
+  #supras.supras(data-option-key="filter")
+    each s in C.supra
+      a.supra(id= s.name).btn
+        i(class= 'shortcut-icon ' + s.icon )
+        span.shortcut-label= s.name
+
+    // button.btn.btn-large.btn-primary.foo Foo
+    // div(style='background:white; width:200px; height:200px').Bar Bar
+
+  .btn-toolbar
+    #categories.shortcuts(data-option-key="filter")
+
+      .btn-group#sub1.clearfix
+        each c in C.sub_1
+          a.shortcut(data-option-value= '.' + c.name, class= C.supra[0].name).btn
+            i(class= 'shortcut-icon ' + c.icon )
+            span.shortcut-label= c.name
+        a.shortcut(data-option-value= '*').eat.all.btn *
+      .btn-group#sub2.clearfix
+        each c in C.sub_2
+          a.shortcut(data-option-value= '.' + c.name, class= C.supra[1].name).btn
+            i(class= 'shortcut-icon ' + c.icon )
+            span.shortcut-label= c.name
+      .btn-group#sub3.clearfix
+        each c in C.sub_3
+          a.shortcut(data-option-value= '.' + c.name, class= C.supra[2].name).btn
+            i(class= 'shortcut-icon ' + c.icon )
+            span.shortcut-label= c.name
+      .btn-group#sub3.clearfix
+        each c in C.sub_4
+          a.shortcut(data-option-value= '.' + c.name, class= C.supra[3].name).btn
+            i(class= 'shortcut-icon ' + c.icon )
+            span.shortcut-label= c.name
+
+
+
+    #sorts.shortcuts(data-option-key="sortBy").btn-group
+      a.shortcut(data-option-value= 'name').sort.btn
+        i(class= 'shortcut-icon icon-underline')
+        span.shortcut-label name
+      a.shortcut(data-option-value= 'date').sort.btn
+        i(class= 'shortcut-icon icon-time')
+        span.shortcut-label date
+
+
+script(src='/js/views/categories.js')
+script(src='/js/controllers/categoriesController.js')
+

@@ -1,0 +1,50 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href= './vendor/css/pages/signin.css')
+
+block content
+
+  - user = typeof(udata) != 'undefined' ? udata : {}
+  input(type='hidden', value= user._id)#userId
+
+  .account-container.register: .content.clearfix
+    form(method="post")#account-form.form-horizontal
+
+      h1 Create Your Account
+
+      .login-fields
+        p All it takes is a username and a password
+
+        #user-cg.field
+          label(for='user-tf') Username
+          input#user-tf(type='text', name='user', value=user.user, placeholder='Username')
+        #pass-cg.field
+          label(for='pass-tf') Password
+          input#pass-tf(type='password', name='pass', value='', placeholder='Password')
+        #name-cg.field
+          label(for='name-tf') Name
+          input#name-tf.login(type='text', name='name', value= user.name, placeholder='Name')
+        #email-cg.field
+          label(for='email-tf') Email
+          input#email-tf.login(type='text', name='email', value= user.email, placeholder='Email')
+
+      .login-actions
+        span.login-checkbox
+          input#Field.field.login-checkbox(type="checkbox", value="First Choice", tabindex="4", checked="checked")
+          label#remember-me.checkbox.choice(for="Field") Remember Me
+        button.account-form-btn2.btn.btn-primary.btn-large.button(type='submit') Register
+
+      // .login-social
+      //   p Sign up with a social network
+      //   .twitter
+      //     a.btn_1(href='#') Login with Twitter
+      //   .fb
+      //     a.btn_2(href='#') Login with Facebook
+
+  include modals/alert
+  include modals/form-errors
+
+block scripts
+  script(src='/js/views/signup.js')
+  script(src='/js/controllers/signupController.js')

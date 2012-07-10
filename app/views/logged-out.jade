@@ -1,0 +1,11 @@
+extends layout
+
+block navigation
+  a(href='/login')
+    button#btn-logout.btn.btn-secondary
+      i.icon-lock.icon-white
+      | Sign In
+  a(href='/home')
+    button.btn.btn-primary
+      i.icon-home.icon-white
+      | Home
