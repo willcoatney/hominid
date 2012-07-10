@@ -8,9 +8,8 @@
     "stylus": ">= 0.0.1",
     "nib": "~ 0.5.x",
     "jade": ">= 0.0.1",
-    "bcrypt": ">= 0.7.0",
+    "bcrypt": "*",
     "mongodb": ">= 0.1.0",
-    "mongoose": "2.7",
     "moment": ">=1.6.2",
     "emailjs": ">= 0.3.0"
   },
