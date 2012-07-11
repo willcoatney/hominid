@@ -5,7 +5,7 @@ CAT.supra = [
     { name: 'eat', icon: 'icon-leaf' }
   , { name: 'drink', icon: 'icon-glass' }
   , { name: 'get', icon: 'icon-gift' }
-  , { name: 'do', icon: 'icon-map-marker' }
+  , { name: 'see', icon: 'icon-eye-open' }
 ]
 
 CAT.sub_1 = [
@@ -26,13 +26,20 @@ CAT.sub_2 = [
 ];
 
 CAT.sub_3 = [
-    { name : "travel", icon : ""}
-  , { name : "travel", icon : ""}
+    { name : "clothing", icon : ""}
+  , { name : "electronics", icon : ""}
+  , { name : "supplies", icon : ""}
+  , { name : "tools", icon : ""}
+  , { name : "toys", icon : ""}
+  , { name : "other", icon : ""}
 ];
 
 CAT.sub_4 = [
-    { name : "travel", icon : ""}
-  , { name : "travel", icon : ""}
+    { name : "art", icon : ""}
+  , { name : "game", icon : ""}
+  , { name : "music", icon : ""}
+  , { name : "theater", icon : ""}
+  , { name : "other", icon : ""}
 ];
 
 module.exports = CAT;

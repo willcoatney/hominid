@@ -17,14 +17,6 @@ div.navbar.navbar-fixed-top
 
       .nav-collapse.collapse(style="height: 0px")
         ul.nav.pull-right
-          li 
-            a(href='/labs')
-              i.icon-beaker
-              | Labs
-          li 
-            a(href='/faq')
-              i.icon-question-sign
-              | Help
 
           if user != undefined
             li.dropdown
@@ -33,6 +25,10 @@ div.navbar.navbar-fixed-top
                 #{user} 
                 b.caret
               ul.dropdown-menu
+                li 
+                  a(href='/faq')
+                    i.icon-question-sign
+                    | Help
                 li 
                   a(href='/home')
                     i.icon-home

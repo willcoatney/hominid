@@ -6,7 +6,7 @@ else
   d ='display:none'
 
 .row
-  .span8:.widget
+  .widget
     .widget-header
       i.icon-user
       h3 Your Account
@@ -25,7 +25,6 @@ else
 
       - cities = ["Kansas City", "Lenexa", "Overland Park"]
       - states = ["KS", "MO"]
-      - types = ["now", "discount", "free"]
 
       form(method="post")#account-form.form-horizontal.tab-content
         #profile.tab-pane.active: fieldset
@@ -87,11 +86,12 @@ else
                 each c in categories.sub_4
                   option= c.name
           #coupon_type-cg.control-group
-            label.control-label(for='coupon_type-tf') Coupon Type
+            label.control-label(for='coupon_type-tf') Coupon Price
             .controls
-              select(name='coupon_type', value= user.coupon_type)
-                each type in types
-                  option= type
+              .input-prepend.input-append
+                span.add-on $
+                input(type='text', name='coupon_price', value= user.coupon_price)
+                span.add-on .00
 
           #address_street-cg.control-group
             label.control-label(for='address_street-tf') Address Street
@@ -116,13 +116,6 @@ else
         .form-actions
           button(type='button').account-form-btn1.btn.btn-danger Delete
           button(type='submit').account-form-btn2.btn Update
-
-  .span4:.widget.widget-box
-    .widget-header
-      h3 Extra Info
-
-    .widget-content
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
                 // display form errors in a custom modal window //
 

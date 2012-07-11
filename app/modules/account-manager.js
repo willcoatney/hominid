@@ -88,6 +88,7 @@ AM.update = function(newData, callback)
 		o.coupon_body     = newData.coupon_body;
 		o.coupon_supra = newData.coupon_supra;
 		o.coupon_sub = newData.coupon_sub;
+		o.coupon_price = newData.coupon_price;
 		o.address_street  = newData.address_street;
 		o.address_city    = newData.address_city;
 		o.address_state   = newData.address_state;
