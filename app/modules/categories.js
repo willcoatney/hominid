@@ -14,7 +14,7 @@ CAT.sub_1 = [
   , { name : "Chinese", parsed: "chinese", longform: "Food -- Chinese"}
   , { name : "Italian" , parsed: "italian", longform: "Food -- Italian"}
   , { name : "Japanese" , parsed: "japanese", longform: "Food -- Japanese"}
-  , { name : "Mexican" , parsed: "mexican", longform: "Food -- Mexian"}
+  , { name : "Mexican" , parsed: "mexican", longform: "Food -- Mexican"}
   , { name : "Other" , parsed: "eat_other", longform: "Food -- Other"}
 ];
 
