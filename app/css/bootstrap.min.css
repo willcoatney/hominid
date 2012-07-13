@@ -205,7 +205,6 @@ legend+.control-group{margin-top:18px;-webkit-margin-top-collapse:separate;}
 .form-horizontal .control-label{float:left;width:140px;padding-top:5px;text-align:right;}
 .form-horizontal .controls{margin-left:160px;*display:inline-block;*margin-left:0;*padding-left:20px;}
 .form-horizontal .help-block{margin-top:9px;margin-bottom:0;}
-.form-horizontal .form-actions{padding-left:160px;}
 table{max-width:100%;border-collapse:collapse;border-spacing:0;background-color:transparent;}
 .table{width:100%;margin-bottom:18px;}.table th,.table td{padding:8px;line-height:18px;text-align:left;vertical-align:top;border-top:1px solid #dddddd;}
 .table th{font-weight:bold;}

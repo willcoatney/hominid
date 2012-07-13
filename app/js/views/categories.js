@@ -1,48 +1,44 @@
 
 
+var categories = '#categories .sub .link'
+var locations = '#locations .link'
+
 $('.supra').on("changeSelection", function(e, thisId ){
 
-  var selected = 'active'
+  var active = 'active'
   var inactive = 'inactive'
 
-  if ( $(this).hasClass( selected )){
-    return false;
-  }
+  $('#welcome').fadeOut('fast');
+
+  if ( $(this).hasClass( active )){ return false;}
+  $('.btn-toolbar').slideDown(function(){
+  $('.coupon-container').fadeIn();
+  });
   
 
+  $(this)
+    .addClass( active )
+    .removeClass( inactive )
+    .animate({width : '30%'}, 100 );
+  
 
   $(this)
-  .removeClass( inactive )
-  .addClass( selected )
-  .animate({
-    width : '30%'
-
-  }, 100 );
-
-  $(this)
-  .siblings( $( selected ))
-  .removeClass( selected )
-  .addClass(inactive)
+  .siblings()
+  .removeClass( active )
+  .addClass( inactive )
   .animate({
     width : "19%"
 
 
   }, 100 );
 
-  $('#categories>.btn-group>.shortcut')
-  .removeClass('sub-selected, selected')
+  $( categories ).removeClass('active')
 
-  $('#categories>#sub1>.shortcut.all')
-  .addClass('selected')
+  $( categories ).hide()
 
+  $( categories + '.'+thisId).show()
 
-  $('#categories>.btn-group>.shortcut')
-  .hide()
-
-  $('#categories>.btn-group>.shortcut.'+thisId)
-  .show()
-
-  $('#sorts').hide()
+  $('#sorts, #locations').show()
 
 });
 
@@ -51,14 +47,21 @@ $('#supras>.supra').on( 'click', function (){
   $(this).trigger("changeSelection", id)
 })
 
-$('#categories>.btn-group>.shortcut').on( 'click', function (){
-  $('#sorts').show()
-  /* $('.coupon-container').delay(300).show() */
+$( '.link').on( 'click', function (){
+  $(this).parents('#filters').find('a').removeClass('active')
+  
 })
 
 $(document).ready( function (){
-  $('#categories>.btn-group>.shortcut').hide()
-  $('#sorts').hide()
-  /* $('.coupon-container').hide() */
+  $( categories ).hide()
+  $('.btn-toolbar').hide()
+  /* $('#sorts, #locations').hide() */
+  $('.coupon-container').hide()
 
 });
+
+
+$('#shuffle').tooltip('hover')
+//   $(this).tooltip('show')
+//   $(this).tooltip('hide')
+// });

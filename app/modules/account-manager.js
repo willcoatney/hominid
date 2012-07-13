@@ -15,7 +15,9 @@ var AM = {};
 	AM.db.open(function(e, d){ console.log('connected to database :: ' + dbName)});
 	AM.accounts = AM.db.collection('accounts');
 
-var rightNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+/* var rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); */
+/* var rightNow = new Date(Number); */
+var rightNow = new Date();
 
 module.exports = AM;
 
@@ -64,7 +66,7 @@ AM.signup = function(newData, callback)
 					AM.saltAndHash(newData.pass, function(hash){
 						newData.pass = hash;
 					// append date stamp when record was created //	
-						newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+						newData.date = moment().format('YYYYMMDDHHss');
 						AM.accounts.insert(newData, callback(null));
 					});
 				}
@@ -80,15 +82,14 @@ AM.update = function(newData, callback)
 	AM.accounts.findOne({user:newData.user}, function(e, o){
 		o.name            = newData.name;
 		o.email           = newData.email;
-		o.country         = newData.country;
 		o.business_name   = newData.business_name;
 		o.business_phone  = newData.business_phone;
-		o.business_email  = newData.business_email;
 		o.coupon_title    = newData.coupon_title;
 		o.coupon_body     = newData.coupon_body;
 		o.coupon_supra = newData.coupon_supra;
 		o.coupon_sub = newData.coupon_sub;
 		o.coupon_price = newData.coupon_price;
+		o.location = newData.location ;
 		o.address_street  = newData.address_street;
 		o.address_city    = newData.address_city;
 		o.address_state   = newData.address_state;

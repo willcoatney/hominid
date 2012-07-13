@@ -1,25 +1,42 @@
 
 .coupon-container
   each a in accts
-    .coupon(class= a.coupon_supra + ' ' + a.coupon_sub)
-      h2.name= a.name
-      div= a.user
-      div.date= a.date
-      div= a.business_name
-      div= a.business_phone
-      div= a.coupon_title
-      div= a.coupon_body
-      h2= a.coupon_supra
-      h2= a.coupon_sub
-      h2= a.coupon_price
-      div= a.address_street
-      div= a.address_city
-      div= a.address_state
-      div= a.address_zip
+    .coupon(class= a.coupon_supra + ' ' + a.coupon_sub + ' ' + a.location, data-date= a.date, data-category= a.coupon_supra+a.coupon_sub, data-business= a.business_name, data-price= a.coupon_price)
+
+      .header
+        .price(class= '#{a.coupon_supra}')
+          .price-inner
+            span.dollar $
+            span.price-listing #{a.coupon_price}
+        .title= a.coupon_title
+
+
+      .coupon-content
+        .business_name #{a.business_name}
+        .address #{a.address_city}, #{a.address_state}
+      .toggles
+        a.btn.btn-large.large-toggle
+          i.icon.icon-info-sign
+        a.btn.btn-large.favorite-toggle
+          i.icon.icon-heart
+      .footer
+        .body #{a.coupon_body}
+        .phone-wrapper
+          i.icon.icon-phone  
+          .phone.
+            #{a.business_phone}
+        .address-wrapper
+          i.icon.icon-map-marker
+          .address.
+            #{a.address_street} <br/>
+            #{a.address_city},  
+            #{a.address_state}<br/>
+            #{a.address_zip}
 
 script(src='/vendor/js/jquery.isotope.js')
 script(src='/vendor/js/backbone.min.js')
 script(src='/vendor/js/underscore.min.js')
+script(src='/vendor/moment.js') 
 
 script
   // isotope
@@ -118,14 +135,17 @@ script
         symbol : function( $elem ) {
           return $elem.attr('data-symbol');
         },
+        business: function( $elem ) {
+          return $elem.attr('data-business');
+        },
         category : function( $elem ) {
           return $elem.attr('data-category');
         },
-        date : function( $elem ) {
-          return $elem.attr('data-date');
+        price_low: function( $elem ) {
+          return parseInt( $elem.find('.price-listing').text(), 10);
         },
-        supra: function( $elem ) {
-          return $elem.attr('data-slupra');
+        price_high: function( $elem ) {
+          return -(parseInt( $elem.find('.price-listing').text(), 10));
         },
         // number : function( $elem ) {
         //   return parseInt( $elem.find('.number').text(), 10 );
@@ -133,24 +153,27 @@ script
         // weight : function( $elem ) {
         //   return parseFloat( $elem.find('.weight').text().replace( /[\(\)]/g, '') );
         // },
-        name : function ( $elem ) {
-          return $elem.find('.name').text();
+        date: function ( $elem ) {
+          return -($elem.attr('data-date'));
+        },
+        business: function ( $elem ) {
+          return $elem.find('.business_name').text();
         }
       }
     });
 
     
-      var $optionSets = $('.shortcuts'),
+      var $optionSets = $('.links'),
           $optionLinks = $optionSets.find('a');
 
       $optionLinks.click(function(){
         var $this = $(this);
-        if ( $this.hasClass('selected') ) {
+        if ( $this.hasClass('active') ) {
           return false;
         }
-        var $optionSet = $this.parents('.shortcuts');
-        $optionSet.find('.selected').removeClass('selected');
-        $this.addClass('selected');
+        var $optionSet = $this.parents('.links');
+        $optionSet.find('.active').removeClass('active');
+        $this.addClass('active');
   
         // make option object dynamically, i.e. { filter: '.my-filter-class' }
         var options = {},
@@ -198,8 +221,13 @@ script
 
     
       // change size of clicked coupon
-      $container.delegate( '.coupon', 'click', function(){
-        $(this).toggleClass('large');
+      $container.delegate( '.coupon .large-toggle', 'click', function(){
+        $(this).parents('.coupon').toggleClass('large');
+        $container.isotope('reLayout');
+      });
+
+      $container.delegate( '.coupon .favorite-toggle', 'click', function(){
+        $(this).parents('.coupon').toggleClass('favorite');
         $container.isotope('reLayout');
       });
 
@@ -227,12 +255,17 @@ script
         return false;
       });
 
+    $('#sort-by a').click(function(){
+      var sortName = $(this).attr('href').slice(1);
+      $('.coupon-container').isotope({ sortBy: sortName });
+      return false;
+      });
 
     var $sortBy = $('#sort-by');
-    $('#shuffle a').click(function(){
+    $('#shuffle').click(function(){
       $container.isotope('shuffle');
-      $sortBy.find('.selected').removeClass('selected');
-      $sortBy.find('[data-option-value="random"]').addClass('selected');
+      $sortBy.find('.active').removeClass('active');
+      $sortBy.find('[data-option-value="random"]').addClass('active');
       return false;
     });
 

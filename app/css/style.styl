@@ -91,7 +91,6 @@ pad1 = 10px
 
   .form-horizontal .control-group>label
     float: none
-    width: auto
     padding-top: 0
     text-align: left
 
@@ -701,27 +700,8 @@ form
 #login-form
   margin-bottom 0
 
-//    COUPON-CONTAINER
-
-.coupon-container
-  margin 20px auto 0
 
 
-//    COUPON
-
-Coup = 235px
-
-.coupon
-  width Coup
-  // height Coup
-  background white
-  float left
-  margin 10px
-  padding 10px
-  border 1px solid #d5d5d5
-
-.large
-  background lightblue
 
 raiseText()
 	color grey
@@ -792,12 +772,26 @@ body
 .well
 	margin-left 0
 	border 1px solid #CCC
+
 .form-horizontal .control-label
-	width 80px
+  padding 5px 20px 0 10%
+	width 15%
+  .controls
+    input[name="coupon_price"]
+      text-align right
+
 .form-horizontal .controls
-	margin-left 120px
+	margin 0 120px
 .form-horizontal .form-actions
-	// padding 17px 0 0 270px
+  text-align center
+	padding-top 17px
+  padding 0
+
+
+input
+  &.coupon-price
+    width 30px
+
 label
 	raiseText()	
 .subheading
@@ -844,6 +838,10 @@ textarea
 
 
 
+padtop = 250px
+
+
+
 
 //    FONT AWESOME ICONS
 
@@ -854,15 +852,263 @@ li [class*=" icon-"]
   text-align center
 
 
+.widget
+  .heading
+    text-align center
+    padding 0 10px 20px
+    color #454545
+  .subheading
+    text-align center
+    padding 0 90px
+    margin 3px
+    color #666
+    &.main
+      padding 0 70px 10px
+      font-size 16px
+      border none
+
+
+//    COUPON-CONTAINER
+
+.coupon-container
+  margin 20px auto 0
+  padding-bottom 250px
+
+//    COUPON
+
+Col1 = #0099EB
+Col1_1 = darken(Col1,10%)
+Col1_2 = lighten(Col1,10%)
+Col1_3 = darken(Col1,20%)
+Col1_4 = lighten(Col1,20%)
+Col1_5 = darken(Col1,30%)
+Col1_6 = lighten(Col1,30%)
+Col1_7 = darken(Col1,40%)
+
+Col2 = #30B753
+Col2_1 = darken(Col2,10%)
+Col2_2 = lighten(Col2,10%)
+Col2_3 = darken(Col2,20%)
+Col2_4 = lighten(Col2,20%)
+Col2_5 = darken(Col2,30%)
+Col2_6 = lighten(Col2,30%)
+
+Col3 = #FF8B00
+Col3_1 = darken(Col3,10%)
+Col3_2 = lighten(Col3,10%)
+Col3_3 = darken(Col3,20%)
+Col3_4 = lighten(Col3,20%)
+Col3_5 = darken(Col3,30%)
+Col3_6 = lighten(Col3,30%)
+
+Col4 = #FF3956
+Col4_1 = darken(Col4,10%)
+Col4_2 = lighten(Col4,10%)
+Col4_3 = darken(Col4,20%)
+Col4_4 = lighten(Col4,20%)
+Col4_5 = darken(Col4,30%)
+Col4_6 = lighten(Col4,30%)
+
+
+Coup = 235px
+
+WW = 50px
+FF = 14px
+ff = 12px
+BORR = (WW / 2) + 5
+pad1 = 10px
+pad2 = 20px
+
+Coupon(o)
+  L = lighten(desaturate(o,70%),80%)
+  D = darken(o, 30%)
+  d(e)
+    darken(o,e)
+  background-color (o)
+  border-color d(10%) d(30%) d(50%)
+  .header
+    .title
+      color white
+    .price
+      background-color white
+      color o
+      box-shadow 0
+  &.favorite
+    background-color D
+    color white
+    .header
+      border-radius 0 BORR 0 0
+      .title
+        color white
+    .toggles
+      .btn
+        border-color D
+        i
+          color white
+        &:hover
+          border-color darken(D,10%)
+      .favorite-toggle
+        background-color darken(o, 50%)
+    .price
+      transform scale(1.3)
+      box-shadow 0 5px 10px -1px rgba(0,0,0,0.5)
+    &.large
+      .footer
+        background darken(o,70%)
+
+
+  &.large
+    .footer
+      display block
+      background D
+      color L
+    .toggles
+      .large-toggle
+        background-color darken(o, 50%)
+  .toggles
+    text-align center
+    .btn
+      border 1px solid o
+      i
+        color white
+        font-size 20px
+      &:hover
+        border-color d(10%) d(30%) d(50%)
+  .footer
+    border-color d(50%)
+    box-shadow inset 0 3px 5px -4px rgba(0,0,0,0.5)
+
+T = 0.5s
+
+.coupon
+  // box-shadow 0 4px 10px -3px rgba(0,0,0,0.5)
+  width Coup
+  float left
+  margin 10px
+  border 1px solid #d5d5d5
+  border-radius 0 BORR 0 0
+  font-size ff
+  line-height ff + 5
+  &.eat.chinese
+    Coupon(Col1_1)
+  &.eat.italian
+    Coupon(Col1_2)
+  &.eat.japanese
+    Coupon(Col1_3)
+  &.eat.mexican
+    Coupon(Col1_4)
+  &.eat.eat_other
+    Coupon(Col1_5)
+  &.eat.american
+    Coupon(Col1_6)
+
+  &.drink.beer
+    Coupon(Col2_1)
+  &.drink.wine
+    Coupon(Col2_2)
+  &.drink.liquor
+    Coupon(Col2_3)
+  &.drink.cocktail
+    Coupon(Col2_4)
+  &.drink.drink_other
+    Coupon(Col2_5)
+
+  &.own.clothing
+    Coupon(Col3_1)
+  &.own.electronics
+    Coupon(Col3_2)
+  &.own.supplies
+    Coupon(Col3_3)
+  &.own.tools
+    Coupon(Col3_4)
+  &.own.toys
+    Coupon(Col3_5)
+  &.own.own_other
+    Coupon(Col3_6)
+
+  &.see.art
+    Coupon(Col4_1)
+  &.see.exhibit
+    Coupon(Col4_2)
+  &.see.game
+    Coupon(Col4_3)
+  &.see.music
+    Coupon(Col4_4)
+  &.see.theater
+    Coupon(Col4_5)
+  &.see.see_other
+    Coupon(Col4_6)
+  .header
+    padding pad2 pad2 0
+    .title
+      text-align right
+      font-weight bold
+      font-size FF
+      line-height FF
+      padding 0px (WW + 10) 30px 10px
+      
+    .price
+      pad2
+      border-width 2px
+      border-color transparent
+      border-style solid
+      border-radius WW
+      transition T
+      width WW
+      height WW
+      text-align center
+      position absolute
+      right 5px
+      top 5px
+      transform scale(1)
+      .price-inner
+        line-height WW
+        top 10px
+        span
+          &.dollar
+            vertical-align top
+            margin-top -5px
+            display inline-block
+            font-weight bold
+          &.price-listing
+            font-size FF
+            font-weight bold
+  .coupon-content
+    padding pad1
+    text-align center
+    color white
+  .toggles
+    padding-bottom pad1
+    .btn
+      margin 0 5px
+      background none
+      border none
+      box-shadow none
+  .footer
+    display none
+    background #EEE
+    padding pad1
+    text-align center
+    .body
+      text-align left
+      padding 10px 20px 20px
+    .address-wrapper
+    .phone-wrapper
+      i.icon
+        margin 0 5px
+
+
+
+
+
 
 //    ORDER
 
-padtop = 250px
-
-Col1 = #0099EB
-Col2 = #30B753
-Col3 = #FFD100
-Col4 = #FF8B00
+#welcome
+  text-align center
+  position relative
+  margin-top 10%
+  color #454545
 
 Supra( Colx )
   n = lighten( Colx, 10%) 
@@ -888,6 +1134,7 @@ Supra( Colx )
   box-shadow inset 0 -20px 35px -10px rgba(255,255,255,0.3), inset 0 13px 16px -10px #000
   background #454545 url(../img/low_contrast_linen.png) repeat 0 0
   padding 20px
+  overflow hidden
 
   .order-container
     text-align center
@@ -897,15 +1144,16 @@ Supra( Colx )
 
     .btn-group
       padding 0
+      box-shadow 0 3px 8px -4px rgba(0,0,0,0.7)
     #supras
       width 100%
       #eat
         Supra(Col1)
       #drink
         Supra(Col2)
-      #get
+      #own
         Supra(Col3)
-      #do
+      #see
         Supra(Col4)
       .supra
         text-shadow 0 1px -1px rgba(#fff, 0.25)
@@ -921,12 +1169,8 @@ Supra( Colx )
           line-height f
           font-size floor(f * 0.8)
         &.inactive
-          // transition width 1s
-          // width 10%
           box-shadow none
         &.active
-          // transition width 1s
-          // width 28%
           text-shadow 0 0 60px white, 0 1px 0px rgba(#fff, 0.35)
           border-color rgba(white, 0.4) rgba(black, 0.1) rgba(black, 0.3)
           box-shadow inset 0 2px 4px rgba(white, 0.15),0 1px 2px rgba(0, 0, 0, 0.05), 0 3px 15px 0 rgba(0,0,0,0.5)
@@ -937,15 +1181,24 @@ Supra( Colx )
           background-position 0 -15px
           transition background-position .1s linear
 
-    #categories
+    #sort-by
+    #filters
+      font-size 18px
       .btn
-        font-size 18px
-        padding 8px 15px
-    #sorts
-      w = 300px
-      .sort
-        width w
-
+        padding 5px 15px
+    #sort-by
+      height 25px
+      box-shadow 0 50px 30px 15px rgba(0,0,0,0.5) 
+      a.btn.link
+        height 60px
+        padding 15px
+        font-size 21px
+        box-shadow inset 0px -70px 20px -40px rgba(0,0,0,0.6)
+        i
+          width 100%
+        span
+          font-size 11px
+          vertical-align top
 
 
 //    NAVIGATION
@@ -985,10 +1238,6 @@ HL = #0b61a4
         &:hover
           background none
           color HL
-    .dropdown-menu
-      padding 8px 0
-      a
-        padding 3px 15px!important
   .btn
   .btn-group
     margin 10px

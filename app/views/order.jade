@@ -4,47 +4,91 @@ C = categories
   #supras.supras(data-option-key="filter")
     each s in C.supra
       a.supra(id= s.name).btn
-        i(class= 'shortcut-icon ' + s.icon )
-        span.shortcut-label= s.name
+        i(class= 'link-icon ' + s.icon )
+        span.link-label= s.name
 
     // button.btn.btn-large.btn-primary.foo Foo
     // div(style='background:white; width:200px; height:200px').Bar Bar
 
   .btn-toolbar
-    #categories.shortcuts(data-option-key="filter")
 
-      .btn-group#sub1.clearfix
-        each c in C.sub_1
-          a.shortcut(data-option-value= '.' + c.name, class= C.supra[0].name).btn
-            i(class= 'shortcut-icon ' + c.icon )
-            span.shortcut-label= c.name
-        a.shortcut(data-option-value= '*').eat.all.btn *
-      .btn-group#sub2.clearfix
-        each c in C.sub_2
-          a.shortcut(data-option-value= '.' + c.name, class= C.supra[1].name).btn
-            i(class= 'shortcut-icon ' + c.icon )
-            span.shortcut-label= c.name
-      .btn-group#sub3.clearfix
-        each c in C.sub_3
-          a.shortcut(data-option-value= '.' + c.name, class= C.supra[2].name).btn
-            i(class= 'shortcut-icon ' + c.icon )
-            span.shortcut-label= c.name
-      .btn-group#sub3.clearfix
-        each c in C.sub_4
-          a.shortcut(data-option-value= '.' + c.name, class= C.supra[3].name).btn
-            i(class= 'shortcut-icon ' + c.icon )
-            span.shortcut-label= c.name
+    #filters
+      #categories.links(data-option-key="filter")
+        #favorites.btn-group.clearfix
+          a.link(data-option-value= '.favorite').btn.btn-inverse
+            i.icon.icon-heart
+          a.link(data-option-value= '*').btn.btn-inverse
+            i.icon.icon-asterisk
 
+        .btn-group.sub#sub1.clearfix
+          a.link(data-option-value= '.eat').btn.eat.btn-inverse
+            span.link-label All
+          each c in C.sub_1
+            a.link(data-option-value= '.' + c.parsed, class= C.supra[0].name).btn.btn-inverse
+              span.link-label= c.name
 
+        .btn-group.sub#sub2.clearfix
+          a.link(data-option-value= '.drink').btn.drink.btn-inverse
+            span.link-label All
+          each c in C.sub_2
+            a.link(data-option-value= '.' + c.parsed, class= C.supra[1].name).btn.btn-inverse
+              span.link-label= c.name
 
-    #sorts.shortcuts(data-option-key="sortBy").btn-group
-      a.shortcut(data-option-value= 'name').sort.btn
-        i(class= 'shortcut-icon icon-underline')
-        span.shortcut-label name
-      a.shortcut(data-option-value= 'date').sort.btn
-        i(class= 'shortcut-icon icon-time')
-        span.shortcut-label date
+        .btn-group.sub#sub3.clearfix
+          a.link(data-option-value= '.own').btn.own.btn-inverse
+            span.link-label All
+          each c in C.sub_3
+            a.link(data-option-value= '.' + c.parsed, class= C.supra[2].name).btn.btn-inverse
+              span.link-label= c.name
 
+        .btn-group.sub#sub4.clearfix
+          a.link(data-option-value= '.see').btn.see.btn-inverse
+            span.link-label All
+          each c in C.sub_4
+            a.link(data-option-value= '.' + c.parsed, class= C.supra[3].name).btn.btn-inverse
+              span.link-label= c.name
+
+       #locations.links(data-option-key="filter")
+        .btn-group.clearfix: div
+          a.link(data-option-value= '.independence').btn#filter.btn-inverse
+            span.link-label Independence
+          a.link(data-option-value= '.belton').btn#filter.btn-inverse
+            span.link-label Belton
+          a.link(data-option-value= '.fairway').btn#filter.btn-inverse
+            span.link-label Fairway
+          a.link(data-option-value= '.mission').btn#filter.btn-inverse
+            span.link-label Mission
+          a.link(data-option-value= '.kcmo').btn#filter.btn-inverse
+            span.link-label KCMO
+          a.link(data-option-value= '.kcks').btn#filter.btn-inverse
+            span.link-label KCK
+          a.link(data-option-value= '.olathe').btn#filter.btn-inverse
+            span.link-label Olathe
+          a.link(data-option-value= '.overland_park').btn#filter.btn-inverse
+            span.link-label Overland Park
+          // each l in C.locations
+          //   a.link(data-option-value= '.' + l.parsed).btn#filter
+          //     span.link-label= l.city+', '+l.state
+
+    #sort-by.links.btn-group
+      a#shuffle.link.btn(href="#shuffle").btn-inverse
+        i(class= 'link-icon icon-underline')
+        span.link-label shuffle
+      a.link.btn(href="#price_low").btn-inverse
+        i(class= 'link-icon icon-money')
+        span.link-label price
+      // a.link.btn(href="#price_high")
+      //   i(class= 'link-icon icon-money')
+      //   span.link-label
+      a.link.btn(href="#date").btn-inverse
+        i(class= 'link-icon icon-time')
+        span.link-label new
+      a.link.btn(href="#category").btn-inverse
+        i(class= 'link-icon icon-th')
+        span.link-label category
+
+#welcome
+  h1 What do you want to do?
 
 script(src='/js/views/categories.js')
 script(src='/js/controllers/categoriesController.js')

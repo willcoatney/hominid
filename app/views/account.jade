@@ -16,102 +16,103 @@ else
         li.active
           a(href='#profile', data-toggle='tab') Profile
         li
-          a(href='#settings', data-toggle='tab') Settings
+          a(href='#settings', data-toggle='tab') Offer
 
       br
 
       - user = typeof(udata) != 'undefined' ? udata : {}
       input(type='hidden', value= user._id)#userId
 
-      - cities = ["Kansas City", "Lenexa", "Overland Park"]
-      - states = ["KS", "MO"]
 
       form(method="post")#account-form.form-horizontal.tab-content
         #profile.tab-pane.active: fieldset
-            #name-cg.control-group
-              label.control-label(for='name-tf') Name
-              .controls
-                input#name-tf.input-medium(type='text', name='name', value= user.name)
-            #email-cg.control-group
-              label.control-label(for='email-tf') Email
-              .controls
-                input#email-tf.input-large(type='text', name='email', value= user.email)
-                p.help-block We'll email you if you ever forget your password. Otherwise, you'll never get a single email from us.
-            hr
-            p#sub2.subheading
-            #user-cg.control-group
-              label.control-label(for='user-tf') Username
-              .controls
-                input#user-tf.input-medium.disabled(type='text', name='user', value=user.user)
-            #pass-cg.control-group
-              label.control-label(for='pass-tf') Password
-              .controls
-                input#pass-tf.input-medium(type='password', name='pass', value='')
+          p.main.subheading Hi, #{user.user}. Here is where you may create your own offer. Remember, once you press 'Update' at the bottom of this page, this information is published. Of course, you can always return and change something if you make a mistake.
+          // #name-cg.control-group
+          //   label.control-label(for='name-tf') Name
+          //   .controls
+          //     input#name-tf(type='text', name='name', value= user.name)
+          #user-cg.control-group
+            label.control-label(for='user-tf') Username
+            .controls
+              input#user-tf.disabled(type='text', name='user', value=user.user)
+          #pass-cg.control-group
+            label.control-label(for='pass-tf') Password
+            .controls
+              input#pass-tf(type='password', name='pass', value='')
+          #email-cg.control-group
+            label.control-label(for='email-tf') Email
+            .controls
+              input#email-tf(type='text', name='email', value= user.email)
 
         #settings.tab-pane: fieldset
-          #business_name-cg.control-group
-            label.control-label(for='business_name-tf') Business Name
-            .controls
-              input.input-medium(type='text', name='business_name', value= user.business_name, placeholder='Burger King')
-          #business_phone.control-group
-            label.control-label(for='business_phone-tf') Business Phone
-            .controls
-              input.input-medium(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
-          p#sub4.subheading
+          label.control-label What are you offering?
           #coupon_title-cg.control-group
-            label.control-label(for='coupon_title-tf') Coupon Title
             .controls
-              input.input-medium(type='text', name='coupon_title', value= user.coupon_title, placeholder='Free Burger!')
-          #coupon_body-cg.control-group
-            label.control-label(for='coupon_body-tf') Coupon Body
+              input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
+          label.control-label How much do you want for it? (Just dollars, no cents.)
+          #coupon_type-cg.control-group
             .controls
-              input.input-medium(type='text', name='coupon_body', value= user.coupon_body, placeholder='Come in today for a free burger! Seriously.... free!')
+              .input-prepend
+                span.add-on $
+                input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
           .control-group
-            label.control-label Supra
+            label.control-label What do people do with this offer?
             .controls
               select(name='coupon_supra', value= user.coupon_supra, placeholder= "")
-                each c in categories.supra
-                  option= c.name
+                option#eat(value="eat") Eat it immediately
+                option#drink(value="drink") Drink it immediately
+                option#own Own it to enjoy
+                option#see See or experience it
 
           #coupon_category-cg.control-group
-            label.control-label(for='coupon_category-tf') Coupon Category
+            label.control-label How do you categorize it?
             .controls
               select(name='coupon_sub', value= user.coupon_sub)
                 each c in categories.sub_1
-                  option= c.name
+                  option(value= c.parsed)= c.longform
                 each c in categories.sub_2
-                  option= c.name
+                  option(value= c.parsed)= c.longform
                 each c in categories.sub_3
-                  option= c.name
+                  option(value= c.parsed)= c.longform
                 each c in categories.sub_4
-                  option= c.name
-          #coupon_type-cg.control-group
-            label.control-label(for='coupon_type-tf') Coupon Price
+                  option(value= c.parsed)= c.longform
+          #coupon_body-cg.control-group
+            label.control-label Anything else?
             .controls
-              .input-prepend.input-append
-                span.add-on $
-                input(type='text', name='coupon_price', value= user.coupon_price)
-                span.add-on .00
-
+              textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
+          hr
+          #business_name-cg.control-group
+            label.control-label Name
+            .controls
+              input(type='text', name='business_name', value= user.business_name, placeholder='My Business')
+          #business_phone.control-group
+              label.control-label Phone
+              input(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
           #address_street-cg.control-group
-            label.control-label(for='address_street-tf') Address Street
+            label.control-label Street
             .controls
-              input.input-medium(type='text', name='address_street', value= user.address_street, placeholder='200 Main Street')
+              input(type='text', name='address_street', value= user.address_street, placeholder='Street')
           #address_city-cg.control-group
-            label.control-label(for='address_city-tf') Address City
+            label.control-label City
             .controls
-              select(name='address_city', value= user.address_city)
-                each city in cities
-                  option= city
+              input(type='text', name='address_city', value= user.address_city, placeholder='City')
           #address_state-cg.control-group
-            label.control-label(for='address_city-tf') Address State
+            label.control-label State
             .controls
-              select(name='address_state', value= user.address_state)
-                each state in states
-                  option= state
+              select.input-small(name='address_state', value= user.address_state, placeholder='KS/MO')
+                option KS
+                option MO
           #address_zip-cg.control-group
-            label.control-label(for='address_zip-tf') Address Zip
-            .controls: input.input-medium(type='text', name='address_zip', value= user.address_zip, placeholder='64105')
+            label.control-label Zip
+            .controls
+              input.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='64105')
+          .control-group
+              label.control-label Location
+              .controls
+                select(name='address_location', value= user.location, placeholder="Kansas City")
+                  each c in categories.locations
+                    option(value= c.parsed) #{c.city}, #{c.state}
+
 
         .form-actions
           button(type='button').account-form-btn1.btn.btn-danger Delete

@@ -10,6 +10,7 @@
     "jade": ">= 0.0.1",
     "bcrypt": "*",
     "mongodb": ">= 0.1.0",
+    "mongoose": "*",
     "moment": ">=1.6.2",
     "emailjs": ">= 0.3.0"
   },
