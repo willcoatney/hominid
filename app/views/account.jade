@@ -26,7 +26,8 @@ else
 
       form(method="post")#account-form.form-horizontal.tab-content
         #profile.tab-pane.active: fieldset
-          p.main.subheading Hi, #{user.user}. Here is where you may create your own offer. Remember, once you press 'Update' at the bottom of this page, this information is published. Of course, you can always return and change something if you make a mistake.
+          p.main.subheading Hi, #{user.user}. 
+          br
           // #name-cg.control-group
           //   label.control-label(for='name-tf') Name
           //   .controls
@@ -45,6 +46,8 @@ else
               input#email-tf(type='text', name='email', value= user.email)
 
         #settings.tab-pane: fieldset
+          p.main.subheading Once you press 'Update' at the bottom of this page, this information is published. Of course, you can always return and change something if you make a mistake.
+          br
           label.control-label What are you offering?
           #coupon_title-cg.control-group
             .controls
@@ -61,8 +64,8 @@ else
               select(name='coupon_supra', value= user.coupon_supra, placeholder= "")
                 option#eat(value="eat") Eat it immediately
                 option#drink(value="drink") Drink it immediately
-                option#own Own it to enjoy
-                option#see See or experience it
+                option#own(value="own") Own it to enjoy
+                option#see(value="see") Experience it
 
           #coupon_category-cg.control-group
             label.control-label How do you categorize it?

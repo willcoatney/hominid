@@ -804,17 +804,17 @@ button i
 
 body
   background: #E9E9E9 url(../img/body-bg.png) repeat 0 0
-  font: 13px/1.7em 'Open Sans'
+  font: 13px/1.7em 'Helvetica Neue'
 
 
 p
-  font: 13px/1.7em 'Open Sans'
+  font: 13px/1.7em 'Helvetica Neue'
 
 input,
 button,
 select,
 textarea
-  font-family: 'Open Sans'
+  font-family: 'Helvetica Neue', Helvetica!important
 
 .dropdown .dropdown-menu
   -webkit-border-radius: 6px
@@ -982,7 +982,7 @@ T = 0.5s
 
 .coupon
   // box-shadow 0 4px 10px -3px rgba(0,0,0,0.5)
-  width Coup
+  width 255px
   float left
   margin 10px
   border 1px solid #d5d5d5
@@ -1114,7 +1114,8 @@ T = 0.5s
   text-align center
   position relative
   margin-top 10%
-  color #454545
+  color #666
+  text-shadow 0 1px 0 #fff
 
 Supra( Colx )
   n = lighten( Colx, 10%) 
@@ -1264,18 +1265,27 @@ HL = #0b61a4
       top -10px
       left 20px
       .brand
-        right -40px
-        top 6px
+        right -100px
+        top -2px
         position absolute
         padding 0
         margin 0
-        font-family "mic-32-new-web"
+        font-family "mic-32-new-web", Helvetica
         font-size 32px
         font-weight 600
         color desaturate(HL, 100%)
         text-shadow 0 1px -7px white
         letter-spacing -1px
         z-index 20
+        span.title
+          display inline-block
+          width 100%
+        span.subscript
+          font-size 11px
+          font-weight 400
+          vertical-align top
+          display inline-block
+          color #777
       #canvas
         top -75px
         left -65px
