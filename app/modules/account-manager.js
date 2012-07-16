@@ -66,7 +66,7 @@ AM.signup = function(newData, callback)
 					AM.saltAndHash(newData.pass, function(hash){
 						newData.pass = hash;
 					// append date stamp when record was created //	
-						newData.date = moment().format('YYYYMMDDHHss');
+						newData.date = new Date();
 						AM.accounts.insert(newData, callback(null));
 					});
 				}
@@ -94,6 +94,10 @@ AM.update = function(newData, callback)
 		o.address_city    = newData.address_city;
 		o.address_state   = newData.address_state;
 		o.address_zip     = newData.address_zip;
+		o.publish = newData.publish;
+		o.date_start = moment(newData.date_start).format("YYYY MM DD hh mm");
+		o.date_end = moment(newData.date_end).format("YYYY MM DD hh mm");
+		o.date = new Date();
 		if (newData.pass == ''){
 			AM.accounts.save(o); callback(o);
 		}	else{
@@ -148,6 +152,15 @@ AM.getObjectId = function(id)
 // this is necessary for id lookups, just passing the id fails for some reason //	
 	return AM.accounts.db.bson_serializer.ObjectID.createFromHexString(id)
 }
+
+AM.getPublishedRecords = function(callback) 
+{
+	AM.accounts.find({'publish':'yes'} && {date: {$lt: new Date()}}).toArray(
+	    function(e, res) {
+		if (e) callback(e)
+		else callback(null, res)
+	});
+};
 
 AM.getAllRecords = function(callback) 
 {

@@ -24,7 +24,7 @@ module.exports = function (app) {
 	});	
 
   app.get('/', function (req, res) {
-		AM.getAllRecords( function(e, accounts){
+		AM.getPublishedRecords( function(e, accounts){
       if (req.cookies.user === undefined || req.cookies.pass === undefined || req.session.user === null ) {
         res.render('index', {
           locals: {
@@ -177,7 +177,10 @@ module.exports = function (app) {
 				address_street  : req.param('address_street'),
 				address_city    : req.param('address_city'),
 				address_state   : req.param('address_state'),
-				address_zip     : req.param('address_zip')
+				address_zip     : req.param('address_zip'),
+				date_start: req.param('date_start'),
+				date_end: req.param('date_end'),
+				publish: req.param('publish')
 			}, function (o) {
 				if (o) {
 					req.session.user = o;
@@ -214,19 +217,7 @@ module.exports = function (app) {
 			name            : req.param('name'),
 			email           : req.param('email'),
 			user            : req.param('user'),
-			pass            : req.param('pass'),
-			business_name   : req.param('business_name'),
-			business_phone  : req.param('business_phone'),
-			coupon_title    : req.param('coupon_title'),
-			coupon_body     : req.param('coupon_body'),
-			coupon_supra: req.param('coupon_supra'),
-			coupon_sub: req.param('coupon_sub'),
-			coupon_price: req.param('coupon_price'),
-      location : req.param('location'),
-      address_street  : req.param('address_street'),
-			address_city    : req.param('address_city'),
-			address_state   : req.param('address_state'),
-			address_zip     : req.param('address_zip')
+			pass            : req.param('pass')
 		}, function(e, o){
 			if (e){
 				res.send(e, 400);

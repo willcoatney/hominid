@@ -58,6 +58,11 @@ $(document).ready( function (){
   /* $('#sorts, #locations').hide() */
   $('.coupon-container').hide()
 
+  $('.date').each(function(){
+    var h = $(this).html()
+    $(this).text(moment(h).fromNow())
+  })
+
 });
 
 

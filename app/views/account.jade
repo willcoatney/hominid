@@ -116,6 +116,19 @@ else
                   each c in categories.locations
                     option(value= c.parsed) #{c.city}, #{c.state}
 
+          .control-group
+            label.control-label Date start
+            .controls
+              input(type='text', name='date_start', value= user.date_start, placeholder='Date start')
+          .control-group
+            label.control-label Date end
+            .controls
+              input(type='text', name='date_end', value= user.date_end, placeholder='Date end')
+
+          .control-group
+            label.control-label Publish?
+            .controls
+              input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
 
         .form-actions
           button(type='button').account-form-btn1.btn.btn-danger Delete
