@@ -8,7 +8,9 @@ global.host = 'localhost';
 require('./app/core/config')(app, exp);
 require('./app/router')(app);
 
-app.listen(50690, function(){
+var port = process.env.PORT
+
+app.listen(port, function(){
  	console.log("Listening on port %d in %s mode", app.address().port, app.settings.env);
 });
 
