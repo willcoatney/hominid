@@ -8,6 +8,11 @@ global.host = 'localhost';
 require('./app/core/config')(app, exp);
 require('./app/router')(app);
 
-app.listen(8080, function(){
+app.listen(50690, function(){
  	console.log("Listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+
+// app.listen(8080, function(){
+//  	console.log("Listening on port %d in %s mode", app.address().port, app.settings.env);
+// });
+// 
