@@ -1,4 +1,6 @@
 
+.foo.btn.btn-large(style="margin:0 10%; width:80%;") Foo
+
 .coupon-container
   each a in accts
     .coupon(class= a.coupon_supra + ' ' + a.coupon_sub + ' ' + a.location, data-date= a.date, data-category= a.coupon_supra+a.coupon_sub, data-business= a.business_name, data-price= a.coupon_price)

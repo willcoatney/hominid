@@ -232,8 +232,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon-container{margin:20px auto 0;padding-bottom:250px}
 .coupon{width:255px;float:left;margin:10px;border:1px solid #d5d5d5;-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;font-size:12px;line-height:17px;}
 .coupon.eat.chinese{background-color:#008ad3;border-color:#007cbe #006194 #00456a;}
+.coupon.eat.chinese .header{position:relative;}
 .coupon.eat.chinese .header .title{color:#fff}
-.coupon.eat.chinese .header .price{background-color:#fff;color:#008ad3;-webkit-box-shadow:0;box-shadow:0}
+.coupon.eat.chinese .header .price{position:absolute;background-color:#fff;color:#008ad3;-webkit-box-shadow:0;box-shadow:0}
 .coupon.eat.chinese.favorite{background-color:#006194;color:#fff;}
 .coupon.eat.chinese.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.eat.chinese.favorite .header .title{color:#fff}
@@ -251,8 +252,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.eat.chinese .toggles .btn:hover{border-color:#007cbe #006194 #00456a}
 .coupon.eat.chinese .footer{border-color:#00456a}
 .coupon.eat.italian{background-color:#07a9ff;border-color:#009aec #0078b7 #005683;}
+.coupon.eat.italian .header{position:relative;}
 .coupon.eat.italian .header .title{color:#fff}
-.coupon.eat.italian .header .price{background-color:#fff;color:#07a9ff;-webkit-box-shadow:0;box-shadow:0}
+.coupon.eat.italian .header .price{position:absolute;background-color:#fff;color:#07a9ff;-webkit-box-shadow:0;box-shadow:0}
 .coupon.eat.italian.favorite{background-color:#0078b7;color:#fff;}
 .coupon.eat.italian.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.eat.italian.favorite .header .title{color:#fff}
@@ -270,8 +272,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.eat.italian .toggles .btn:hover{border-color:#009aec #0078b7 #005683}
 .coupon.eat.italian .footer{border-color:#005683}
 .coupon.eat.japanese{background-color:#007abc;border-color:#006ea9 #005584 #003d5e;}
+.coupon.eat.japanese .header{position:relative;}
 .coupon.eat.japanese .header .title{color:#fff}
-.coupon.eat.japanese .header .price{background-color:#fff;color:#007abc;-webkit-box-shadow:0;box-shadow:0}
+.coupon.eat.japanese .header .price{position:absolute;background-color:#fff;color:#007abc;-webkit-box-shadow:0;box-shadow:0}
 .coupon.eat.japanese.favorite{background-color:#005584;color:#fff;}
 .coupon.eat.japanese.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.eat.japanese.favorite .header .title{color:#fff}
@@ -289,8 +292,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.eat.japanese .toggles .btn:hover{border-color:#006ea9 #005584 #003d5e}
 .coupon.eat.japanese .footer{border-color:#003d5e}
 .coupon.eat.mexican{background-color:#23b2ff;border-color:#06a8ff #0084cb #005e91;}
+.coupon.eat.mexican .header{position:relative;}
 .coupon.eat.mexican .header .title{color:#fff}
-.coupon.eat.mexican .header .price{background-color:#fff;color:#23b2ff;-webkit-box-shadow:0;box-shadow:0}
+.coupon.eat.mexican .header .price{position:absolute;background-color:#fff;color:#23b2ff;-webkit-box-shadow:0;box-shadow:0}
 .coupon.eat.mexican.favorite{background-color:#0084cb;color:#fff;}
 .coupon.eat.mexican.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.eat.mexican.favorite .header .title{color:#fff}
@@ -308,8 +312,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.eat.mexican .toggles .btn:hover{border-color:#06a8ff #0084cb #005e91}
 .coupon.eat.mexican .footer{border-color:#005e91}
 .coupon.eat.eat_other{background-color:#006ba5;border-color:#006095 #004b74 #003552;}
+.coupon.eat.eat_other .header{position:relative;}
 .coupon.eat.eat_other .header .title{color:#fff}
-.coupon.eat.eat_other .header .price{background-color:#fff;color:#006ba5;-webkit-box-shadow:0;box-shadow:0}
+.coupon.eat.eat_other .header .price{position:absolute;background-color:#fff;color:#006ba5;-webkit-box-shadow:0;box-shadow:0}
 .coupon.eat.eat_other.favorite{background-color:#004b74;color:#fff;}
 .coupon.eat.eat_other.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.eat.eat_other.favorite .header .title{color:#fff}
@@ -327,8 +332,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.eat.eat_other .toggles .btn:hover{border-color:#006095 #004b74 #003552}
 .coupon.eat.eat_other .footer{border-color:#003552}
 .coupon.eat.american{background-color:#3fbcff;border-color:#1fb1ff #0091df #00689f;}
+.coupon.eat.american .header{position:relative;}
 .coupon.eat.american .header .title{color:#fff}
-.coupon.eat.american .header .price{background-color:#fff;color:#3fbcff;-webkit-box-shadow:0;box-shadow:0}
+.coupon.eat.american .header .price{position:absolute;background-color:#fff;color:#3fbcff;-webkit-box-shadow:0;box-shadow:0}
 .coupon.eat.american.favorite{background-color:#0091df;color:#fff;}
 .coupon.eat.american.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.eat.american.favorite .header .title{color:#fff}
@@ -346,8 +352,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.eat.american .toggles .btn:hover{border-color:#1fb1ff #0091df #00689f}
 .coupon.eat.american .footer{border-color:#00689f}
 .coupon.drink.beer{background-color:#2ba54b;border-color:#279444 #1e7435 #155326;}
+.coupon.drink.beer .header{position:relative;}
 .coupon.drink.beer .header .title{color:#fff}
-.coupon.drink.beer .header .price{background-color:#fff;color:#2ba54b;-webkit-box-shadow:0;box-shadow:0}
+.coupon.drink.beer .header .price{position:absolute;background-color:#fff;color:#2ba54b;-webkit-box-shadow:0;box-shadow:0}
 .coupon.drink.beer.favorite{background-color:#1e7435;color:#fff;}
 .coupon.drink.beer.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.drink.beer.favorite .header .title{color:#fff}
@@ -365,8 +372,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.drink.beer .toggles .btn:hover{border-color:#279444 #1e7435 #155326}
 .coupon.drink.beer .footer{border-color:#155326}
 .coupon.drink.wine{background-color:#38cb5e;border-color:#30b954 #269041 #1b672e;}
+.coupon.drink.wine .header{position:relative;}
 .coupon.drink.wine .header .title{color:#fff}
-.coupon.drink.wine .header .price{background-color:#fff;color:#38cb5e;-webkit-box-shadow:0;box-shadow:0}
+.coupon.drink.wine .header .price{position:absolute;background-color:#fff;color:#38cb5e;-webkit-box-shadow:0;box-shadow:0}
 .coupon.drink.wine.favorite{background-color:#269041;color:#fff;}
 .coupon.drink.wine.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.drink.wine.favorite .header .title{color:#fff}
@@ -384,8 +392,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.drink.wine .toggles .btn:hover{border-color:#30b954 #269041 #1b672e}
 .coupon.drink.wine .footer{border-color:#1b672e}
 .coupon.drink.liquor{background-color:#269242;border-color:#22833b #1b662e #134921;}
+.coupon.drink.liquor .header{position:relative;}
 .coupon.drink.liquor .header .title{color:#fff}
-.coupon.drink.liquor .header .price{background-color:#fff;color:#269242;-webkit-box-shadow:0;box-shadow:0}
+.coupon.drink.liquor .header .price{position:absolute;background-color:#fff;color:#269242;-webkit-box-shadow:0;box-shadow:0}
 .coupon.drink.liquor.favorite{background-color:#1b662e;color:#fff;}
 .coupon.drink.liquor.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.drink.liquor.favorite .header .title{color:#fff}
@@ -403,8 +412,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.drink.liquor .toggles .btn:hover{border-color:#22833b #1b662e #134921}
 .coupon.drink.liquor .footer{border-color:#134921}
 .coupon.drink.cocktail{background-color:#4ed170;border-color:#37cb5e #299f48 #1e7233;}
+.coupon.drink.cocktail .header{position:relative;}
 .coupon.drink.cocktail .header .title{color:#fff}
-.coupon.drink.cocktail .header .price{background-color:#fff;color:#4ed170;-webkit-box-shadow:0;box-shadow:0}
+.coupon.drink.cocktail .header .price{position:absolute;background-color:#fff;color:#4ed170;-webkit-box-shadow:0;box-shadow:0}
 .coupon.drink.cocktail.favorite{background-color:#299f48;color:#fff;}
 .coupon.drink.cocktail.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.drink.cocktail.favorite .header .title{color:#fff}
@@ -422,8 +432,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.drink.cocktail .toggles .btn:hover{border-color:#37cb5e #299f48 #1e7233}
 .coupon.drink.cocktail .footer{border-color:#1e7233}
 .coupon.drink.drink_other{background-color:#22803a;border-color:#1f7334 #185a29 #11401d;}
+.coupon.drink.drink_other .header{position:relative;}
 .coupon.drink.drink_other .header .title{color:#fff}
-.coupon.drink.drink_other .header .price{background-color:#fff;color:#22803a;-webkit-box-shadow:0;box-shadow:0}
+.coupon.drink.drink_other .header .price{position:absolute;background-color:#fff;color:#22803a;-webkit-box-shadow:0;box-shadow:0}
 .coupon.drink.drink_other.favorite{background-color:#185a29;color:#fff;}
 .coupon.drink.drink_other.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.drink.drink_other.favorite .header .title{color:#fff}
@@ -441,8 +452,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.drink.drink_other .toggles .btn:hover{border-color:#1f7334 #185a29 #11401d}
 .coupon.drink.drink_other .footer{border-color:#11401d}
 .coupon.own.clothing{background-color:#e67d00;border-color:#cf7100 #a15800 #733f00;}
+.coupon.own.clothing .header{position:relative;}
 .coupon.own.clothing .header .title{color:#fff}
-.coupon.own.clothing .header .price{background-color:#fff;color:#e67d00;-webkit-box-shadow:0;box-shadow:0}
+.coupon.own.clothing .header .price{position:absolute;background-color:#fff;color:#e67d00;-webkit-box-shadow:0;box-shadow:0}
 .coupon.own.clothing.favorite{background-color:#a15800;color:#fff;}
 .coupon.own.clothing.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.own.clothing.favorite .header .title{color:#fff}
@@ -460,8 +472,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.own.clothing .toggles .btn:hover{border-color:#cf7100 #a15800 #733f00}
 .coupon.own.clothing .footer{border-color:#733f00}
 .coupon.own.electronics{background-color:#ff971a;border-color:#fd8a00 #c56b00 #8d4d00;}
+.coupon.own.electronics .header{position:relative;}
 .coupon.own.electronics .header .title{color:#fff}
-.coupon.own.electronics .header .price{background-color:#fff;color:#ff971a;-webkit-box-shadow:0;box-shadow:0}
+.coupon.own.electronics .header .price{position:absolute;background-color:#fff;color:#ff971a;-webkit-box-shadow:0;box-shadow:0}
 .coupon.own.electronics.favorite{background-color:#c56b00;color:#fff;}
 .coupon.own.electronics.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.own.electronics.favorite .header .title{color:#fff}
@@ -479,8 +492,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.own.electronics .toggles .btn:hover{border-color:#fd8a00 #c56b00 #8d4d00}
 .coupon.own.electronics .footer{border-color:#8d4d00}
 .coupon.own.supplies{background-color:#cc6f00;border-color:#b86400 #8f4e00 #663700;}
+.coupon.own.supplies .header{position:relative;}
 .coupon.own.supplies .header .title{color:#fff}
-.coupon.own.supplies .header .price{background-color:#fff;color:#cc6f00;-webkit-box-shadow:0;box-shadow:0}
+.coupon.own.supplies .header .price{position:absolute;background-color:#fff;color:#cc6f00;-webkit-box-shadow:0;box-shadow:0}
 .coupon.own.supplies.favorite{background-color:#8f4e00;color:#fff;}
 .coupon.own.supplies.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.own.supplies.favorite .header .title{color:#fff}
@@ -498,8 +512,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.own.supplies .toggles .btn:hover{border-color:#b86400 #8f4e00 #663700}
 .coupon.own.supplies .footer{border-color:#663700}
 .coupon.own.tools{background-color:#ffa233;border-color:#ff9414 #d67500 #995300;}
+.coupon.own.tools .header{position:relative;}
 .coupon.own.tools .header .title{color:#fff}
-.coupon.own.tools .header .price{background-color:#fff;color:#ffa233;-webkit-box-shadow:0;box-shadow:0}
+.coupon.own.tools .header .price{position:absolute;background-color:#fff;color:#ffa233;-webkit-box-shadow:0;box-shadow:0}
 .coupon.own.tools.favorite{background-color:#d67500;color:#fff;}
 .coupon.own.tools.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.own.tools.favorite .header .title{color:#fff}
@@ -517,8 +532,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.own.tools .toggles .btn:hover{border-color:#ff9414 #d67500 #995300}
 .coupon.own.tools .footer{border-color:#995300}
 .coupon.own.toys{background-color:#b36100;border-color:#a15700 #7d4400 #5a3000;}
+.coupon.own.toys .header{position:relative;}
 .coupon.own.toys .header .title{color:#fff}
-.coupon.own.toys .header .price{background-color:#fff;color:#b36100;-webkit-box-shadow:0;box-shadow:0}
+.coupon.own.toys .header .price{position:absolute;background-color:#fff;color:#b36100;-webkit-box-shadow:0;box-shadow:0}
 .coupon.own.toys.favorite{background-color:#7d4400;color:#fff;}
 .coupon.own.toys.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.own.toys.favorite .header .title{color:#fff}
@@ -536,8 +552,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.own.toys .toggles .btn:hover{border-color:#a15700 #7d4400 #5a3000}
 .coupon.own.toys .footer{border-color:#5a3000}
 .coupon.own.own_other{background-color:#ffae4d;border-color:#ff9f2c #e87f00 #a65a00;}
+.coupon.own.own_other .header{position:relative;}
 .coupon.own.own_other .header .title{color:#fff}
-.coupon.own.own_other .header .price{background-color:#fff;color:#ffae4d;-webkit-box-shadow:0;box-shadow:0}
+.coupon.own.own_other .header .price{position:absolute;background-color:#fff;color:#ffae4d;-webkit-box-shadow:0;box-shadow:0}
 .coupon.own.own_other.favorite{background-color:#e87f00;color:#fff;}
 .coupon.own.own_other.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.own.own_other.favorite .header .title{color:#fff}
@@ -555,8 +572,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.own.own_other .toggles .btn:hover{border-color:#ff9f2c #e87f00 #a65a00}
 .coupon.own.own_other .footer{border-color:#a65a00}
 .coupon.see.art{background-color:#ff1a3b;border-color:#fd0024 #c5001c #8d0014;}
+.coupon.see.art .header{position:relative;}
 .coupon.see.art .header .title{color:#fff}
-.coupon.see.art .header .price{background-color:#fff;color:#ff1a3b;-webkit-box-shadow:0;box-shadow:0}
+.coupon.see.art .header .price{position:absolute;background-color:#fff;color:#ff1a3b;-webkit-box-shadow:0;box-shadow:0}
 .coupon.see.art.favorite{background-color:#c5001c;color:#fff;}
 .coupon.see.art.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.see.art.favorite .header .title{color:#fff}
@@ -574,8 +592,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.see.art .toggles .btn:hover{border-color:#fd0024 #c5001c #8d0014}
 .coupon.see.art .footer{border-color:#8d0014}
 .coupon.see.exhibit{background-color:#ff4d67;border-color:#ff2c4b #e80022 #a60018;}
+.coupon.see.exhibit .header{position:relative;}
 .coupon.see.exhibit .header .title{color:#fff}
-.coupon.see.exhibit .header .price{background-color:#fff;color:#ff4d67;-webkit-box-shadow:0;box-shadow:0}
+.coupon.see.exhibit .header .price{position:absolute;background-color:#fff;color:#ff4d67;-webkit-box-shadow:0;box-shadow:0}
 .coupon.see.exhibit.favorite{background-color:#e80022;color:#fff;}
 .coupon.see.exhibit.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.see.exhibit.favorite .header .title{color:#fff}
@@ -593,8 +612,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.see.exhibit .toggles .btn:hover{border-color:#ff2c4b #e80022 #a60018}
 .coupon.see.exhibit .footer{border-color:#a60018}
 .coupon.see.game{background-color:#fa0025;border-color:#e10021 #af001a #7d0012;}
+.coupon.see.game .header{position:relative;}
 .coupon.see.game .header .title{color:#fff}
-.coupon.see.game .header .price{background-color:#fff;color:#fa0025;-webkit-box-shadow:0;box-shadow:0}
+.coupon.see.game .header .price{position:absolute;background-color:#fff;color:#fa0025;-webkit-box-shadow:0;box-shadow:0}
 .coupon.see.game.favorite{background-color:#af001a;color:#fff;}
 .coupon.see.game.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.see.game.favorite .header .title{color:#fff}
@@ -612,8 +632,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.see.game .toggles .btn:hover{border-color:#e10021 #af001a #7d0012}
 .coupon.see.game .footer{border-color:#7d0012}
 .coupon.see.music{background-color:#ff6178;border-color:#ff3e5a #f60024 #b0001a;}
+.coupon.see.music .header{position:relative;}
 .coupon.see.music .header .title{color:#fff}
-.coupon.see.music .header .price{background-color:#fff;color:#ff6178;-webkit-box-shadow:0;box-shadow:0}
+.coupon.see.music .header .price{position:absolute;background-color:#fff;color:#ff6178;-webkit-box-shadow:0;box-shadow:0}
 .coupon.see.music.favorite{background-color:#f60024;color:#fff;}
 .coupon.see.music.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.see.music.favorite .header .title{color:#fff}
@@ -631,8 +652,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.see.music .toggles .btn:hover{border-color:#ff3e5a #f60024 #b0001a}
 .coupon.see.music .footer{border-color:#b0001a}
 .coupon.see.theater{background-color:#da0020;border-color:#c4001d #990016 #6d0010;}
+.coupon.see.theater .header{position:relative;}
 .coupon.see.theater .header .title{color:#fff}
-.coupon.see.theater .header .price{background-color:#fff;color:#da0020;-webkit-box-shadow:0;box-shadow:0}
+.coupon.see.theater .header .price{position:absolute;background-color:#fff;color:#da0020;-webkit-box-shadow:0;box-shadow:0}
 .coupon.see.theater.favorite{background-color:#990016;color:#fff;}
 .coupon.see.theater.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.see.theater.favorite .header .title{color:#fff}
@@ -650,8 +672,9 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .coupon.see.theater .toggles .btn:hover{border-color:#c4001d #990016 #6d0010}
 .coupon.see.theater .footer{border-color:#6d0010}
 .coupon.see.see_other{background-color:#ff7489;border-color:#ff4f6a #ff052b #b9001c;}
+.coupon.see.see_other .header{position:relative;}
 .coupon.see.see_other .header .title{color:#fff}
-.coupon.see.see_other .header .price{background-color:#fff;color:#ff7489;-webkit-box-shadow:0;box-shadow:0}
+.coupon.see.see_other .header .price{position:absolute;background-color:#fff;color:#ff7489;-webkit-box-shadow:0;box-shadow:0}
 .coupon.see.see_other.favorite{background-color:#ff052b;color:#fff;}
 .coupon.see.see_other.favorite .header{-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;}
 .coupon.see.see_other.favorite .header .title{color:#fff}

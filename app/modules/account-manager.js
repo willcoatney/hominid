@@ -1,23 +1,51 @@
 
+var mongoose = require('mongoose')
+// mongoose.connect('mongodb://localhost:27017/login-testing');
+// console.log("MONGOOSE IS ON INSIDE ACCOUNT-MANAGER.js");
+
 var bcrypt = require('bcrypt')
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
 
-var dbPort = 27017;
-var dbHost = global.host;
-var dbName = 'login-testing';
+// var dbPort = 27017;
+// var dbHost = global.host;
+// var dbName = 'login-testing';
 
 // use moment.js for pretty date-stamping //
 var moment = require('moment');
 
-var AM = {}; 
-	AM.db = new Db(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}, {}));
-	AM.db.open(function(e, d){ console.log('connected to database :: ' + dbName)});
-	AM.accounts = AM.db.collection('accounts');
+var accountSchema = new mongoose.Schema({
+  name: {type: String, default: 'DEFAULT' },
+  email: String,
+  pass: String,
+  business_name: String,
+  business_phone: String,
+  coupon_title: String,
+  coupon_body: String,
+  coupon_supra: String,
+  coupon_sub: String,
+  coupon_price: String,
+  location: String,
+  address_street: String,
+  address_city: String,
+  address_state: String,
+  address_zip: String,
+  date_start: String,
+  date_end: String,
+  date: String,
+  publish: String
+})
 
-/* var rightNow = moment().format('MMMM Do YYYY, h:mm:ss a'); */
-/* var rightNow = new Date(Number); */
-var rightNow = new Date();
+
+var AM = {};
+	/* AM.db = new Db(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}, {})); */
+	/* AM.db.open(function(e, d){ console.log('connected to database :: ' + dbName)}); */
+	/* AM.accounts = AM.db.collection('accounts'); */
+
+	AM.accounts = mongoose.model('accounts', accountSchema);
+	// var Account = mongoose.model('accounts', accountSchema);
+	// var newAccount = new Account();
+
 
 module.exports = AM;
 
@@ -67,7 +95,9 @@ AM.signup = function(newData, callback)
 						newData.pass = hash;
 					// append date stamp when record was created //	
 						newData.date = new Date();
-						AM.accounts.insert(newData, callback(null));
+            AM.accounts.create(newData, function(e,o){
+              callback(null);
+            });
 					});
 				}
 			});
@@ -95,15 +125,15 @@ AM.update = function(newData, callback)
 		o.address_state   = newData.address_state;
 		o.address_zip     = newData.address_zip;
 		o.publish = newData.publish;
-		o.date_start = moment(newData.date_start).format("YYYY MM DD hh mm");
-		o.date_end = moment(newData.date_end).format("YYYY MM DD hh mm");
+		o.date_start = moment(newData.date_start || "333").format("YYYY MM DD hh mm");
+		o.date_end = moment(newData.date_end || "333").format("YYYY MM DD hh mm");
 		o.date = new Date();
 		if (newData.pass == ''){
-			AM.accounts.save(o); callback(o);
+			o.save(); callback(o);
 		}	else{
 			AM.saltAndHash(newData.pass, function(hash){
 				o.pass = hash;
-				AM.accounts.save(o); callback(o);			
+				o.save(); callback(o);			
 			});
 		}
 	});
@@ -155,7 +185,7 @@ AM.getObjectId = function(id)
 
 AM.getPublishedRecords = function(callback) 
 {
-	AM.accounts.find({'publish':'yes'} && {date: {$lt: new Date()}}).toArray(
+	AM.accounts.find({'publish':'yes'} && {date: {$lt: new Date()}}).exec(
 	    function(e, res) {
 		if (e) callback(e)
 		else callback(null, res)
@@ -164,7 +194,7 @@ AM.getPublishedRecords = function(callback)
 
 AM.getAllRecords = function(callback) 
 {
-	AM.accounts.find().toArray(
+	AM.accounts.find({'publish':'yes'}).exec(
 	    function(e, res) {
 		if (e) callback(e)
 		else callback(null, res)
@@ -191,7 +221,7 @@ AM.findById = function(id, callback)
 AM.findByMultipleFields = function(a, callback)
 {
 // this takes an array of name/val pairs to search against {fieldName : 'value'} //
-	AM.accounts.find( { $or : a } ).toArray(
+	AM.accounts.find( { $or : a } ).exec(
 	    function(e, results) {
 		if (e) callback(e)
 		else callback(null, results)

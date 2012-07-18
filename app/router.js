@@ -4,13 +4,26 @@ var AM  = require('./modules/account-manager');
 var EM  = require('./modules/email-dispatcher');
 
 var CAT = require('./modules/categories');
+var OFR  = require('./modules/offer-model');
 
+var mongoose = require('mongoose')
+
+/* var Offer = mongoose.model('Offer'); */
 
 module.exports = function (app) {
 
   "use strict";
 
 // main login page //
+
+
+  app.get('/offer', function(req, res) {
+      res.render('offer', {
+        locals: {
+          offer: new Offer({})
+        }
+    });
+  })
 
 	app.get('/print', function(req, res) {
 		AM.getAllRecords( function(e, accounts){
@@ -24,7 +37,7 @@ module.exports = function (app) {
 	});	
 
   app.get('/', function (req, res) {
-		AM.getPublishedRecords( function(e, accounts){
+		AM.getAllRecords( function(e, accounts){
       if (req.cookies.user === undefined || req.cookies.pass === undefined || req.session.user === null ) {
         res.render('index', {
           locals: {
@@ -149,7 +162,7 @@ module.exports = function (app) {
 			res.render('home', {
 				locals: {
             categories : CAT
-					, title : 'Control Panel'
+					, title : 'Your Account'
           , accts: accounts
           , user: req.cookies.user
 					, udata : req.session.user

@@ -1,6 +1,6 @@
 {
   "name": "spinly",
-  "version": "0.0.1",
+  "version": "0.0.1-1",
   "description": "An early Spinly",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "emailjs": ">= 0.3.0"
   },
   "engines": {
-    "node": "0.6.17",
+    "node": "0.6.x",
     "npm": "1.1.x"
   },
   "subdomain": "spinly",

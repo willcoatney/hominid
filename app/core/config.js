@@ -1,9 +1,12 @@
+
 module.exports = function (app, exp) {
 
   "use strict";
 
+
   var stylus = require('stylus');
   var nib    = require('nib');
+  /* var mongoose = require('mongoose'); */
 
   function compile(str, path) {
     return stylus(str)
@@ -30,5 +33,16 @@ module.exports = function (app, exp) {
     }));
 		app.use(exp.static(app.root + '/app'));
 	});
-	
+
+  app.configure('development', function(){
+    app.use(exp.errorHandler({ dumbExceptions: true, showStack: true }));
+    app.mongoose.connect('mongodb://localhost:27017/login-testing');
+    console.log('Connected to DB');
+  });
+
+  app.configure('production', function(){
+    app.use(exp.errorHandler());
+    app.mongoose.connect('mongodb://user:secret@ds033757.mongolab.com:33757/heroku_app5810306');
+  })
+
 }
