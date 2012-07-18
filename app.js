@@ -1,22 +1,15 @@
 
 var exp = require('express');
-var app = module.exports = exp.createServer();
+var app = exp.createServer();
 
 app.mongoose = require('mongoose');
-
 app.root = __dirname;
-global.host = 'localhost';
 
-require('./app/core/config')(app, exp);
-require('./app/router')(app);
+var config = require('./app/core/config')(app, exp);
 
-var port = process.env.PORT || 8080
+var models = {};
+models.offers = require(app.root + '/app/models/offer-model')(app.mongoose).model;
 
-app.listen(port, function(){
- 	console.log("Listening on port %d in %s mode", app.address().port, app.settings.env);
-});
+require('./app/router')(app, models);
 
-// app.listen(8080, function(){
-//  	console.log("Listening on port %d in %s mode", app.address().port, app.settings.env);
-// });
-// 
+app.listen(process.env.PORT || 8080);

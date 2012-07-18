@@ -1,59 +1,27 @@
 
 var mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost:27017/login-testing');
-// console.log("MONGOOSE IS ON INSIDE ACCOUNT-MANAGER.js");
 
 var bcrypt = require('bcrypt')
-var Db = require('mongodb').Db;
-var Server = require('mongodb').Server;
 
-// var dbPort = 27017;
-// var dbHost = global.host;
-// var dbName = 'login-testing';
-
-// use moment.js for pretty date-stamping //
 var moment = require('moment');
 
-var accountSchema = new mongoose.Schema({
-  name: {type: String, default: 'DEFAULT' },
-  email: String,
-  pass: String,
-  business_name: String,
-  business_phone: String,
-  coupon_title: String,
-  coupon_body: String,
-  coupon_supra: String,
-  coupon_sub: String,
-  coupon_price: String,
-  location: String,
-  address_street: String,
-  address_city: String,
-  address_state: String,
-  address_zip: String,
-  date_start: String,
-  date_end: String,
-  date: String,
-  publish: String
-})
+var models = {};
+models.offers = require('../models/offer-model')(mongoose).model;
 
+var AM = models;
 
-var AM = {};
-	/* AM.db = new Db(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}, {})); */
-	/* AM.db.open(function(e, d){ console.log('connected to database :: ' + dbName)}); */
-	/* AM.accounts = AM.db.collection('accounts'); */
+	AM.accounts = models.offers;
 
-	AM.accounts = mongoose.model('accounts', accountSchema);
-	// var Account = mongoose.model('accounts', accountSchema);
-	// var newAccount = new Account();
 
 
 module.exports = AM;
+
 
 // logging in //
 
 AM.autoLogin = function(user, pass, callback)
 {
-	AM.accounts.findOne({user:user}, function(e, o) {
+	models.offers.findOne({user:user}, function(e, o) {
 		if (o){
 			o.pass == pass ? callback(o) : callback(null);
 		}	else{

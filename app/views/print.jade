@@ -2,27 +2,27 @@
 .foo.btn.btn-large(style="margin:0 10%; width:80%;") Foo
 
 .coupon-container
-  each a in accts
-    .coupon(class= a.coupon_supra + ' ' + a.coupon_sub + ' ' + a.location, data-date= a.date, data-category= a.coupon_supra+a.coupon_sub, data-business= a.business_name, data-price= a.coupon_price)
+  each o in offers
+    .coupon(class= o.coupon_supra + ' ' + o.coupon_sub + ' ' + o.location, data-date= o.date, data-category= o.coupon_supra+ o.coupon_sub, data-business= o.business_name, data-price= o.coupon_price)
 
       .header
-        .price(class= '#{a.coupon_supra}')
+        .price(class= '#{ o.coupon_supra}')
           .price-inner
             span.dollar $
-            span.price-listing #{a.coupon_price}
-        .title= a.coupon_title
+            span.price-listing #{ o.coupon_price}
+        .title= o.coupon_title
 
 
       .coupon-content
-        .business_name #{a.business_name}
-        .address #{a.address_city}, #{a.address_state}
+        .business_name #{ o.business_name}
+        .address #{ o.address_city}, #{ o.address_state}
         br
         .date-wrapper Last updated 
-        .date #{a.date}
+        .date #{ o.date}
         // br
-        // .date_start #{a.date_start}
+        // .date_start #{ o.date_start}
         // br
-        // .date_end #{a.date_end}
+        // .date_end #{ o.date_end}
         br
       .toggles
         a.btn.btn-large.large-toggle
@@ -30,18 +30,18 @@
         a.btn.btn-large.favorite-toggle
           i.icon.icon-heart
       .footer
-        .body #{a.coupon_body}
+        .body #{ o.coupon_body}
         .phone-wrapper
           i.icon.icon-phone  
           .phone.
-            #{a.business_phone}
+            #{ o.business_phone}
         .address-wrapper
           i.icon.icon-map-marker
           .address.
-            #{a.address_street} <br/>
-            #{a.address_city},  
-            #{a.address_state}<br/>
-            #{a.address_zip}
+            #{ o.address_street} <br/>
+            #{ o.address_city},  
+            #{ o.address_state}<br/>
+            #{ o.address_zip}
 
 script(src='/vendor/js/jquery.isotope.js')
 script(src='/vendor/js/backbone.min.js')

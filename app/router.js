@@ -4,68 +4,70 @@ var AM  = require('./modules/account-manager');
 var EM  = require('./modules/email-dispatcher');
 
 var CAT = require('./modules/categories');
-var OFR  = require('./modules/offer-model');
 
 var mongoose = require('mongoose')
 
-/* var Offer = mongoose.model('Offer'); */
-
-module.exports = function (app) {
+module.exports = function (app, models) {
 
   "use strict";
 
 // main login page //
 
 
-  app.get('/offer', function(req, res) {
-      res.render('offer', {
+  app.get('/example', function(req, res) {
+
+    models.offers.find({}, function(err, docs){
+      res.render('exampleview', {
         locals: {
-          offer: new Offer({})
+          offers: docs
         }
+      })
     });
   })
 
 	app.get('/print', function(req, res) {
-		AM.getAllRecords( function(e, accounts){
+		models.offers.find({}, function(e, docs){
 			res.render('print', {
         locals: {
             title : 'Account List'
-          , accts : accounts
+          , offers: docs
         }
       });
 		})
 	});	
 
   app.get('/', function (req, res) {
-		AM.getAllRecords( function(e, accounts){
-      if (req.cookies.user === undefined || req.cookies.pass === undefined || req.session.user === null ) {
+    if (req.cookies.user === undefined || req.cookies.pass === undefined || req.session.user === null ) {
+      models.offers.find({}, function(e, docs){
         res.render('index', {
           locals: {
               categories : CAT
             , title      : 'Outside'
-            , accts      : accounts
+            , offers : docs
             , user       : req.cookies.user
           }
         });
-        console.log('Unidentified user has landed on "/"');
-      } else {
+      });
+      console.log('Unidentified user has landed on "/"');
+    } else {
+      models.offers.find({}, function(e, docs){
         res.render('index', { 
           locals: {
               categories : CAT
             , title      : 'Inside'
-            , accts      : accounts
+            , offers : docs
             , user       : req.cookies.user
             , udata      : req.session.user
           }
         });
-        console.log('User ' + req.cookies.user + ' redirected to "/"');
-      }
-    })
+      });
+      console.log('User ' + req.cookies.user + ' redirected to "/"');
+    }
   });
 
   app.post('/', function (req, res) {
     if (req.param('email') != null) {
-      AM.getEmail(req.param('email'), function(o){
+      models.offers.findOne({email:email}, req.param('email'), function(o){
         if (o){
           res.send('ok', 200);
           EM.send(o, function (e,m) { console.log('error : ' + e, 'msg : ' +m)});
@@ -74,6 +76,7 @@ module.exports = function (app) {
         }
       });
     } else {
+
       AM.manualLogin(req.param('user'), req.param('pass'), function (e,o) {
         if (!o) {
           res.send(e, 400);
@@ -91,14 +94,14 @@ module.exports = function (app) {
 
 // login //
 	app.get('/login', function (req, res) {
-		AM.getAllRecords( function(e, accounts){
+		models.offers.find({}, function(e, docs){
     // check if the user's credentials are saved in a cookie //
       if (req.cookies.user === undefined || req.cookies.pass === undefined) {
         res.render('login', {
           locals: {
             title: 'Hello - Please Login To Your Account',
             user: req.cookies.user,
-            accts: accounts
+            offers: docs
           }
         });
         console.log('Unidentified user has landed on "/login"');
@@ -115,7 +118,7 @@ module.exports = function (app) {
                   categories : CAT
                 , title: 'Hello - Please Login To Your Account'
                 , user: req.cookies.user
-                , accts: accounts
+                , accts: docs
               }
             });
           }
@@ -154,7 +157,7 @@ module.exports = function (app) {
 // logged-in user homepage //
 	
 	app.get('/home', function (req, res) {
-		AM.getAllRecords( function(e, accounts){
+		models.offers.find({}, function(e, docs){
 	    if (req.session.user == null){
 	// if user is not logged-in redirect back to login page //
 	        res.redirect('/login');
@@ -163,7 +166,7 @@ module.exports = function (app) {
 				locals: {
             categories : CAT
 					, title : 'Your Account'
-          , accts: accounts
+          ,offers: docs
           , user: req.cookies.user
 					, udata : req.session.user
           }
@@ -271,11 +274,11 @@ module.exports = function (app) {
 // view & delete accounts //
 	
 	app.get('/print', function(req, res) {
-		AM.getAllRecords( function(e, accounts){
+		AM.getAllRecords( function(e, docs){
 			res.render('print', {
         locals: {
             title : 'Account List'
-          , accts : accounts 
+          , accts :  docs
         } 
       });
 		})
