@@ -49,28 +49,35 @@ AM.manualLogin = function(user, pass, callback)
 
 // record insertion, update & deletion methods //
 
+
 AM.signup = function(newData, callback) 
 {
-	AM.accounts.findOne({user:newData.user}, function(e, o) {	
-		if (o){
-			callback('username-taken');
-		}	else{
-			AM.accounts.findOne({email:newData.email}, function(e, o) {
-				if (o){
-					callback('email-taken');
-				}	else{
-					AM.saltAndHash(newData.pass, function(hash){
-						newData.pass = hash;
-					// append date stamp when record was created //	
-						newData.date = new Date();
-            AM.accounts.create(newData, function(e,o){
-              callback(null);
-            });
-					});
-				}
-			});
-		}
-	});
+  AM.accounts.findOne({user:newData.user}, function(e, o) {	
+    if (o){
+      callback('username-taken');
+    }	else{
+      AM.accounts.findOne({email:newData.email}, function(e, o) {
+        if (o){
+          callback('email-taken');
+        }	else{
+          AM.accounts.findOne({cust:newData.cust}, function(e, o) {	
+            if (o){
+              callback('customer-taken');
+            }	else{
+            AM.saltAndHash(newData.pass, function(hash){
+              newData.pass = hash;
+            // append date stamp when record was created //	
+              newData.date = new Date();
+              AM.accounts.create(newData, function(e,o){
+                callback(null);
+                });
+              });
+            }
+          });
+        }
+      });
+    }
+  });
 }
 
 // update db%

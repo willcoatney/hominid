@@ -16,6 +16,8 @@ $(document).ready(function(){
 			    av.showInvalidEmail();
 			}	else if (e.responseText == 'username-taken'){
 			    av.showInvalidUserName();			
+			}	else if (e.responseText == 'customer-taken'){
+			    av.showInvalidCustomer();			
 			}
 		}
 	});

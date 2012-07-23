@@ -1,12 +1,12 @@
-extends layout
+// extends layout
 
 block stylesheets
-  link(rel='stylesheet', href= './vendor/css/pages/signin.css')
+  link(rel='stylesheet', href= '../vendor/css/pages/signin.css')
 
 block content
 
-  - user = typeof(udata) != 'undefined' ? udata : {}
-  input(type='hidden', value= user._id)#userId
+  // - user = typeof(udata) != 'undefined' ? udata : {}
+  // input(type='hidden', value= user._id)#userId
 
   .account-container.register: .content.clearfix
     form(method="post")#account-form.form-horizontal
@@ -18,16 +18,16 @@ block content
 
         #user-cg.field
           label(for='user-tf') Username
-          input#user-tf(type='text', name='user', value=user.user, placeholder='Username')
+          input#user-tf(type='text', name='user', value=user.name, placeholder='Username')
         #pass-cg.field
           label(for='pass-tf') Password
           input#pass-tf(type='password', name='pass', value='', placeholder='Password')
+        // #name-cg.field
+        //   label(for='name-tf') Name
+        //   input#name-tf.login(type='text', name='name', value= user.name, placeholder='Name')
         #email-cg.field
           label(for='email-tf') Email
           input#email-tf.login(type='text', name='email', value= user.email, placeholder='Email')
-        #cust-cg.field
-          label(for='cust-tf') Customer Number
-          input#cust-tf.login(type='text', name='cust', value= user.cust, placeholder='Customer Number')
 
       .login-actions
         span.login-checkbox
@@ -42,9 +42,10 @@ block content
       //   .fb
       //     a.btn_2(href='#') Login with Facebook
 
-  include modals/alert
-  include modals/form-errors
+  // include modals/alert
+  // include modals/form-errors
 
 block scripts
   script(src='/js/views/signup.js')
   script(src='/js/controllers/signupController.js')
+

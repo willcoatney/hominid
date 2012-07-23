@@ -11,6 +11,7 @@
     "bcrypt": "*",
     "mongodb": ">= 0.1.0",
     "mongoose": "*",
+    "everyauth": "~0.2",
     "moment": ">=1.6.2",
     "emailjs": ">= 0.3.0"
   },

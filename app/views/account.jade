@@ -1,9 +1,3 @@
-if user != undefined
-  u = 'span8' 
-  d = ''
-else
-  u ='span8 centered'
-  d ='display:none'
 
 .row
   .widget
@@ -16,7 +10,9 @@ else
         li.active
           a(href='#profile', data-toggle='tab') Profile
         li
-          a(href='#settings', data-toggle='tab') Offer
+          a(href='#business', data-toggle='tab') Business
+        li
+          a(href='#offer', data-toggle='tab') Offer
 
       br
 
@@ -28,14 +24,15 @@ else
         #profile.tab-pane.active: fieldset
           p.main.subheading Hi, #{user.user}. 
           br
-          // #name-cg.control-group
-          //   label.control-label(for='name-tf') Name
-          //   .controls
-          //     input#name-tf(type='text', name='name', value= user.name)
           #user-cg.control-group
             label.control-label(for='user-tf') Username
             .controls
               input#user-tf.disabled(type='text', name='user', value=user.user)
+          #cust-cg.control-group
+            label.control-label(for='cust-tf') Customer Number
+            .controls
+              input#cust-tf.disabled(type='text', name='cust', value=user.cust)
+          
           #pass-cg.control-group
             label.control-label(for='pass-tf') Password
             .controls
@@ -45,45 +42,7 @@ else
             .controls
               input#email-tf(type='text', name='email', value= user.email)
 
-        #settings.tab-pane: fieldset
-          // p.main.subheading Once you press 'Update' at the bottom of this page, this information is published. Of course, you can always return and change something if you make a mistake.
-          br
-          label.control-label What are you offering?
-          #coupon_title-cg.control-group
-            .controls
-              input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
-          label.control-label How much do you want for it? (Just dollars, no cents.)
-          #coupon_type-cg.control-group
-            .controls
-              .input-prepend
-                span.add-on $
-                input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
-          .control-group
-            label.control-label What do people do with this offer?
-            .controls
-              select(name='coupon_supra', value= user.coupon_supra, placeholder= "")
-                option#eat(value="eat") Eat it immediately
-                option#drink(value="drink") Drink it immediately
-                option#own(value="own") Own it to enjoy
-                option#see(value="see") Experience it
-
-          #coupon_category-cg.control-group
-            label.control-label How do you categorize it?
-            .controls
-              select(name='coupon_sub', value= user.coupon_sub)
-                each c in categories.sub_1
-                  option(value= c.parsed)= c.longform
-                each c in categories.sub_2
-                  option(value= c.parsed)= c.longform
-                each c in categories.sub_3
-                  option(value= c.parsed)= c.longform
-                each c in categories.sub_4
-                  option(value= c.parsed)= c.longform
-          #coupon_body-cg.control-group
-            label.control-label Anything else?
-            .controls
-              textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
-          hr
+        #business.tab-pane: fieldset
           #business_name-cg.control-group
             label.control-label Name
             .controls
@@ -130,11 +89,91 @@ else
             .controls
               input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
 
+        #offer.tab-pane: fieldset
+          br
+          label.control-label What are you offering?
+          #coupon_title-cg.control-group
+            .controls
+              input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
+          label.control-label How much do you want for it? (Just dollars, no cents.)
+          #coupon_type-cg.control-group
+            .controls
+              .input-prepend
+                span.add-on $
+                input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
+          .control-group
+            label.control-label What do people do with this offer?
+            .controls
+              select(name='coupon_supra', value= user.coupon_supra, placeholder= "")
+                option#eat(value="eat") Eat it immediately
+                option#drink(value="drink") Drink it immediately
+                option#own(value="own") Own it to enjoy
+                option#see(value="see") Experience it
+
+          #coupon_category-cg.control-group
+            label.control-label How do you categorize it?
+            .controls
+              select(name='coupon_sub', value= user.coupon_sub)
+                each c in categories.sub_1
+                  option(value= c.parsed)= c.longform
+                each c in categories.sub_2
+                  option(value= c.parsed)= c.longform
+                each c in categories.sub_3
+                  option(value= c.parsed)= c.longform
+                each c in categories.sub_4
+                  option(value= c.parsed)= c.longform
+          #coupon_body-cg.control-group
+            label.control-label Anything else?
+            .controls
+              textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
+          hr
         .form-actions
           button(type='button').account-form-btn1.btn.btn-danger Delete
           button(type='submit').account-form-btn2.btn Update
 
-                // display form errors in a custom modal window //
+  .widget
+    .widget-content
+      h3#foobar Preview
+      #preview.coupon
+
+        .header
+          .price
+            .price-inner
+              span.dollar $
+              span.price-listing 
+          .title
+
+
+        .coupon-content
+          .business_name
+          .address
+          br
+          .date-wrapper Last updated 
+          .date 
+          // br
+          // .date_start #{ o.date_start}
+          // br
+          // .date_end #{ o.date_end}
+          br
+        .toggles
+          a.btn.btn-large.large-toggle
+            i.icon.icon-info-sign
+          a.btn.btn-large.favorite-toggle
+            i.icon.icon-heart
+        .footer
+          .body
+          .phone-wrapper
+            i.icon.icon-phone  
+            .phone.
+              
+          .address-wrapper
+            i.icon.icon-map-marker
+            .address.
+           
+          
+         
+        
+
 
 include modals/form-errors
 

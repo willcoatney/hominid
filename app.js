@@ -2,13 +2,17 @@
 var exp = require('express');
 var app = exp.createServer();
 
+app.everyauth = require('everyauth');
 app.mongoose = require('mongoose');
+
 app.root = __dirname;
 
 var config = require('./app/core/config')(app, exp);
 
 var models = {};
-models.offers = require(app.root + '/app/models/offer-model')(app.mongoose).model;
+var models_path = app.root + '/app/models'
+models.offers = require(models_path + '/offer-model')(app.mongoose).model;
+models.users = require(models_path + '/user-model')(app.mongoose).model;
 
 require('./app/router')(app, models);
 

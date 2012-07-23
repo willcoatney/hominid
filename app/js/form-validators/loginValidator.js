@@ -23,6 +23,9 @@ LoginValidator.prototype.validateForm = function()
 	}	else if ($('#pass-tf').val() == ''){
 		this.showLoginError('Whoops!', 'Please enter a valid password');
 		return false;
+	}	else if ($('#cust-tf').val() == ''){
+		this.showLoginError('Whoops!', 'Please enter a valid customer number');
+		return false;
 	}	else{
 		return true;
 	}

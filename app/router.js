@@ -7,50 +7,30 @@ var CAT = require('./modules/categories');
 
 var mongoose = require('mongoose')
 
-module.exports = function (app, models) {
+module.exports = function (app) {
 
   "use strict";
 
 // main login page //
 
 
-  app.get('/example', function(req, res) {
-
-    models.offers.find({}, function(err, docs){
-      res.render('exampleview', {
-        locals: {
-          offers: docs
-        }
-      })
-    });
-  })
-
-	app.get('/print', function(req, res) {
-		models.offers.find({}, function(e, docs){
-			res.render('print', {
-        locals: {
-            title : 'Account List'
-          , offers: docs
-        }
-      });
-		})
-	});	
 
   app.get('/', function (req, res) {
-    if (req.cookies.user === undefined || req.cookies.pass === undefined || req.session.user === null ) {
-      models.offers.find({}, function(e, docs){
+    console.log('login', req.cookies.user, req.cookies.pass);
+    if (req.cookies.user == undefined || req.cookies.pass == undefined ) {
+      AM.getAllRecords( function(e, docs){
         res.render('index', {
           locals: {
               categories : CAT
             , title      : 'Outside'
             , offers : docs
-            , user       : req.cookies.user
+            , user : req.cookies.user
           }
         });
       });
       console.log('Unidentified user has landed on "/"');
     } else {
-      models.offers.find({}, function(e, docs){
+      AM.getAllRecords( function(e, docs){
         res.render('index', { 
           locals: {
               categories : CAT
@@ -67,7 +47,7 @@ module.exports = function (app, models) {
 
   app.post('/', function (req, res) {
     if (req.param('email') != null) {
-      models.offers.findOne({email:email}, req.param('email'), function(o){
+      AM.getEmail(req.param('email'), function(o){
         if (o){
           res.send('ok', 200);
           EM.send(o, function (e,m) { console.log('error : ' + e, 'msg : ' +m)});
@@ -94,14 +74,13 @@ module.exports = function (app, models) {
 
 // login //
 	app.get('/login', function (req, res) {
-		models.offers.find({}, function(e, docs){
     // check if the user's credentials are saved in a cookie //
-      if (req.cookies.user === undefined || req.cookies.pass === undefined) {
+      if (req.cookies.user == undefined || req.cookies.pass == undefined) {
         res.render('login', {
           locals: {
-            title: 'Hello - Please Login To Your Account',
-            user: req.cookies.user,
-            offers: docs
+             title: 'Hello - Please Login To Your Account'
+           , user: req.cookies.user
+            /* offers: docs */
           }
         });
         console.log('Unidentified user has landed on "/login"');
@@ -118,13 +97,12 @@ module.exports = function (app, models) {
                   categories : CAT
                 , title: 'Hello - Please Login To Your Account'
                 , user: req.cookies.user
-                , accts: docs
+                /* , offers: docs */
               }
             });
           }
-        });
-      }
-    })
+      })
+    }
 	});
 	
 	app.post('/login', function (req, res) {
@@ -156,8 +134,7 @@ module.exports = function (app, models) {
 	
 // logged-in user homepage //
 	
-	app.get('/home', function (req, res) {
-		models.offers.find({}, function(e, docs){
+	app.get('/home', function (req, res, docs) {
 	    if (req.session.user == null){
 	// if user is not logged-in redirect back to login page //
 	        res.redirect('/login');
@@ -166,13 +143,12 @@ module.exports = function (app, models) {
 				locals: {
             categories : CAT
 					, title : 'Your Account'
-          ,offers: docs
+          , offers: docs
           , user: req.cookies.user
 					, udata : req.session.user
           }
         });
 	    }
-    })
 	});
 	
 	app.post('/home', function (req, res) {
@@ -233,7 +209,8 @@ module.exports = function (app, models) {
 			name            : req.param('name'),
 			email           : req.param('email'),
 			user            : req.param('user'),
-			pass            : req.param('pass')
+			pass            : req.param('pass'),
+			cust : req.param('cust')
 		}, function(e, o){
 			if (e){
 				res.send(e, 400);

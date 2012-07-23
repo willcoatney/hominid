@@ -6,6 +6,8 @@ module.exports = function(mongoose){
 
   var schema = new Schema({
     author: ObjectId,
+    cust: String,
+    user: String,
     email: String,
     pass: String,
     business_name: String,
@@ -23,7 +25,7 @@ module.exports = function(mongoose){
     date_start: String,
     date_end: String,
     date: String,
-    publish: String,
+    publish: String
   });
 
   this.model = mongoose.model(collection, schema);

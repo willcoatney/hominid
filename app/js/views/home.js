@@ -10,6 +10,7 @@ $(document).ready(function(){
 			} 	else{
 			// push the disabled username field onto the form data array //	
 				formData.push({name:'user', value:$('#user-tf').val()})
+				formData.push({cust:'cust', value:$('#cust-tf').val()})
 				return true;
 			}
 		},
@@ -28,7 +29,7 @@ $(document).ready(function(){
 
 // customize the account settings form //
 	
-	$('#user-tf').attr('disabled', 'disabled');
+	$('#user-tf,#cust-tf').attr('disabled', 'disabled');
 	// $('.account-form-btn1').html('Delete');
 	// $('.account-form-btn1').addClass('btn-danger');
 	// $('.account-form-btn2').html('Update');
@@ -42,4 +43,25 @@ $(document).ready(function(){
 	$('.modal-confirm .submit').html('Delete');
 	$('.modal-confirm .submit').addClass('btn-danger');
 	
+
+  $('#preview .large-toggle').click( function(){
+    $(this).parents('#preview').toggleClass('large')
+  })
+                     
+
+  $('#preview').addClass($('[name="coupon_supra"]').val())
+  $('#preview').addClass($('[name="coupon_sub"]').val())
+  $('#preview .title').text($('[name="coupon_title"]').val())
+
+  $('.price-listing').text($('input.coupon-price').val())
+
+  $('input.coupon-price').bind('change', function(){
+    var v = $(this).val()
+    $('.price-listing').text(v);
+  });
+
+
+
+
 })
+
