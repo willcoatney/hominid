@@ -165,11 +165,12 @@ module.exports = function (app) {
 				coupon_supra: req.param('coupon_supra'),
 				coupon_sub : req.param('coupon_sub'),
 				coupon_price: req.param('coupon_price'),
-				location : req.param('location '),
 				address_street  : req.param('address_street'),
 				address_city    : req.param('address_city'),
 				address_state   : req.param('address_state'),
 				address_zip     : req.param('address_zip'),
+				county: req.param('county'),
+				location : req.param('location'),
 				date_start: req.param('date_start'),
 				date_end: req.param('date_end'),
 				publish: req.param('publish')

@@ -1,3 +1,4 @@
+- CAT = categories
 
 .row
   - user = typeof(udata) != 'undefined' ? udata : {}
@@ -47,51 +48,48 @@
             label.control-label Street
             .controls
               input(type='text', name='address_street', value= user.address_street, placeholder='Street')
-          #address_city-cg.control-group
-            label.control-label City
-            .controls
-              select#select_city(name='address_city', placeholder='City').chzn-select
-                each c in categories.cities
-                  option(county= c.county, value= c.city +','+ c.state +','+ c.county)= c.city
 
-          #city-cg.control-group
+          #location.control-group
             label.control-label City
             .controls
-              input(type='text', name='derp', placeholder='Derp')
-          #county-cg.control-group
-            label.control-label County
-            .controls
-              input(type='text', name='herp', placeholder='Herp')
+              select#location.chzn-select(name='location')
+                option= ""
+                if user.address_city != ''
+                  option(selected, value= user.location )= user.address_city
+                mixin counties(cou, i)
+                  optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
+                    for c in cou[i].cities
+                      option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
+
+                mixin counties( categories.counties, 0 )
+                mixin counties( categories.counties, 1 )
+                mixin counties( categories.counties, 2 )
+                mixin counties( categories.counties, 3 )
+                mixin counties( categories.counties, 4 )
+
+          input#address_city(type='hidden', name='address_city', value= user.address_city)
+          input#address_state(type='hidden', name='address_state', value= user.address_state)
+          input#county(type='hidden', name='county', value= user.county)
 
           #address_state-cg.control-group
             label.control-label State
             .controls
-              input.input-small(name='address_state', value= user.address_state, placeholder='KS/MO')
+              span.input-small.uneditable-input= user.address_state
 
           #address_zip-cg.control-group
             label.control-label Zip
             .controls
               input.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='64105')
-          .control-group
-              label.control-label Location
-              .controls
-                select(name='address_location', value= user.location, placeholder="Kansas City")
-                  each c in categories.locations
-                    option(value= c.parsed) #{c.city}, #{c.state}
 
-        .control-group
-          label.control-label Date start
-          .controls
-            input(type='text', name='date_start', value= user.date_start, placeholder='Date start')
-        .control-group
-          label.control-label Date end
-          .controls
-            input(type='text', name='date_end', value= user.date_end, placeholder='Date end')
+        // .control-group
+        //   label.control-label Date start
+        //   .controls
+        //     input(type='text', name='date_start', value= user.date_start, placeholder='Date start')
+        // .control-group
+        //   label.control-label Date end
+        //   .controls
+        //     input(type='text', name='date_end', value= user.date_end, placeholder='Date end')
 
-        .control-group
-          label.control-label Publish?
-          .controls
-            input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
 
     .widget.form-horizontal
       .widget-header: h3 Offer
@@ -133,7 +131,10 @@
             label.control-label Anything else?
             .controls
               textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
-          hr
+          .control-group
+            label.control-label Publish?
+            .controls
+              input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
 
     .widget
       .widget-header

@@ -47,11 +47,6 @@ function AccountValidator(){
 		return s.length === 5;
 	}
 
-	// this.validatePhone= function(s){
-    /* s.replace(/[^0-9]/g, ''); */
-    /* return s.length === 9; */
-	// }
-
 	this.showErrors = function(a)	{
 		$('.modal-form-errors .modal-body p').text('Please correct the following problems :');
 		var ul = $('.modal-form-errors .modal-body ul');
@@ -91,10 +86,6 @@ AccountValidator.prototype.validateForm = function(){
 		this.controlGroups[4].addClass('error'); 
 		e.push('Customer ID Should Be 5 Numbers Long');
 	}
-	// if (this.validatePhone(this.formFields[5].val()) == false) {
-	// 	this.controlGroups[5].addClass('error'); 
-	// 	e.push('Your phone sucks');
-	// }
 	if (e.length) this.showErrors(e);
 	return e.length === 0;
 }

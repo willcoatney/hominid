@@ -3,7 +3,7 @@
 .clearfix:after{clear:both}
 .hide-text{overflow:hidden;text-indent:100%;white-space:nowrap}
 .input-block-level{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
-.hidden{display:none;visibility:hidden}
+.hidden{display:none;visibility:hidden;position:absolute}
 .visible-phone{display:none}
 .visible-tablet{display:none}
 .visible-desktop{display:block}
@@ -228,7 +228,7 @@ input,button,select,textarea{font-family:'Helvetica Neue',Helvetica !important}
 .table td{vertical-align:middle}
 .table-bordered th{background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(1, #e9e9e9));background:-webkit-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);background:-moz-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);background:-o-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);background:-ms-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);background:linear-gradient(top, #fafafa 0%, #e9e9e9 100%);font-size:10px;color:#444;text-transform:uppercase}
 li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-align:center}
-.widget .heading{text-align:center;padding:0 10px 20px;color:#454545}
+.widget .heading{text-align:center;padding:0 10px 20px;color:#454545;overflow:visible}
 .widget p{color:#fff}
 .coupon-container{margin:20px auto 0;padding-bottom:250px}
 .coupon{width:255px;float:left;margin:10px;border:1px solid #d5d5d5;-webkit-border-radius:0 30px 0 0;border-radius:0 30px 0 0;font-size:12px;line-height:17px;}
@@ -762,7 +762,7 @@ li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-
 .footer-inner{padding:15px 0;font-size:12px;background:#111;color:#999}
 .footer a{color:#999}
 .footer a:hover{color:#fff;text-decoration:none}
-.widget{position:relative;clear:both;width:auto;margin-bottom:2em;overflow:hidden;width:80%;max-width:700px;margin:10px auto;background:#ccc}
+.widget{position:relative;clear:both;width:auto;margin-bottom:2em;width:80%;max-width:700px;margin:10px auto;background:#ccc}
 .widget-header{position:relative;height:40px;line-height:40px;cursor:pointer}
 .widget-header h3{position:relative;top:2px;left:10px;display:inline-block;margin-right:3em;font-size:14px;font-weight:300;color:#fff;line-height:18px}
 .widget-header [class^="icon-"],.widget-header [class*=" icon-"]{display:inline-block;margin-left:13px;margin-right:-2px;font-size:16px;color:#555;vertical-align:middle}
