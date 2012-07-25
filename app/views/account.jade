@@ -1,28 +1,17 @@
 
 .row
-  .widget
-    .widget-header
-      i.icon-user
-      h3 Your Account
+  - user = typeof(udata) != 'undefined' ? udata : {}
 
-    .widget-content:.tabbable
-      ul.nav.nav-tabs
-        li.active
-          a(href='#profile', data-toggle='tab') Profile
-        li
-          a(href='#business', data-toggle='tab') Business
-        li
-          a(href='#offer', data-toggle='tab') Offer
-
-      br
-
-      - user = typeof(udata) != 'undefined' ? udata : {}
-      input(type='hidden', value= user._id)#userId
+  input(type='hidden', value= user._id)#userId
 
 
-      form(method="post")#account-form.form-horizontal.tab-content
-        #profile.tab-pane.active: fieldset
-          p.main.subheading Hi, #{user.user}. 
+  form(method="post")#account-form
+    .widget.form-horizontal
+      .widget-header: h3 Account
+      .widget-content
+
+        #profile: fieldset
+          p Hi, #{user.user}. 
           br
           #user-cg.control-group
             label.control-label(for='user-tf') Username
@@ -41,15 +30,19 @@
             label.control-label(for='email-tf') Email
             .controls
               input#email-tf(type='text', name='email', value= user.email)
+    .widget.form-horizontal#business
+      .widget-header: h3 Business
+      .widget-content
 
-        #business.tab-pane: fieldset
+        #business: fieldset
           #business_name-cg.control-group
             label.control-label Name
             .controls
               input(type='text', name='business_name', value= user.business_name, placeholder='My Business')
-          #business_phone.control-group
-              label.control-label Phone
-              input(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
+          #phone-cg.control-group
+              label.control-label(for='phone-tf') Phone
+              .controls
+                input.phonefield#phone-tf(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
           #address_street-cg.control-group
             label.control-label Street
             .controls
@@ -57,13 +50,24 @@
           #address_city-cg.control-group
             label.control-label City
             .controls
-              input(type='text', name='address_city', value= user.address_city, placeholder='City')
+              select#select_city(name='address_city', placeholder='City').chzn-select
+                each c in categories.cities
+                  option(county= c.county, value= c.city +','+ c.state +','+ c.county)= c.city
+
+          #city-cg.control-group
+            label.control-label City
+            .controls
+              input(type='text', name='derp', placeholder='Derp')
+          #county-cg.control-group
+            label.control-label County
+            .controls
+              input(type='text', name='herp', placeholder='Herp')
+
           #address_state-cg.control-group
             label.control-label State
             .controls
-              select.input-small(name='address_state', value= user.address_state, placeholder='KS/MO')
-                option KS
-                option MO
+              input.input-small(name='address_state', value= user.address_state, placeholder='KS/MO')
+
           #address_zip-cg.control-group
             label.control-label Zip
             .controls
@@ -75,20 +79,23 @@
                   each c in categories.locations
                     option(value= c.parsed) #{c.city}, #{c.state}
 
-          .control-group
-            label.control-label Date start
-            .controls
-              input(type='text', name='date_start', value= user.date_start, placeholder='Date start')
-          .control-group
-            label.control-label Date end
-            .controls
-              input(type='text', name='date_end', value= user.date_end, placeholder='Date end')
+        .control-group
+          label.control-label Date start
+          .controls
+            input(type='text', name='date_start', value= user.date_start, placeholder='Date start')
+        .control-group
+          label.control-label Date end
+          .controls
+            input(type='text', name='date_end', value= user.date_end, placeholder='Date end')
 
-          .control-group
-            label.control-label Publish?
-            .controls
-              input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
+        .control-group
+          label.control-label Publish?
+          .controls
+            input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
 
+    .widget.form-horizontal
+      .widget-header: h3 Offer
+      .widget-content
         #offer.tab-pane: fieldset
           br
           label.control-label What are you offering?
@@ -127,57 +134,53 @@
             .controls
               textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
           hr
-        .form-actions
-          button(type='button').account-form-btn1.btn.btn-danger Delete
-          button(type='submit').account-form-btn2.btn Update
 
-  .widget
-    .widget-content
-      h3#foobar Preview
-      #preview.coupon
-
-        .header
-          .price
-            .price-inner
-              span.dollar $
-              span.price-listing 
-          .title
+    .widget
+      .widget-header
+        h3 Preview
+      .widget-content
+        #preview.coupon
+          .header
+            .price
+              .price-inner
+                span.dollar $
+                span.price-listing 
+            .title
 
 
-        .coupon-content
-          .business_name
-          .address
-          br
-          .date-wrapper Last updated 
-          .date 
-          // br
-          // .date_start #{ o.date_start}
-          // br
-          // .date_end #{ o.date_end}
-          br
-        .toggles
-          a.btn.btn-large.large-toggle
-            i.icon.icon-info-sign
-          a.btn.btn-large.favorite-toggle
-            i.icon.icon-heart
-        .footer
-          .body
-          .phone-wrapper
-            i.icon.icon-phone  
-            .phone.
-              
-          .address-wrapper
-            i.icon.icon-map-marker
-            .address.
-           
-          
+          .coupon-content
+            .business_name
+            .address
+            br
+            .date-wrapper Last updated 
+            .date 
+            // br
+            // .date_start #{ o.date_start}
+            // br
+            // .date_end #{ o.date_end}
+            br
+          .toggles
+            a.btn.btn-large.large-toggle
+              i.icon.icon-info-sign
+            a.btn.btn-large.favorite-toggle
+              i.icon.icon-heart
+          .footer
+            .body
+            .phone-wrapper
+              i.icon.icon-phone  
+              .phone.
+                
+            .address-wrapper
+              i.icon.icon-map-marker
+              .address.
+    .form-actions
+      button(type='button').account-form-btn1.btn.btn-danger Delete
+      button(type='submit').account-form-btn2.btn Update
          
         
+       
+      
 
 
 include modals/form-errors
 
-script(src='/vendor/jquery.min.js')
-script(src='/vendor/jquery.form.js')
-script(src='/vendor/bootstrap-modal.js')
-script(src='/vendor/bootstrap-transition.js')

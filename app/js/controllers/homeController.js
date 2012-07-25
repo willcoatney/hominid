@@ -5,9 +5,6 @@ function HomeController()
 // bind event listeners to button clicks //
 	var that = this;
 
-// show account info on account button click  
-  /* $('#btn-account-show').click( function () { $('#account-form').fadeToggle("fast");}); */
-	
 // handle user logout //	
 	$('#btn-logout').click( function () { that.attemptLogout(); });
 	
@@ -67,4 +64,5 @@ HomeController.prototype.onUpdateSuccess = function()
 	$('.modal-alert .modal-body p').html('Your account has been updated.'); 				
 	$('.modal-alert').modal('show');
 	$('.modal-alert button').off('click');
+
 }

@@ -1,3 +1,8 @@
+jQuery(function($){
+  $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
+  .css('color','#555')
+});
+
 $(document).ready(function(){
 
 	var hc = new HomeController();
@@ -25,14 +30,10 @@ $(document).ready(function(){
 			}
 		}
 	});
-	$('#name-tf').focus();
 
 // customize the account settings form //
 	
 	$('#user-tf,#cust-tf').attr('disabled', 'disabled');
-	// $('.account-form-btn1').html('Delete');
-	// $('.account-form-btn1').addClass('btn-danger');
-	// $('.account-form-btn2').html('Update');
 
 // setup the confirm window that displays when the user chooses to delete their account //
 
@@ -42,6 +43,8 @@ $(document).ready(function(){
 	$('.modal-confirm .cancel').html('Cancel');
 	$('.modal-confirm .submit').html('Delete');
 	$('.modal-confirm .submit').addClass('btn-danger');
+
+  /* $('#phone-tf').mask("(999) 999-9999"); */
 	
 
   $('#preview .large-toggle').click( function(){
@@ -60,8 +63,14 @@ $(document).ready(function(){
     $('.price-listing').text(v);
   });
 
+  $('.widget-header').on('click', function(){
+    var content = $(this).siblings('.widget-content')
+    content.height(content.height());
+    content.slideToggle()
+  });
 
-
+  $('.widget-content').hide()
+  $('.widget#business>.widget-content').show()
 
 })
 

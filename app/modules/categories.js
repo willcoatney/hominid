@@ -5,7 +5,8 @@ var CAT = {}
 CAT.supra = [
     { name: 'eat', icon: 'icon-leaf' }
   , { name: 'drink', icon: 'icon-glass' }
-  , { name: 'own', icon: 'icon-gift' }
+  , { name: 'shop', icon: 'icon-gift' }
+  , { name: 'service', icon: 'icon-gift' }
   , { name: 'see', icon: 'icon-eye-open' }
 ]
 
@@ -45,14 +46,33 @@ CAT.sub_4 = [
 ];
 
 CAT.locations = [
-    { city: "Independence", state:"MO", parsed:"independence" }
-  , { city: "Belton", state:"MO", parsed:"belton" }
+    { city: "Belton", state:"MO", parsed:"belton" }
   , { city: "Fairway", state:"KS", parsed:"fairway" }
+  , { city: "Independence", state:"MO", parsed:"independence" }
   , { city: "Mission", state:"KS", parsed:"mission" }
   , { city: "Kansas City", state:"MO", parsed:"kcmo" }
   , { city: "Kansas City", state:"KS", parsed:"kcks" }
   , { city: "Olathe", state:"KS", parsed:"olathe" }
   , { city: "Overland Park", state:"KS", parsed:"overland_park" }
+];
+
+CAT.cities = [
+    { city: "Belton", state:"MO", parsed:"", county:"" }
+  , { city: "Bonner Springs", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Fairway", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Gardner", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Independence", state:"MO", parsed:"" , county:""}
+  , { city: "Kansas City", state:"MO", parsed:"" , county:""}
+  , { city: "Kansas City", state:"KS", parsed:"" , county:""}
+  , { city: "Lenexa", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Leawood", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Merriam", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Mission", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Olathe", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Overland Park", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Prairie Village", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Roeland Park", state:"KS", parsed:"" , county:"Johnson"}
+  , { city: "Shawnee", state:"KS", parsed:"" , county:"Johnson"}
 ];
 
 module.exports = CAT;

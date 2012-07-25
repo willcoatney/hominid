@@ -3,7 +3,7 @@ C = categories
 .order-wrapper:.order-container
   #supras.supras(data-option-key="filter")
     each s in C.supra
-      a.supra(id= s.name).btn
+      a.supra(id= s.name)
         i(class= 'link-icon ' + s.icon )
         span.link-label= s.name
 
@@ -90,6 +90,6 @@ C = categories
 #welcome
   h1 Want something to do?
 
-script(src='/js/views/categories.js')
-script(src='/js/controllers/categoriesController.js')
+// script(src='/js/views/categories.js')
+// script(src='/js/controllers/categoriesController.js')
 

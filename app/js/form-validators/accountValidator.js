@@ -9,6 +9,7 @@ function AccountValidator(){
     , $('#user-tf')
     , $('#pass-tf')    		
     , $('#cust-tf')    		
+    /* , $('#phone-tf')    		 */
   ];    		
 	this.controlGroups = [
       $('#name-cg')
@@ -16,6 +17,7 @@ function AccountValidator(){
     , $('#user-cg')
     , $('#pass-cg')
     , $('#cust-cg')
+    /* , $('#phone-cg')    		 */
   ];
 	
 // bind the form-error modal window to this controller to display any errors //
@@ -45,6 +47,11 @@ function AccountValidator(){
 		return s.length === 5;
 	}
 
+	// this.validatePhone= function(s){
+    /* s.replace(/[^0-9]/g, ''); */
+    /* return s.length === 9; */
+	// }
+
 	this.showErrors = function(a)	{
 		$('.modal-form-errors .modal-body p').text('Please correct the following problems :');
 		var ul = $('.modal-form-errors .modal-body ul');
@@ -56,18 +63,15 @@ function AccountValidator(){
 
 AccountValidator.prototype.showInvalidEmail = function(){
 	this.controlGroups[1].addClass('error');
-	this.showErrors(['That email address is already in use.']);
-}
+	this.showErrors(['That email address is already in use.'])}
 
 AccountValidator.prototype.showInvalidUserName = function(){
 	this.controlGroups[2].addClass('error');				
-	this.showErrors(['That username is already in use.']);	    
-}
+	this.showErrors(['That username is already in use.'])}
 
 AccountValidator.prototype.showInvalidCustomer= function(){
 	this.controlGroups[4].addClass('error');				
-	this.showErrors(['That customer number is already in use.']);	    
-}
+	this.showErrors(['That customer number is already in use.'])}
 
 AccountValidator.prototype.validateForm = function(){
 	var e = [];
@@ -87,6 +91,10 @@ AccountValidator.prototype.validateForm = function(){
 		this.controlGroups[4].addClass('error'); 
 		e.push('Customer ID Should Be 5 Numbers Long');
 	}
+	// if (this.validatePhone(this.formFields[5].val()) == false) {
+	// 	this.controlGroups[5].addClass('error'); 
+	// 	e.push('Your phone sucks');
+	// }
 	if (e.length) this.showErrors(e);
 	return e.length === 0;
 }

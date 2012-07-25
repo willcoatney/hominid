@@ -7,7 +7,7 @@ module.exports = function(mongoose){
   var schema = new Schema({
     author: ObjectId,
     cust: String,
-    user: String,
+    user: { type:String , index:true },
     email: String,
     pass: String,
     business_name: String,
@@ -22,6 +22,12 @@ module.exports = function(mongoose){
     address_city: String,
     address_state: String,
     address_zip: String,
+    address: {
+      street: String,
+      city: String,
+      state: String,
+      zip: Number,
+    },
     date_start: String,
     date_end: String,
     date: String,
