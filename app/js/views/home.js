@@ -1,7 +1,15 @@
 jQuery(function($){
   $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
   .css('color','#555')
+  $('#zip-tf').mask("999999", {placeholder:"_"})
+  .css('color','#555')
 });
+
+jQuery.fn.center = function () {
+  this.css("position","absolute");
+  this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+  return this;
+}
 
 $(document).ready(function(){
 
@@ -43,34 +51,64 @@ $(document).ready(function(){
 	$('.modal-confirm .cancel').html('Cancel');
 	$('.modal-confirm .submit').html('Delete');
 	$('.modal-confirm .submit').addClass('btn-danger');
-
-  /* $('#phone-tf').mask("(999) 999-9999"); */
 	
+// 
+//   $('#preview .large-toggle').click( function(){
+//     $(this).parents('#preview').toggleClass('large')
+//   })
+//                      
+// 
+//   $('#preview').addClass($('[name="coupon_supra"]').val())
+//   $('#preview').addClass($('[name="coupon_sub"]').val())
+//   $('#preview .title').text($('[name="coupon_title"]').val())
+// 
+//   $('.price-listing').text($('input.coupon-price').val())
+// 
+//   $('input.coupon-price').bind('change', function(){
+//     var v = $(this).val()
+//     $('.price-listing').text(v);
+//   });
 
-  $('#preview .large-toggle').click( function(){
-    $(this).parents('#preview').toggleClass('large')
-  })
-                     
-
-  $('#preview').addClass($('[name="coupon_supra"]').val())
-  $('#preview').addClass($('[name="coupon_sub"]').val())
-  $('#preview .title').text($('[name="coupon_title"]').val())
-
-  $('.price-listing').text($('input.coupon-price').val())
-
-  $('input.coupon-price').bind('change', function(){
-    var v = $(this).val()
-    $('.price-listing').text(v);
+  $('.header').on('click', function(){
+    o = $(this).attr('id');
+    e = $('#account-form>.widgets>#'+o)
+    e.siblings().fadeOut();
+    e.fadeIn();
   });
 
-  $('.widget-header').on('click', function(){
-    var content = $(this).siblings('.widget-content')
-    content.height(content.height());
-    content.slideToggle()
+  $('#offer-nav>ul>li').on('click', function(){
+    $('#offer-welcome').fadeOut();
+    o = $(this).children().attr('id');
+    e = $('#account-form>.widgets>#offer>.widget#'+o)
+    e.siblings('.widget').fadeOut();
+    e.fadeIn();
+
+    $(this).siblings().removeClass('active')
+    $(this).addClass('active')
+    
   });
 
-  $('.widget-content').hide()
-  $('.widget#business>.widget-content').show()
+  $('#account-form .widgets>#offer>.widget*').hide()
 
+  $('.center').center()
 })
 
+$(function(){
+  $(window).bind('load', function(){
+    $('.fadeIn').fadeIn()
+  });
+
+  $(window).bind('resize', function (){
+    $('.center').center()
+  });
+
+  $('#tags .chzn-choices').on('click', function(){
+    var count = $(this).children('li').length;
+    if(count > 3){ 
+      $(this).siblings('.chzn-drop').hide();
+    }else{
+      $(this).siblings('.chzn-drop').show();
+    }
+  });
+
+});

@@ -28,7 +28,7 @@ module.exports = function (app, exp, mongoose) {
 	});
 
   app.configure('development', function(){
-    app.use(exp.errorHandler({ dumbExceptions: true, showStack: true }));
+    app.use(exp.errorHandler({ dumpExceptions: true, showStack: true }));
     var uri = 'mongodb://localhost:27017/login-testing';
     app.mongoose.connect(uri);
     console.log('Connected to %s', uri);

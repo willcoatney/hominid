@@ -6,14 +6,32 @@
   input(type='hidden', value= user._id)#userId
 
 
-  form(method="post")#account-form
-    .widget.form-horizontal
-      .widget-header: h3 Account
-      .widget-content
+  .headers.center.fadeIn
+    a.header(href='#')#home Home
+    a.header(href='#')#account Profile
+    a.header(href='#')#offer Offer
+    a.header.disabled Report
+    a.header.disabled Metrics
+    a.header(href='#')#help Help
 
-        #profile: fieldset
-          p Hi, #{user.user}. 
-          br
+  // .alert.alert-block.alert-error.fade.in
+  //   h4.alert-heading Herp and derp
+  //   p Some stuff
+
+  form(method="post")#account-form
+    .widgets
+
+      .steady#home
+        .inner
+          .greeting
+            h2 Hi, #{user.user}.
+            h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
+
+      .widget.form-horizontal#account.jsHide
+        .widget-content: fieldset
+          .greeting
+            h2 Got something good?
+            h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
           #user-cg.control-group
             label.control-label(for='user-tf') Username
             .controls
@@ -31,152 +49,163 @@
             label.control-label(for='email-tf') Email
             .controls
               input#email-tf(type='text', name='email', value= user.email)
-    .widget.form-horizontal#business
-      .widget-header: h3 Business
-      .widget-content
+          .form-actions
+            button(type='button').account-form-btn1.btn.btn-danger Delete
+            button(type='submit').account-form-btn2.btn Update
 
-        #business: fieldset
-          #business_name-cg.control-group
-            label.control-label Name
-            .controls
-              input(type='text', name='business_name', value= user.business_name, placeholder='My Business')
-          #phone-cg.control-group
-              label.control-label(for='phone-tf') Phone
+
+      .widgets-group#offer.jsHide
+        .widget.form-horizontal#business
+          .widget-content: fieldset
+            .greeting.middle
+              h3 Tell us a little about your business.
+            .control-group
+              label.control-label Business Name
               .controls
-                input.phonefield#phone-tf(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
-          #address_street-cg.control-group
-            label.control-label Street
-            .controls
-              input(type='text', name='address_street', value= user.address_street, placeholder='Street')
-
-          #location.control-group
-            label.control-label City
-            .controls
-              select#location.chzn-select(name='location')
-                option= ""
-                if user.address_city != ''
-                  option(selected, value= user.location )= user.address_city
-                mixin counties(cou, i)
-                  optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
-                    for c in cou[i].cities
-                      option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
-
-                mixin counties( categories.counties, 0 )
-                mixin counties( categories.counties, 1 )
-                mixin counties( categories.counties, 2 )
-                mixin counties( categories.counties, 3 )
-                mixin counties( categories.counties, 4 )
-
-          input#address_city(type='hidden', name='address_city', value= user.address_city)
-          input#address_state(type='hidden', name='address_state', value= user.address_state)
-          input#county(type='hidden', name='county', value= user.county)
-
-          #address_state-cg.control-group
-            label.control-label State
-            .controls
-              span.input-small.uneditable-input= user.address_state
-
-          #address_zip-cg.control-group
-            label.control-label Zip
-            .controls
-              input.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='64105')
-
-        // .control-group
-        //   label.control-label Date start
-        //   .controls
-        //     input(type='text', name='date_start', value= user.date_start, placeholder='Date start')
-        // .control-group
-        //   label.control-label Date end
-        //   .controls
-        //     input(type='text', name='date_end', value= user.date_end, placeholder='Date end')
-
-
-    .widget.form-horizontal
-      .widget-header: h3 Offer
-      .widget-content
-        #offer.tab-pane: fieldset
-          br
-          label.control-label What are you offering?
-          #coupon_title-cg.control-group
-            .controls
-              input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
-          label.control-label How much do you want for it? (Just dollars, no cents.)
-          #coupon_type-cg.control-group
-            .controls
-              .input-prepend
-                span.add-on $
-                input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
-          .control-group
-            label.control-label What do people do with this offer?
-            .controls
-              select(name='coupon_supra', value= user.coupon_supra, placeholder= "")
-                option#eat(value="eat") Eat it immediately
-                option#drink(value="drink") Drink it immediately
-                option#own(value="own") Own it to enjoy
-                option#see(value="see") Experience it
-
-          #coupon_category-cg.control-group
-            label.control-label How do you categorize it?
-            .controls
-              select(name='coupon_sub', value= user.coupon_sub)
-                each c in categories.sub_1
-                  option(value= c.parsed)= c.longform
-                each c in categories.sub_2
-                  option(value= c.parsed)= c.longform
-                each c in categories.sub_3
-                  option(value= c.parsed)= c.longform
-                each c in categories.sub_4
-                  option(value= c.parsed)= c.longform
-          #coupon_body-cg.control-group
-            label.control-label Anything else?
-            .controls
-              textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
-          .control-group
-            label.control-label Publish?
-            .controls
-              input(type='text', name='publish', value= user.publish, placeholder='Yes/No')
-
-    .widget
-      .widget-header
-        h3 Preview
-      .widget-content
-        #preview.coupon
-          .header
-            .price
-              .price-inner
-                span.dollar $
-                span.price-listing 
-            .title
-
-
-          .coupon-content
-            .business_name
-            .address
+                input(type='text', name='business_name', value= user.business_name, placeholder='My Business')
+            #phone-cg.control-group
+                label.control-label(for='phone-tf') Business Phone
+                .controls
+                  input.span2#phone-tf(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
             br
-            .date-wrapper Last updated 
-            .date 
-            // br
-            // .date_start #{ o.date_start}
-            // br
-            // .date_end #{ o.date_end}
-            br
-          .toggles
-            a.btn.btn-large.large-toggle
-              i.icon.icon-info-sign
-            a.btn.btn-large.favorite-toggle
-              i.icon.icon-heart
-          .footer
-            .body
-            .phone-wrapper
-              i.icon.icon-phone  
-              .phone.
-                
-            .address-wrapper
-              i.icon.icon-map-marker
-              .address.
-    .form-actions
-      button(type='button').account-form-btn1.btn.btn-danger Delete
-      button(type='submit').account-form-btn2.btn Update
+            .control-group
+              label.control-label Street
+              .controls
+                input(type='text', name='address_street', value= user.address_street, placeholder='Street')
+
+            #location.control-group
+              label.control-label City
+              .controls
+                select#location.chzn-select(name='location', data-placeholder="City")
+                  option= ""
+                  if user.address_city != ''
+                    option(selected, value= user.location )= user.address_city
+                  mixin counties(cou, i)
+                    optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
+                      for c in cou[i].cities
+                        option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
+
+                  mixin counties( categories.counties, 0 )
+                  mixin counties( categories.counties, 1 )
+                  mixin counties( categories.counties, 2 )
+                  mixin counties( categories.counties, 3 )
+                  mixin counties( categories.counties, 4 )
+
+            input#address_city(type='hidden', name='address_city', value= user.address_city)
+            input#address_state(type='hidden', name='address_state', value= user.address_state)
+            input#county(type='hidden', name='county', value= user.county)
+
+            #state-cg.control-group
+              label.control-label State
+              .controls
+                span.input-small.uneditable-input= user.address_state
+
+            .control-group
+              label.control-label Zip
+              .controls
+                input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
+
+        .widget.form-horizontal#offer
+          .widget-content: fieldset
+            label.control-label Offer Name
+            .control-group
+              .controls
+                input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
+            label.control-label Offer Price
+            .control-group
+              .controls
+                .input-prepend
+                  span.add-on $
+                  input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
+            .control-group
+              label.control-label Offer Category
+              .controls
+                select.chzn-select(name='cat', value= user.cat)
+                  option Food
+                  option Drink
+                  option Possession
+                  option Service
+                  option Event
+
+
+            .control-group
+              label.control-label Tags
+              .controls#tags
+                select.chzn-select(name='tags', multiple)
+                  option Blarg
+                  option Snarggggg
+                  option zzzz
+                  option Service
+                  option Event
+
+            .control-group
+              label.control-label Details
+              .controls
+                textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
+
+        .widget.form-horizonal#preview
+          .widget-content
+            .coupon
+              .header
+                .price
+                  .price-inner
+                    span.dollar $
+                    span.price-listing 
+                .title
+              .coupon-content
+                .business_name
+                .address
+                br
+                .date-wrapper Last updated 
+                .date 
+                br
+              .toggles
+                a.btn.btn-large.large-toggle
+                  i.icon.icon-info-sign
+                a.btn.btn-large.favorite-toggle
+                  i.icon.icon-heart
+              .footer
+                .body
+                .phone-wrapper
+                  i.icon.icon-phone  
+                  .phone.
+                    
+                .address-wrapper
+                  i.icon.icon-map-marker
+                  .address.
+  
+            .clearfix
+            fieldset
+              label.control-label Publish?
+              .controls
+                .input-append
+                  input.span2(type='text', name='publish', value= user.publish, placeholder='Yes/No')
+                  button(type='submit').account-form-btn2.btn.btn-success Update
+            .form-actions
+
+        .steady#offer-welcome
+          .inner
+            .greeting
+              h2 Got something good?
+              h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
+        #offer-nav.pagination.pagination-centered
+          ul
+            li: a#business(href='#') 1. Business
+            li: a#offer(href='#') 2. Offer
+            li: a#preview(href='#') 3. Preview & Publish
+
+
+      .steady#help.jsHide
+        .inner
+          .greeting
+            h2 Hi, #{user.user}.
+            h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
+
+
+
+    // .form-actions
+    // button(type='button').account-form-btn1.btn.btn-danger Delete
+    // button(type='submit').account-form-btn2.btn Update
          
         
        

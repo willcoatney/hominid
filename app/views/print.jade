@@ -1,11 +1,12 @@
 
-// .foo.btn.btn-large(style="margin:0 10%; width:80%;") Foo
 
 .coupon-container
   each o in offers
     .coupon(class= o.coupon_supra + ' ' + o.coupon_sub + ' ' + o.location, data-date= o.date, data-category= o.coupon_supra+ o.coupon_sub, data-business= o.business_name, data-price= o.coupon_price)
 
       .header
+        h4= o.tags
+        h3= o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2]
         .price(class= '#{ o.coupon_supra}')
           .price-inner
             span.dollar $
@@ -19,10 +20,6 @@
         br
         .date-wrapper Last updated 
         .date #{ o.date}
-        // br
-        // .date_start #{ o.date_start}
-        // br
-        // .date_end #{ o.date_end}
         br
       .toggles
         a.btn.btn-large.large-toggle
@@ -30,7 +27,7 @@
         a.btn.btn-large.favorite-toggle
           i.icon.icon-heart
       .footer
-        .body #{ o.coupon_body}
+        .details#{ o.coupon_body}
         .phone-wrapper
           i.icon.icon-phone  
           .phone.

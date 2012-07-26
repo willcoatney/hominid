@@ -1,11 +1,10 @@
 // module dependencies
 var CT  = require('./modules/country-list');
-var AM  = require('./modules/account-manager');
+var Offer  = require('./modules/account-manager');
 var EM  = require('./modules/email-dispatcher');
 
 var CAT = require('./modules/categories');
 
-var mongoose = require('mongoose')
 
 module.exports = function (app) {
 
@@ -18,7 +17,7 @@ module.exports = function (app) {
   app.get('/', function (req, res) {
     console.log('login', req.cookies.user, req.cookies.pass);
     if (req.cookies.user == undefined || req.cookies.pass == undefined ) {
-      AM.getAllRecords( function(e, docs){
+      Offer.getAllRecords( function(e, docs){
         res.render('index', {
           locals: {
               categories : CAT
@@ -30,7 +29,7 @@ module.exports = function (app) {
       });
       console.log('Unidentified user has landed on "/"');
     } else {
-      AM.getAllRecords( function(e, docs){
+      Offer.getAllRecords( function(e, docs){
         res.render('index', { 
           locals: {
               categories : CAT
@@ -47,7 +46,7 @@ module.exports = function (app) {
 
   app.post('/', function (req, res) {
     if (req.param('email') != null) {
-      AM.getEmail(req.param('email'), function(o){
+      Offer.getEmail(req.param('email'), function(o){
         if (o){
           res.send('ok', 200);
           EM.send(o, function (e,m) { console.log('error : ' + e, 'msg : ' +m)});
@@ -57,7 +56,7 @@ module.exports = function (app) {
       });
     } else {
 
-      AM.manualLogin(req.param('user'), req.param('pass'), function (e,o) {
+      Offer.manualLogin(req.param('user'), req.param('pass'), function (e,o) {
         if (!o) {
           res.send(e, 400);
         } else {
@@ -86,7 +85,7 @@ module.exports = function (app) {
         console.log('Unidentified user has landed on "/login"');
       } else {
     // attempt automatic login //
-        AM.autoLogin(req.cookies.user, req.cookies.pass, function (o) {
+        Offer.autoLogin(req.cookies.user, req.cookies.pass, function (o) {
           if (o !== null) {
               req.session.user = o;
             res.redirect('/home');
@@ -107,7 +106,7 @@ module.exports = function (app) {
 	
 	app.post('/login', function (req, res) {
 		if (req.param('email') != null) {
-			AM.getEmail(req.param('email'), function(o){
+			Offer.getEmail(req.param('email'), function(o){
 				if (o){
 					res.send('ok', 200);
 					EM.send(o, function(e, m){ console.log('error : '+e, 'msg : '+m)});	
@@ -117,7 +116,7 @@ module.exports = function (app) {
 			});
 		} else {
 		// attempt manual login //
-			AM.manualLogin(req.param('user'), req.param('pass'), function(e, o){
+			Offer.manualLogin(req.param('user'), req.param('pass'), function(e, o){
 				if (!o){
 					res.send(e, 400);
 				}	else{
@@ -150,10 +149,11 @@ module.exports = function (app) {
         });
 	    }
 	});
+
 	
 	app.post('/home', function (req, res) {
-		if (req.param('user') != undefined) {
-			AM.update({
+    if (req.param('user') != undefined) {
+			Offer.update({
 				user            : req.param('user'),
 				name            : req.param('name'),
 				email           : req.param('email'),
@@ -171,6 +171,8 @@ module.exports = function (app) {
 				address_zip     : req.param('address_zip'),
 				county: req.param('county'),
 				location : req.param('location'),
+				cat: req.param('cat'),
+				tags: req.param('tags'),
 				date_start: req.param('date_start'),
 				date_end: req.param('date_end'),
 				publish: req.param('publish')
@@ -206,7 +208,7 @@ module.exports = function (app) {
 	});
 	
 	app.post('/signup', function(req, res){
-		AM.signup({
+		Offer.signup({
 			name            : req.param('name'),
 			email           : req.param('email'),
 			user            : req.param('user'),
@@ -224,7 +226,7 @@ module.exports = function (app) {
 // password reset //
 
 	app.get('/reset-password', function(req, res) {
-		AM.validateLink(req.query["u"], function(e){
+		Offer.validateLink(req.query["u"], function(e){
 			if (e != 'ok'){
 				res.redirect('/');
 			} else{
@@ -239,7 +241,7 @@ module.exports = function (app) {
 	});
 	
 	app.post('/reset-password', function(req, res) {
-		AM.setPassword(req.param('pid'), req.param('pass'), function(o){
+		Offer.setPassword(req.param('pid'), req.param('pass'), function(o){
 			if (o){
 				res.send('ok', 200);
 			}	else{
@@ -252,7 +254,7 @@ module.exports = function (app) {
 // view & delete accounts //
 	
 	app.get('/print', function(req, res) {
-		AM.getAllRecords( function(e, docs){
+		Offer.getAllRecords( function(e, docs){
 			res.render('print', {
         locals: {
             title : 'Account List'
@@ -263,7 +265,7 @@ module.exports = function (app) {
 	});	
 	
 	app.post('/delete', function(req, res){
-		AM.delete(req.body.id, function(e, obj){
+		Offer.delete(req.body.id, function(e, obj){
 			if (!e){
 				res.clearCookie('user');
 				res.clearCookie('pass');
@@ -275,7 +277,7 @@ module.exports = function (app) {
 	});
 	
 	app.get('/reset', function(req, res) {
-		AM.delAllRecords( );
+		Offer.delAllRecords( );
 		res.redirect('/print');
 	});
 	

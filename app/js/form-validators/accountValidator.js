@@ -9,7 +9,6 @@ function AccountValidator(){
     , $('#user-tf')
     , $('#pass-tf')    		
     , $('#cust-tf')    		
-    /* , $('#phone-tf')    		 */
   ];    		
 	this.controlGroups = [
       $('#name-cg')
@@ -17,7 +16,6 @@ function AccountValidator(){
     , $('#user-cg')
     , $('#pass-cg')
     , $('#cust-cg')
-    /* , $('#phone-cg')    		 */
   ];
 	
 // bind the form-error modal window to this controller to display any errors //

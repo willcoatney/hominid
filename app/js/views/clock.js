@@ -10,7 +10,8 @@
     
     var point = new Point( 100, 100, 90);
     var clock = new PolarClock(canvas, point, 15, 10);
-    clock.color = ["#ff7c00", "#ffa040", "#ffba73", "#ffba73", "#ffa040", "#ff7c00"];
+    /* clock.color = ["#ff7c00", "#ffa040", "#ffba73", "#ffba73", "#ffa040", "#ff7c00"]; */
+    clock.color = ["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"];
     clock.start(25);
   };
   

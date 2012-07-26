@@ -23,17 +23,17 @@ module.exports = function(mongoose){
     address_zip: String,
     county: String,
     location: [],
-    // address: {
-    //   street: String,
-    //   city: String,
-    //   state: String,
-    //   zip: Number,
-    // },
     date_start: String,
     date_end: String,
     date: String,
     publish: String
   });
+
+  // schema.path('publish').validate(function (v) {
+  //   return v.length > 5;
+  // }, "my error type");
+
+
 
   this.model = mongoose.model(collection, schema);
 

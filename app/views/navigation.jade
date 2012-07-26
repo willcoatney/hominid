@@ -21,24 +21,24 @@ div.navbar.navbar-fixed-top
         ul.nav.pull-right
 
           if user != undefined
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown')
-                i.icon-user.
-                #{user} 
-                b.caret
-              ul.dropdown-menu
-                li 
-                  a(href='/home')
-                    i.icon-home
-                    | Home
-                li.divider
-                li 
-                  a(href='#')#btn-logout
-                    i.icon-signout
-                    | Logout
+            // li.dropdown
+            //   a.dropdown-toggle(href='#', data-toggle='dropdown')
+            //     i.icon-user.
+            //     #{user} 
+            //     b.caret
+            // ul.dropdown-menu
+            li 
+              a(href='/home')
+                i.icon-home
+                // | Home
+            // li.divider
+            li 
+              a(href='#')#btn-logout
+                i.icon-signout
+                // | Logout
 
           else
             li 
               a(href='/login')
                 i.icon-signin
-                | Login
+                // | Login
