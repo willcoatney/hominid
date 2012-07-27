@@ -1,3 +1,4 @@
+
 jQuery(function($){
   $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
   .css('color','#555')
@@ -51,23 +52,6 @@ $(document).ready(function(){
 	$('.modal-confirm .cancel').html('Cancel');
 	$('.modal-confirm .submit').html('Delete');
 	$('.modal-confirm .submit').addClass('btn-danger');
-	
-// 
-//   $('#preview .large-toggle').click( function(){
-//     $(this).parents('#preview').toggleClass('large')
-//   })
-//                      
-// 
-//   $('#preview').addClass($('[name="coupon_supra"]').val())
-//   $('#preview').addClass($('[name="coupon_sub"]').val())
-//   $('#preview .title').text($('[name="coupon_title"]').val())
-// 
-//   $('.price-listing').text($('input.coupon-price').val())
-// 
-//   $('input.coupon-price').bind('change', function(){
-//     var v = $(this).val()
-//     $('.price-listing').text(v);
-//   });
 
   $('.header').on('click', function(){
     o = $(this).attr('id');
@@ -91,15 +75,27 @@ $(document).ready(function(){
   $('#account-form .widgets>#offer>.widget*').hide()
 
   $('.center').center()
+
+  $('ul.chzn-results>li:contains("locked")').addClass('group-result').removeClass('group-option').css({display:"list-item"});
+
 })
 
 $(function(){
-  $(window).bind('load', function(){
+  $(window).on('load', function(){
     $('.fadeIn').fadeIn()
   });
 
-  $(window).bind('resize', function (){
+  $(window).on('resize', function (){
     $('.center').center()
+  });
+
+  $('#category .chzn-results>li').on('click', function(){
+    var txt = $(this).text()
+    $('#tags-cg ul.chzn-results>li').removeClass('result-selected').addClass('active-result')
+    $('#tags-cg ul.chzn-choices>li.search-choice').remove()
+    $('#tags-cg>#'+txt).siblings().hide()
+    $('#tags-cg>#'+txt).show()
+
   });
 
   $('#tags .chzn-choices').on('click', function(){

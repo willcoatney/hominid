@@ -1,9 +1,9 @@
 // module dependencies
-var CT  = require('./modules/country-list');
+/* var CT  = require('./modules/country-list'); */
 var Offer  = require('./modules/account-manager');
 var EM  = require('./modules/email-dispatcher');
 
-var CAT = require('./modules/categories');
+var CT = require('./modules/categories');
 
 
 module.exports = function (app) {
@@ -20,7 +20,7 @@ module.exports = function (app) {
       Offer.getAllRecords( function(e, docs){
         res.render('index', {
           locals: {
-              categories : CAT
+              CT : CT
             , title      : 'Outside'
             , offers : docs
             , user : req.cookies.user
@@ -32,7 +32,7 @@ module.exports = function (app) {
       Offer.getAllRecords( function(e, docs){
         res.render('index', { 
           locals: {
-              categories : CAT
+              CT : CT
             , title      : 'Inside'
             , offers : docs
             , user       : req.cookies.user
@@ -93,7 +93,7 @@ module.exports = function (app) {
           } else {
             res.render('login', {
               locals: {
-                  categories : CAT
+                  CT: CT
                 , title: 'Hello - Please Login To Your Account'
                 , user: req.cookies.user
                 /* , offers: docs */
@@ -140,7 +140,7 @@ module.exports = function (app) {
 	    } else {
 			res.render('home', {
 				locals: {
-            categories : CAT
+            CT: CT
 					, title : 'Your Account'
           , offers: docs
           , user: req.cookies.user

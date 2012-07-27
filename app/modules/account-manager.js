@@ -30,11 +30,6 @@ var OfferSchema = new mongoose.Schema({
   publish: String
 });
 
-// OfferSchema.path('publish').validate(function (v) {
-//   return v.length > 5;
-// }, 'Publish cannot be blank');
-
-
 
 var Offer = mongoose.model('offers', OfferSchema);
 

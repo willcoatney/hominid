@@ -921,13 +921,11 @@ padtop = 250px
       text-decoration none
 
     &:first-child a
-      // border-left-width 1px
       border-radius 3px 0 0 3px
     &:last-child a
       border-radius 0 3px 3px 0
     &.active
       a
-        // box-shadow 0 -15px 50px -20px rgba(0,0,0,0.2) inset
         color #999
 
   .disabled 
@@ -1023,8 +1021,6 @@ ff = 12px
 
 
 
-
-
 //    ORDER
 
 #welcome
@@ -1041,36 +1037,22 @@ ff = 12px
   overflow hidden
 
   .order-container
-    text-align center
     width 80%
     max-width 1080px
-    margin 0 auto
 
-    .btn-group
-      padding 0
-      box-shadow 0 3px 8px -4px rgba(0,0,0,0.7)
-    #supras
-      width 100%
+.option-set
+  float left
+  li
+    list-style-type none
+    padding 0px 14px
+  a
+    color white
+    font-size 12px
 
-    #sort-by
-    #filters
-      font-size 18px
-      .btn
-        padding 5px 15px
-    #sort-by
-      height 25px
-      box-shadow 0 50px 30px 15px rgba(0,0,0,0.5) 
-      a.btn.link
-        height 60px
-        padding 15px
-        font-size 21px
-        box-shadow inset 0px -70px 20px -40px rgba(0,0,0,0.6)
-        i
-          width 100%
-        span
-          font-size 11px
-          vertical-align top
-
+.dull
+  i
+    text-shadow 0 1px 1px rgba(255, 255, 255, 0.1), 0 -1px 0px rgba(0, 0, 0, 0.1)
+    color #305D7F
 
 //    NAVIGATION
 
@@ -1718,17 +1700,11 @@ HL = white
   background: url(../vendor/img/chosen-sprite.png) no-repeat -22px -3px
 
 .chzn-container-active .chzn-single
-  -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3)
-  -moz-box-shadow: 0 0 5px rgba(0,0,0,.3)
-  -o-box-shadow: 0 0 5px rgba(0,0,0,.3)
   box-shadow: 0 0 5px rgba(0,0,0,.3)
   border: 1px solid #5897fb
 
 .chzn-container-active .chzn-single-with-drop
   border: 1px solid #aaa
-  -webkit-box-shadow: 0 1px 0 #fff inset
-  -moz-box-shadow: 0 1px 0 #fff inset
-  -o-box-shadow: 0 1px 0 #fff inset
   box-shadow: 0 1px 0 #fff inset
   background-color: #eee
   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0 )

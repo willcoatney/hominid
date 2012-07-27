@@ -1,4 +1,3 @@
-- CAT = categories
 
 .row
   - user = typeof(udata) != 'undefined' ? udata : {}
@@ -85,11 +84,11 @@
                       for c in cou[i].cities
                         option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
 
-                  mixin counties( categories.counties, 0 )
-                  mixin counties( categories.counties, 1 )
-                  mixin counties( categories.counties, 2 )
-                  mixin counties( categories.counties, 3 )
-                  mixin counties( categories.counties, 4 )
+                  mixin counties( CT.counties, 0 )
+                  mixin counties( CT.counties, 1 )
+                  mixin counties( CT.counties, 2 )
+                  mixin counties( CT.counties, 3 )
+                  mixin counties( CT.counties, 4 )
 
             input#address_city(type='hidden', name='address_city', value= user.address_city)
             input#address_state(type='hidden', name='address_state', value= user.address_state)
@@ -107,6 +106,8 @@
 
         .widget.form-horizontal#offer
           .widget-content: fieldset
+            .greeting.middle
+              h3 Tell us a little about your business.
             label.control-label Offer Name
             .control-group
               .controls
@@ -117,26 +118,35 @@
                 .input-prepend
                   span.add-on $
                   input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
+            br
             .control-group
-              label.control-label Offer Category
-              .controls
-                select.chzn-select(name='cat', value= user.cat)
-                  option Food
-                  option Drink
-                  option Possession
-                  option Service
-                  option Event
+              label.control-label Category
+              .controls#category
+                select.chzn-select(name='cat', data-placeholder='Choose One')
+                  option= ''
+                  each c in CT.cats
+                    option= c.name
 
+            #tags-cg
+              mixin tags( t, i )
+                .control-group(id= t[i].name).jsHide
+                  label.control-label Tags
+                  .controls#tags
+                    select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                      optgroup(label= t[i].name+' Tags')
+                        for j in t[i].tags
+                          option= j
+                      optgroup(label= 'Wildcards')
+                        option Fun
+                        option Free
+                        option Now
 
-            .control-group
-              label.control-label Tags
-              .controls#tags
-                select.chzn-select(name='tags', multiple)
-                  option Blarg
-                  option Snarggggg
-                  option zzzz
-                  option Service
-                  option Event
+              mixin tags( CT.cats, 0 )
+              mixin tags( CT.cats, 1 )
+              mixin tags( CT.cats, 2 )
+              mixin tags( CT.cats, 3 )
+              mixin tags( CT.cats, 4 )
+
 
             .control-group
               label.control-label Details
