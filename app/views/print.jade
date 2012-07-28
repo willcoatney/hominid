@@ -1,27 +1,32 @@
 
 
-.coupon-container
+.coupon-container.fadeIn
   each o in offers
-    // .coupon(class= o.coupon_supra + ' ' + o.coupon_sub + ' ' + o.location, data-date= o.date, data-category= o.coupon_supra+ o.coupon_sub, data-business= o.business_name, data-price= o.coupon_price)
-    .coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county)
+    :stylus
+      .coupon
+        padding 20px
+        margin 10px
+        width 220px
+        background whiteSmoke
+        box-shadow 0 1px 3px rgba(0,0,0,0.5)
+        border-top 1px solid white
+    .coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
+
+      .meta
+        :markdown
+
+          ### #{o.cat}
+          #### #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
+           **#{ o.coupon_price}**
 
       .header
-        h4= o.cat
-        h3= o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2]
-        .price
-          .price-inner
-            span.dollar $
-            span.price-listing #{ o.coupon_price}
-        .title= o.coupon_title
+        :markdown
+          #### here's the header
 
-
-      .coupon-content
-        .business_name #{ o.business_name}
-        .address #{ o.address_city}, #{ o.address_state}
-        br
-        .date-wrapper Last updated 
-        .date #{ o.date}
-        br
+      p Here the #{ o.business_name}
+      p And the #{ o.address_city}, #{ o.address_state}
+      .date-wrapper Last updated 
+      .date #{ o.date}
       .toggles
         a.btn.btn-large.large-toggle
           i.icon.icon-info-sign
@@ -42,265 +47,3 @@
             #{ o.address_zip}
 
 script(src='/vendor/moment.js') 
-
-script
-  // isotope
-  $.Isotope.prototype._getCenteredMasonryColumns = function() {
-    this.width = this.element.width();
-    
-    var parentWidth = this.element.parent().width();
-    
-                  // i.e. options.masonry && options.masonry.columnWidth
-    var colW = this.options.masonry && this.options.masonry.columnWidth ||
-                  // or use the size of the first item
-                  this.$filteredAtoms.outerWidth(true) ||
-                  // if there's no items, use size of container
-                  parentWidth;
-    
-    var cols = Math.floor( parentWidth / colW );
-    cols = Math.max( cols, 1 );
-
-    // i.e. this.masonry.cols = ....
-    this.masonry.cols = cols;
-    // i.e. this.masonry.columnWidth = ...
-    this.masonry.columnWidth = colW;
-  };
-  
-  $.Isotope.prototype._masonryReset = function() {
-    // layout-specific props
-    this.masonry = {};
-    // FIXME shouldn't have to call this again
-    this._getCenteredMasonryColumns();
-    var i = this.masonry.cols;
-    this.masonry.colYs = [];
-    while (i--) {
-      this.masonry.colYs.push( 0 );
-    }
-  };
-
-  $.Isotope.prototype._masonryResizeChanged = function() {
-    var prevColCount = this.masonry.cols;
-    // get updated colCount
-    this._getCenteredMasonryColumns();
-    return ( this.masonry.cols !== prevColCount );
-  };
-  
-  $.Isotope.prototype._masonryGetContainerSize = function() {
-    var unusedCols = 0,
-        i = this.masonry.cols;
-    // count unused columns
-    while ( --i ) {
-      if ( this.masonry.colYs[i] !== 0 ) {
-        break;
-      }
-      unusedCols++;
-    }
-    
-    return {
-          height : Math.max.apply( Math, this.masonry.colYs ),
-          // fit container to columns that have been used;
-          width : (this.masonry.cols - unusedCols) * this.masonry.columnWidth
-        };
-  };
-  
-  $(function(){
-    
-    var $container = $('.coupon-container');
-    
-    
-      // add randomish size classes
-      // $container.find('.coupon').each(function(){
-      //   var $this = $(this),
-      //       number = parseInt( $this.find('.number').text(), 10 );
-      //   if ( number % 7 % 2 === 1 ) {
-      //     $this.addClass('width2');
-      //   }
-      //   if ( number % 3 === 0 ) {
-      //     $this.addClass('height2');
-      //   }
-      // });
-    
-    $container.isotope({
-      itemSelector : '.coupon',
-      masonry : {
-        columnWidth : 70
-      // },
-      // masonryHorizontal : {
-      //   rowHeight: 70
-      // },
-      // cellsByRow : {
-      //   columnWidth : 140,
-      //   rowHeight : 140
-      // },
-      // cellsByColumn : {
-      //   columnWidth : 140,
-      //   rowHeight : 140
-      // },
-      // getSortData : {
-      //   symbol : function( $elem ) {
-      //     return $elem.attr('data-symbol');
-      //   },
-      //   business: function( $elem ) {
-      //     return $elem.attr('data-business');
-      //   },
-      //   category : function( $elem ) {
-      //     return $elem.attr('data-category');
-      //   },
-      //   price_low: function( $elem ) {
-      //     return parseInt( $elem.find('.price-listing').text(), 10);
-      //   },
-      //   price_high: function( $elem ) {
-      //     return -(parseInt( $elem.find('.price-listing').text(), 10));
-      //   },
-      //   date: function ( $elem ) {
-      //     return -($elem.attr('data-date'));
-      //   },
-      //   business: function ( $elem ) {
-      //     return $elem.find('.business_name').text();
-      //   }
-      }
-    });
-
-    
-      // var $optionSets = $('.links'),
-      //     $optionLinks = $optionSets.find('a');
-
-      // $optionLinks.click(function(){
-      //   var $this = $(this);
-      //   if ( $this.hasClass('active') ) {
-      //     return false;
-      //   }
-      //   var $optionSet = $this.parents('.links');
-      //   $optionSet.find('.active').removeClass('active');
-      //   $this.addClass('active');
-  
-      //   // make option object dynamically, i.e. { filter: '.my-filter-class' }
-      //   var options = {},
-      //       key = $optionSet.attr('option-key'),
-      //       value = $this.attr('option-value');
-      //   // parse 'false' as false boolean
-      //   value = value === 'false' ? false : value;
-      //   options[ key ] = value;
-      //   if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
-      //     // changes in layout modes need extra logic
-      //     changeLayoutMode( $this, options )
-      //   } else {
-      //     // otherwise, apply new options
-      //     $container.isotope( options );
-      //   }
-      //   
-      //   return false;
-      // });
-
-
-      // filter buttons
-
-      var filters = {}
-
-      $('.filter a').click(function(){
-        var $this = $(this);
-        // don't proceed if already selected
-        if ( $this.hasClass('active') ) {
-          return;
-        }
-        
-        var $optionSet = $this.parents('.option-set');
-        // change selected class
-        $optionSet.find('.active').removeClass('active');
-        $this.addClass('active');
-        
-        // store filter value in object
-        // i.e. filters.color = 'red'
-        var group = $optionSet.attr('filter-group');
-        filters[ group ] = $this.attr('filter-value');
-        // convert object into array
-        var isoFilters = [];
-        for ( var prop in filters ) {
-          isoFilters.push( filters[ prop ] )
-        }
-        var selector = isoFilters.join('');
-        $container.isotope({ filter: selector });
-
-        return false;
-      });
- 
-
-      
-    
-      // // change layout
-      // var isHorizontal = false;
-      // function changeLayoutMode( $link, options ) {
-      //   var wasHorizontal = isHorizontal;
-      //   isHorizontal = $link.hasClass('horizontal');
-
-      //   if ( wasHorizontal !== isHorizontal ) {
-      //     // orientation change
-      //     // need to do some clean up for transitions and sizes
-      //     var style = isHorizontal ? 
-      //       { height: '80%', width: $container.width() } : 
-      //       { width: 'auto' };
-      //     // stop any animation on container height / width
-      //     $container.filter(':animated').stop();
-      //     // disable transition, apply revised style
-      //     $container.addClass('no-transition').css( style );
-      //     setTimeout(function(){
-      //       $container.removeClass('no-transition').isotope( options );
-      //     }, 100 )
-      //   } else {
-      //     $container.isotope( options );
-      //   }
-      // }
-
-    
-      // change size of clicked coupon
-      $container.delegate( '.coupon .large-toggle', 'click', function(){
-        $(this).parents('.coupon').toggleClass('large');
-        $container.isotope('reLayout');
-      });
-
-      $container.delegate( '.coupon .favorite-toggle', 'click', function(){
-        $(this).parents('.coupon').toggleClass('favorite');
-        $container.isotope('reLayout');
-      });
-
-      // toggle variable sizes of all coupons
-      $('#toggle-sizes').find('a').click(function(){
-        $container
-          .toggleClass('variable-sizes')
-          .isotope('reLayout');
-        return false;
-      });
-
-
-    
-      // $('#insert a').click(function(){
-      //   var $newEls = $( fakeElement.getGroup() );
-      //   $container.isotope( 'insert', $newEls );
-
-      //   return false;
-      // });
-
-      // $('#append a').click(function(){
-      //   var $newEls = $( fakeElement.getGroup() );
-      //   $container.append( $newEls ).isotope( 'appended', $newEls );
-
-      //   return false;
-      // });
-
-    $('#sort-by a').click(function(){
-      var sortName = $(this).attr('href').slice(1);
-      $('.coupon-container').isotope({ sortBy: sortName });
-      return false;
-      });
-
-    var $sortBy = $('#sort-by');
-    $('#shuffle').click(function(){
-      $container.isotope('shuffle');
-      $sortBy.find('.active').removeClass('active');
-      $sortBy.find('[data-option-value="random"]').addClass('active');
-      return false;
-    });
-
-
-  });
-

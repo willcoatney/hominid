@@ -1,3 +1,8 @@
+jQuery.fn.center = function () {
+  this.css("position","absolute");
+  this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+  return this;
+}
 
 $(document).ready(function(){
 
@@ -9,7 +14,18 @@ $(document).ready(function(){
    $('input#county').val(blarg[2].toString())
   });
 
-  $('.chzn-select').chosen();
+
+ $('.chzn-select').chosen();
+
+ $('.fadeIn').fadeIn();
 
 })
 
+$(window).on('resize', function (){
+  $('.center').center()
+});
+
+$(window).on('load',function(){
+ $('.center').center()
+
+});

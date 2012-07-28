@@ -1,11 +1,14 @@
 
-.row
-  - user = typeof(udata) != 'undefined' ? udata : {}
+.row.fadeIn
 
+  - user = typeof(udata) != 'undefined' ? udata : {}
   input(type='hidden', value= user._id)#userId
 
+  tag1 = user.tags[0]
+  tag2 = user.tags[1]
+  tag3 = user.tags[2]
 
-  .headers.center.fadeIn
+  .headers.center
     a.header(href='#')#home Home
     a.header(href='#')#account Profile
     a.header(href='#')#offer Offer
@@ -13,24 +16,28 @@
     a.header.disabled Metrics
     a.header(href='#')#help Help
 
-  // .alert.alert-block.alert-error.fade.in
-  //   h4.alert-heading Herp and derp
-  //   p Some stuff
-
   form(method="post")#account-form
     .widgets
 
       .steady#home
         .inner
           .greeting
-            h2 Hi, #{user.user}.
-            h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
+            :stylus
+              h1
+                text-align center
+            :markdown
+              # Hi, #{user.user}.
+              Manage everything in one page. We like to keep things simple. If you ever need help, just click the help icon, or simply go to the [help](#help) section.
+              
+              ---
+              And don't forget to be awesome. Cheers.
+
 
       .widget.form-horizontal#account.jsHide
         .widget-content: fieldset
           .greeting
-            h2 Got something good?
-            h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
+            :markdown
+              Here is your profile page. Don't even think about changing your username or customer number.
           #user-cg.control-group
             label.control-label(for='user-tf') Username
             .controls
@@ -125,33 +132,51 @@
                 select.chzn-select(name='cat', data-placeholder='Choose One')
                   option= ''
                   each c in CT.cats
-                    option= c.name
+                    if c.name != user.cat
+                      option= c.name
+                    else
+                      option(selected)= c.name
 
             #tags-cg
-              mixin tags( t, i )
-                .control-group(id= t[i].name).jsHide
-                  label.control-label Tags
-                  .controls#tags
-                    select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
-                      optgroup(label= t[i].name+' Tags')
-                        for j in t[i].tags
-                          option= j
-                      optgroup(label= 'Wildcards')
-                        option Fun
-                        option Free
-                        option Now
 
-              mixin tags( CT.cats, 0 )
-              mixin tags( CT.cats, 1 )
-              mixin tags( CT.cats, 2 )
-              mixin tags( CT.cats, 3 )
-              mixin tags( CT.cats, 4 )
+              each c in CT.cats
+                if c.name != user.cat
+                  .control-group(id= c.name).jsHide
+                    label.control-label Tags
+                    .controls#tags
+                      select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                        optgroup(label= c.name+' Tags')
+                          each j in c.tags
+                            option= j
+                        optgroup(label= 'Wildcards')
+                          each w in CT.wildcards
+                            option= w.wildcard
+                else
+                  .control-group(id= c.name)
+                    label.control-label Tags
+                    .controls#tags
+                      select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                        optgroup(label= c.name+' Tags')
+                          each r in c.tags
+                            if r==tag1 || r==tag2 || r==tag3
+                              option(selected)= r
+                            else
+                              option= r
+                        optgroup(label= 'Wildcards')
+                          each r in CT.wildcards
+                            if r.wildcard==tag1 || r.wildcard==tag2 || r.wildcard==tag3
+                              option(selected)= r.wildcard
+                            else
+                              option= r.wildcard
 
 
             .control-group
               label.control-label Details
               .controls
                 textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
+                :stylus
+                  textarea
+                    height 50px
 
         .widget.form-horizonal#preview
           .widget-content
@@ -186,8 +211,14 @@
   
             .clearfix
             fieldset
-              label.control-label Publish?
+              :markdown
+                What the fuck is happening, bro
               .controls
+                :stylus
+                  .input-append
+                    text-align center
+                    input
+                      margin 0
                 .input-append
                   input.span2(type='text', name='publish', value= user.publish, placeholder='Yes/No')
                   button(type='submit').account-form-btn2.btn.btn-success Update

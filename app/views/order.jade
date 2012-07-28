@@ -1,28 +1,55 @@
 
-.order-wrapper:.order-container
-  ul.filter.option-set(filter-group='cat')
-    li: a(filter-value='.*') All
-    each c in CT.cats
-      li: a(filter-value='.'+c.name)= c.name
+.order-wrapper:.order-container.fadeIn
+  #steps.center
+    .step.cats
+      
+      p I want to
 
-  mixin tags( o, m )
-    ul.filter.option-set(filter-group= o[m].name +'tags')
-      each l in o[m].tags
-        li: a(filter-value='.'+ l)= l
+      ul.option-set(filter-group='cats')
+        each h in CT.cats
+          li: a(filter-value='.'+h.name, href= '#'+h.name )= h.verb
+        li: a(filter-value='.Wildcard', href= '#Wildcard' ) do
 
-  mixin tags( CT.cats, 0 )
-  mixin tags( CT.cats, 1 )
-  mixin tags( CT.cats, 2 )
-  mixin tags( CT.cats, 3 )
-  mixin tags( CT.cats, 4 )
 
-  ul.filter.option-set(filter-group='wildcards')
-    li: a(filter-value='.*') All
-    each c in CT.wildcards
-      li: a(filter-value='.'+c.wildcard)= c.wildcard
+    // h2.foobar derpaherp
 
-  ul.filter.option-set(filter-group='county')
-    li: a(filter-value='.*') All
-    each c in CT.counties
-      li: a(filter-value='.'+c.county)= c.county
+    .step.sorts
+      p the
+
+      ul.option-set
+        li: a.link(href='#newest') newest
+        li: a.link(href='#cheapest') cheapest
+
+    .step.tags
+
+      mixin tags( o, m )
+        ul.option-set(filter-group='tags', class= o[m].name )
+          each l in o[m].tags
+            li: a(filter-value='.'+ l)= l
+
+      mixin tags( CT.cats, 0 )
+      mixin tags( CT.cats, 1 )
+      mixin tags( CT.cats, 2 )
+      mixin tags( CT.cats, 3 )
+      mixin tags( CT.cats, 4 )
+
+      ul.option-set(filter-group='tags', class='Wildcard')
+        each c in CT.wildcards
+          li: a(filter-value='.'+c.wildcard)= c.wildcard
+
+    .step.tag-handler
+      each o in CT.cats
+        p(class= o.name) #{o.name} in
+      p(class= 'Wildcard') thing in
+
+    .step.area
+      ul.option-set(filter-group='areas')
+        each a in CT.counties
+          li: a(filter-value='.'+ a.county)= a.county
+      p county
+
+    //   ul.filter.option-set(filter-group='county').jsHide
+    //     li: a(filter-value='.*') All
+    //     each c in CT.counties
+    //       li: a(filter-value='.'+c.county)= c.county
 

@@ -688,6 +688,8 @@
 
 //    MAIN
 
+
+
 .main-inner
   padding-top 30px
 
@@ -761,6 +763,10 @@ body
 	padding  0
 	height  100%
 	background #fbfbfb!important
+
+// body > .wrapper > .inner
+//   height 100%!important
+
 
 // account form on signup & home page //
 
@@ -855,7 +861,7 @@ Fbody()
   Ffamily()
   font-size 16px
   line-height 30px
-  color #444
+  color #666
 
 Fheaders()
   Ffamily()
@@ -959,8 +965,8 @@ li [class*=" icon-"]
     padding 0 10px 20px
     color #454545
     overflow visible
-  p
-    color white
+  // p
+  //   color white
 
 
 //    COUPON-CONTAINER
@@ -993,31 +999,35 @@ ff = 12px
     border-bottom 20px transparent solid
     border-left 1px white solid
     border-right 1px #ccc solid
+    color #555
     &:first-child
       border-left-width 0
       padding-left 30px
     &:last-child
       border-right-width 0
       padding-right 30px
+    &:hover
+      color #2585ce
     &.disabled
       cursor pointer
-      color #bbb
+      color #ccc
+
 
 #preview
   .coupon
     margin 0 auto
     float none
 
-.coupon
-  width 255px
-  float left
-  margin 10px
-  box-shadow 0 2px 5px 0 #555
-  font-size ff
-  line-height ff + 5
-  background whiteSmoke
-  box-shadow 0 1px 3px rgba(0,0,0,0.50)
-  border-top 1px solid white
+// .coupon
+//   width 255px
+//   float left
+//   margin 10px
+//   box-shadow 0 2px 5px 0 #555
+//   font-size ff
+//   line-height ff + 5
+//   background whiteSmoke
+//   box-shadow 0 1px 3px rgba(0,0,0,0.50)
+//   border-top 1px solid white
 
 
 
@@ -1033,21 +1043,85 @@ ff = 12px
 .order-wrapper
   box-shadow inset 0 13px 26px -10px #000
   background #2b2b2b url(../vendor/img/low_contrast_linen.png) repeat 0 0
-  padding 20px
   overflow hidden
 
   .order-container
     width 80%
     max-width 1080px
+    margin 0 auto
+  p
+    display inline-block
+    color whiteSmoke
+    padding 10px
 
-.option-set
-  float left
+Step(o)
+  background whiteSmoke
+  border-radius (o)
+  display inline-block
+  vertical-align middle
+  box-shadow 0 1px 3px black
+  position relative
+  padding 3px 0 8px
+  margin 0
   li
     list-style-type none
     padding 0px 14px
   a
-    color white
+    color #555
     font-size 12px
+    text-transform lowercase
+    text-decoration none
+    text-shadow 0 1px 0 white
+    cursor pointer
+    &.active
+      color #111
+      border-bottom 1px dashed #555
+    &.inactive
+      color #ccc
+
+#steps
+  padding 10px
+  display inline-block
+  .step
+    display inline-block
+    &.sorts>ul
+      border-radius 3px 0 0 3px
+      text-align right
+    &.tags
+      Step(0 3px 3px 0, transparent)
+      width 100px
+      ul
+        display none
+        margin 0
+      &:before
+        border none
+    &.tag-handler
+      width 90px
+      margin-left -5px
+      p
+        display none
+        text-transform lowercase
+        text-align center
+        width 100%
+        padding 0
+
+
+
+.step.cats>ul
+.step.sorts>ul
+.step.area>ul
+  Step(3px)
+  &:before
+    content ''
+    position absolute
+    right 100%
+    width 0
+    height 0
+    border-top 4px solid transparent
+    border-right 5px solid whiteSmoke
+    border-bottom 4px solid transparent
+    margin-top -4px
+    top 50%
 
 .dull
   i
@@ -1321,6 +1395,8 @@ HL = white
   #offer-nav
     padding-top G - b
     margin 0
+    ul
+      margin 0
     
 
 .steady
@@ -1332,9 +1408,10 @@ HL = white
   .widget-content
     position relative
     // width 80%
-    padding 40px
+    padding 40px 40px 50px
     margin 0 auto
     max-width 600px
+    left 15px
 
 .greeting
   padding-bottom 40px

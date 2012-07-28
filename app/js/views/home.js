@@ -6,11 +6,11 @@ jQuery(function($){
   .css('color','#555')
 });
 
-jQuery.fn.center = function () {
-  this.css("position","absolute");
-  this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
-  return this;
-}
+// jQuery.fn.center = function () {
+//   this.css("position","absolute");
+//   this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+//   return this;
+// }
 
 $(document).ready(function(){
 
@@ -74,7 +74,7 @@ $(document).ready(function(){
 
   $('#account-form .widgets>#offer>.widget*').hide()
 
-  $('.center').center()
+  /* $('.center').center() */
 
   $('ul.chzn-results>li:contains("locked")').addClass('group-result').removeClass('group-option').css({display:"list-item"});
 
@@ -85,9 +85,9 @@ $(function(){
     $('.fadeIn').fadeIn()
   });
 
-  $(window).on('resize', function (){
-    $('.center').center()
-  });
+  // $(window).on('resize', function (){
+  //   $('.center').center()
+  // });
 
   $('#category .chzn-results>li').on('click', function(){
     var txt = $(this).text()

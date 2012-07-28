@@ -3,6 +3,10 @@ var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 var moment = require('moment');
 
+var Dates = new mongoose.Schema({
+  updated: String
+  ,derp: String
+});
 
 var OfferSchema = new mongoose.Schema({
   cust: String,
@@ -24,9 +28,9 @@ var OfferSchema = new mongoose.Schema({
   location: [],
   cat: String,
   tags: [],
-  date_start: String,
-  date_end: String,
+  logo: [],
   date: String,
+  date_numeric: Number,
   publish: String
 });
 
@@ -103,34 +107,33 @@ Offer.signup = function(newData, callback)
 
 // update db%
 
-Offer.update = function(newData, callback) 
+Offer.update = function( q , callback) 
 {		
-	Offer.findOne({user:newData.user}, function(e, o){
-		o.name            = newData.name;
-		o.email           = newData.email;
-		o.business_name   = newData.business_name;
-		o.business_phone  = newData.business_phone;
-		o.coupon_title    = newData.coupon_title;
-		o.coupon_body     = newData.coupon_body;
-		o.coupon_supra = newData.coupon_supra;
-		o.coupon_sub = newData.coupon_sub;
-		o.coupon_price = newData.coupon_price;
-		o.address_street  = newData.address_street;
-		o.address_city    = newData.address_city;
-		o.address_state   = newData.address_state;
-		o.address_zip     = newData.address_zip;
-		o.county    = newData.county;
-		o.location = newData.location;
-		o.cat = newData.cat;
-		o.tags = newData.tags;
-		o.publish = newData.publish;
-		o.date_start = moment(newData.date_start || "333").format("YYYY MM DD hh mm");
-		o.date_end = moment(newData.date_end || "333").format("YYYY MM DD hh mm");
-		o.date = new Date();
-		if (newData.pass == ''){
+	Offer.findOne({user: q.user}, function(e, o){
+		o.name            = q.name;
+		o.email           = q.email;
+		o.business_name   = q.business_name;
+		o.business_phone  = q.business_phone;
+		o.coupon_title    = q.coupon_title;
+		o.coupon_body     = q.coupon_body;
+		o.coupon_supra = q.coupon_supra;
+		o.coupon_sub = q.coupon_sub;
+		o.coupon_price = q.coupon_price;
+		o.address_street  = q.address_street;
+		o.address_city    = q.address_city;
+		o.address_state   = q.address_state;
+		o.address_zip     = q.address_zip;
+		o.county    = q.county;
+		o.location = q.location;
+		o.cat = q.cat;
+		o.tags = q.tags;
+		o.publish = q.publish;
+		o.date = moment();
+		o.date_numeric = moment().format('YYYYMMDDHHmmss');
+		if ( q.pass == ''){
 			o.save(); callback(o);
 		}	else{
-			Offer.saltAndHash(newData.pass, function(hash){
+			Offer.saltAndHash( q.pass, function(hash){
 				o.pass = hash;
 				o.save(); callback(o);			
 			});

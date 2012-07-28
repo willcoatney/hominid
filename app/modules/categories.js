@@ -4,30 +4,45 @@ var CT = {}
 
 
 CT.cats = [
-   { name: "Food", tags: [
+  {
+  name: "Food",
+  verb: "eat",
+    tags: [
      "Healthy"
     ,"Filling"
     ,"Savory"
     ,"Sweet"
     ]}
- , { name: "Drink", tags: [
+ ,{
+   name: "Drink",
+   verb: "drink",
+   tags: [
       "Hard"
     , "Imported"
     , "Mixed"
     ]}
- , { name: "Product", tags: [
+ ,{
+   name: "Product",
+   verb: "buy",
+   tags: [
       "Cool"
     , "Fun"
     , "Pretty"
     , "Useful"
     ]}
- , { name: "Service", tags: [
+ ,{
+   name: "Service",
+   verb: "hire",
+   tags: [
       "Mechanical"
     , "Personal"
     , "Professional"
     , "Technical"
     ]}
- , { name: "Event", tags: [
+ ,{ 
+   name: "Event", 
+   verb: "go to", 
+   tags: [
       "Exciting"
     , "Funny"
     , "Inspiring"
@@ -38,7 +53,7 @@ CT.cats = [
 CT.wildcards = [
    { wildcard: "Fun" }
   ,{ wildcard: "Free" }
-  ,{ wildcard: "Now" }
+  ,{ wildcard: "Social" }
 ];
 
 
