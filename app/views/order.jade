@@ -1,3 +1,4 @@
+// .foo FOOBAR
 
 .order-wrapper:.order-container.fadeIn
   #steps.center
@@ -13,20 +14,24 @@
 
     // h2.foobar derpaherp
 
-    .step.sorts
+    .step.sorts.jsOpacity
       p the
 
       ul.option-set
         li: a.link(href='#newest') latest
         li: a.link(href='#cheapest') cheapest
-        li: a.link(href='#newest') best
+        li: a.link.disabled nearest
+        li: a.link.disabled best
 
-    .step.tags
+    .step.tags.jsOpacity
 
       mixin tags( o, m )
         ul.option-set(filter-group='tags', class= o[m].name )
-          each l in o[m].tags
-            li: a(filter-value='.'+ l)= l
+          i.icon-caret-up.slide.prev
+          for l in o[m].tags
+            li.tag: a(filter-value='.'+ l)= l
+          i.icon-caret-down.slide.next
+          // .scroll
 
       mixin tags( CT.cats, 0 )
       mixin tags( CT.cats, 1 )
@@ -38,19 +43,14 @@
         each c in CT.wildcards
           li: a(filter-value='.'+c.wildcard)= c.wildcard
 
-    .step.tag-handler
+    .step.tag-handler.jsOpacity
       each o in CT.cats
         p(class= o.name) #{o.name} in
       p(class= 'Wildcard') activity in
 
-    .step.area
+    .step.area.jsOpacity
       ul.option-set(filter-group='areas')
         each a in CT.counties
           li: a(filter-value='.'+ a.county)= a.county
       p county.
-
-    //   ul.filter.option-set(filter-group='county').jsHide
-    //     li: a(filter-value='.*') All
-    //     each c in CT.counties
-    //       li: a(filter-value='.'+c.county)= c.county
 

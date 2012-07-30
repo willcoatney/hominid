@@ -34,6 +34,11 @@
 .jsHide
   display none
 
+.jsOpacity
+  opacity 0
+  // width 0
+  // visibility none
+
 
 .hidden
   display none
@@ -366,10 +371,10 @@
     width: auto
     padding: 0
 
-  .navbar .brand
-    padding-left: 10px
-    padding-right: 10px
-    margin: 0 0 0 -5px
+  // .navbar .brand
+  //   padding-left: 10px
+  //   padding-right: 10px
+  //   margin: 0 0 0 -5px
 
   .navbar .nav-collapse
     clear: left
@@ -446,7 +451,7 @@
   .btn-navbar
     display: block
     background none
-    margin -4px 50px 16px!important
+    // margin -4px 50px 16px!important
     &:hover
       background none
       box-shadow inset 0 2px 20px rgba(0, 0, 0, 0.1),0 1px 3px rgba(255, 255, 255, 0.05)
@@ -868,7 +873,8 @@ Fheaders()
   font-weight normal
 
 body
-  background: #CBCCD1 url(../vendor/img/groovepaper.png) repeat 0 0
+  background: #fefefe url(../vendor/img/groovepaper.png) repeat 0 0
+  background: #fefefe
   Fbody()
 
 
@@ -1040,14 +1046,16 @@ ff = 12px
   text-shadow 0 1px 0 #fff
 
 .order-wrapper
-  // box-shadow inset 0 13px 26px -10px #000
-  // background #2b2b2b url(../vendor/img/low_contrast_linen.png) repeat 0 0
-  overflow hidden
+  box-shadow inset 0 13px 26px -10px #000
+  background #2b2b2b url(../vendor/img/low_contrast_linen.png) repeat 0 0
+  // overflow hidden
+  user-select none
 
   .order-container
-    width 80%
-    max-width 1080px
-    margin 0 auto
+    // width 80%
+    // max-width 1080px
+    // margin 0 auto
+
   p
     display inline-block
     color white
@@ -1058,12 +1066,8 @@ ff = 12px
 
 
 Step(o)
-  // background white
+  background white
   border-radius (o)
-  // background-image linear-gradient(top, white 0%, #Ebecee 100%)
-  background-image linear-gradient(top, #31597A 0%, #2A4D69 100%)
-
-
   border-bottom #fafafa
   display inline-block
   vertical-align middle
@@ -1075,24 +1079,58 @@ Step(o)
     list-style-type none
     padding 0px 14px
   a
-    color #e8eef2
+    color #555
     font-size 12px
     text-transform lowercase
     text-decoration none
-    // text-shadow 0 1px 1px white, 0 -1px -1px white
     cursor pointer
     &.active
       color #111
       border-bottom 1px dashed #555
     &.inactive
       color #ccc
+    &.disabled
+      color #ddd
+      cursor default
+      border none
+
+.slide
+  h = 20px
+  j = round(h * 0.85)
+  l = round(h * 0.1)
+  transition-duration 100ms
+  position absolute
+  cursor pointer
+  background white
+  font-size h
+  line-height j
+  left 35%
+  color #999
+  // padding 0 (h / 2)
+  opacity 0.5
+  width 80%
+  left 10%
+  text-align center
+
+  &.prev
+    top - j
+    border-radius l l 0 0
+  &.next
+    bottom - j
+    border-radius 0 0 l l
+  &:hover
+    opacity 0.9
+
 
 #steps
-  padding 13px 10px 10px
+  padding 13px 0
   display inline-block
+  position absolute
   background url(../vendor/img/line.png) center repeat-x
   .step
     display inline-block
+    // &.cats
+    //   margin-left 30%
     &.sorts>ul
       border-radius 3px 0 0 3px
       text-align right
@@ -1106,7 +1144,7 @@ Step(o)
       &:before
         border none
     &.tag-handler
-      width 90px
+      width 100px
       margin-left -5px
       p
         display none
@@ -1121,17 +1159,17 @@ Step(o)
 .step.sorts>ul
 .step.area>ul
   Step(3px)
-  // &:before
-  //   content ''
-  //   position absolute
-  //   right 100%
-  //   width 0
-  //   height 0
-  //   border-top 4px solid transparent
-  //   border-right 5px solid white
-  //   border-bottom 4px solid transparent
-  //   margin-top -4px
-  //   top 50%
+  &:before
+    content ''
+    position absolute
+    right 100%
+    width 0
+    height 0
+    border-top 4px solid transparent
+    border-right 5px solid white
+    border-bottom 4px solid transparent
+    margin-top -4px
+    top 50%
 
 .dull
   i
@@ -1174,45 +1212,7 @@ HL = white
     width 100%
     text-align center
     margin-bottom 0
-  .brand-container
-    position absolute
-    .inner
-      &:hover
-        .brand
-          color HL
-      text-decoration none
-      display block
-      position relative
-      width 100px
-      top -10px
-      left 20px
-      .brand
-        right -100px
-        top -2px
-        position absolute
-        padding 0
-        margin 0
-        font-family "mic-32-new-web", Helvetica
-        font-size 32px
-        font-weight 600
-        color desaturate(HL, 100%)
-        // text-shadow 0 1px -7px white
-        letter-spacing -1px
-        z-index 20
-        span.title
-          display inline-block
-          width 100%
-        span.subscript
-          font-size 11px
-          font-weight 400
-          vertical-align top
-          display inline-block
-          color HL
-      #canvas
-        top -75px
-        left -65px
-        position absolute
-        transform scale(0.3)
+
 
   .search-query
     background-color: #444

@@ -1,5 +1,8 @@
 // isotope
 //
+var doneOnce = {}
+
+
 $.Isotope.prototype._getCenteredMasonryColumns = function() {
   this.width = this.element.width();
   
@@ -104,31 +107,15 @@ $(function(){
     }
     
     if ( $step.hasClass('cats')){
-      /* $step.siblings('.tags').css('display','inline-block') */
 
       var $catSelector = $this.attr('href').slice(1);
       var $catTag = $('.step.tags').children('ul.'+ $catSelector )
       var $catHandler = $step.siblings('.tag-handler').children('p.'+ $catSelector )
 
-
-      var $sortLi = $('.step.sorts li').css('line-height')
-      $('.step.tags').animate({
-        height: $catTag.height()
-      })
-      $('.step.sorts ul').animate({
-        height: $catTag.height()
-      })
-      // $('.step.sorts li:first').animate({
-      //   margin: $catTag.height()/2 + ' 0 0'
-      // })
-
-      $catTag.css('display','inline-block')
-
-
+      $catTag.css('display','block')
       $catTag.siblings().hide()
       $catHandler.css('display','inline-block')
       $catHandler.siblings().hide()
-
     }
 
 
@@ -145,10 +132,47 @@ $(function(){
     var selector = isoFilters.join('');
     $container.isotope({ filter: selector });
 
+    if (doneOnce != true){
+      $('#steps').children().css('display','inline-block')
+      $('.step.sorts,.step.tags,.step.tag-handler,.step.area').animate({
+        opacity: 1
+      });
+      $('.center').center()
+      doneOnce = true;
+    }
+
     return false;
   });
 
 
+  $('.slide').on('click',function(){
+    if($(this).hasClass('prev')){
+      var $this = $(this);
+      if($this.next().hasClass('v')){
+        $this.hide()
+        return false;
+      }
+      $(this).siblings('li.v').prev('.h').show().removeClass('h').addClass('v')
+      $(this).siblings('li.v:last').hide().removeClass('v').addClass('h')
+      $(this).siblings('.slide').show()
+      if($this.next().hasClass('v')){
+        $this.hide()
+      }
+    }
+    if($(this).hasClass('next')){
+      var $this = $(this);
+      if($this.prev().hasClass('v')){
+        $this.hide()
+        return false;
+      }
+      $(this).siblings('li.v + li.h').show().removeClass('h').addClass('v')
+      $(this).siblings('li.v:first').hide().removeClass('v').addClass('h')
+      $(this).siblings('.slide').show()
+      if($this.prev().hasClass('v')){
+        $this.hide()
+      }
+    }
+  });
 
   $('.step.sorts a').click(function(){
     var sortName = $(this).attr('href').slice(1);
@@ -156,14 +180,6 @@ $(function(){
     return false;
   });
 
-  // var $sortBy = $('.step.sort ');
-  // $('#shuffle').click(function(){
-  //   $container.isotope('shuffle');
-  //   $sortBy.find('.active').removeClass('active');
-  //   $sortBy.find('[data-option-value="random"]').addClass('active');
-  //   return false;
-  // });
-    
   
   // change size of clicked coupon
   $container.delegate( '.coupon .large-toggle', 'click', function(){
@@ -176,35 +192,6 @@ $(function(){
     $container.isotope('reLayout');
   });
 
-  // toggle variable sizes of all coupons
-  // $('#toggle-sizes').find('a').click(function(){
-  //   $container
-  //     .toggleClass('variable-sizes')
-  //     .isotope('reLayout');
-  //   return false;
-  // });
-
-
-
-
-  // $('#tags a').on('click', function (){
-  //   var $this = $(this)
-  //   if($this.hasClass('active')){return;};
-  //   $this.addClass('active')
-  //   $this.siblings().removeClass('active').hide()
-
-  // });
-
-
-
-
-
-
-
-
-
-
-
   $('.date').each(function(){
     var h = $(this).html()
     $(this).text(moment(h).fromNow())
@@ -215,12 +202,14 @@ $(window).on('load', function (){
 
   $('.order-container').height($('#steps').innerHeight())
 
-  // $('.step.tags').css('min-width', '100px')
+  $('.slide.prev').hide()
+  $('div#steps').children('.step').not('.cats').hide()
 
-  // $('.step.tag-handler').width('100px')
-
-  $('.step.tags').height($('.step.sorts>ul').height())
-  /* $('.step.sorts>ul').width($('.step.tags').width()) */
+  $('div.step.tags ul').each(function(){
+    $(this).children('li:lt(4)').show().addClass('v')
+    $(this).children('li:gt(3)').hide().addClass('h')
+  })
+                            
 
   $('.center').center()
   $('.coupon-container').isotope('reLayout')

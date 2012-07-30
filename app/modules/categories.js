@@ -9,8 +9,10 @@ CT.cats = [
   verb: "eat",
     tags: [
      "Healthy"
+    ,"Creamy"
     ,"Filling"
     ,"Savory"
+    ,"Spicy"
     ,"Sweet"
     ]}
  ,{
