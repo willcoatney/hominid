@@ -14,7 +14,7 @@
 
 
 /** Base Body Styles **/
-body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'Open Sans';}
+/* body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'Open Sans';} */
 
 
 .account-container {
@@ -22,15 +22,6 @@ body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'O
 	display: block;
 	margin: 60px auto 0 auto;
 	
-	background: #f9f9f9;
-	
-	border: 1px solid #d5d5d5;
-	
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-
-	box-shadow:  0px 0px 2px #dadada, inset 0px -3px 0px #e6e6e6;
 }
 
 .content {

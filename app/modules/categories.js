@@ -19,7 +19,8 @@ CT.cats = [
    name: "Drink",
    verb: "drink",
    tags: [
-      "Hard"
+      "Alcoholic"
+    , "Caffeinated"
     , "Rich"
     , "Smooth"
     , "Strong"
@@ -28,8 +29,9 @@ CT.cats = [
    name: "Product",
    verb: "buy",
    tags: [
-      "Cool"
-    , "Fun"
+      "Comfortable"
+    , "Electronic"
+    , "New"
     , "Pretty"
     , "Useful"
     ]}
@@ -38,6 +40,7 @@ CT.cats = [
    verb: "hire",
    tags: [
       "Mechanical"
+    , "Outdoor"
     , "Personal"
     , "Professional"
     , "Technical"
@@ -46,7 +49,8 @@ CT.cats = [
    name: "Event", 
    verb: "go to", 
    tags: [
-      "Exciting"
+      "Artistic"
+    , "Exciting"
     , "Funny"
     , "Inspiring"
     , "Relaxing"
@@ -54,7 +58,8 @@ CT.cats = [
 ];
 
 CT.wildcards = [
-   { wildcard: "Fun" }
+   { wildcard: "Family"}
+  ,{ wildcard: "Fun" }
   ,{ wildcard: "Free" }
   ,{ wildcard: "Social" }
 ];
