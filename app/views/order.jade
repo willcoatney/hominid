@@ -17,8 +17,9 @@
       p the
 
       ul.option-set
-        li: a.link(href='#newest') newest
+        li: a.link(href='#newest') latest
         li: a.link(href='#cheapest') cheapest
+        li: a.link(href='#newest') best
 
     .step.tags
 
@@ -40,13 +41,13 @@
     .step.tag-handler
       each o in CT.cats
         p(class= o.name) #{o.name} in
-      p(class= 'Wildcard') thing in
+      p(class= 'Wildcard') activity in
 
     .step.area
       ul.option-set(filter-group='areas')
         each a in CT.counties
           li: a(filter-value='.'+ a.county)= a.county
-      p county
+      p county.
 
     //   ul.filter.option-set(filter-group='county').jsHide
     //     li: a(filter-value='.*') All

@@ -18,8 +18,9 @@ CT.cats = [
    verb: "drink",
    tags: [
       "Hard"
-    , "Imported"
-    , "Mixed"
+    , "Rich"
+    , "Smooth"
+    , "Strong"
     ]}
  ,{
    name: "Product",

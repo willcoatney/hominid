@@ -4,6 +4,7 @@
   - user = typeof(udata) != 'undefined' ? udata : {}
   input(type='hidden', value= user._id)#userId
 
+
   tag1 = user.tags[0]
   tag2 = user.tags[1]
   tag3 = user.tags[2]
@@ -12,9 +13,20 @@
     a.header(href='#')#home Home
     a.header(href='#')#account Profile
     a.header(href='#')#offer Offer
-    a.header.disabled Report
     a.header.disabled Metrics
+    a.header(href='#')#features Features
     a.header(href='#')#help Help
+
+  // :stylus
+  //   #foo
+  //     position absolute
+  //     bottom 100px
+  // form#foo(method='post',action='/new',enctype='multipart/form-data')
+  //   p Hey there
+  //   input(type='file', name='file')
+  //   input.btn(type='submit')
+
+
 
   form(method="post")#account-form
     .widgets
@@ -31,6 +43,7 @@
               
               ---
               And don't forget to be awesome. Cheers.
+
 
 
       .widget.form-horizontal#account.jsHide
@@ -212,7 +225,7 @@
             .clearfix
             fieldset
               :markdown
-                What the fuck is happening, bro
+                Some markdown
               .controls
                 :stylus
                   .input-append

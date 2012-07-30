@@ -1,10 +1,10 @@
-// module dependencies
-/* var CT  = require('./modules/country-list'); */
+
+
 var Offer  = require('./modules/account-manager');
+var Image = require('./modules/account-manager');
 var EM  = require('./modules/email-dispatcher');
 
 var CT = require('./modules/categories');
-
 
 module.exports = function (app) {
 
@@ -150,6 +150,26 @@ module.exports = function (app) {
 	    }
 	});
 
+
+
+  app.post("/new", function(req, res) {
+    var application, opts;
+    application = new Image();
+    application.name = req.body.name;
+    opts = {
+      content_type: req.files.file.type
+    };
+    return application.addFile(req.files.file, opts, function(err, result) {
+      return res.redirect("/");
+    });
+  });
+  app.get("/file/:id", function(req, res) {
+    return Image.get(req.params.id, function(err, file) {
+      res.header("Content-Type", file.type);
+      res.header("Content-Disposition", "attachment; filename=" + file.filename);
+      return file.stream(true).pipe(res);
+    });
+  });
 	
 	app.post('/home', function (req, res) {
     if (req.param('user') != undefined) {
