@@ -11,40 +11,33 @@
         box-shadow 0 1px 2px rgba(0,0,0,0.2), 0 0 1px rgba(0,0,0,0.25)
         border-top 1px solid rgba(0, 0, 0, 0.05)
         color #45484E
+      .meta
+        display none
     .coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
       .meta
-        :markdown
 
-          ### #{o.cat}
-          #### #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
-           **#{ o.coupon_price}**
+        #{o.cat}
+        #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
 
       .header
-        :markdown
-          #### here's the header
+        h2 #{o.business_name}
+        #{ o.coupon_price}
 
-      p Here the #{ o.business_name}
-      p And the #{ o.address_city}, #{ o.address_state}
-      .date-wrapper Last updated 
-      .date #{ o.date}
-      .toggles
-        a.btn.btn-large.large-toggle
-          i.icon.icon-info-sign
-        a.btn.btn-large.favorite-toggle
-          i.icon.icon-heart
-      .footer
-        .details#{ o.coupon_body}
-        .phone-wrapper
-          i.icon.icon-phone  
-          .phone.
-            #{ o.business_phone}
-        .address-wrapper
-          i.icon.icon-map-marker
-          .address.
-            #{ o.address_street} <br/>
-            #{ o.address_city},  
-            #{ o.address_state}<br/>
-            #{ o.address_zip}
+      .body
+
+        p
+          | #{o.address_city}, #{o.address_state}
+        p.date #{ o.date}
+        p #{ o.coupon_body}
+      i.icon.icon-phone  
+      .phone.
+        #{ o.business_phone}
+      i.icon.icon-map-marker
+      .address.
+        #{ o.address_street} <br/>
+        #{ o.address_city},  
+        #{ o.address_state}<br/>
+        #{ o.address_zip}
 
 script(src='/vendor/moment.js') 

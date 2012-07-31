@@ -17,7 +17,6 @@ $(document).ready(function(){
 
  $('.chzn-select').chosen();
 
- $('.fadeIn').fadeIn();
 
 })
 
@@ -27,5 +26,6 @@ $(window).on('resize', function (){
 
 $(window).on('load',function(){
  $('.center').center()
+ $('.fadeIn').fadeIn();
 
 });

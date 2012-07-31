@@ -1,51 +1,28 @@
 
-:stylus
-  .brand
-    position absolute
-    font-family 'mic-32-new-web'
-    font-weight bold
-    letter-spacing -1px
-    padding-left 20px
-    padding-top 8px
-    color white
-    font-size 20px
-    text-decoration none
+// div.navbar.navbar-fixed-top
+// 
+//   div.navbar-inner
 
-div.navbar.navbar-fixed-top
+.sidebar
+  div.container:.container-inner.fadeIn
 
-  div.navbar-inner
+    a.brand(href='/') spinly
+    // canvas#canvas(width='200', height='200')
 
-    div.container:.container-inner.fadeIn
+    ul.nav.pull-right
 
-      a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
+      if user != undefined
+        li 
+          a(href='/home')
+            i.icon-home
+        li 
+          a(href='#')#btn-logout
+            i.icon-signout
 
-      a.brand(href='/') spinly
-      // canvas#canvas(width='200', height='200')
-
-      .nav-collapse.collapse(style="height: 0px")
-        ul.nav.pull-right
-
-          if user != undefined
-            // li.dropdown
-            //   a.dropdown-toggle(href='#', data-toggle='dropdown')
-            //     i.icon-user.
-            //     #{user} 
-            //     b.caret
-            // ul.dropdown-menu
-            li 
-              a(href='/home')
-                i.icon-home
-            li 
-              a(href='#')#btn-logout
-                i.icon-signout
-
-          else
-            li.dull
-              a
-                i.icon-home
-            li 
-              a(href='/login')
-                i.icon-signin
+      else
+        li.dull
+          a
+            i.icon-home
+        li 
+          a(href='/login')
+            i.icon-signin

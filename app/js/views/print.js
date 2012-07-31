@@ -200,7 +200,7 @@ $(function(){
 
 $(window).on('load', function (){
 
-  $('.order-container').height($('#steps').innerHeight())
+  $('.order-wrapper').height($('#steps').innerHeight())
 
   $('.slide.prev').hide()
   $('div#steps').children('.step').not('.cats').hide()

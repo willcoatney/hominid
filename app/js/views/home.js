@@ -54,6 +54,8 @@ $(document).ready(function(){
 	$('.modal-confirm .submit').addClass('btn-danger');
 
   $('.header').on('click', function(){
+    $(this).addClass('active')
+    $(this).siblings().removeClass('active')
     o = $(this).attr('id');
     e = $('#account-form>.widgets>#'+o)
     e.siblings().fadeOut();

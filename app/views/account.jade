@@ -1,3 +1,12 @@
+.row.fadeIn
+  .headers.center
+    a.header.active(href='#')#home Home
+    a.header(href='#')#account Profile
+    a.header(href='#')#offer Offer
+    a.header.disabled Metrics
+    a.header(href='#')#features Features
+    a.header(href='#')#help Help
+
 
 .row.fadeIn
 
@@ -9,13 +18,6 @@
   tag2 = user.tags[1]
   tag3 = user.tags[2]
 
-  .headers.center
-    a.header(href='#')#home Home
-    a.header(href='#')#account Profile
-    a.header(href='#')#offer Offer
-    a.header.disabled Metrics
-    a.header(href='#')#features Features
-    a.header(href='#')#help Help
 
   form(method="post")#account-form
     .widgets
@@ -23,15 +25,16 @@
       .steady#home
         .inner
           .greeting
-            :stylus
-              h1
-                text-align center
-            :markdown
-              # Hi, #{user.user}.
-              Manage everything in one page. We like to keep things simple. If you ever need help, just click the help icon, or simply go to the [help](#help) section.
-              
-              ---
-              And don't forget to be awesome. Cheers.
+            .row.headline
+              h1 Hi, #{user.user}.
+              | I'm glad you stopped by.
+            .row
+              .span8 If this is your first time here, you may want to take a look at the help section. Or, if you are a hard-headed charger that wants to get right down to business, go ahead and skip to the Offer section and create your first offer.
+                br
+                br
+              h4.span2
+                | Cheers,
+                | Mike
 
 
 
@@ -237,6 +240,31 @@
             li: a#offer(href='#') 2. Offer
             li: a#preview(href='#') 3. Preview & Publish
 
+
+
+      .steady#features.jsHide
+        .inner
+          .greeting
+            .row.headline
+              h1 People want more. They need less.
+              | Our goal is to bring people back to reality.
+            .row
+              .span4
+                h3 
+                  i.icon-large.icon-home
+                  |  Made by KC for KC
+                | Kansas City is our home, and we can all spend a little more time enjoying being at home.
+              .span4
+                h3 
+                  i.icon-large.icon-time
+                  |  Right Here, Right Now
+                | Like you, we love to go above and beyond for our customers.
+            .row
+              .span4
+                h3 
+                  i.icon-large.icon-time
+                  |  Right Here, Right Now
+                | Like you, we love to go above and beyond for our customers.
 
       .steady#help.jsHide
         .inner

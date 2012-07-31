@@ -26,7 +26,7 @@ CT.cats = [
     , "Strong"
     ]}
  ,{
-   name: "Product",
+   name: "Item",
    verb: "buy",
    tags: [
       "Comfortable"

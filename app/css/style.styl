@@ -2,660 +2,6 @@
 @import 'nib'
   
 
-// bootstrap
-
-.clearfix
-  *zoom: 1
-
-.clearfix:before,.clearfix:after
-  display: table
-  content: ""
-
-.clearfix:after
-  clear: both
-
-.hide-text
-  overflow: hidden
-  text-indent: 100%
-  white-space: nowrap
-
-.input-block-level
-  display: block
-  width: 100%
-  min-height: 28px
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
-  -ms-box-sizing: border-box
-  box-sizing: border-box
-
-.fadeIn
-  display none
-
-.jsHide
-  display none
-
-.jsOpacity
-  opacity 0
-  // width 0
-  // visibility none
-
-
-.hidden
-  display none
-  visibility hidden
-  position absolute
-
-.visible-phone
-  display: none
-
-.visible-tablet
-  display: none
-
-.visible-desktop
-  display: block
-
-.hidden-phone
-  display: block
-
-.hidden-tablet
-  display: block
-
-.hidden-desktop
-  display: none
-
-@media (max-width:767px)
-  .visible-phone
-    display: block
-
-  .hidden-phone
-    display: none
-
-  .hidden-desktop
-    display: block
-
-  .visible-desktop
-    display: none
-
-@media (min-width:768px) and (max-width:979px)
-  .visible-tablet
-    display: block
-
-  .hidden-tablet
-    display: none
-
-  .hidden-desktop
-    display: block
-
-  .visible-desktop
-    display: none
-
-@media (max-width:480px)
-  .nav-collapse
-    -webkit-transform: translate3d(0, 0, 0)
-
-  .page-header h1 small
-    display: block
-    line-height: 18px
-
-  input[type="checkbox"],input[type="radio"]
-    border: 1px solid #ccc
-
-  .form-horizontal .control-group>label
-    float: none
-    padding-top: 0
-    text-align: left
-
-  .form-horizontal .controls
-    margin-left: 0
-
-  .form-horizontal .control-list
-    padding-top: 0
-
-  .form-horizontal .form-actions
-    padding-left: 10px
-    padding-right: 10px
-
-  .modal
-    position: absolute
-    top: 10px
-    left: 10px
-    right: 10px
-    width: auto
-    margin: 0
-
-  .modal.fade.in
-    top: auto
-
-  .modal-header .close
-    padding: 10px
-    margin: -10px
-
-  .carousel-caption
-    position: static
-
-@media (max-width:767px)
-  body
-    padding-left: 20px
-    padding-right: 20px
-
-  .navbar-fixed-top
-    margin-left: -20px
-    margin-right: -20px
-
-  .container
-    width: auto
-
-  .row-fluid
-    width: 100%
-
-  .row
-    margin-left: 0
-
-  .row>[class*="span"],.row-fluid>[class*="span"]
-    float: none
-    display: block
-    width: auto
-    margin: 0
-
-  .thumbnails [class*="span"]
-    width: auto
-
-  // input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input
-  //   display: block
-  //   width: 100%
-  //   min-height: 28px
-  //   -webkit-box-sizing: border-box
-  //   -moz-box-sizing: border-box
-  //   -ms-box-sizing: border-box
-  //   box-sizing: border-box
-
-  .input-prepend input[class*="span"],.input-append input[class*="span"]
-    width: auto
-
-@media (min-width:768px) and (max-width:979px)
-  .row
-    margin-left: -20px
-    *zoom: 1
-
-  .row:before,.row:after
-    display: table
-    content: ""
-
-  .row:after
-    clear: both
-
-  [class*="span"]
-    float: left
-    margin-left: 20px
-
-  .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container
-    width: 724px
-
-  .span12
-    width: 724px
-
-  .span11
-    width: 662px
-
-  .span10
-    width: 600px
-
-  .span9
-    width: 538px
-
-  .span8
-    width: 476px
-
-  .span7
-    width: 414px
-
-  .span6
-    width: 352px
-
-  .span5
-    width: 290px
-
-  .span4
-    width: 228px
-
-  .span3
-    width: 166px
-
-  .span2
-    width: 104px
-
-  .span1
-    width: 42px
-
-  .offset12
-    margin-left: 764px
-
-  .offset11
-    margin-left: 702px
-
-  .offset10
-    margin-left: 640px
-
-  .offset9
-    margin-left: 578px
-
-  .offset8
-    margin-left: 516px
-
-  .offset7
-    margin-left: 454px
-
-  .offset6
-    margin-left: 392px
-
-  .offset5
-    margin-left: 330px
-
-  .offset4
-    margin-left: 268px
-
-  .offset3
-    margin-left: 206px
-
-  .offset2
-    margin-left: 144px
-
-  .offset1
-    margin-left: 82px
-
-  .row-fluid
-    width: 100%
-    *zoom: 1
-
-  .row-fluid:before,.row-fluid:after
-    display: table
-    content: ""
-
-  .row-fluid:after
-    clear: both
-
-  .row-fluid>[class*="span"]
-    float: left
-    margin-left: 2.762430939%
-
-  .row-fluid>[class*="span"]:first-child
-    margin-left: 0
-
-  .row-fluid > .span12
-    width: 99.999999993%
-
-  .row-fluid > .span11
-    width: 91.436464082%
-
-  .row-fluid > .span10
-    width: 82.87292817100001%
-
-  .row-fluid > .span9
-    width: 74.30939226%
-
-  .row-fluid > .span8
-    width: 65.74585634900001%
-
-  .row-fluid > .span7
-    width: 57.182320438000005%
-
-  .row-fluid > .span6
-    width: 48.618784527%
-
-  .row-fluid > .span5
-    width: 40.055248616%
-
-  .row-fluid > .span4
-    width: 31.491712705%
-
-  .row-fluid > .span3
-    width: 22.928176794%
-
-  .row-fluid > .span2
-    width: 14.364640883%
-
-  .row-fluid > .span1
-    width: 5.801104972%
-
-  input,textarea,.uneditable-input
-    margin-left: 0
-
-  input.span12, textarea.span12, .uneditable-input.span12
-    width: 714px
-
-  input.span11, textarea.span11, .uneditable-input.span11
-    width: 652px
-
-  input.span10, textarea.span10, .uneditable-input.span10
-    width: 590px
-
-  input.span9, textarea.span9, .uneditable-input.span9
-    width: 528px
-
-  input.span8, textarea.span8, .uneditable-input.span8
-    width: 466px
-
-  input.span7, textarea.span7, .uneditable-input.span7
-    width: 404px
-
-  input.span6, textarea.span6, .uneditable-input.span6
-    width: 342px
-
-  input.span5, textarea.span5, .uneditable-input.span5
-    width: 280px
-
-  input.span4, textarea.span4, .uneditable-input.span4
-    width: 218px
-
-  input.span3, textarea.span3, .uneditable-input.span3
-    width: 156px
-
-  input.span2, textarea.span2, .uneditable-input.span2
-    width: 94px
-
-  input.span1, textarea.span1, .uneditable-input.span1
-    width: 32px
-
-@media (max-width:979px)
-  body
-    padding-top: 0
-
-  .navbar-fixed-top
-    position: static
-    // margin-bottom: 18px
-
-  // .navbar-fixed-top .navbar-inner
-  //   padding: 5px
-
-  .navbar .container
-    width: auto
-    padding: 0
-
-  // .navbar .brand
-  //   padding-left: 10px
-  //   padding-right: 10px
-  //   margin: 0 0 0 -5px
-
-  .navbar .nav-collapse
-    clear: left
-
-  .navbar .nav
-    float: none
-    margin: 0 0 9px
-
-  .navbar .nav>li
-    float: none
-
-  .navbar .nav>li>a
-    margin-bottom: 2px
-
-  .navbar .nav>.divider-vertical
-    display: none
-
-  .navbar .nav .nav-header
-    color: #999999
-    text-shadow: none
-
-  .navbar .nav>li>a,.navbar .dropdown-menu a
-    padding: 6px 15px
-    font-weight: bold
-    color: #999999
-    border-radius: 3px
-
-  .navbar .dropdown-menu li+li a
-    margin-bottom: 2px
-
-  .navbar .nav>li>a:hover,.navbar .dropdown-menu a:hover
-    background-color: #222222
-
-  .navbar .dropdown-menu
-    position: static
-    top: auto
-    left: auto
-    float: none
-    display: block
-    max-width: none
-    margin: 0 15px
-    padding: 0
-    background-color: transparent
-    border: none
-    border-radius: 0
-    box-shadow: none
-
-  .navbar .dropdown-menu:before,.navbar .dropdown-menu:after
-    display: none
-
-  .navbar .dropdown-menu .divider
-    display: none
-
-  .navbar-form,.navbar-search
-    float: none
-    padding: 9px 15px
-    margin: 9px 0
-    border-top: 1px solid #222222
-    border-bottom: 1px solid #222222
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 0 rgba(255, 255, 255, 0.1)
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 0 rgba(255, 255, 255, 0.1)
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),0 1px 0 rgba(255, 255, 255, 0.1)
-
-  .navbar .nav.pull-right
-    float: none
-    margin-left: 0
-    padding-right 33px
-
-
-  .navbar-static .navbar-inner
-    padding-left: 10px
-    padding-right: 10px
-
-  .btn-navbar
-    display: block
-    background none
-    // margin -4px 50px 16px!important
-    &:hover
-      background none
-      box-shadow inset 0 2px 20px rgba(0, 0, 0, 0.1),0 1px 3px rgba(255, 255, 255, 0.05)
-
-  .nav-collapse
-    overflow: hidden
-    height: 0
-
-@media (min-width:980px)
-  .nav-collapse.collapse
-    height: auto
-    overflow: visible
-
-@media (min-width:1200px)
-  .row
-    margin-left: -30px
-    *zoom: 1
-
-  .row:before,.row:after
-    display: table
-    content: ""
-
-  .row:after
-    clear: both
-
-  [class*="span"]
-    float: left
-    margin-left: 30px
-
-  .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container
-    width: 1170px
-
-  .span12
-    width: 1170px
-
-  .span11
-    width: 1070px
-
-  .span10
-    width: 970px
-
-  .span9
-    width: 870px
-
-  .span8
-    width: 770px
-
-  .span7
-    width: 670px
-
-  .span6
-    width: 570px
-
-  .span5
-    width: 470px
-
-  .span4
-    width: 370px
-
-  .span3
-    width: 270px
-
-  .span2
-    width: 170px
-
-  .span1
-    width: 70px
-
-  .offset12
-    margin-left: 1230px
-
-  .offset11
-    margin-left: 1130px
-
-  .offset10
-    margin-left: 1030px
-
-  .offset9
-    margin-left: 930px
-
-  .offset8
-    margin-left: 830px
-
-  .offset7
-    margin-left: 730px
-
-  .offset6
-    margin-left: 630px
-
-  .offset5
-    margin-left: 530px
-
-  .offset4
-    margin-left: 430px
-
-  .offset3
-    margin-left: 330px
-
-  .offset2
-    margin-left: 230px
-
-  .offset1
-    margin-left: 130px
-
-  .row-fluid
-    width: 100%
-    *zoom: 1
-
-  .row-fluid:before,.row-fluid:after
-    display: table
-    content: ""
-
-  .row-fluid:after
-    clear: both
-
-  .row-fluid>[class*="span"]
-    float: left
-    margin-left: 2.564102564%
-
-  .row-fluid>[class*="span"]:first-child
-    margin-left: 0
-
-  .row-fluid > .span12
-    width: 100%
-
-  .row-fluid > .span11
-    width: 91.45299145300001%
-
-  .row-fluid > .span10
-    width: 82.905982906%
-
-  .row-fluid > .span9
-    width: 74.358974359%
-
-  .row-fluid > .span8
-    width: 65.81196581200001%
-
-  .row-fluid > .span7
-    width: 57.264957265%
-
-  .row-fluid > .span6
-    width: 48.717948718%
-
-  .row-fluid > .span5
-    width: 40.170940171000005%
-
-  .row-fluid > .span4
-    width: 31.623931624%
-
-  .row-fluid > .span3
-    width: 23.076923077%
-
-  .row-fluid > .span2
-    width: 14.529914530000001%
-
-  .row-fluid > .span1
-    width: 5.982905983%
-
-  input,textarea,.uneditable-input
-    margin-left: 0
-
-  input.span12, textarea.span12, .uneditable-input.span12
-    width: 1160px
-
-  input.span11, textarea.span11, .uneditable-input.span11
-    width: 1060px
-
-  input.span10, textarea.span10, .uneditable-input.span10
-    width: 960px
-
-  input.span9, textarea.span9, .uneditable-input.span9
-    width: 860px
-
-  input.span8, textarea.span8, .uneditable-input.span8
-    width: 760px
-
-  input.span7, textarea.span7, .uneditable-input.span7
-    width: 660px
-
-  input.span6, textarea.span6, .uneditable-input.span6
-    width: 560px
-
-  input.span5, textarea.span5, .uneditable-input.span5
-    width: 460px
-
-  input.span4, textarea.span4, .uneditable-input.span4
-    width: 360px
-
-  input.span3, textarea.span3, .uneditable-input.span3
-    width: 260px
-
-  input.span2, textarea.span2, .uneditable-input.span2
-    width: 160px
-
-  input.span1, textarea.span1, .uneditable-input.span1
-    width: 60px
-
-  .thumbnails
-    margin-left: -30px
-
-  .thumbnails>li
-    margin-left: 30px
-
-
 // ISOTOPE STYLES
 
 .thingy
@@ -792,6 +138,10 @@ body
 	raiseText()
 	color #D8000C
 
+.account-form
+  margin 0
+
+
 // retrieve password window //
 
 .modal-single-input
@@ -865,35 +215,59 @@ button i
 
 Ffamily()
   font-family 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif
+Hfamily()
+  font-family 'freight-sans-pro', 'Helvetica Neue', Helvetica, Arial, sans-serif
+
 
 Fbody()
   Ffamily()
-  font-size 16px
-  line-height 30px
+  font-size 13px
+  line-height 18px
   color #666
 
-Fheaders()
-  Ffamily()
-  color #777
-  font-weight normal
+Fheaders(i,o)
+  Hfamily()
+  color #333
+  font-weight medium
+  font-size i
+  line-height o
 
 body
   background: #fefefe url(../vendor/img/groovepaper.png) repeat 0 0
   background: #fefefe
   Fbody()
 
-
 p
   Fbody()
 
-h1,h2,h3,h4,h5,h6
-  Fheaders()
+h1
+  Fheaders( 30px, 42px )
+h2
+  Fheaders( 24px, 42px )
+h3
+  Fheaders( 18px, 31.5px )
+h4
+  Fheaders( 14px, 21px )
+h5
+  Fheaders( 12px, 21px )
+h6
+  Fheaders( 11px, 21px )
+
 
 input,
 button,
 select,
 textarea
   Ffamily()
+
+.fadeIn
+  display none
+
+.jsHide
+  display none
+
+.jsOpacity
+  opacity 0
 
 .dropdown .dropdown-menu
   border-radius: 6px
@@ -910,6 +284,10 @@ textarea
   font-size: 10px
   color: #444
   text-transform: uppercase
+
+.row
+  margin-bottom 20px
+  margin-left 0
 
 
 
@@ -935,6 +313,9 @@ padtop = 250px
       line-height 34px
       text-shadow 0 1px 0 white
       text-decoration none
+      text-transform uppercase
+      font-weight bold
+      color black
 
     &:first-child a
       border-radius 3px 0 0 3px
@@ -942,7 +323,7 @@ padtop = 250px
       border-radius 0 3px 3px 0
     &.active
       a
-        color #999
+        color blue
 
   .disabled 
     span
@@ -987,8 +368,14 @@ li [class*=" icon-"]
 
 //    COUPON
 
-ff = 12px
+CLR = #2585ce
 
+.headline
+  text-align center
+  font-weight bold
+  color desaturate(lighten(CLR, 30%), 50%)
+  h1
+    color darken(CLR, 10%)
 
 .headers
   text-align center
@@ -1001,44 +388,35 @@ ff = 12px
   display inline-block
   .header
     display inline-block
-    padding 0 20px
+    padding 20px 20px 15px
     font-size 12px
     text-decoration none
     text-shadow 0 1px 1px white
-    border-top 20px transparent solid
-    border-bottom 20px transparent solid
-    border-left 1px white solid
-    border-right 1px #ccc solid
-    color #555
-    &:first-child
-      border-left-width 0
-      padding-left 30px
-    &:last-child
-      border-right-width 0
-      padding-right 30px
+    border-bottom 5px transparent solid
+    color #333
+    font-weight bolder
+    font-family 'freight-sans-pro'
+    text-transform uppercase
     &:hover
       color #2585ce
     &.disabled
       cursor pointer
       color #ccc
+    &:first-child
+      border-left-width 0
+      margin-left 30px
+    &.active
+      border-bottom-color #2585ce
+      color #2585ce
+    &:last-child
+      border-right-width 0
+      margin-right 30px
 
 
 #preview
   .coupon
     margin 0 auto
     float none
-
-// .coupon
-//   width 255px
-//   float left
-//   margin 10px
-//   box-shadow 0 2px 5px 0 #555
-//   font-size ff
-//   line-height ff + 5
-//   background whiteSmoke
-//   box-shadow 0 1px 3px rgba(0,0,0,0.50)
-//   border-top 1px solid white
-
 
 
 //    ORDER
@@ -1183,47 +561,19 @@ Step(o)
 
 //    NAVIGATION
 
-.navbar-inner
-  background #3c6c93
-  border-radius 0
-  box-shadow none
-  // padding 15px 0 0 0
-  .container
-    padding 10px 0
-
-.navbar-fixed-top
-  position: static
-
-HL = white
-
-.navbar 
-  .nav 
-    font-size 24px
-    font-weight 400
-    margin-bottom 0
-    li
-      text-align right
-      a
-        padding 10px 14px 11px
-        text-shadow none
-        color HL
-        &:hover
-          background none
-          color HL
-  .btn
-  .btn-group
-    margin 10px
-  &.pull-right
-    width 100%
-    text-align center
-    margin-bottom 0
-
-
-  .search-query
-    background-color: #444
-    width: 150px
-    font-size: 11px
-    font-weight: bold
+.brand
+  position absolute
+  font-weight 900
+  letter-spacing -1px
+  font-size 30px
+  padding-left 20px
+  padding-top 8px
+  color black
+  text-decoration none
+  text-transform uppercase
+  &:hover
+    color white
+ 
 
 .navbar .search-query::-webkit-input-placeholder
   color: #666
@@ -1410,16 +760,16 @@ HL = white
 
 .steady
 .widget
+.widgets-group
   position absolute
-  width 100%
-  left 0
+  width 90%
+  left 5%
   .inner
   .widget-content
     position relative
-    // width 80%
-    padding 40px 40px 50px
+    padding 20px 40px 20px
     margin 0 auto
-    max-width 600px
+    max-width 650px
     left 15px
 
 .greeting
@@ -1678,7 +1028,6 @@ HL = white
   border-radius: 3px
   background-clip: padding-box
   background-color: #e4e4e4
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#eeeeee', GradientType=0 )
   background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%)
   -webkit-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05)
   -moz-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05)
@@ -1736,7 +1085,6 @@ HL = white
 
 .chzn-container .chzn-results .highlighted
   background-color: #3875d7
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3875d7', endColorstr='#2a62bc', GradientType=0 )
   background-image: linear-gradient(top, #3875d7 20%, #2a62bc 90%)
   color: #fff
 
@@ -1793,7 +1141,6 @@ HL = white
   border: 1px solid #aaa
   box-shadow: 0 1px 0 #fff inset
   background-color: #eee
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0 )
   background-image: linear-gradient(top, #eeeeee 20%, #ffffff 80%)
   border-bottom-left-radius: 0
   border-bottom-right-radius: 0
