@@ -7,6 +7,7 @@ module.exports = function (app, exp, mongoose) {
 
   var stylus = require('stylus');
   var nib    = require('nib');
+  var browserify = require('browserify');
 
   function compile(str, path) {
     return stylus(str)
@@ -24,6 +25,8 @@ module.exports = function (app, exp, mongoose) {
 		app.use(exp.session({ secret: 'bumblebeetuna' }));
 		app.use(exp.methodOverride());
 		app.use(require('stylus').middleware({debug: true, src: app.root + '/app', compile: compile }));
+		app.use(browserify({ require : { jquery: 'jquery-browserify', backbone: 'backbone-browserify'}
+    }));
 		app.use(exp.static(app.root + '/app'));
 	});
 

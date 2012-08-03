@@ -1,28 +1,10 @@
 
-// div.navbar.navbar-fixed-top
-// 
-//   div.navbar-inner
 
-.sidebar
-  div.container:.container-inner.fadeIn
+block brand
+  figure#brand
+    a(href='/') S
 
-    a.brand(href='/') spinly
-    // canvas#canvas(width='200', height='200')
-
-    ul.nav.pull-right
-
-      if user != undefined
-        li 
-          a(href='/home')
-            i.icon-home
-        li 
-          a(href='#')#btn-logout
-            i.icon-signout
-
-      else
-        li.dull
-          a
-            i.icon-home
-        li 
-          a(href='/login')
-            i.icon-signin
+block nav-top
+  nav#nav-top
+    a(href='/home')
+      i.icon-home

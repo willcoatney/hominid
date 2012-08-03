@@ -1,6 +1,13 @@
 jQuery.fn.center = function () {
   this.css("position","absolute");
   this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+  this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
+  return this;
+}
+
+jQuery.fn.vertical_center = function () {
+  this.css("position","absolute");
+  this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
   return this;
 }
 
@@ -22,10 +29,12 @@ $(document).ready(function(){
 
 $(window).on('resize', function (){
   $('.center').center()
+  $('.vertical-center').vertical_center()
 });
 
 $(window).on('load',function(){
  $('.center').center()
+ $('.vertical-center').vertical_center()
  $('.fadeIn').fadeIn();
 
 });

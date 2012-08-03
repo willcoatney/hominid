@@ -1,23 +1,29 @@
 
+require('../../vendor/js/bootstrap.min.js')
+
+
+var Color = require('color')
+var spectrum = require('../../vendor/js/spectrum.js')
+
 jQuery(function($){
   $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
-  .css('color','#555')
+  .css('color','rgba(0,0,0,0.6)')
   $('#zip-tf').mask("999999", {placeholder:"_"})
-  .css('color','#555')
+  .css('color','rgba(0,0,0,0.6)')
 });
 
-// jQuery.fn.center = function () {
-//   this.css("position","absolute");
-//   this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
-//   return this;
-// }
+$('.helper').popover({
+  trigger: 'hover',
+  title: 'help'
+})
 
 $(document).ready(function(){
+  
 
 	var hc = new HomeController();
 	var av = new AccountValidator();
 	
-	$('#account-form').ajaxForm({
+	$('form#account-form').ajaxForm({
 		beforeSubmit : function(formData, jqForm, options){
 			if (av.validateForm() == false){
 				return false;
@@ -44,69 +50,95 @@ $(document).ready(function(){
 	
 	$('#user-tf,#cust-tf').attr('disabled', 'disabled');
 
-// setup the confirm window that displays when the user chooses to delete their account //
-
-    $('.modal-confirm').modal({ show : false, keyboard : true, backdrop : true });
-    $('.modal-confirm .modal-header h3').text('Delete Account');
-    $('.modal-confirm .modal-body p').html('Are you sure you want to delete your account?');	
+  $('.modal-confirm').modal({ show : false, keyboard : true, backdrop : true });
+  $('.modal-confirm .modal-header h3').text('Delete Account');
+  $('.modal-confirm .modal-body p').html('Are you sure you want to delete your account?');	
 	$('.modal-confirm .cancel').html('Cancel');
 	$('.modal-confirm .submit').html('Delete');
 	$('.modal-confirm .submit').addClass('btn-danger');
 
-  $('.header').on('click', function(){
-    $(this).addClass('active')
-    $(this).siblings().removeClass('active')
-    o = $(this).attr('id');
-    e = $('#account-form>.widgets>#'+o)
-    e.siblings().fadeOut();
-    e.fadeIn();
+  var u = $('input#color-picker').val()
+
+  function _lighten( o ){
+    var e = Color( o ).lighten(0.6).desaturate(0.5).hexString()
+    return e;
+  }
+
+
+  $('section#sidebar>div.inner').css('backgroundColor', u )
+  $('nav#nav-top>h1').css({ borderColor: _lighten(u) })
+  $('section#logos li div').css({ backgroundColor: u })
+
+  $('nav#nav-home a').on('click', function(){
+    $this = $(this)
+    if($(this).parent().is('li.active,li.disabled')){
+      return
+    }
+
+    $this.parent().addClass('active')
+    $this.parent().siblings().removeClass('active')
+
+    var o = $this.attr('id');
+    var e = $('article>#'+o)
+    var r = $('nav#nav-top>#'+o)
+
+    $('section#content').fadeOut('fast',function(){
+      e.siblings().hide();
+      e.show();
+      r.siblings('h1').hide();
+      r.css({ display: 'inline-block' })
+
+      $(this).fadeIn('fast')
+    })
   });
 
-  $('#offer-nav>ul>li').on('click', function(){
-    $('#offer-welcome').fadeOut();
-    o = $(this).children().attr('id');
-    e = $('#account-form>.widgets>#offer>.widget#'+o)
-    e.siblings('.widget').fadeOut();
-    e.fadeIn();
+  $('#logos li').on('click',function(){
+    var t = $(this)
+    var tc = $(this).children()
+    var s = $(this).siblings('li')
+    var sc = $(this).siblings('li').children()
+    var id = $(this).children().attr('id')
 
-    $(this).siblings().removeClass('active')
-    $(this).addClass('active')
-    
+    t.addClass('selected')
+    tc.css({ opacity: '1'});
+    s.removeClass('selected')
+    sc.css({ opacity: '0.4' });
+    t.siblings('input').val( id )
+  })
+
+  $('#color-picker').spectrum({
+    color: $(this).val(),
+    move: function(o){
+      var x = o.toHexString()
+      var xl = Color(x).lighten(0.6).desaturate(0.5).hexString()
+      $('#sidebar>.inner').css("backgroundColor", x )
+      $('section#logos li div').css("backgroundColor", x )
+      $('#nav-top>h1').css("borderColor", xl )
+      $('input#color-picker').val(x)
+    }
   });
 
-  $('#account-form .widgets>#offer>.widget*').hide()
-
-  /* $('.center').center() */
 
   $('ul.chzn-results>li:contains("locked")').addClass('group-result').removeClass('group-option').css({display:"list-item"});
 
 })
 
 $(function(){
-  $(window).on('load', function(){
-    $('.fadeIn').fadeIn()
-  });
-
-  // $(window).on('resize', function (){
-  //   $('.center').center()
-  // });
 
   $('#category .chzn-results>li').on('click', function(){
     var txt = $(this).text()
-    $('#tags-cg ul.chzn-results>li').removeClass('result-selected').addClass('active-result')
-    $('#tags-cg ul.chzn-choices>li.search-choice').remove()
-    $('#tags-cg>#'+txt).siblings().hide()
-    $('#tags-cg>#'+txt).show()
-
+    $('#tags ul.chzn-results>li').removeClass('result-selected').addClass('active-result')
+    $('#tags ul.chzn-choices>li.search-choice').remove()
+    $('#tags>#'+txt).siblings().hide()
+    $('#tags>#'+txt).show()
   });
 
   $('#tags .chzn-choices').on('click', function(){
     var count = $(this).children('li').length;
-    if(count > 3){ 
+    if(count >= 3){ 
       $(this).siblings('.chzn-drop').hide();
     }else{
       $(this).siblings('.chzn-drop').show();
     }
   });
-
 });

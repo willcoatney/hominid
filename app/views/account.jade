@@ -1,287 +1,308 @@
-.row.fadeIn
-  .headers.center
-    a.header.active(href='#')#home Home
-    a.header(href='#')#account Profile
-    a.header(href='#')#offer Offer
-    a.header.disabled Metrics
-    a.header(href='#')#features Features
-    a.header(href='#')#help Help
 
 
-.row.fadeIn
+
+block sidebar
+  - user = typeof(udata) != 'undefined' ? udata : {}
+  .inner(style="background-color: #{user.color}")
+    nav#nav-home
+      ul
+        // li: a.active(href='#')#home: i.icon-home
+        li: a(href='#')#account
+          i.icon-user 
+          span profile
+        li: a(href='#')#offer
+          i.icon-tags
+          span offer
+        li.disabled: a
+          i.icon-magic
+          span metrics
+        li: a(href='#')#features
+          i.icon-th
+          span features
+        li: a(href='#')#help
+          i.icon-question-sign
+          span help
+        li: a(href='#')#logout
+          i.icon-signout
+          span logout
+
+block brand
+  figure#brand
+    a(href='/')
+
+block title-top
+  nav#nav-top
+    h1#home
+    h1#account Profile
+    h1#offer Offer
+    h1#features Features
+    h1#help Help
+
+block content
 
   - user = typeof(udata) != 'undefined' ? udata : {}
   input(type='hidden', value= user._id)#userId
 
-
-  tag1 = user.tags[0]
-  tag2 = user.tags[1]
-  tag3 = user.tags[2]
+  - var tag1 = user.tags[0]
+  - var tag2 = user.tags[1]
+  - var tag3 = user.tags[2]
 
 
   form(method="post")#account-form
-    .widgets
 
-      .steady#home
-        .inner
-          .greeting
-            .row.headline
-              h1 Hi, #{user.user}.
-              | I'm glad you stopped by.
-            .row
-              .span8 If this is your first time here, you may want to take a look at the help section. Or, if you are a hard-headed charger that wants to get right down to business, go ahead and skip to the Offer section and create your first offer.
-                br
-                br
-              h4.span2
-                | Cheers,
-                | Mike
+    article
+
+      section#home
+        div.greeting
+          :stylus
+            div.greeting
+              height 100%
+              width 100%
+
+          h3#welcome.vertical-center.fadeIn
+            | Hi, #{user.user}.
 
 
-
-      .widget.form-horizontal#account.jsHide
-        .widget-content: fieldset
-          .greeting
+      section#account.jsHide
+        div.greeting
+          div.row
             :markdown
               Here is your profile page. Don't even think about changing your username or customer number.
-          #user-cg.control-group
-            label.control-label(for='user-tf') Username
-            .controls
-              input#user-tf.disabled(type='text', name='user', value=user.user)
-          #cust-cg.control-group
-            label.control-label(for='cust-tf') Customer Number
-            .controls
-              input#cust-tf.disabled(type='text', name='cust', value=user.cust)
+        fieldset
+          li.cg#user-cg
+            label(for='user-tf') Username
+              a.helper(href='#', rel="popover", data-content='Your username cannot be changed.')
+                i.icon-question-sign.icon-large
+            input#user-tf.disabled(type='text', name='user', value=user.user)
+          li.cg#cust-cg
+            label.cl(for='cust-tf') Customer Number
+            input#cust-tf.disabled(type='text', name='cust', value=user.cust)
           
-          #pass-cg.control-group
-            label.control-label(for='pass-tf') Password
-            .controls
-              input#pass-tf(type='password', name='pass', value='')
-          #email-cg.control-group
-            label.control-label(for='email-tf') Email
-            .controls
-              input#email-tf(type='text', name='email', value= user.email)
-          .form-actions
-            button(type='button').account-form-btn1.btn.btn-danger Delete
+          li.cg#pass-cg
+            label(for='pass-tf') Password
+            input#pass-tf(type='password', name='pass', value='')
+          li.cg#email-cg
+            label(for='email-tf') Email
+            input#email-tf(type='text', name='email', value= user.email)
+
+          // li.row
+          //   .dialog-box
+          //     .alert-block.alert.jsHide
+          //       button.minimize x
+          //       h4.alert-heading Aw, snap!
+          //       p
+
+          li.cg#profile-btn-group.form-actions.btn-group
             button(type='submit').account-form-btn2.btn Update
+            button(type='button').account-form-btn1.btn.btn-danger Delete
 
 
-      .widgets-group#offer.jsHide
-        .widget.form-horizontal#business
-          .widget-content: fieldset
-            .greeting.middle
-              h3 Tell us a little about your business.
-            .control-group
-              label.control-label Business Name
-              .controls
-                input(type='text', name='business_name', value= user.business_name, placeholder='My Business')
-            #phone-cg.control-group
-                label.control-label(for='phone-tf') Business Phone
-                .controls
-                  input.span2#phone-tf(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
-            br
-            .control-group
-              label.control-label Street
-              .controls
-                input(type='text', name='address_street', value= user.address_street, placeholder='Street')
+      section#offer.jsHide
+        div.greeting
+          div.row.
+            Make and offer that your customers can't refuse.
 
-            #location.control-group
-              label.control-label City
-              .controls
-                select#location.chzn-select(name='location', data-placeholder="City")
-                  option= ""
-                  if user.address_city != ''
-                    option(selected, value= user.location )= user.address_city
-                  mixin counties(cou, i)
-                    optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
-                      for c in cou[i].cities
-                        option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
 
-                  mixin counties( CT.counties, 0 )
-                  mixin counties( CT.counties, 1 )
-                  mixin counties( CT.counties, 2 )
-                  mixin counties( CT.counties, 3 )
-                  mixin counties( CT.counties, 4 )
+        section#business
+          fieldset
+            li.cg
+              label Business Name
+              input(type='text', name='business_name', value= user.business_name, placeholder='My Business')
+            li.cg#phone-cg
+              label(for='phone-tf') Business Phone
+              input.span2#phone-tf(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
+            hr
+            li.cg
+              label Street
+              input(type='text', name='address_street', value= user.address_street, placeholder='Street')
+
+            li.cg#location
+              label City
+              select#location.chzn-select(name='location', data-placeholder="City")
+                option= ""
+                if user.address_city != ''
+                  option(selected, value= user.location )= user.address_city
+                mixin counties(cou, i)
+                  optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
+                    for c in cou[i].cities
+                      option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
+
+                mixin counties( CT.counties, 0 )
+                mixin counties( CT.counties, 1 )
+                mixin counties( CT.counties, 2 )
+                mixin counties( CT.counties, 3 )
+                mixin counties( CT.counties, 4 )
 
             input#address_city(type='hidden', name='address_city', value= user.address_city)
             input#address_state(type='hidden', name='address_state', value= user.address_state)
             input#county(type='hidden', name='county', value= user.county)
 
-            #state-cg.control-group
-              label.control-label State
-              .controls
-                span.input-small.uneditable-input= user.address_state
+            li.cg#state-cg
+              label State
+              span.input-small.uneditable-input= user.address_state
 
-            .control-group
-              label.control-label Zip
-              .controls
-                input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
+            li.cg
+              label Zip
+              input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
 
-        .widget.form-horizontal#offer
-          .widget-content: fieldset
-            .greeting.middle
-              h3 Tell us a little about your business.
-            label.control-label Offer Name
-            .control-group
-              .controls
-                input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
-            label.control-label Offer Price
-            .control-group
-              .controls
-                .input-prepend
-                  span.add-on $
-                  input.coupon-price(type='text', name='coupon_price', value= user.coupon_price)
-            br
-            .control-group
-              label.control-label Category
-              .controls#category
-                select.chzn-select(name='cat', data-placeholder='Choose One')
-                  option= ''
-                  each c in CT.cats
-                    if c.name != user.cat
-                      option= c.name
-                    else
-                      option(selected)= c.name
+        hr
 
-            #tags-cg
+
+        section#offer
+          
+           fieldset
+            li.cg
+              label Offer Name
+              input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
+            li.cg
+              label Offer Price
+              input#price-tf(type='text', name='coupon_price', value= user.coupon_price)
+            li.cg#category
+              label Offer Category
+              select.chzn-select(name='cat', data-placeholder='Choose One')
+                option= ''
+                each c in CT.cats
+                  if c.name != user.cat
+                    option= c.name
+                  else
+                    option(selected)= c.name
+
+            #tags
 
               each c in CT.cats
                 if c.name != user.cat
-                  .control-group(id= c.name).jsHide
-                    label.control-label Tags
-                    .controls#tags
-                      select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
-                        optgroup(label= c.name+' Tags')
-                          each j in c.tags
-                            option= j
-                        optgroup(label= 'Wildcards')
-                          each w in CT.wildcards
-                            option= w.wildcard
+                  li.cg(id= c.name).jsHide
+                    label Offer Tags
+                    select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                      optgroup(label= c.name+' Tags')
+                        each j in c.tags
+                          option= j
+                      optgroup(label= 'Wildcards')
+                        each w in CT.wildcards
+                          option= w.wildcard
                 else
-                  .control-group(id= c.name)
-                    label.control-label Tags
-                    .controls#tags
-                      select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
-                        optgroup(label= c.name+' Tags')
-                          each r in c.tags
-                            if r==tag1 || r==tag2 || r==tag3
-                              option(selected)= r
-                            else
-                              option= r
-                        optgroup(label= 'Wildcards')
-                          each r in CT.wildcards
-                            if r.wildcard==tag1 || r.wildcard==tag2 || r.wildcard==tag3
-                              option(selected)= r.wildcard
-                            else
-                              option= r.wildcard
+                  li.cg(id= c.name)
+                    label Offer Tags
+                    select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                      optgroup(label= c.name+' Tags')
+                        each r in c.tags
+                          if r==tag1 || r==tag2 || r==tag3
+                            option(selected)= r
+                          else
+                            option= r
+                      optgroup(label= 'Wildcards')
+                        each r in CT.wildcards
+                          if r.wildcard==tag1 || r.wildcard==tag2 || r.wildcard==tag3
+                            option(selected)= r.wildcard
+                          else
+                            option= r.wildcard
 
 
-            .control-group
-              label.control-label Details
-              .controls
+            li.cg
+              label Offer Details
+              div.c
                 textarea.input-x-large( name='coupon_body', value= user.coupon_body, placeholder='Be clear, concise, and brief')
                 :stylus
                   textarea
                     height 50px
 
-        .widget.form-horizonal#preview
-          .widget-content
-            .coupon
-              .header
-                .price
-                  .price-inner
-                    span.dollar $
-                    span.price-listing 
-                .title
-              .coupon-content
-                .business_name
-                .address
-                br
-                .date-wrapper Last updated 
-                .date 
-                br
-              .toggles
-                a.btn.btn-large.large-toggle
-                  i.icon.icon-info-sign
-                a.btn.btn-large.favorite-toggle
-                  i.icon.icon-heart
-              .footer
-                .body
-                .phone-wrapper
-                  i.icon.icon-phone  
-                  .phone.
-                    
-                .address-wrapper
-                  i.icon.icon-map-marker
-                  .address.
+        hr
+
+        section#logos
+          div.cg
+            label Symbol
+            ul
+              input(type="hidden", name='logo', value= user.logo)
+              script
+                Number.prototype.pad = function(n){
+                  return('0000000000' + this).slice((n || 2) * -1);
+                }
+              - for (var i = 1; i < 100; ++i )
+                if i < 100
+                  i = '0' + i
+                if i < 10
+                  i = '0' + i
+                if 'lg_'+i === user.logo
+                  li.selected: div(id= 'lg_'+i, style="-webkit-mask-box-image:url(https://s3.amazonaws.com/spinly/images/"+ i + ".png)")
+                else
+                  li: div(id= 'lg_'+i, style="-webkit-mask-box-image:url(https://s3.amazonaws.com/spinly/images/"+ i + ".png)")
+          div.cg
+            label Color
+            input#color-picker(type='text', name='color', value= user.color)
+
+        hr
+
+        section#preview
+          li.cg
+            label Preview
+          .coupon
+            .header
+              .price
+                .price-inner
+                  span.dollar $
+                  span.price-listing 
+              .title
+            .coupon-content
+              .business_name
+              .address
+              br
+              .date-wrapper Last updated 
+              .date 
+              br
+            .toggles
+              a.btn.btn-large.large-toggle
+                i.icon.icon-info-sign
+              a.btn.btn-large.favorite-toggle
+                i.icon.icon-heart
+            .footer
+              .body
+              .phone-wrapper
+                i.icon.icon-phone  
+                .phone.
+                  
+              .address-wrapper
+                i.icon.icon-map-marker
+                .address.
   
-            .clearfix
-            fieldset
-              :markdown
-                Some markdown
-              .controls
-                :stylus
-                  .input-append
-                    text-align center
-                    input
-                      margin 0
-                .input-append
-                  input.span2(type='text', name='publish', value= user.publish, placeholder='Yes/No')
-                  button(type='submit').account-form-btn2.btn.btn-success Update
-            .form-actions
-
-        .steady#offer-welcome
-          .inner
-            .greeting
-              h2 Got something good?
-              h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
-        #offer-nav.pagination.pagination-centered
-          ul
-            li: a#business(href='#') 1. Business
-            li: a#offer(href='#') 2. Offer
-            li: a#preview(href='#') 3. Preview & Publish
+          hr.clearfix
+          li.cg
+            label Publish
+            input.span2(type='text', name='publish', value= user.publish, placeholder='Yes/No')
+            button(type='submit').offer-form-btn.btn Update
+          br
+          br
 
 
+      section#features.jsHide
+        div.greeting
+          div.row.headline
+            h2 People want more. They need less.
+            | Our goal is to bring people back to reality.
+          div.row
+            .span4
+              h3 
+                i.icon-large.icon-home
+                |  Made by KC for KC
+              | Kansas City is our home, and we can all spend a little more time enjoying being at home.
+            .span4
+              h3 
+                i.icon-large.icon-time
+                |  Right Here, Right Now
+              | Like you, we love to go above and beyond for our customers.
+          div.row
+            .span4
+              h3 
+                i.icon-large.icon-time
+                |  Right Here, Right Now
+              | Like you, we love to go above and beyond for our customers.
 
-      .steady#features.jsHide
-        .inner
-          .greeting
-            .row.headline
-              h1 People want more. They need less.
-              | Our goal is to bring people back to reality.
-            .row
-              .span4
-                h3 
-                  i.icon-large.icon-home
-                  |  Made by KC for KC
-                | Kansas City is our home, and we can all spend a little more time enjoying being at home.
-              .span4
-                h3 
-                  i.icon-large.icon-time
-                  |  Right Here, Right Now
-                | Like you, we love to go above and beyond for our customers.
-            .row
-              .span4
-                h3 
-                  i.icon-large.icon-time
-                  |  Right Here, Right Now
-                | Like you, we love to go above and beyond for our customers.
-
-      .steady#help.jsHide
-        .inner
-          .greeting
+      section#help.jsHide
+        div.greeting
+          div.row
             h2 Hi, #{user.user}.
             h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
-
-
-
-    // .form-actions
-    // button(type='button').account-form-btn1.btn.btn-danger Delete
-    // button(type='submit').account-form-btn2.btn Update
-         
         
-       
-      
-
-
-include modals/form-errors
+  include modals/form-errors
+  include modals/confirm
+  include modals/alert
 

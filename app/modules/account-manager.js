@@ -4,16 +4,6 @@ var request = require('request')
 var bcrypt = require('bcrypt')
 var moment = require('moment');
 
-var GridStore = mongoose.mongo.GridStore
-var Grid = mongoose.mongo.Grid
-var ObjectId = mongoose.mongo.BSONPure.ObjectId
-
-
-var ImageSchema = new mongoose.Schema({
-  name: String,
-  files:[ mongoose.Schema.Mixed ]
-});
-
 var OfferSchema = new mongoose.Schema({
   cust: String,
   user: { type:String , unique:true, sparse:true },
@@ -32,6 +22,8 @@ var OfferSchema = new mongoose.Schema({
   address_zip: String,
   county: String,
   location: [],
+  logo: String,
+  color: String,
   cat: String,
   tags: [],
   date: String,
@@ -40,74 +32,10 @@ var OfferSchema = new mongoose.Schema({
 });
 
 
-
-ImageSchema.methods.addFile = function(file, options, fn) {
-  var _this = this;
-  return Image.putFile(file.path, file.filename, options, function(err, result) {
-    _this.files.push(result);
-    return _this.save(fn);
-  });
-};
-
-
-
 var Offer = mongoose.model('offers', OfferSchema);
-var Image = mongoose.model('offers', ImageSchema);
-
 
 
 module.exports = Offer;
-module.exports = Image;
-
-
-var parse,
-  __slice = [].slice;
-
-Image.putFile = function() {
-  var db, fn, name, options, path, _i;
-  path = arguments[0], name = arguments[1], options = 4 <= arguments.length ? __slice.call(arguments, 2, _i = arguments.length - 1) : (_i = 2, []), fn = arguments[_i++];
-  db = mongoose.connection.db;
-  options = parse(options);
-  options.metadata.filename = name;
-  return new GridStore(db, name, "w", options).open(function(err, file) {
-    if (err) {
-      return fn(err);
-    }
-    return file.writeFile(path, fn);
-  });
-};
-
-parse = function(options) {
-  var opts;
-  opts = {};
-  if (options.length > 0) {
-    opts = options[0];
-  }
-  if (!opts.metadata) {
-    opts.metadata = {};
-  }
-  return opts;
-};
-
-Image.get = function(id, fn) {
-  var db, store;
-  db = mongoose.connection.db;
-  id = new ObjectID(id);
-  store = new GridStore(db, id, "r", {
-    root: "fs"
-  });
-  return store.open(function(err, store) {
-    if (err) {
-      return fn(err);
-    }
-    if (("" + store.filename) === ("" + store.fileId) && store.metadata && store.metadata.filename) {
-      store.filename = store.metadata.filename;
-    }
-    return fn(null, store);
-  });
-};
-
-
 
 // logging in //
 
@@ -192,6 +120,8 @@ Offer.update = function( q , callback)
 		o.address_zip     = q.address_zip;
 		o.county    = q.county;
 		o.location = q.location;
+		o.logo = q.logo;
+		o.color = q.color;
 		o.cat = q.cat;
 		o.tags = q.tags;
 		o.publish = q.publish;

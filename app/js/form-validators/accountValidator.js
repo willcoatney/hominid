@@ -55,15 +55,12 @@ function AccountValidator(){
 }
 
 AccountValidator.prototype.showInvalidEmail = function(){
-	this.controlGroups[1].addClass('error');
 	this.showErrors(['That email address is already in use.'])}
 
 AccountValidator.prototype.showInvalidUserName = function(){
-	this.controlGroups[2].addClass('error');				
 	this.showErrors(['That username is already in use.'])}
 
 AccountValidator.prototype.showInvalidCustomer= function(){
-	this.controlGroups[4].addClass('error');				
 	this.showErrors(['That customer number is already in use.'])}
 
 AccountValidator.prototype.validateForm = function(){
@@ -84,7 +81,9 @@ AccountValidator.prototype.validateForm = function(){
 		this.controlGroups[4].addClass('error'); 
 		e.push('Customer ID Should Be 5 Numbers Long');
 	}
-	if (e.length) this.showErrors(e);
+	if (e.length){
+    this.showErrors(e);
+  }
 	return e.length === 0;
 }
 

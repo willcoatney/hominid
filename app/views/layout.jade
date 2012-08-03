@@ -1,3 +1,4 @@
+
 logged = null
 
 !!!
@@ -6,10 +7,12 @@ html
     include includes/head
     block stylesheets
   body
-    .wrapper
-      .inner
-        .navigation
-          include navigation
-        block content
+    section#sidebar
+      block sidebar
+      block brand
+    section#content
+      block nav-top
+      block title-top
+      block content
     block scripts
     include includes/footer
