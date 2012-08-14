@@ -1,5 +1,6 @@
 extends layout
 
+
 block sidebar
   - user = typeof(udata) != 'undefined' ? udata : {}
   .inner(style="background-color: #{user.color}")
@@ -284,7 +285,6 @@ block content
   include modals/form-errors
 
 block scripts
-  script(src='/js/views/universal.js')
   script(src='/js/views/homeBundle.min.js')
   script(src='/js/controllers/homeController.js')
 

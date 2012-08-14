@@ -70,8 +70,7 @@ Offer.manualLogin = function(user, pass, callback)
 // record insertion, update & deletion methods //
 
 
-Offer.signup = function(newData, callback) 
-{
+Offer.signup = function(newData, callback){
   Offer.findOne({user:newData.user}, function(e, o) {	
     if (o){
       callback('username-taken');
@@ -80,30 +79,23 @@ Offer.signup = function(newData, callback)
         if (o){
           callback('email-taken');
         }	else{
-          Offer.findOne({cust:newData.cust}, function(e, o) {	
-            if (o){
-              callback('customer-taken');
-            }	else{
-            Offer.saltAndHash(newData.pass, function(hash){
-              newData.pass = hash;
-            // append date stamp when record was created //	
-              newData.date = new Date();
-              Offer.create(newData, function(e,o){
-                callback(null);
-                });
+          Offer.saltAndHash(newData.pass, function(hash){
+            newData.pass = hash;
+          // append date stamp when record was created //	
+            newData.date = new Date();
+            Offer.create(newData, function(e,o){
+              callback(null);
               });
-            }
-          });
-        }
-      });
-    }
-  });
-}
+            });
+          }
+        });
+      }
+    });
+  }
 
 // update db%
 
-Offer.update = function( q , callback) 
-{		
+Offer.update = function( q , callback){		
 	Offer.findOne({user: q.user}, function(e, o){
 		o.name            = q.name;
 		o.email           = q.email;

@@ -1,5 +1,25 @@
 
 require('../../vendor/js/bootstrap.min.js')
+require('./universal.js')
+
+require('../../vendor/js/spin.min.js')
+var opts = {
+  lines: 17,
+  length: 2,
+  width: 2,
+  radius: 16,
+  rotate: 0,
+  color: '#aaa',
+  speed: 0.7,
+  trail: 50,
+  hwaccel: true,
+  className: 'spinner',
+  zIndex: 2e9,
+  top: 'auto',
+  left: 'auto' 
+};
+var target = document.getElementById('spinner');
+var spinner = new Spinner(opts).spin(target);
 
 
 var Color = require('color')
@@ -8,7 +28,7 @@ var spectrum = require('../../vendor/js/spectrum.js')
 jQuery(function($){
   $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
   .css('color','rgba(0,0,0,0.6)')
-  $('#zip-tf').mask("999999", {placeholder:"_"})
+  $('#zip-tf').mask("99999", {placeholder:"_"})
   .css('color','rgba(0,0,0,0.6)')
 });
 
@@ -28,7 +48,6 @@ $(document).ready(function(){
 			if (av.validateForm() == false){
 				return false;
 			} 	else{
-			// push the disabled username field onto the form data array //	
 				formData.push({name:'user', value:$('#user-tf').val()})
 				formData.push({cust:'cust', value:$('#cust-tf').val()})
 				return true;
@@ -46,9 +65,10 @@ $(document).ready(function(){
 		}
 	});
 
+
 // customize the account settings form //
 	
-	$('#user-tf,#cust-tf').attr('disabled', 'disabled');
+	$('#user-tf').attr('disabled', 'disabled');
 
   $('.modal-confirm').modal({ show : false, keyboard : true, backdrop : true });
   $('.modal-confirm .modal-header h3').text('Delete Account');
@@ -68,9 +88,11 @@ $(document).ready(function(){
   $('section#sidebar>div.inner').css('backgroundColor', u )
   $('nav#nav-top>h1').css({ borderColor: _lighten(u) })
   $('section#logos li div').css({ backgroundColor: u })
+  $('.coupon .symbol-container .symbol').css({ backgroundColor: u })
 
   $('nav#nav-home a').on('click', function(){
     $this = $(this)
+
     if($(this).parent().is('li.active,li.disabled')){
       return
     }
@@ -97,7 +119,7 @@ $(document).ready(function(){
     var tc = $(this).children()
     var s = $(this).siblings('li')
     var sc = $(this).siblings('li').children()
-    var id = $(this).children().attr('id')
+    var id = $(this).children().attr('data-image')
 
     t.addClass('selected')
     tc.css({ opacity: '1'});
@@ -114,12 +136,17 @@ $(document).ready(function(){
       $('#sidebar>.inner').css("backgroundColor", x )
       $('section#logos li div').css("backgroundColor", x )
       $('#nav-top>h1').css("borderColor", xl )
+      $('.coupon .symbol-container .symbol').css("backgroundColor", x )
       $('input#color-picker').val(x)
     }
   });
 
 
   $('ul.chzn-results>li:contains("locked")').addClass('group-result').removeClass('group-option').css({display:"list-item"});
+
+  var couponBody = $('textarea#coupon_body').attr('data-text')
+  $('textarea#coupon_body').text( couponBody )
+
 
 })
 
@@ -135,10 +162,16 @@ $(function(){
 
   $('#tags .chzn-choices').on('click', function(){
     var count = $(this).children('li').length;
-    if(count >= 3){ 
+    if(count >= 4){ 
       $(this).siblings('.chzn-drop').hide();
     }else{
       $(this).siblings('.chzn-drop').show();
     }
   });
+
+  $('.date').each(function(){
+    var h = $(this).html()
+    $(this).text(moment(h).fromNow())
+  })
+
 });

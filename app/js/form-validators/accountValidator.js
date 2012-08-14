@@ -8,14 +8,12 @@ function AccountValidator(){
     , $('#email-tf')
     , $('#user-tf')
     , $('#pass-tf')    		
-    , $('#cust-tf')    		
   ];    		
 	this.controlGroups = [
       $('#name-cg')
     , $('#email-cg')
     , $('#user-cg')
     , $('#pass-cg')
-    , $('#cust-cg')
   ];
 	
 // bind the form-error modal window to this controller to display any errors //
@@ -41,10 +39,6 @@ function AccountValidator(){
     	return re.test(e);
 	}	
 	
-	this.validateCustomer = function(s){
-		return s.length === 5;
-	}
-
 	this.showErrors = function(a)	{
 		$('.modal-form-errors .modal-body p').text('Please correct the following problems :');
 		var ul = $('.modal-form-errors .modal-body ul');
@@ -60,9 +54,6 @@ AccountValidator.prototype.showInvalidEmail = function(){
 AccountValidator.prototype.showInvalidUserName = function(){
 	this.showErrors(['That username is already in use.'])}
 
-AccountValidator.prototype.showInvalidCustomer= function(){
-	this.showErrors(['That customer number is already in use.'])}
-
 AccountValidator.prototype.validateForm = function(){
 	var e = [];
 	for (var i=0; i < this.controlGroups.length; i++) this.controlGroups[i].removeClass('error');
@@ -76,10 +67,6 @@ AccountValidator.prototype.validateForm = function(){
 	if (this.validatePassword(this.formFields[3].val()) == false) {
 		this.controlGroups[3].addClass('error'); 
 		e.push('Password Should Be At Least 6 Characters');
-	}
-	if (this.validateCustomer(this.formFields[4].val()) == false) {
-		this.controlGroups[4].addClass('error'); 
-		e.push('Customer ID Should Be 5 Numbers Long');
 	}
 	if (e.length){
     this.showErrors(e);

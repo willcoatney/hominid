@@ -16,7 +16,7 @@ module.exports = function (app) {
     console.log('login', req.cookies.user, req.cookies.pass);
     if (req.cookies.user == undefined || req.cookies.pass == undefined ) {
       Offer.getAllRecords( function(e, docs){
-        res.render('index', {
+        res.render('print', {
           locals: {
               CT : CT
             , title      : 'Outside'
@@ -28,7 +28,7 @@ module.exports = function (app) {
       console.log('Unidentified user has landed on "/"');
     } else {
       Offer.getAllRecords( function(e, docs){
-        res.render('index', { 
+        res.render('print', { 
           locals: {
               CT : CT
             , title      : 'Inside'
@@ -151,7 +151,6 @@ module.exports = function (app) {
     if (req.param('user') != undefined) {
 			Offer.update({
 				user            : req.param('user'),
-				name            : req.param('name'),
 				email           : req.param('email'),
 				pass            : req.param('pass'),
 				business_name   : req.param('business_name'),
@@ -193,6 +192,7 @@ module.exports = function (app) {
 			req.session.destroy(function(e){ res.send('ok', 200); });
 		}
 	});	
+  
 	
 // creating new accounts //	
 	
@@ -207,9 +207,8 @@ module.exports = function (app) {
 	
 	app.post('/signup', function(req, res){
 		Offer.signup({
-			name            : req.param('name'),
-			email           : req.param('email'),
 			user            : req.param('user'),
+			email           : req.param('email'),
 			pass            : req.param('pass'),
 			cust : req.param('cust')
 		}, function(e, o){
@@ -263,16 +262,28 @@ module.exports = function (app) {
 	});	
 	
 	app.post('/delete', function(req, res){
-		Offer.delete(req.body.id, function(e, obj){
+		Offer.remove({ _id: req.body.id }, function(e, obj){
 			if (!e){
 				res.clearCookie('user');
 				res.clearCookie('pass');
-	            req.session.destroy(function(e){ res.send('ok', 200); });
+        req.session.destroy(function(e){ res.send('ok', 200); });
 			}	else{
 				res.send('record not found', 400);
 			}
 	    });
 	});
+
+	// app.post('/delete', function(req, res){
+	// 	Offer.delete(req.body.id, function(e, obj){
+	// 		if (!e){
+	// 			res.clearCookie('user');
+	// 			res.clearCookie('pass');
+	//             req.session.destroy(function(e){ res.send('ok', 200); });
+	// 		}	else{
+	// 			res.send('record not found', 400);
+	// 		}
+	//     });
+	// });
 	
 	app.get('/reset', function(req, res) {
 		Offer.delAllRecords( );

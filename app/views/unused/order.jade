@@ -1,0 +1,52 @@
+// .foo FOOBAR
+
+.order-wrapper:.order-container.fadeIn
+  #steps.center
+    .step.cats
+      
+      p I want to
+
+      ul.option-set(filter-group='cats')
+        each h in CT.cats
+          li: a(filter-value='.'+h.name, href= '#'+h.name )= h.verb
+        li: a(filter-value='.Wildcard', href= '#Wildcard' ) find
+
+    .step.sorts.jsOpacity
+      p the
+
+      ul.option-set
+        li: a.link(href='#newest') latest
+        li: a.link(href='#cheapest') cheapest
+        li: a.link.disabled nearest
+        li: a.link.disabled best
+
+    .step.tags.jsOpacity
+
+      mixin tags( o, m )
+        ul.option-set(filter-group='tags', class= o[m].name )
+          i.icon-caret-up.slide.prev
+          for l in o[m].tags
+            li.tag: a(filter-value='.'+ l)= l
+          i.icon-caret-down.slide.next
+
+      mixin tags( CT.cats, 0 )
+      mixin tags( CT.cats, 1 )
+      mixin tags( CT.cats, 2 )
+      mixin tags( CT.cats, 3 )
+      mixin tags( CT.cats, 4 )
+
+      ul.option-set(filter-group='tags', class='Wildcard')
+        each c in CT.wildcards
+          li: a(filter-value='.'+c.wildcard)= c.wildcard
+
+    .step.tag-handler.jsOpacity
+      each o in CT.cats
+        p(class= o.name) #{o.name} in
+      p(class= 'Wildcard') offer in
+
+    .step.area.jsOpacity
+      ul.option-set(filter-group='areas')
+        each a in CT.counties
+          li: a(filter-value='.'+ a.county)= a.county
+      p county.
+

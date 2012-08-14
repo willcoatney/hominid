@@ -27,8 +27,8 @@ Hfamily()
 
 Fbody()
   Ffamily()
-  font-size 16px
-  line-height 24px
+  font-size 12px
+  line-height 18px
   color black
 
 Fheaders(i,o)
@@ -40,7 +40,7 @@ Fheaders(i,o)
   user-select none
   cursor default
 
-Iwidth = 390px
+Iwidth = 500px
 
 a
   Active( )
@@ -89,6 +89,7 @@ section#sidebar
     position fixed
     min-height 100%
     border-right 1px solid #dbdbdb
+    background-color #446190
 
 figure#brand
   h = 100px
@@ -113,6 +114,8 @@ figure#brand
     margin z
     border-radius h
     background white
+  &.noUserColor
+    border-color black
 
 section#content
   margin-left 150px
@@ -126,39 +129,21 @@ section#content
 
 
 nav
-  ul
-    margin 0
-  li
-    Hfamily()
-    s = 50px
-    z = (s / 2)
-    font-weight bold
-    list-style none
-    transition 0.3s
-    height s
-    width s
-    q = (s / 5)
-    margin q q (q * 4)
-    &.disabled
-      cursor default
-      opacity 0.2
+  &#nav-links
+    position absolute
+    bottom 0
+    left 0
+    width 100%
+    height 50px
+    padding-top 25px
+    text-transform uppercase
+    font-size 10px
+    letter-spacing 2px
+    background rgba(0,0,0,0.4)
+    text-align center
     a
       color white
-      display block
-      text-transform lowercase
-      text-align center
-      &:hover
-      &.active
-        color white
-      i
-        font-size f = round(z - (z / 20))
-        line-height f
-      span
-        font-size 11px
-        display block
-        font-weight 600
-        text-transform uppercase
-        color black
+      opacity 0.9
 
   &#nav-home
     position absolute
@@ -169,10 +154,45 @@ nav
     a
       span
         color white
+    ul
+      margin 0
+    li
+      Hfamily()
+      s = 50px
+      z = (s / 2)
+      font-weight bold
+      list-style none
+      transition 0.3s
+      height s
+      width s
+      q = (s / 5)
+      margin q q (q * 4)
+      &.disabled
+        cursor default
+        opacity 0.2
+      a
+        color white
+        display block
+        text-transform lowercase
+        text-align center
+        &:hover
+        &.active
+          color white
+        i
+          font-size f = round(z - (z / 20))
+          line-height f
+        span
+          font-size 11px
+          display block
+          font-weight 600
+          text-transform uppercase
+          color white
+
   &#nav-top
     h = 60px
     min-height (h + (h / 5))
     border-bottom 1px solid #eee
+    margin-bottom 35px
     h1
       padding 5px 30px 10px
       text-transform uppercase
@@ -196,6 +216,73 @@ nav
         margin-top -(h / 5)
         border-radius f
 
+
+//    STEPS
+
+
+
+nav#nav-steps
+  font-size 11px
+  Hfamily()
+  letter-spacing 1px
+  color white
+  font-weight 500
+  padding 0 10px
+  top 28%
+  right 13px
+  position absolute
+  height 50%
+  user-select none
+  a
+    transition 0.2s
+    color white
+    opacity 0.4
+    &:hover
+      opacity 0.9
+  a.active
+    opacity 1
+    border-bottom 1px solid white
+    text-shadow 0 1px 2px rgba(0, 0, 0, 0.4)
+  .step
+    text-transform uppercase
+    width 90px
+    &.tags
+      min-height 60px
+  li
+    cursor pointer
+  .step
+    ul
+      li
+        &:nth-child(2n+1)
+          text-align right
+          left -100%
+          position relative
+          margin-right 5px
+          float right
+        &:nth-child(2n+2)
+          width 0
+          margin-left 5px
+    &.area
+      p
+        padding 0
+        margin-top 30px
+  p
+    color white
+    position relative
+    text-align center
+    left -50%
+    padding 10px 0
+    font-family "skolar"
+    text-transform lowercase
+    font-style italic
+
+
+
+.dull
+  i
+    text-shadow 0 1px 1px rgba(255, 255, 255, 0.1), 0 -1px 0px rgba(0, 0, 0, 0.1)
+    color #305D7F
+
 li#profile-btn-group
   background none
   border none
@@ -204,6 +291,11 @@ li#profile-btn-group
     width (Iwidth / 2) + 5
     padding 10px
 
+#spinner
+  position absolute
+  top 60%
+  right 50%
+
 
 // BASE ADMIN
 
@@ -211,7 +303,7 @@ li
   list-style none!important
 
 a
-  text-decoration none!important
+  text-decoration none
 
 .fadeIn
   display none
@@ -223,6 +315,9 @@ a
   opacity 0
 
 // ISOTOPE STYLES
+
+.coupon-container
+  padding-bottom 20px
 
 .thingy
   border-radius 0
@@ -243,10 +338,6 @@ a
   transition-property height, width
 
 .isotope .isotope-item
-  -webkit-transition-property -webkit-transform, opacity
-  -moz-transition-property -moz-transform, opacity
-  -ms-transition-property -ms-transform, opacity
-  -o-transition-property top, left, opacity
   transition-property transform, opacity
 
 .isotope.no-transition,
@@ -264,9 +355,9 @@ a
 
 //    FORMS
 
-H(n,z)
+H(n,z...)
   line-height n
-  font-size round((n / 2) + 2)
+  font-size ceil(n * 0.66)
   padding o = round(n / 7)
   width z
   text-indent (o + 1)
@@ -293,11 +384,11 @@ Border(a, b, c, d)
 
 section#logos
   rad = 4px
-  s = 40px
+  s = 30px
   ul
     display inline-block
     Border( 1px, solid, #ccc, rad )
-    padding 5px
+    padding 4px
     margin 0
     height 310px
     overflow-y auto
@@ -309,8 +400,8 @@ section#logos
     float left
     Border( 1px, solid, #CCC #BBB #AAA, rad )
     box-shadow 0 1px 2px rgba(0,0,0,0.2)
-    margin 5px
-    padding 5px
+    margin 4px
+    padding 4px
     background-color rgba(255,255,255,0.8)
     cursor pointer
     transition 0.2s
@@ -325,15 +416,16 @@ section#logos
       box-shadow 0 3px 10px rgba(0,0,0,0.5)
       div
         opacity 1
+select
+  H(18px, (Iwidth / 2))
 
 input
 textarea
-select
 .uneditable-input
-  H(28px, Iwidth )
+  H(18px, Iwidth )
   B()
   display inline-block
-  margin-bottom 9px
+  vertical-align top
   Active( false )
   &:focus
     outline 0
@@ -422,145 +514,103 @@ li [class*=" icon-"]
   width 1.75em
   text-align center
 
-
-//    ORDER
-
 #welcome
   text-align center
   color #666
   text-shadow 0 1px 0 #fff
   width 100%
 
-.order-wrapper
-  box-shadow inset 0 13px 26px -10px #000
-  background #2b2b2b url(../vendor/img/low_contrast_linen.png) repeat 0 0
-  // overflow hidden
-  user-select none
 
-  .order-container
-    // width 80%
-    // max-width 1080px
-    // margin 0 auto
+//    COUPON
 
-  p
-    display inline-block
-    color white
-    text-shadow 0 1px 1px rgba(0, 0, 0, 0.4)
-    padding 10px
-    font-weight bold
-    font-size 18px
-
-
-Step(o)
-  background white
-  border-radius (o)
-  border-bottom #fafafa
-  display inline-block
-  vertical-align middle
-  box-shadow 0 1px 2px rgba(0,0,0,0.2),0 0 1px rgba(0,0,0,0.2)
+article.coupon 
+  width (Iwidth / 2)
+  padding 15px
+  margin 0 (Iwidth / 5)
+  box-shadow 0 1px 3px rgba(0,0,0,0.3), 0 1px 1px #999
   position relative
-  padding 3px 0 8px
-  margin 0
-  li
-    list-style-type none
-    padding 0px 14px
-  a
-    color #555
+  overflow hidden
+  header
+    text-transform uppercase
+    letter-spacing 1px
     font-size 12px
-    text-transform lowercase
-    text-decoration none
-    cursor pointer
-    &.active
-      color #111
-      border-bottom 1px dashed #555
-    &.inactive
-      color #ccc
-    &.disabled
-      color #ddd
-      cursor default
-      border none
+    line-height 15px
+    margin 10px 45px 10px
+    color #333
+    font-weight 700
+    Fheader()
+  s( n )
+    height n
+    width n
+    border-radius 50%
+    margin 0 auto
 
-.slide
-  h = 20px
-  j = round(h * 0.85)
-  l = round(h * 0.1)
-  transition-duration 100ms
-  position absolute
-  cursor pointer
-  background white
-  font-size h
-  line-height j
-  left 35%
-  color #999
-  // padding 0 (h / 2)
-  opacity 0.5
-  width 80%
-  left 10%
-  text-align center
-
-  &.prev
-    top - j
-    border-radius l l 0 0
-  &.next
-    bottom - j
-    border-radius 0 0 l l
-  &:hover
-    opacity 0.9
-
-
-#steps
-  padding 13px 0
-  display inline-block
-  position absolute
-  background url(../vendor/img/line.png) center repeat-x
-  .step
+  .symbol-container
+    absolute top right
+    s( 62px )
+    .symbol
+      s = 50px
+      height s + 10
+      width s + 10
+      margin -(s) 0
+      padding-right s
+      padding-bottom s
+      background-size (s / 2) + 10
+      background-position 25% 75%
+      background-repeat no-repeat
+      border-radius 50%
+      background-color #ccc
+  hr
+    margin 0 auto 10px
+    border-bottom 1px solid #f1f1f1
+    border-top none
+    width 80%
+    padding 0 5px 10px
+  .content
+    padding 30px 0 0px
+    text-align center
+    color #333
+    font-weight 100
+  .dollar
+    line-height 38px
+    font-size 20px
     display inline-block
-    // &.cats
-    //   margin-left 30%
-    &.sorts>ul
-      border-radius 3px 0 0 3px
-      text-align right
-      left 4px
-    &.tags
-      Step(0 3px 3px 0, transparent)
-      width 100px
-      ul
-        display none
-        margin 0
-      &:before
-        border none
-    &.tag-handler
-      width 100px
-      margin-left -5px
-      p
-        display none
-        text-transform lowercase
-        text-align center
-        width 100%
-        padding 0
+    vertical-align top
+    font-weight normal
+    margin-left -10px
+  .price
+    font-size 70px
+    line-height 70px
+    letter-spacing -3px
+    display inline-block
+    font-weight 100
+  summary
+    font-size 12px
+    display inline-block
+    text-align center
+    padding 0 5px 10px
+    font-weight 500
+    text-transform uppercase
+    letter-spacing 1px
+    border-bottom 1px solid #f1f1f1
+    margin-bottom 10px
+    width 80%
+    color #222
+  footer
+    opacity 0.7
+    ul
+      text-align center
+      padding-bottom 5px
+    li
+      color #555
+      text-align center
+      width 80%
+      margin 0 auto
+      span
+        font-weight 400
+        margin-left 5px
 
 
-
-.step.cats>ul
-.step.sorts>ul
-.step.area>ul
-  Step(3px)
-  &:before
-    content ''
-    position absolute
-    right 100%
-    width 0
-    height 0
-    border-top 4px solid transparent
-    border-right 5px solid white
-    border-bottom 4px solid transparent
-    margin-top -4px
-    top 50%
-
-.dull
-  i
-    text-shadow 0 1px 1px rgba(255, 255, 255, 0.1), 0 -1px 0px rgba(0, 0, 0, 0.1)
-    color #305D7F
 
 //
 // CHOSEN
@@ -607,8 +657,7 @@ Transition()
   color: #999
 
 .chzn-container-single .chzn-single span
-  line-height 28px
-  font-size 16px
+  H(18px)
   text-indent 5px
   margin-right: 26px
   display: block
@@ -677,7 +726,7 @@ Transition()
   Border( 1px, solid, #CACACA #CCC #BBB, 0)
   box-shadow inset 0 5px 5px -5px rgba(0,0,0,0.2)
   margin: 0
-  padding 5px
+  padding 4px 4px 0 4px
   cursor: text
   overflow: hidden
   position: relative
@@ -696,8 +745,7 @@ Transition()
   color: #666
   background: transparent
   border: 0
-  font-family: sans-serif
-  font-size: 100%
+  H(18px)
   height: 15px
   padding: 5px
   margin: 1px 0
@@ -708,16 +756,15 @@ Transition()
   color: #999
 
 .chzn-container-multi .chzn-choices .search-choice
+  H(18px)
   background-clip: padding-box
   background-color: #e4e4e4
   background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%)
   box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05)
-  color: #333
   border: 1px solid #aaaaaa
   line-height: 13px
-  padding: 5px 25px 5px 5px
-  margin-right 5px
-  line-height 18px
+  padding: 4px 25px 4px 4px
+  margin 0 4px 4px 0
   text-indent 5px
   position: relative
   cursor: default
@@ -731,7 +778,7 @@ Transition()
   display: block
   position: absolute
   right: 6px
-  top: 8px
+  top: 6px
   width: 12px
   height: 13px
   font-size: 1px
@@ -758,8 +805,10 @@ Transition()
   background white
 
 .chzn-container .chzn-results li
+  font-size 12px
+  line-height 17px
+  text-indent 3px
   display: none
-  line-height: 15px
   padding: 5px 6px
   margin: 0
   list-style: none
@@ -771,6 +820,7 @@ Transition()
 
 .chzn-container .chzn-results .highlighted
   background-color: #ddd
+
   // background-image: linear-gradient(top, #3875d7 20%, #2a62bc 90%)
   color: black
 

@@ -1,43 +1,94 @@
+extends layout
 
+block sidebar
+  - user = typeof(udata) != 'undefined' ? udata : {}
+  .inner(style='background-color: #{user.color}')
+    nav#nav-steps.fadeIn
+      .step.cats
+        ul.option-set(filter-group='cats')
+          each h in CT.cats
+            li: a(filter-value='.'+h.name, href= '#'+h.name )= h.verb
+          li: a(filter-value='.Wildcard', href= '#Wildcard' ) find
 
-.coupon-container.fadeIn
-  each o in offers
-    :stylus
-      .coupon
-        padding 20px
-        margin 10px
-        width 220px
-        background white
-        box-shadow 0 1px 2px rgba(0,0,0,0.2), 0 0 1px rgba(0,0,0,0.25)
-        border-top 1px solid rgba(0, 0, 0, 0.05)
-        color #45484E
-      .meta
-        display none
-    .coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
+      .step.sorts.jsHide
+        p the
+        ul.option-set
+          li: a.link(href='#newest') latest
+          li: a.link(href='#cheapest') cheapest
+          // li: a.link.disabled nearest
+          // li: a.link.disabled best
 
-      .meta
+        br
+      .step.tags.jsHide
+        mixin tags( o, m )
+          ul.option-set(filter-group='tags', class= o[m].name )
+            for l in o[m].tags
+              li.tag: a(filter-value='.'+ l)= l
 
-        #{o.cat}
-        #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
+        mixin tags( CT.cats, 0 )
+        mixin tags( CT.cats, 1 )
+        mixin tags( CT.cats, 2 )
+        mixin tags( CT.cats, 3 )
+        mixin tags( CT.cats, 4 )
 
-      .header
-        h2 #{o.business_name}
-        #{ o.coupon_price}
+        ul.option-set(filter-group='tags', class='Wildcard')
+          each c in CT.wildcards
+            li: a(filter-value='.'+c.wildcard)= c.wildcard
 
-      .body
+      .step.tag-handler.jsHide
+        each o in CT.cats
+          p(class= o.name) #{o.name} in
+        p(class= 'Wildcard') offer in
 
-        p
-          | #{o.address_city}, #{o.address_state}
-        p.date #{ o.date}
-        p #{ o.coupon_body}
-      i.icon.icon-phone  
-      .phone.
-        #{ o.business_phone}
-      i.icon.icon-map-marker
-      .address.
-        #{ o.address_street} <br/>
-        #{ o.address_city},  
-        #{ o.address_state}<br/>
-        #{ o.address_zip}
+      .step.area.jsHide
+        ul.option-set(filter-group='areas')
+          each a in CT.counties
+            li: a(filter-value='.'+ a.county)= a.county
+        p county.
 
-script(src='/vendor/moment.js') 
+    nav#nav-links
+      if typeof(udata) != 'undefined'
+        a(href='/home').fadeIn Home
+      else
+        a(href='/login').fadeIn Login
+
+block brand
+  figure#brand
+    a(href='/')
+
+block content
+  // h1#foobar FOOBAR
+  div.coupon-container.fadeIn
+    each o in offers
+      article.coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
+
+        aside.hide
+
+          #{o.cat}
+          #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
+        header
+          #{o.business_name}
+          .symbol-container
+            .symbol(style="background-image:url(https://s3.amazonaws.com/spinly/images/"+o.logo + ".png); background-color:"+ o.color)
+        .content
+          sup.dollar $
+          div.price#{o.coupon_price}
+          .clearfix
+          summary #{o.coupon_title}
+        footer
+          ul
+            li: span.date #{o.date}
+            hr
+            li
+              #{o.address_street}<br>
+              #{o.address_city}, #{o.address_state}
+              #{o.address_zip}<br>
+              #{o.business_phone}
+            hr
+            li
+              #{o.coupon_body}
+
+block scripts
+  script(src='/js/views/viewBundle.min.js')
+  script(src='/js/controllers/homeController.js')
+
