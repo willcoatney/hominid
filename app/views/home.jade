@@ -15,19 +15,21 @@ block sidebar
         li.disabled: a
           i.icon-magic
           span metrics
-        li: a(href='#')#features
+        // li: a(href='#')#features
+        li.disabled: a
           i.icon-th
           span features
-        li: a(href='#')#help
+        // li: a(href='#')#help
+        li.disabled: a
           i.icon-question-sign
           span help
         li: a(href='#')#logout
           i.icon-signout
           span logout
 
-block brand
-  figure#brand
-    a(href='/')
+    block brand
+      div#brand
+        a(href='/')
 
 block title-top
   nav#nav-top

@@ -62,7 +62,7 @@ var $container = $('.coupon-container');
 $container.isotope({
   itemSelector : '.coupon',
   masonry : {
-    columnWidth : 70
+    columnWidth : 300
   },
   getSortData : {
     cheapest: function( $elem ) {
@@ -73,7 +73,6 @@ $container.isotope({
     }
   }
 });
-
 
 //  sorts and filters
 
@@ -164,11 +163,9 @@ $( function (){
 
 $(window).on('load', function (){
 
-  $('.center').center()
   $('.coupon-container').isotope('reLayout')
 
 });
-
 
 
 

@@ -52,13 +52,13 @@ block sidebar
       else
         a(href='/login').fadeIn Login
 
-block brand
-  figure#brand
-    a(href='/')
+    block brand
+      div#brand
+        a(href='/')
 
 block content
   // h1#foobar FOOBAR
-  div.coupon-container.fadeIn
+  div.coupon-container.jsOpacity
     each o in offers
       article.coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
@@ -89,6 +89,5 @@ block content
               #{o.coupon_body}
 
 block scripts
-  script(src='/js/views/viewBundle.min.js')
   script(src='/js/controllers/homeController.js')
 

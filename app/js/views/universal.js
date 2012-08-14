@@ -22,7 +22,7 @@ $(document).ready(function(){
   });
 
 
- $('.chzn-select').chosen();
+  $('.chzn-select').chosen();
 
 
 })
@@ -33,8 +33,11 @@ $(window).on('resize', function (){
 });
 
 $(window).on('load',function(){
- $('.center').center()
- $('.vertical-center').vertical_center()
- $('.fadeIn').fadeIn();
-
+  $('.center').center()
+  $('.vertical-center').vertical_center()
+  $('.fadeIn').fadeIn();
+  $('.jsOpacity').animate({
+    opacity: 1
+  })
+ 
 });

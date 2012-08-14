@@ -1,37 +1,37 @@
 extends layout
 
-block stylesheets
-  link(rel='stylesheet', href= './vendor/css/pages/signin.css')
+// block stylesheets
+//   link(rel='stylesheet', href= './vendor/css/pages/signin.css')
 
 block content
 
-  #login-container.account-container:.content.clearfix
-    form(method="post", action='./')#login-form.clearfix
+  .clearfix
+    #login-container.account-container
+      form(method="post", action='./')#login-form.clearfix
 
-      h1 Sign In
+        h1 Sign In
 
-      .login-fields
-        p Please Login To Your Account
-        .field
-          label Username:
-          input.login.username-field(type="text", name="user", id='user-tf', placeholder='Username')
-        .field
-          label Password
-          input.login.password-field(type="password", name="pass", id='pass-tf', placeholder='Password')  
+        .login-fields
+          .field
+            label Username
+            input.login.username-field(type="text", name="user", id='user-tf', placeholder='Username')
+          .field
+            label Password
+            input.login.password-field(type="password", name="pass", id='pass-tf', placeholder='Password')  
 
-      .login-actions
-        span.login-checkbox
-          input#Field.field.login-checkbox(type="checkbox", value="First Choice", tabindex="4", checked="checked")
-          label#remember-me.checkbox.choice(for="Field") Remember Me
-        button#btn-login.account-form-btn2.button.btn.btn-warning.btn-large(type="submit") Sign In
+        .login-actions
+          span.login-checkbox.jsHide
+            input#Field.field.login-checkbox(type="checkbox", value="First Choice", tabindex="4", checked="checked")
+            label#remember-me.checkbox.choice(for="Field") Remember Me
+          button#btn-login.account-form-btn2.button.btn.btn-warning.btn-large(type="submit") Sign In
 
 
-  .login-extra
-    | Need an account? 
-    a(href='/signup')#create-account Register
-    br
-    | Are you forgetful? 
-    a(href='#')#forgot-password Reset Password
+      .login-extra
+        | Need an account? 
+        a(href='/signup')#create-account Register
+        br
+        | Are you forgetful? 
+        a(href='#')#forgot-password Reset Password
 
 
   include modals/alert
