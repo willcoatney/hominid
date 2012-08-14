@@ -2,25 +2,26 @@
 require('../../vendor/js/bootstrap.min.js')
 require('./universal.js')
 
-require('../../vendor/js/spin.min.js')
-var opts = {
-  lines: 17,
-  length: 2,
-  width: 2,
-  radius: 16,
-  rotate: 0,
-  color: '#aaa',
-  speed: 0.7,
-  trail: 50,
-  hwaccel: true,
-  className: 'spinner',
-  zIndex: 2e9,
-  top: 'auto',
-  left: 'auto' 
-};
-var target = document.getElementById('spinner');
-var spinner = new Spinner(opts).spin(target);
+// require('../../vendor/js/spin.min.js')
+// var opts = {
+//   lines: 17,
+//   length: 2,
+//   width: 2,
+//   radius: 16,
+//   rotate: 0,
+//   color: '#aaa',
+//   speed: 0.7,
+//   trail: 50,
+//   hwaccel: true,
+//   className: 'spinner',
+//   zIndex: 2e9,
+//   top: 'auto',
+//   left: 'auto' 
+// };
+// var target = document.getElementById('spinner');
+// var spinner = new Spinner(opts).spin(target);
 
+var doneOnce = false
 
 var Color = require('color')
 var spectrum = require('../../vendor/js/spectrum.js')
@@ -97,6 +98,7 @@ $(document).ready(function(){
       return
     }
 
+
     $this.parent().addClass('active')
     $this.parent().siblings().removeClass('active')
 
@@ -105,6 +107,9 @@ $(document).ready(function(){
     var r = $('nav#nav-top>#'+o)
 
     $('section#content').fadeOut('fast',function(){
+      if( !doneOnce ){
+        $('#nav-top').show()
+      }
       e.siblings().hide();
       e.show();
       r.siblings('h1').hide();

@@ -32,7 +32,7 @@ block sidebar
         a(href='/')
 
 block title-top
-  nav#nav-top
+  nav#nav-top.jsHide
     h1#home
     h1#account Profile
     h1#offer Offer
@@ -287,6 +287,6 @@ block content
 
 block scripts
   script(src='/js/views/universal.js')
-  script(src='/js/views/homeBundle.min.js')
+  script(src='/js/views/homeBundle.js')
   script(src='/js/controllers/homeController.js')
 
