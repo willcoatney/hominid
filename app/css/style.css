@@ -96,7 +96,7 @@ hr{margin:18px 0;border:0;border-top:1px solid #dbdbdb}
 .row{padding:20px 30px;margin:0}
 li [class^="icon-"],li [class*=" icon-"]{display:inline-block;width:1.75em;text-align:center}
 #welcome{text-align:center;color:#666;text-shadow:0 1px 0 #fff;width:100%}
-article.coupon{width:250px;padding:15px;margin:10px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.3),0 1px 1px #999;box-shadow:0 1px 3px rgba(0,0,0,0.3),0 1px 1px #999;position:relative;overflow:hidden;}
+article.coupon{width:250px;padding:15px;margin:10px;-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.3),0 1px 1px #999;box-shadow:0 1px 3px rgba(0,0,0,0.3),0 1px 1px #999;position:relative;overflow:hidden;background:#fff;}
 article.coupon header{text-transform:uppercase;letter-spacing:1px;font-size:12px;line-height:15px;margin:10px 45px 10px;color:#333;font-weight:700;}
 article.coupon .symbol-container{position:absolute;top:0;right:0;height:62px;width:62px;-webkit-border-radius:50%;border-radius:50%;margin:0 auto;}
 article.coupon .symbol-container .symbol{height:60px;width:60px;margin:-50px 0;padding-right:50px;padding-bottom:50px;-webkit-background-size:35px;background-size:35px;background-position:25% 75%;background-repeat:no-repeat;-webkit-border-radius:50%;border-radius:50%;background-color:#ccc}

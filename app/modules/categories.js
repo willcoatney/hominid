@@ -154,7 +154,7 @@ CT.counties = [
      , { city: "Weatherby Lake" }
      , { city: "Weston" }
     ]}
-  , { county:"Wyandotte" , state: "MO", cities: [
+  , { county:"Wyandotte" , state: "KS", cities: [
        { city: "Bonner Springs" }
      , { city: "Edwardsville" }
      , { city: "Kansas City" }
