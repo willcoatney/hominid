@@ -63,30 +63,31 @@ block content
       article.coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
         aside.hide
-
-          #{o.cat}
-          #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
+          | #{o.cat}
+          | #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
         header
           | #{o.business_name}
           .symbol-container
             .symbol(style="background-image:url(https://s3.amazonaws.com/spinly/images/"+o.logo + ".png); background-color:"+ o.color)
         .content
           sup.dollar $
-          div.price#{o.coupon_price}
+          div.price
+            | #{o.coupon_price}
           .clearfix
-          summary #{o.coupon_title}
+          summary 
+            | #{o.coupon_title}
         footer
           ul
             li: span.date #{o.date}
             hr
             li
-              #{o.address_street}<br>
-              #{o.address_city}, #{o.address_state}
-              #{o.address_zip}<br>
-              #{o.business_phone}
+              | #{o.address_street}<br>
+              | #{o.address_city}, #{o.address_state}
+              | #{o.address_zip}<br>
+              | #{o.business_phone}
             hr
             li
-              #{o.coupon_body}
+              | #{o.coupon_body}
 
 block scripts
   script(src='/js/controllers/homeController.js')
