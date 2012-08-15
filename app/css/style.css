@@ -5,14 +5,14 @@ table{border-collapse:separate;border-spacing:0;vertical-align:middle}
 caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
 a img{border:none}
 a{color:rgba(0,0,0,0.6);color:rgba(0,0,0,0.7)}
-h1{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;font-weight:medium;font-size:60px;line-height:88px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
-h2{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;font-weight:medium;font-size:30px;line-height:42px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
-h3{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;font-weight:medium;font-size:24px;line-height:42px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
-h4{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;font-weight:medium;font-size:18px;line-height:31.5px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
-h5{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;font-weight:medium;font-size:14px;line-height:21px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
-h6{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;font-weight:medium;font-size:12px;line-height:21px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+h1{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;font-weight:medium;font-size:60px;line-height:88px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+h2{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;font-weight:medium;font-size:30px;line-height:42px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+h3{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;font-weight:medium;font-size:24px;line-height:42px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+h4{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;font-weight:medium;font-size:18px;line-height:31.5px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+h5{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;font-weight:medium;font-size:14px;line-height:21px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
+h6{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;font-weight:medium;font-size:12px;line-height:21px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}
 input,button,select,textarea{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;color:rgba(0,0,0,0.6);color:rgba(0,0,0,0.5)}
-body{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#000;-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;background-color:#fff;display:block;position:absolute;left:0;right:0;top:0;margin:0;height:100%}
+body{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#444;-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;background-color:#fff;display:block;position:absolute;left:0;right:0;top:0;margin:0;height:100%}
 section#sidebar .inner{width:150px;padding-left:10%;position:fixed;min-height:100%;border-right:1px solid #dbdbdb;background-color:#446190}
 div#brand{position:absolute;top:0;left:0;width:100%;height:100px;background:rgba(0,0,0,0.2);}
 div#brand a{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;position:absolute;top:0;left:0;font-weight:100;letter-spacing:10px;font-size:30px;line-height:100px;color:#fff;text-align:center;width:100%;margin:0 auto}
@@ -22,21 +22,21 @@ section#content #login-container{width:300px;margin:20px auto 0;}
 section#content #login-container .login-actions{padding:20px 0}
 nav#nav-links{position:absolute;bottom:0;left:0;width:100%;height:50px;padding-top:25px;text-transform:uppercase;font-size:10px;letter-spacing:2px;background:rgba(0,0,0,0.4);text-align:center;}
 nav#nav-links a{color:#fff;opacity:.9;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=90);filter:alpha(opacity=90)}
-nav#nav-home{position:absolute;height:70%;bottom:0;margin-left:-35px;}
+nav#nav-home{position:absolute;bottom:0;((null)):0;left:50%;width:50%;height:70%;}
 nav#nav-home i{color:#fff}
 nav#nav-home a span{color:#fff}
 nav#nav-home ul{margin:0}
-nav#nav-home li{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:bold;list-style:none;-webkit-transition:.3s;-moz-transition:.3s;-o-transition:.3s;-ms-transition:.3s;transition:.3s;height:50px;width:50px;margin:10px 10px 40px;}
+nav#nav-home li{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:bold;list-style:none;-webkit-transition:.3s;-moz-transition:.3s;-o-transition:.3s;-ms-transition:.3s;transition:.3s;height:50px;width:100%;margin:10px -50% 40px;}
 nav#nav-home li.disabled{cursor:default;opacity:.2;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=20);filter:alpha(opacity=20)}
 nav#nav-home li a{color:#fff;display:block;text-transform:lowercase;text-align:center;}
 nav#nav-home li a:hover,nav#nav-home li a.active{color:#fff}
 nav#nav-home li a i{font-size:24px;line-height:24px}
 nav#nav-home li a span{font-size:11px;display:block;font-weight:600;text-transform:uppercase;color:#fff}
-nav#nav-top{min-height:72px;border-bottom:1px solid #eee;margin-bottom:35px;}
-nav#nav-top h1{padding:5px 30px 10px;text-transform:uppercase;border-bottom:10px solid #bbb;margin-bottom:-10px;display:inline-block;}
+nav#nav-top{height:100px;border-bottom:1px solid #eee;margin-bottom:35px;}
+nav#nav-top h1{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:30px;letter-spacing:10px;font-weight:300;padding:0 30px 0;text-transform:lowercase;border-bottom:10px solid #bbb;margin-bottom:-10px;display:inline-block;line-height:100px;}
 nav#nav-top h1:nth-child(1n+2){display:none}
-nav#nav-top a{position:absolute;right:25px;line-height:24px;font-size:24px;top:22px;}
-nav#nav-top a i{color:#fff;background:#000;padding:6px 18px;margin-top:-12px;-webkit-border-radius:24px;border-radius:24px}
+nav#nav-top a{position:absolute;right:25px;line-height:100px;font-size:50px;}
+nav#nav-top a i{color:#fff;background:#444;padding:10px 30px;margin-top:-20px}
 nav#nav-steps{font-size:11px;font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:1px;color:#fff;font-weight:500;top:28%;position:absolute;right:0;((null)):0;height:50%;width:50%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 nav#nav-steps a{-webkit-transition:.2s;-moz-transition:.2s;-o-transition:.2s;-ms-transition:.2s;transition:.2s;color:#fff;opacity:.4;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);filter:alpha(opacity=40);}
 nav#nav-steps a:hover{opacity:.9;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=90);filter:alpha(opacity=90)}
