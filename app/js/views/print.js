@@ -77,12 +77,13 @@ $container.isotope({
 //  sorts and filters
 
 var doneOnce = false;
+var isActive = false;
+
 var filters = {}
 
 $('.option-set a').click(function(){
 
-  if ( !doneOnce) {
-    $('h1#foobar').append('derp')
+  if ( !doneOnce ) {
     $('.step.jsHide').fadeIn()
     doneOnce = true
   }
@@ -100,6 +101,10 @@ $('.option-set a').click(function(){
     $optionSet = $this.parents('.option-set');
     $step = $this.parents('.step');
     $rivals = $optionSet.siblings().find('a');
+
+    isActive = true;
+  } else {
+    isActive = false;
   }
 
   if ( $step.hasClass('tags')){
@@ -117,11 +122,23 @@ $('.option-set a').click(function(){
     var $catTag = $('.step.tags').children('ul.'+ $catSelector )
     var $catHandler = $step.siblings('.tag-handler').children('p.'+ $catSelector )
 
+    if ( isActive ){
+      $('.step.jsHide').fadeOut( function(){
+        $catTag.css('display','block')
+        $catTag.siblings().hide()
+        $catHandler.css('display','block')
+        $catHandler.siblings().hide()
+      })
+    }
+    else if ( !isActive ){
+      $('.step.jsHide').fadeIn()
+      $catTag.css('display','block')
+      $catTag.siblings().hide()
+      $catHandler.css('display','block')
+      $catHandler.siblings().hide()
+    }
 
-    $catTag.css('display','block')
-    $catTag.siblings().hide()
-    $catHandler.css('display','block')
-    $catHandler.siblings().hide()
+    
   }
 
 
