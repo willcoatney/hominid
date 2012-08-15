@@ -92,30 +92,21 @@ section#sidebar
     background-color #446190
 
 div#brand
-  h = 100px
-  z = round(h / 20)
-  position fixed
-  top 4%
-  left 5%
-  margin-left round(h / 7)
-  border-radius h
-  border 10px solid white
+  absolute top left
+  width 100%
+  height 100px
+  background rgba(0,0,0,0.2)
   a
-    font-weight 900
-    letter-spacing -1px
-    font-size 60px
-    line-height 60px
+    Ffamily()
+    absolute top left
+    font-weight 100
+    letter-spacing 10px
+    font-size 30px
+    line-height 100px
     color white
     text-align center
-    line-height h
-    display block
-    height h
-    width h
-    margin z
-    border-radius h
-    background white
-  &.noUserColor
-    border-color black
+    width 100%
+    margin 0 auto
 
 section#content
   margin-left m = 150px
