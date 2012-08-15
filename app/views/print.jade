@@ -9,6 +9,7 @@ block sidebar
           each h in CT.cats
             li: a(filter-value='.'+h.name, href= '#'+h.name )= h.verb
           li: a(filter-value='.Wildcard', href= '#Wildcard' ) find
+          li.jsHide#all: a(filter-value='*', href= '#' ) all
 
       .step.sorts.jsHide
         p the
@@ -17,6 +18,7 @@ block sidebar
           li: a.link(href='#cheapest') cheapest
           // li: a.link.disabled nearest
           // li: a.link.disabled best
+          li.jsHide#all: a(href= '#' ) all
 
         br
       .step.tags.jsHide
@@ -24,6 +26,7 @@ block sidebar
           ul.option-set(filter-group='tags', class= o[m].name )
             for l in o[m].tags
               li.tag: a(filter-value='.'+ l)= l
+            li.jsHide#all: a(filter-value='*', href= '#' ) all
 
         mixin tags( CT.cats, 0 )
         mixin tags( CT.cats, 1 )
@@ -34,6 +37,7 @@ block sidebar
         ul.option-set(filter-group='tags', class='Wildcard')
           each c in CT.wildcards
             li: a(filter-value='.'+c.wildcard)= c.wildcard
+          li.jsHide#all: a(filter-value='*', href= '#' ) all
 
       .step.tag-handler.jsHide
         each o in CT.cats
@@ -44,6 +48,7 @@ block sidebar
         ul.option-set(filter-group='areas')
           each a in CT.counties
             li: a(filter-value='.'+ a.county)= a.county
+          li.jsHide#all: a(filter-value='.*', href= '#' ) all
         p county.
 
     nav#nav-links

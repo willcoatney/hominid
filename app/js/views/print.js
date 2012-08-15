@@ -65,9 +65,6 @@ $container.isotope({
     columnWidth : 300
   },
   getSortData : {
-    // cheapest: function( $elem ) {
-    //   return ($elem.attr('sort-price'));
-    // },
     cheapest: function( $elem ) {
       return parseInt( $elem.attr('sort-price'), 10 );
     },
@@ -91,13 +88,19 @@ $('.option-set a').click(function(){
   }
 
   var $this = $(this);
-  if ( $this.hasClass('active') ) {
-    return;
-  }
-
   var $optionSet = $this.parents('.option-set');
   var $step = $this.parents('.step');
   var $rivals = $optionSet.siblings().find('a');
+  
+
+  if ( $this.hasClass('active') ) {
+    $this.removeClass('active')
+    $this = $optionSet.find('li#all>a')
+    
+    $optionSet = $this.parents('.option-set');
+    $step = $this.parents('.step');
+    $rivals = $optionSet.siblings().find('a');
+  }
 
   if ( $step.hasClass('tags')){
     if ( $optionSet.hasClass('active')){
