@@ -65,11 +65,14 @@ $container.isotope({
     columnWidth : 300
   },
   getSortData : {
+    // cheapest: function( $elem ) {
+    //   return ($elem.attr('sort-price'));
+    // },
     cheapest: function( $elem ) {
-      return ($elem.attr('sort-price'));
+      return parseInt( $elem.attr('sort-price'), 10 );
     },
     newest: function ( $elem ) {
-      return -($elem.attr('sort-date'));
+      return -( $elem.attr('sort-date') );
     }
   }
 });

@@ -71,10 +71,10 @@ block content
               label(for='user-tf') Username
                 a.helper(href='#', rel="popover", data-content='Your username cannot be changed.')
                   i.icon-question-sign.icon-large
-              input#user-tf.disabled(type='text', name='user', value=user.user)
+              input#user-tf.disabled(type='text', disabled, name='user', value=user.user)
             li.cg#cust-cg
               label.cl(for='cust-tf') Customer Number
-              input#cust-tf.disabled(type='text', name='cust', value=user.cust)
+              input#cust-tf.disabled(type='text', disabled, name='cust', value=user.cust)
             
             li.cg#pass-cg
               label(for='pass-tf') Password
