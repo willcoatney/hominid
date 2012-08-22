@@ -27,7 +27,7 @@ CT.cats = [
     ]}
  ,{
    name: "Item",
-   verb: "buy",
+   verb: "shop",
    tags: [
       "Comfortable"
     , "Electronic"
@@ -37,7 +37,7 @@ CT.cats = [
     ]}
  ,{
    name: "Service",
-   verb: "hire",
+   verb: "service",
    tags: [
       "Mechanical"
     , "Outdoor"
@@ -47,7 +47,7 @@ CT.cats = [
     ]}
  ,{ 
    name: "Event", 
-   verb: "go to", 
+   verb: "do / see", 
    tags: [
       "Artistic"
     , "Exciting"
