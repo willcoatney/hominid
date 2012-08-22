@@ -1,39 +1,39 @@
 extends layout
 
-block stylesheets
-  link(rel='stylesheet', href= './vendor/css/pages/signin.css')
+// block stylesheets
+//   link(rel='stylesheet', href= './vendor/css/pages/signin.css')
 
 block content
 
   - user = typeof(udata) != 'undefined' ? udata : {}
   input(type='hidden', value= user._id)#userId
 
-  .account-container.register: .content.clearfix
-    form(method="post")#account-form.form-horizontal
+  .clearfix
+    .account-container.fadeIn
+      form(method="post")#account-form.clearfix
 
-      h1 Create Your Account
+        h1 Sign Up
 
-      .login-fields
-        p All it takes is a username, password, and email
+        .login-fields
 
-        #user-cg.field
-          label(for='user-tf') Username
-          input#user-tf(type='text', name='user', value=user.user, placeholder='Username')
-        #pass-cg.field
-          label(for='pass-tf') Password
-          input#pass-tf(type='password', name='pass', value='', placeholder='Password')
-        #email-cg.field
-          label(for='email-tf') Email
-          input#email-tf.login(type='text', name='email', value= user.email, placeholder='Email')
-        #cust-cg.field
-          label(for='cust-tf') Customer Number
-          input#cust-tf.login(type='text', name='cust', value= user.cust, placeholder='Customer Number')
+          #user-cg.field
+            label(for='user-tf') Username
+            input#user-tf(type='text', name='user', value=user.user, placeholder='Username')
+          #pass-cg.field
+            label(for='pass-tf') Password
+            input#pass-tf(type='password', name='pass', value='', placeholder='Password')
+          #email-cg.field
+            label(for='email-tf') Email
+            input#email-tf.login(type='text', name='email', value= user.email, placeholder='Email')
+          #cust-cg.field
+            label(for='cust-tf') Customer Number
+            input#cust-tf.login(type='text', name='cust', value= user.cust, placeholder='Customer Number')
 
-      .login-actions
-        span.login-checkbox
-          input#Field.field.login-checkbox(type="checkbox", value="First Choice", tabindex="4", checked="checked")
-          label#remember-me.checkbox.choice(for="Field") Remember Me
-        button.account-form-btn2.btn.btn-primary.btn-large.button(type='submit') Register
+        .login-actions
+          span.login-checkbox.jsHide
+            input#Field.field.login-checkbox(type="checkbox", value="First Choice", tabindex="4", checked="checked")
+            label#remember-me.checkbox.choice(for="Field") Remember Me
+          button.account-form-btn2.btn.btn-primary.btn-large.button(type='submit') Register
 
   include modals/alert
   include modals/form-errors
