@@ -19,6 +19,7 @@
     "color": ">=0.4.0",
     "backbone-browserify": ">=0.9.0",
     "jquery-browserify": ">=1.7.0",
+    "googlemaps": "*",
     "emailjs": ">= 0.3.0"
   },
   "engines": {
