@@ -109,16 +109,16 @@ block content
               input(type='text', name='address_street', value= user.address_street, placeholder='Street')
 
             li.cg#location
-              label City
+              label City &#38; State
                 mixin helper( "We've already taken the time to list all of the cities in KC and assigned them to the proper state and county. Which is your business in?" )
-              select#location.chzn-select(name='location', data-placeholder="City")
+              select#location.chzn-select(name='location', data-placeholder="City & State")
                 option= ""
                 if user.address_city != ''
-                  option(selected, value= user.location )= user.address_city
+                  option(selected, value= user.location )= user.address_city +', '+ user.address_state
                 mixin counties(cou, i)
                   optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
                     for c in cou[i].cities
-                      option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city
+                      option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city +', '+ cou[i].state
 
                 mixin counties( CT.counties, 0 )
                 mixin counties( CT.counties, 1 )
@@ -130,10 +130,10 @@ block content
             input#address_state(type='hidden', name='address_state', value= user.address_state)
             input#county(type='hidden', name='county', value= user.county)
 
-            li.cg#state-cg
-              label State
-                mixin helper( 'For sorting purposes, we autofill the state for you. If the state we listed is not correct, check to ensure you picked the right city.' )
-              span.input-small.uneditable-input= user.address_state
+            // li.cg#state-cg
+            //   label State
+            //     mixin helper( 'For sorting purposes, we autofill the state for you. If the state we listed is not correct, check to ensure you picked the right city.' )
+            //   span.input-small.uneditable-input= user.address_state
 
             li.cg
               label Zip
