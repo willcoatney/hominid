@@ -130,11 +130,6 @@ block content
             input#address_state(type='hidden', name='address_state', value= user.address_state)
             input#county(type='hidden', name='county', value= user.county)
 
-            // li.cg#state-cg
-            //   label State
-            //     mixin helper( 'For sorting purposes, we autofill the state for you. If the state we listed is not correct, check to ensure you picked the right city.' )
-            //   span.input-small.uneditable-input= user.address_state
-
             li.cg
               label Zip
               input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
@@ -297,6 +292,7 @@ block content
             h2 Hi, #{user.user}.
             h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
 
+  // div#map_canvas(style="width:100%; height:100%;")
         
   include modals/alert
   include modals/confirm

@@ -6,17 +6,17 @@ html
   head
     block stylesheets
     include includes/head
-    script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCVhlT3NwJ-FFrZhJmg-gQH9nwUakWrhnU&sensor=false")
-    script
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
-      }
+    // script(src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCVhlT3NwJ-FFrZhJmg-gQH9nwUakWrhnU&sensor=false")
+    // script
+    //   function initialize() {
+    //     var mapOptions = {
+    //       center: new google.maps.LatLng(-34.397, 150.644),
+    //       zoom: 8,
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     };
+    //     var map = new google.maps.Map(document.getElementById("map_canvas"),
+    //         mapOptions);
+    //   }
 
   body(onload="initialize()")
     section#sidebar
@@ -26,7 +26,6 @@ html
       block nav-top
       block title-top
       block content
-      div#map_canvas(style="width:100%; height:100%;")
     footer
       block scripts
       include includes/footer
