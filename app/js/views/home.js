@@ -2,25 +2,6 @@
 require('../../vendor/js/bootstrap.min.js')
 require('./universal.js')
 
-// require('../../vendor/js/spin.min.js')
-// var opts = {
-//   lines: 17,
-//   length: 2,
-//   width: 2,
-//   radius: 16,
-//   rotate: 0,
-//   color: '#aaa',
-//   speed: 0.7,
-//   trail: 50,
-//   hwaccel: true,
-//   className: 'spinner',
-//   zIndex: 2e9,
-//   top: 'auto',
-//   left: 'auto' 
-// };
-// var target = document.getElementById('spinner');
-// var spinner = new Spinner(opts).spin(target);
-
 var doneOnce = false
 
 var Color = require('color')
@@ -39,7 +20,6 @@ $('.helper').popover({
 })
 
 $(document).ready(function(){
-  
 
 	var hc = new HomeController();
 	var av = new AccountValidator();
@@ -152,7 +132,6 @@ $(document).ready(function(){
   var couponBody = $('textarea#coupon_body').attr('data-text')
   $('textarea#coupon_body').text( couponBody )
 
-
 })
 
 $(function(){
@@ -180,3 +159,4 @@ $(function(){
   })
 
 });
+

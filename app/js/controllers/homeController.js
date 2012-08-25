@@ -28,10 +28,6 @@ function HomeController()
       $(this).after('<a href="/">RELOAD</a>')
       $('#cust-tf').val(v)
     }
-    $('#spinner').fadeIn(500, function(){
-                        
-                        
-    })
 
   })
 
