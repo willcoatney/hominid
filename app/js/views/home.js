@@ -10,8 +10,8 @@ var spectrum = require('../../vendor/js/spectrum.js')
 jQuery(function($){
   $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
   .css('color','rgba(0,0,0,0.6)')
-  $('#zip-tf').mask("99999", {placeholder:"_"})
-  .css('color','rgba(0,0,0,0.6)')
+  // $('#zip-tf').mask("99999", {placeholder:"_"})
+  // .css('color','rgba(0,0,0,0.6)')
 });
 
 $('.helper').popover({

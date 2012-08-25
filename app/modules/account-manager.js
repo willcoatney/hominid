@@ -5,7 +5,12 @@ var bcrypt = require('bcrypt')
 var moment = require('moment');
 
 var LocationSchema = new mongoose.Schema({
-  street: {type: String, default: 'default'}
+  number: Number,
+  street: String,
+  city: String,
+  state: String,
+  zip: String,
+  county: String
 });
 
 var OfferSchema = new mongoose.Schema({
@@ -23,11 +28,6 @@ var OfferSchema = new mongoose.Schema({
   coupon_sub: String,
   coupon_price: String,
 
-  address_street: String,
-  address_city: String,
-  address_state: String,
-  address_zip: String,
-  county: String,
 
   loc_quantity: String,
   loc: [ LocationSchema ],
@@ -117,11 +117,6 @@ Offer.update = function( q , callback){
 		o.coupon_supra = q.coupon_supra;
 		o.coupon_sub = q.coupon_sub;
 		o.coupon_price = q.coupon_price;
-		o.address_street  = q.address_street;
-		o.address_city    = q.address_city;
-		o.address_state   = q.address_state;
-		o.address_zip     = q.address_zip;
-		o.county    = q.county;
 
     var x = q.loc_quantity;
     
@@ -132,7 +127,12 @@ Offer.update = function( q , callback){
     }
     for ( var i=0; i<x; i++){
       o.loc.addToSet({ 
-        street: 'ZZZ' + i
+        number: i + 1,
+        street: q.address_street,
+        city: q.address_city,
+        state: q.address_state,
+        zip: q.address_zip,
+        county: q.county
       });
     }
 
@@ -144,6 +144,7 @@ Offer.update = function( q , callback){
 		o.publish = q.publish;
 		o.date = moment();
 		o.date_numeric = moment().format('YYYYMMDDHHmmss');
+
 		if ( q.pass == ''){
 			o.save(); callback(o);
 		}	else{

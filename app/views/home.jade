@@ -109,35 +109,35 @@ block content
               label Locations
               input(type='text', name='loc_quantity')
 
-            li.cg
-              label Street
-              input(type='text', name='address_street', value= user.address_street, placeholder='Street')
+            ul
+              li.cg
+                label Street
+                input(type='text', name='address_street', value= user.address_street, placeholder='Street')
 
-            li.cg#location
-              label City &#38; State
-                mixin helper( "We've already taken the time to list all of the cities in KC and assigned them to the proper state and county. Which is your business in?" )
-              select#location.chzn-select(name='location', data-placeholder="City & State")
-                option= ""
-                if user.address_city != ''
-                  option(selected, value= user.location )= user.address_city +', '+ user.address_state
-                mixin counties(cou, i)
-                  optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
-                    for c in cou[i].cities
-                      option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city +', '+ cou[i].state
+              li.cg
+                label City &#38; State
+                select#location.chzn-select(name='location', data-placeholder="City & State")
+                  option= ""
+                  if user.address_city != ''
+                    option(selected, value= user.location )= user.address_city +', '+ user.address_state
+                  mixin counties(cou, i)
+                    optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
+                      for c in cou[i].cities
+                        option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city +', '+ cou[i].state
 
-                mixin counties( CT.counties, 0 )
-                mixin counties( CT.counties, 1 )
-                mixin counties( CT.counties, 2 )
-                mixin counties( CT.counties, 3 )
-                mixin counties( CT.counties, 4 )
+                  mixin counties( CT.counties, 0 )
+                  mixin counties( CT.counties, 1 )
+                  mixin counties( CT.counties, 2 )
+                  mixin counties( CT.counties, 3 )
+                  mixin counties( CT.counties, 4 )
 
-            input#address_city(type='hidden', name='address_city', value= user.address_city)
-            input#address_state(type='hidden', name='address_state', value= user.address_state)
-            input#county(type='hidden', name='county', value= user.county)
+              input#address_city(type='hidden', name='address_city', value= user.address_city)
+              input#address_state(type='hidden', name='address_state', value= user.address_state)
+              input#county(type='hidden', name='county', value= user.county)
 
-            li.cg
-              label Zip
-              input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
+              li.cg
+                label Zip
+                input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
 
         hr
 
