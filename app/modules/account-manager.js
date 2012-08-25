@@ -5,11 +5,7 @@ var bcrypt = require('bcrypt')
 var moment = require('moment');
 
 var LocationSchema = new mongoose.Schema({
-  street: String,
-  city: String,
-  state: String,
-  zip: String,
-  country: String
+  street: {type: String, default: 'default'}
 });
 
 var OfferSchema = new mongoose.Schema({
@@ -131,13 +127,13 @@ Offer.update = function( q , callback){
     
     o.loc_quantity = x;
 
-    for( var i = 0; i < x; i++ ){
-
-      o.loc[0].street  = q.address_street;
-      o.loc[0].city    = q.address_city;
-      o.loc[0].state   = q.address_state;
-      o.loc[0].zip     = q.address_zip;
-      o.loc[0].country = q.county;
+    for ( var i=0; i<6; i++){
+      o.loc.pop()
+    }
+    for ( var i=0; i<x; i++){
+      o.loc.addToSet({ 
+        street: 'ZZZ' + i
+      });
     }
 
 		o.location = q.location;
