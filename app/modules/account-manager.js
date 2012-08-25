@@ -9,18 +9,24 @@ var OfferSchema = new mongoose.Schema({
   user: { type:String , unique:true, sparse:true },
   email: String,
   pass: String,
+
   business_name: String,
   business_phone: String,
+
   coupon_title: String,
   coupon_body: String,
   coupon_supra: String,
   coupon_sub: String,
   coupon_price: String,
+
   address_street: String,
   address_city: String,
   address_state: String,
   address_zip: String,
   county: String,
+
+  loc_quantity: String,
+
   location: [],
   logo: String,
   color: String,
@@ -111,6 +117,9 @@ Offer.update = function( q , callback){
 		o.address_state   = q.address_state;
 		o.address_zip     = q.address_zip;
 		o.county    = q.county;
+
+    o.loc_quantity = q.loc_quantity; 
+
 		o.location = q.location;
 		o.logo = q.logo;
 		o.color = q.color;

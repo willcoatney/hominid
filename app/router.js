@@ -165,6 +165,9 @@ module.exports = function (app) {
 				address_state   : req.param('address_state'),
 				address_zip     : req.param('address_zip'),
 				county: req.param('county'),
+
+        loc_quantity: req.param('loc_quantity'),
+
 				location : req.param('location'),
 				logo: req.param('logo'),
 				color: req.param('color'),
