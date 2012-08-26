@@ -127,12 +127,12 @@ Offer.update = function( q , callback){
     }
     for ( var i=0; i<x; i++){
       o.loc.addToSet({ 
-        number: i + 1,
-        street: q.address_street,
-        city: q.address_city,
-        state: q.address_state,
-        zip: q.address_zip,
-        county: q.county
+        number : i + 1,
+        street : q.street,
+        city   : q.city,
+        state  : q.state,
+        zip    : q.zip,
+        county : q.county
       });
     }
 

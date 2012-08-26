@@ -112,7 +112,7 @@ block content
             ul
               li.cg
                 label Street
-                input(type='text', name='address_street', value= user.address_street, placeholder='Street')
+                input(type='text', name='street_1', value= user.address_street, placeholder='Street')
 
               li.cg
                 label City &#38; State
@@ -131,13 +131,13 @@ block content
                   mixin counties( CT.counties, 3 )
                   mixin counties( CT.counties, 4 )
 
-              input#address_city(type='hidden', name='address_city', value= user.address_city)
-              input#address_state(type='hidden', name='address_state', value= user.address_state)
-              input#county(type='hidden', name='county', value= user.county)
+              input#address_city(type='hidden', name='city_1', value= user.address_city)
+              input#address_state(type='hidden', name='state_1', value= user.address_state)
+              input#county(type='hidden', name='county_1', value= user.county)
 
               li.cg
                 label Zip
-                input#zip-tf.input-small(type='text', name='address_zip', value= user.address_zip, placeholder='654321')
+                input#zip-tf.input-small(type='text', name='zip_1', value= user.address_zip, placeholder='654321')
 
         hr
 
