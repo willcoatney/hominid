@@ -19,6 +19,8 @@ $('.helper').popover({
   title: 'help'
 })
 
+$('.nav-tabs').button()
+
 $(document).ready(function(){
 
 	var hc = new HomeController();
@@ -152,6 +154,23 @@ $(function(){
       $(this).siblings('.chzn-drop').show();
     }
   });
+
+  $('.lq.btn').on('click', function(){
+    var $this = $(this)
+
+    var v = $this.text()
+    var d = $this.parents('ul').prevAll('ul').children('li')
+    var e = $this.parents('ul').prevAll('ul').find('.lq.btn')
+    var f = $this.parents('ul').nextAll('ul').children('li')
+    var g = $this.parents('ul').nextAll('ul').find('.lq.btn')
+
+    $($this, e).addClass('btn-primary')
+    $($this, d).siblings().fadeIn()
+    g.removeClass('btn-primary')
+    f.fadeOut()
+
+    $('input.lq').val(v)
+  })
 
   $('.date').each(function(){
     var h = $(this).html()

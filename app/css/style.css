@@ -74,7 +74,8 @@ section#logos li{height:30px;width:30px;float:left;border-width:1px;border-style
 section#logos li div{height:30px;width:30px;background-color:#000;float:left;opacity:.4;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);filter:alpha(opacity=40)}
 section#logos li.selected{background-color:#fff;-webkit-box-shadow:0 3px 10px rgba(0,0,0,0.5);box-shadow:0 3px 10px rgba(0,0,0,0.5);}
 section#logos li.selected div{opacity:1;-ms-filter:none;filter:none}
-ul.loc{width:226.66666666666666px;display:inline-block}
+.btn-block{width:70%;margin:0 30px;display:block}
+button.loc,ul.loc{width:226.66666666666666px;display:inline-block;vertical-align:top}
 select{line-height:18px;font-size:12px;padding:3px;width:166.66666666666666px;text-indent:4px}
 input.half{line-height:18px;font-size:12px;padding:3px;width:250px;text-indent:4px}
 input.third{line-height:18px;font-size:12px;padding:3px;width:166.66666666666666px;text-indent:4px}

@@ -29,7 +29,7 @@ var OfferSchema = new mongoose.Schema({
   coupon_price: String,
 
 
-  loc_quantity: String,
+  loc_quantity: Number,
   loc: [ LocationSchema ],
 
   logo: String,
@@ -118,7 +118,7 @@ Offer.update = function( q , callback){
 		o.coupon_price = q.coupon_price;
 
     var x = q.loc_quantity;
-    
+  
     o.loc_quantity = x;
 
     for ( var i=0; i<4; i++){

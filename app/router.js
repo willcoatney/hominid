@@ -152,8 +152,6 @@ module.exports = function (app) {
 				business_phone  : req.param('business_phone'),
 				coupon_title    : req.param('coupon_title'),
 				coupon_body     : req.param('coupon_body'),
-				coupon_supra: req.param('coupon_supra'),
-				coupon_sub : req.param('coupon_sub'),
 				coupon_price: req.param('coupon_price'),
 
 				street_1 : req.param('street_1'),

@@ -107,12 +107,13 @@ block content
 
             li.cg
               label Locations
-              input(type='text', name='loc_quantity', value= user.loc_quantity)
 
+              input.lq( type="hidden", name='loc_quantity', value= user.loc_quantity )
 
             mixin loc( l )
-              ul.loc
+              ul.loc( value=l )
                 usr = user.loc[l-1]
+                .lq.btn.btn-primary.btn-block( type='button', name='loc_quantity', value=l )= l
                 li.cg
                   label Street
                   input.third(type='text', name='street_'+ l, value= usr.street, placeholder='Street')

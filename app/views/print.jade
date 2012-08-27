@@ -65,7 +65,7 @@ block content
   // h1#foobar FOOBAR
   div.coupon-container.jsOpacity
     each o in offers
-      article.coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.county, sort-price= o.coupon_price, sort-date= o.date_numeric )
+      article.coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.loc[0].county, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
         aside.hide
           | #{o.cat}
@@ -85,11 +85,13 @@ block content
           ul
             li: span.date #{o.date}
             hr
-            li
-              | #{o.address_street}<br>
-              | #{o.address_city}, #{o.address_state}
-              | #{o.address_zip}<br>
-              | #{o.business_phone}
+            - for(var i=0; i<o.loc_quantity; i++)
+              li
+                | #{o.loc[i].street}<br>
+                | #{o.loc[i].city}, #{o.loc[i].state}
+                | #{o.loc[i].zip}<br>
+                | #{o.business_phone}
+              br
             hr
             li
               | #{o.coupon_body}
