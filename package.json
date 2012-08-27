@@ -4,7 +4,7 @@
   "description": "An early Spinly",
   "private": true,
   "dependencies": {
-    "express": "3.0.x",
+    "express": "2.5.8",
     "stylus": ">= 0.0.1",
     "nib": "~ 0.5.x",
     "jade": ">= 0.0.1",

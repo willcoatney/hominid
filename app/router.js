@@ -19,7 +19,6 @@ module.exports = function (app) {
         res.render('print', {
           locals: {
               CT : CT
-            , title      : 'Outside'
             , offers : docs
             , user : req.cookies.user
           }
@@ -31,7 +30,6 @@ module.exports = function (app) {
         res.render('print', { 
           locals: {
               CT : CT
-            , title      : 'Inside'
             , offers : docs
             , user       : req.cookies.user
             , udata      : req.session.user
@@ -75,8 +73,7 @@ module.exports = function (app) {
       if (req.cookies.user == undefined || req.cookies.pass == undefined) {
         res.render('login', {
           locals: {
-             title: 'Hello - Please Login To Your Account'
-           , user: req.cookies.user
+            user: req.cookies.user
           }
         });
         console.log('Unidentified user has landed on "/login"');
@@ -91,7 +88,6 @@ module.exports = function (app) {
             res.render('login', {
               locals: {
                   CT: CT
-                , title: 'Hello - Please Login To Your Account'
                 , user: req.cookies.user
               }
             });
@@ -137,7 +133,6 @@ module.exports = function (app) {
 			res.render('home', {
 				locals: {
             CT: CT
-					, title : 'Your Account'
           , offers: docs
           , user: req.cookies.user
 					, udata : req.session.user
@@ -161,15 +156,24 @@ module.exports = function (app) {
 				coupon_sub : req.param('coupon_sub'),
 				coupon_price: req.param('coupon_price'),
 
-				street : req.param('street_1'),
-				city   : req.param('city_1'),
-				state  : req.param('state_1'),
-				zip    : req.param('zip_1'),
-				county : req.param('county_1'),
+				street_1 : req.param('street_1'),
+				city_1   : req.param('city_1'),
+				state_1  : req.param('state_1'),
+				zip_1    : req.param('zip_1'),
+				county_1 : req.param('county_1'),
+				street_2 : req.param('street_2'),
+				city_2   : req.param('city_2'),
+				state_2  : req.param('state_2'),
+				zip_2    : req.param('zip_2'),
+				county_2 : req.param('county_2'),
+				street_3 : req.param('street_3'),
+				city_3   : req.param('city_3'),
+				state_3  : req.param('state_3'),
+				zip_3    : req.param('zip_3'),
+				county_3 : req.param('county_3'),
 
         loc_quantity: req.param('loc_quantity'),
 
-				location : req.param('location'),
 				logo: req.param('logo'),
 				color: req.param('color'),
 				cat: req.param('cat'),
@@ -203,7 +207,6 @@ module.exports = function (app) {
 	app.get('/signup', function(req, res) {
 		res.render('signup', { 
 			locals: {
-        title: 'Signup',
         user: req.cookies.user
       }
 		});

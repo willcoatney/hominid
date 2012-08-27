@@ -32,7 +32,6 @@ var OfferSchema = new mongoose.Schema({
   loc_quantity: String,
   loc: [ LocationSchema ],
 
-  location: [],
   logo: String,
   color: String,
   cat: String,
@@ -122,21 +121,34 @@ Offer.update = function( q , callback){
     
     o.loc_quantity = x;
 
-    for ( var i=0; i<6; i++){
+    for ( var i=0; i<4; i++){
       o.loc.pop()
     }
-    for ( var i=0; i<x; i++){
-      o.loc.addToSet({ 
-        number : i + 1,
-        street : q.street,
-        city   : q.city,
-        state  : q.state,
-        zip    : q.zip,
-        county : q.county
-      });
-    }
+    o.loc.addToSet({ 
+      number : 1,
+      street : q.street_1,
+      city   : q.city_1,
+      state  : q.state_1,
+      zip    : q.zip_1,
+      county : q.county_1
+    });
+    o.loc.addToSet({ 
+      number : 2,
+      street : q.street_2,
+      city   : q.city_2,
+      state  : q.state_2,
+      zip    : q.zip_2,
+      county : q.county_2
+    });
+    o.loc.addToSet({ 
+      number : 3,
+      street : q.street_3,
+      city   : q.city_3,
+      state  : q.state_3,
+      zip    : q.zip_3,
+      county : q.county_3
+    });
 
-		o.location = q.location;
 		o.logo = q.logo;
 		o.color = q.color;
 		o.cat = q.cat;

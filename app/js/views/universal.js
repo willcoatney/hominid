@@ -13,11 +13,13 @@ jQuery.fn.vertical_center = function () {
 
 $(document).ready(function(){
 
-  $('select#location').on('change', function(){
-   blarg = $(this).val().split(',')
-   $('input#address_city').val(blarg[0].toString())
-   $('input#address_state').val(blarg[1].toString())
-   $('input#county').val(blarg[2].toString())
+  $('select.loc').on('change', function(){
+   var p = $(this).parents('ul')
+   var b = $(this).val().split(',')
+
+   p.find('input.city').val(b[0].toString())
+   p.find('input.state').val(b[1].toString())
+   p.find('input.county').val(b[2].toString())
   });
 
   $('.chzn-select').chosen();
