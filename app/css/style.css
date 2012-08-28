@@ -78,8 +78,7 @@ button{-webkit-transition:.2s;-moz-transition:.2s;-o-transition:.2s;-ms-transiti
 button.lq{width:100%;margin:15px 0;display:block}
 button:hover{opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter:alpha(opacity=80)}
 button.active{opacity:1;-ms-filter:none;filter:none}
-button.loc,ul.loc{width:23%;display:inline-block;vertical-align:top}
-select{line-height:18px;font-size:12px;padding:3px;width:166.66666666666666px;text-indent:4px}
+.quarter{width:23%;display:inline-block;vertical-align:top}
 input.half{line-height:18px;font-size:12px;padding:3px;width:250px;text-indent:4px}
 input.third{line-height:18px;font-size:12px;padding:3px;width:166.66666666666666px;text-indent:4px}
 input,textarea,.uneditable-input{line-height:18px;font-size:12px;padding:3px;width:500px;text-indent:4px;border-width:1px;border-style:solid;border-color:#fff #fff #fff #ccc;-webkit-border-radius:0;border-radius:0;display:inline-block;vertical-align:top;color:rgba(0,0,0,0.6);color:rgba(0,0,0,0.5);}

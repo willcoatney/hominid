@@ -121,7 +121,7 @@ block content
               - usrActive = l-1 < user.loc_quantity || l == 1 ? true : false
               - classActive = usrActive ? 'active' : ''
               - classHide = !usrActive ? 'jsHide' : ''
-              ul.loc.cg( value=l )
+              ul.loc.cg.quarter( value=l )
                 button.lq.Color( type='button', name='loc_quantity', value=l, class=classActive, style="background: #{usrColor}" )= l
                 li(class=classHide)
                   label Street
@@ -166,15 +166,16 @@ block content
         section#offer
           
            fieldset
-            li.cg
+            li.cg.quarter
               label Offer Name
                 mixin helper( "This is the name of your offer. Brevity is best." )
               input(type="text", name='coupon_title', value= user.coupon_title )
-            li.cg
+            li.cg.quarter
               label Offer Price
                 mixin helper( "List the price of the item you are offering after rounding to the nearest dollar." )
               input#price-tf(type='text', name='coupon_price', value= user.coupon_price)
-            li.cg#category
+            .clearfix
+            li.cg.quarter#category
               label Offer Category
                 mixin helper( "This is the primary category to which your offer belongs. What does your customer do with your product?" )
               select.chzn-select(name='cat', data-placeholder='-' )
@@ -185,7 +186,7 @@ block content
                   else
                     option(selected)= c.name
 
-            #tags
+            #tags.quarter
 
               each c in CT.cats
                 if c.name != user.cat
