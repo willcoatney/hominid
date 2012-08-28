@@ -62,14 +62,14 @@ $(document).ready(function(){
 
   var u = $('input#color-picker').val()
 
-  function _lighten( o ){
-    var e = Color( o ).lighten(0.6).desaturate(0.5).hexString()
-    return e;
-  }
+  // function _lighten( o ){
+  //   var e = Color( o ).lighten(0.6).desaturate(0.5).hexString()
+  //   return e;
+  // }
+
 
 
   $('section#sidebar>div.inner').css('backgroundColor', u )
-  $('nav#nav-top>h1').css({ borderColor: _lighten(u) })
   $('section#logos li div').css({ backgroundColor: u })
   $('.coupon .symbol-container .symbol').css({ backgroundColor: u })
 
@@ -122,7 +122,7 @@ $(document).ready(function(){
       var xl = Color(x).lighten(0.6).desaturate(0.5).hexString()
       $('#sidebar>.inner').css("backgroundColor", x )
       $('section#logos li div').css("backgroundColor", x )
-      $('#nav-top>h1').css("borderColor", xl )
+      $('button.Color').css("backgroundColor", xl )
       $('.coupon .symbol-container .symbol').css("backgroundColor", x )
       $('input#color-picker').val(x)
     }

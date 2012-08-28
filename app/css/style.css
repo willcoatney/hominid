@@ -32,8 +32,8 @@ nav#nav-home li a{color:#fff;display:block;text-transform:lowercase;text-align:c
 nav#nav-home li a:hover,nav#nav-home li a.active{color:#fff}
 nav#nav-home li a i{font-size:24px;line-height:24px}
 nav#nav-home li a span{font-size:11px;display:block;font-weight:600;text-transform:uppercase;color:#fff}
-nav#nav-top{height:100px;border-bottom:1px solid #eee;margin-bottom:35px;}
-nav#nav-top h1{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:30px;letter-spacing:10px;font-weight:300;padding:0 30px 0;text-transform:lowercase;border-bottom:10px solid #bbb;margin-bottom:-10px;display:inline-block;line-height:100px;}
+nav#nav-top{height:100px;border-bottom:1px solid #dbdbdb;margin-bottom:35px;}
+nav#nav-top h1{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:30px;letter-spacing:10px;font-weight:300;padding:0 30px 0;text-transform:lowercase;margin-bottom:-10px;display:inline-block;line-height:100px;}
 nav#nav-top h1:nth-child(1n+2){display:none}
 nav#nav-top a{position:absolute;right:25px;line-height:100px;font-size:50px;}
 nav#nav-top a i{color:#fff;background:#444;padding:10px 30px;margin-top:-20px}
@@ -75,10 +75,10 @@ section#logos li div{height:30px;width:30px;background-color:#000;float:left;opa
 section#logos li.selected{background-color:#fff;-webkit-box-shadow:0 3px 10px rgba(0,0,0,0.5);box-shadow:0 3px 10px rgba(0,0,0,0.5);}
 section#logos li.selected div{opacity:1;-ms-filter:none;filter:none}
 button{-webkit-transition:.2s;-moz-transition:.2s;-o-transition:.2s;-ms-transition:.2s;transition:.2s;border:none;color:#fff;background:#000;opacity:.3;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);filter:alpha(opacity=30);}
-button.button-block{width:77%;margin:0 30px;display:block}
+button.lq{width:100%;margin:15px 0;display:block}
 button:hover{opacity:.8;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter:alpha(opacity=80)}
 button.active{opacity:1;-ms-filter:none;filter:none}
-button.loc,ul.loc{width:226.66666666666666px;display:inline-block;vertical-align:top}
+button.loc,ul.loc{width:23%;display:inline-block;vertical-align:top}
 select{line-height:18px;font-size:12px;padding:3px;width:166.66666666666666px;text-indent:4px}
 input.half{line-height:18px;font-size:12px;padding:3px;width:250px;text-indent:4px}
 input.third{line-height:18px;font-size:12px;padding:3px;width:166.66666666666666px;text-indent:4px}
@@ -95,7 +95,7 @@ input:focus,textarea:focus,.uneditable-input:focus{outline:0;color:rgba(0,0,0,0.
 .input-xxlarge{width:530px}
 .cg{padding:10px 30px 0}
 #map_canvas{height:100%}
-label{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:#444;margin-bottom:5px;width:500px;}
+label{font-family:'freight-sans-pro','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:#444;margin:5px 0;width:500px;}
 label a{opacity:.15;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=15);filter:alpha(opacity=15);-webkit-transition:.2s;-moz-transition:.2s;-o-transition:.2s;-ms-transition:.2s;transition:.2s;padding:0 5px 0 5px;}
 label a:hover{opacity:1;-ms-filter:none;filter:none}
 .popover-title{display:none}

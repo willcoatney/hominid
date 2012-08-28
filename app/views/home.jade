@@ -42,7 +42,7 @@ block title-top
 block content
 
   - user = typeof(udata) != 'undefined' ? udata : {}
-  - usrColor = typeof(user.color) != 'undefined' ? user.color : {}
+  - usrColor = typeof(user.color) != 'undefined' ? user.color : "#446190"
   if typeof(user.tags) != 'undefined'
     - tag1 = typeof(user.tags[0]) != 'undefined' ? user.tags[0] : {}
     - tag2 = typeof(user.tags[1]) != 'undefined' ? user.tags[1] : {}
@@ -113,20 +113,21 @@ block content
 
             li.cg
               label Locations
+                mixin helper( "Do you have multiple locations? We've got you covered. List as many as three locations right now, and stay tuned for more listings and options as we roll them out." )
 
               input.lq( type="hidden", name='loc_quantity', value= user.loc_quantity )
 
             mixin loc( l, u )
-              - usrActive = l-1 < user.loc_quantity ? true : false
+              - usrActive = l-1 < user.loc_quantity || l == 1 ? true : false
               - classActive = usrActive ? 'active' : ''
               - classHide = !usrActive ? 'jsHide' : ''
-              ul.loc( value=l )
-                button.lq.button-block( type='button', name='loc_quantity', value=l, class=classActive, style="background: #{usrColor}" )= l
-                li.cg(class=classHide)
+              ul.loc.cg( value=l )
+                button.lq.Color( type='button', name='loc_quantity', value=l, class=classActive, style="background: #{usrColor}" )= l
+                li(class=classHide)
                   label Street
                   input.third(type='text', name='street_'+ l, value= u.street )
 
-                li.cg( id='loc_'+l, class=classHide)
+                li( id='loc_'+l, class=classHide)
                   label City &#38; State
                   select.loc.chzn-select(name='location', data-placeholder='-' )
                     option= ""
@@ -148,7 +149,7 @@ block content
                 input.state( type='hidden', name='state_'+l, value=u.state )
                 input.county( type='hidden', name='county_'+l, value=u.county )
 
-                li.cg(class=classHide)
+                li(class=classHide)
                   label Zip
                   input#zip-tf.input-small(type='text', name='zip_'+ l, value=u.zip )
 
