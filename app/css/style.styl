@@ -422,10 +422,21 @@ section#logos
 
 //    BUTTONS
 
-.btn-block
-  width 70%
-  margin 0 30px
-  display block
+button
+  transition 0.2s
+  border none
+  color white
+  background black
+  opacity 0.3
+  &.button-block
+    width 77%
+    margin 0 30px
+    display block
+  &:hover
+    opacity 0.8
+  &.active
+    opacity 1
+  
 
 button.loc
 ul.loc
@@ -709,7 +720,7 @@ Transition()
 .chzn-container-single .chzn-single div
   position: absolute
   right 6px
-  top 6px
+  top 4px
   display: block
   height: 100%
   width: 18px

@@ -3016,7 +3016,7 @@ var Color = require('color')
 var spectrum = require('../../vendor/js/spectrum.js')
 
 jQuery(function($){
-  $('#phone-tf').mask("999-999-9999", {placeholder:"_"})
+  $('#phone-tf').mask("999-999-9999", {placeholder:""})
   .css('color','rgba(0,0,0,0.6)')
   // $('#zip-tf').mask("99999", {placeholder:"_"})
   // .css('color','rgba(0,0,0,0.6)')
@@ -3163,18 +3163,18 @@ $(function(){
     }
   });
 
-  $('.lq.btn').on('click', function(){
+  $('button.lq').on('click', function(){
     var $this = $(this)
 
     var v = $this.text()
     var d = $this.parents('ul').prevAll('ul').children('li')
-    var e = $this.parents('ul').prevAll('ul').find('.lq.btn')
+    var e = $this.parents('ul').prevAll('ul').find('button.lq')
     var f = $this.parents('ul').nextAll('ul').children('li')
-    var g = $this.parents('ul').nextAll('ul').find('.lq.btn')
+    var g = $this.parents('ul').nextAll('ul').find('button.lq')
 
-    $($this, e).addClass('btn-primary')
+    $($this, e).addClass('active')
     $($this, d).siblings().fadeIn()
-    g.removeClass('btn-primary')
+    g.removeClass('active')
     f.fadeOut()
 
     $('input.lq').val(v)

@@ -65,11 +65,27 @@ block content
   // h1#foobar FOOBAR
   div.coupon-container.jsOpacity
     each o in offers
-      article.coupon(class= o.cat +' '+ o.tags[0] +' '+ o.tags[1] +' '+ o.tags[2] +' '+ o.loc[0].county, sort-price= o.coupon_price, sort-date= o.date_numeric )
+      - tt = {}
+        function()
+          t1 = typeof(o.tags[0]) != 'undefined' ? ' '+o.tags[0] : ''
+          t2 = typeof(o.tags[1]) != 'undefined' ? ' '+o.tags[1] : ''
+          t3 = typeof(o.tags[2]) != 'undefined' ? ' '+o.tags[2] : ''
+          tt = t1+t2+t3
+      - cc = {}
+        function()
+          c1 = o.loc[0].county != 'undefined' ? ' '+o.loc[0].county : ''
+          c2 = o.loc[1].county != 'undefined' ? ' '+o.loc[1].county : ''
+          c3 = o.loc[2].county != 'undefined' ? ' '+o.loc[2].county : ''
+          cc = c1+c2+c3
+      article.coupon(class= o.cat + tt + cc, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
         aside.hide
+        // aside
           | #{o.cat}
-          | #{o.tags[0]}  #{o.tags[1]} #{o.tags[2]}
+          | <br>
+          | #{tt}
+          | <br>
+          | #{ cc }
         header
           | #{o.business_name}
           .symbol-container

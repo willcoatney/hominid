@@ -40,11 +40,17 @@ block title-top
     h1#help Help
 
 block content
-  - var tag1 = user.tags[0]
-  - var tag2 = user.tags[1]
-  - var tag3 = user.tags[2]
 
   - user = typeof(udata) != 'undefined' ? udata : {}
+  - usrColor = typeof(user.color) != 'undefined' ? user.color : {}
+  if typeof(user.tags) != 'undefined'
+    - tag1 = typeof(user.tags[0]) != 'undefined' ? user.tags[0] : {}
+    - tag2 = typeof(user.tags[1]) != 'undefined' ? user.tags[1] : {}
+    - tag3 = typeof(user.tags[2]) != 'undefined' ? user.tags[2] : {}
+  else
+    - tag1 = {}
+    - tag2 = {}
+    - tag3 = {}
 
   input(type='hidden', value= user._id)#userId
 
@@ -71,19 +77,19 @@ block content
       section#account.jsHide
           fieldset
             li.cg#user-cg
-              label(for='user-tf') Username
+              label Username
                 mixin helper( "Your username cannot be changed." )
               input#user-tf.disabled(type='text', disabled, name='user', value=user.user)
             li.cg#cust-cg
-              label.cl(for='cust-tf') Customer Number
+              label Customer Number
                 mixin helper( "Disregard your customer for the time being. In the future, this number will be used to verify your Deffenbaugh customer status." )
               input#cust-tf.disabled(type='text', disabled, name='cust', value=user.cust)
             li.cg#pass-cg
-              label(for='pass-tf') Password
+              label Password
                 mixin helper( "Your password must be at least six digits." )
               input#pass-tf(type='password', name='pass', value='')
             li.cg#email-cg
-              label(for='email-tf') Email
+              label Email
                 mixin helper( "We will only ever email you if you forget your password and you need to reset it." )
               input#email-tf(type='text', name='email', value= user.email)
 
@@ -99,10 +105,10 @@ block content
             li.cg
               label Business Name
                 mixin helper( 'Enter the name of your business. Remember, brevity is best.' )
-              input#business_name-tf(type='text', name='business_name', value= user.business_name, placeholder='My Business')
+              input#business_name-tf(type='text', name='business_name', value= user.business_name )
             li.cg#phone-cg
               label(for='phone-tf') Business Phone
-              input.span2#phone-tf(type='text', name='business_phone', value= user.business_phone, placeholder='555-555-5555')
+              input.span2#phone-tf(type='text', name='business_phone', value= user.business_phone )
             hr
 
             li.cg
@@ -110,24 +116,27 @@ block content
 
               input.lq( type="hidden", name='loc_quantity', value= user.loc_quantity )
 
-            mixin loc( l )
+            mixin loc( l, u )
+              - usrActive = l-1 < user.loc_quantity ? true : false
+              - classActive = usrActive ? 'active' : ''
+              - classHide = !usrActive ? 'jsHide' : ''
               ul.loc( value=l )
-                usr = user.loc[l-1]
-                .lq.btn.btn-primary.btn-block( type='button', name='loc_quantity', value=l )= l
-                li.cg
+                button.lq.button-block( type='button', name='loc_quantity', value=l, class=classActive, style="background: #{usrColor}" )= l
+                li.cg(class=classHide)
                   label Street
-                  input.third(type='text', name='street_'+ l, value= usr.street, placeholder='Street')
+                  input.third(type='text', name='street_'+ l, value= u.street )
 
-                li.cg( id='loc_'+l )
+                li.cg( id='loc_'+l, class=classHide)
                   label City &#38; State
-                  select.loc.chzn-select(name='location', data-placeholder="City & State")
+                  select.loc.chzn-select(name='location', data-placeholder='-' )
                     option= ""
-                    if usr.city != ''
-                      option(selected)= usr.city +', '+ usr.state
+                    if typeof(u.city) != 'undefined' && u.city != '' ? true : false
+                      option(selected)= u.city +', '+ u.state
                     mixin counties(cou, i)
                       optgroup(label= cou[i].county +' County ('+ cou[i].state+')')
                         for c in cou[i].cities
                           option(value= c.city +','+ cou[i].state +','+ cou[i].county )= c.city +', '+ cou[i].state
+
 
                     mixin counties( CT.counties, 0 )
                     mixin counties( CT.counties, 1 )
@@ -135,18 +144,21 @@ block content
                     mixin counties( CT.counties, 3 )
                     mixin counties( CT.counties, 4 )
 
-                input.city( type='hidden', name='city_'+l, value= usr.city )
-                input.state( type='hidden', name='state_'+l, value= usr.state )
-                input.county( type='hidden', name='county_'+l, value= usr.county )
+                input.city( type='hidden', name='city_'+l, value=u.city )
+                input.state( type='hidden', name='state_'+l, value=u.state )
+                input.county( type='hidden', name='county_'+l, value=u.county )
 
-                li.cg
+                li.cg(class=classHide)
                   label Zip
-                  input#zip-tf.input-small(type='text', name='zip_'+ l, value= usr.zip, placeholder='654321')
+                  input#zip-tf.input-small(type='text', name='zip_'+ l, value=u.zip )
 
 
-            mixin loc( 1 )
-            mixin loc( 2 )
-            mixin loc( 3 )
+            - usr1 = typeof(user.loc[0]) != 'undefined' ? user.loc[0] : ''
+            - usr2 = typeof(user.loc[1]) != 'undefined' ? user.loc[1] : ''
+            - usr3 = typeof(user.loc[2]) != 'undefined' ? user.loc[2] : ''
+            mixin loc( 1, usr1 )
+            mixin loc( 2, usr2 )
+            mixin loc( 3, usr3 )
             hr
 
 
@@ -156,7 +168,7 @@ block content
             li.cg
               label Offer Name
                 mixin helper( "This is the name of your offer. Brevity is best." )
-              input(type="text", name='coupon_title', value= user.coupon_title, placeholder="Keep it short")
+              input(type="text", name='coupon_title', value= user.coupon_title )
             li.cg
               label Offer Price
                 mixin helper( "List the price of the item you are offering after rounding to the nearest dollar." )
@@ -164,7 +176,7 @@ block content
             li.cg#category
               label Offer Category
                 mixin helper( "This is the primary category to which your offer belongs. What does your customer do with your product?" )
-              select.chzn-select(name='cat', data-placeholder='Choose One')
+              select.chzn-select(name='cat', data-placeholder='-' )
                 option= ''
                 each c in CT.cats
                   if c.name != user.cat
@@ -179,7 +191,7 @@ block content
                   li.cg(id= c.name).jsHide
                     label Offer Tags
                       mixin helper( "Pick a tag the tag that best describes your product." )
-                    select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                    select.chzn-select(name='tags', multiple )
                       optgroup(label= c.name+' Tags')
                         each j in c.tags
                           option= j
@@ -189,7 +201,7 @@ block content
                 else
                   li.cg(id= c.name)
                     label Offer Tags
-                    select.chzn-select(name='tags', multiple, data-placeholder='Choose Up to Three')
+                    select.chzn-select(name='tags', multiple )
                       optgroup(label= c.name+' Tags')
                         each r in c.tags
                           if r==tag1 || r==tag2 || r==tag3
@@ -208,7 +220,7 @@ block content
               label Offer Details and Disclaimers
                 mixin helper( "Is there anything else you'd like to add? Maybe the product is only offered on the weekends? Or perhaps you have an inspiring quote you'd like to share?" )
               div.c
-                textarea#coupon_body.input-x-large(rows='3', name='coupon_body', data-text= user.coupon_body, placeholder='Be clear, concise, and brief')
+                textarea#coupon_body.input-x-large(rows='3', name='coupon_body', data-text= user.coupon_body )
 
         hr
 
@@ -270,7 +282,7 @@ block content
         li.cg
           label Publish
             mixin helper( 'To publish your coupon, enter the word "true" in the area below, then press "Update". Presto! Your coupon is live for the whole world.' )
-          input.span2(type='text', name='publish', value= user.publish, placeholder='true/false')
+          input.span2(type='text', name='publish', value= user.publish )
           button(type='submit').account-form-btn2.btn Update
         br
         br

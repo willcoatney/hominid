@@ -212,9 +212,9 @@ module.exports = function (app) {
 	
 	app.post('/signup', function(req, res){
 		Offer.signup({
-			user            : req.param('user'),
-			email           : req.param('email'),
-			pass            : req.param('pass'),
+			user : req.param('user'),
+			email : req.param('email'),
+			pass : req.param('pass'),
 			cust : req.param('cust')
 		}, function(e, o){
 			if (e){
