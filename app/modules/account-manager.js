@@ -114,8 +114,10 @@ Offer.signup = function(newData, callback){
 
 
 Offer.upvote = function( q, cb ){
-  Offer.findOne({user: q.user}, function(e, o){
-    o.meta.votes = 333
+  Offer.findOne({user: q.user }, 'logo meta', function(e, o){
+    j = o.meta.votes
+    o.meta.votes = j + 1
+    o.save()
 
   })
 }
@@ -167,7 +169,6 @@ Offer.update = function( q , callback){
       county : q.county_3
     });
 
-    o.meta.votes = 1;
 
 		o.logo = q.logo;
 		o.color = q.color;

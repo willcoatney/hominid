@@ -80,7 +80,7 @@ block content
       article.coupon(class= o.cat + tt + cc, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
         // aside
-        a.vote(href="/upvote")
+        a.vote(href="/upvote/#{o.user}")
           h1 #{o.meta.votes}
           .foo ...
         header
