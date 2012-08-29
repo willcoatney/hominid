@@ -41,26 +41,11 @@ module.exports = function (app) {
   });
 
   app.get('/upvote/:id', function( req, res, cb ){
-    Offer.getAllRecords( function( e, docs ){
-      res.render('print', {
-          locals: {
-          CT: CT,
-          offers: docs,
-          user: req.cookies.user,
-          udata: req.session.user
-        }
-      })
-    })
     Offer.upvote({
       user: req.params.id
     })
   })
 
-  // app.post('/upvote', function (req, res) {
-  //   Offer.upvote({
-  //     user: req.param('user')
-  //   })
-  // })
 
   app.post('/', function (req, res) {
     if (req.param('email') != null) {

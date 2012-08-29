@@ -1,13 +1,13 @@
 
+
 $( function(){
   $('a.vote').click( function (){
+    var id = $(this).attr('id')
+    var el = $(this).find('h2')
+    var v = parseFloat(el.text())+1
+    $(el).text(v)
     $.ajax({
-      type: 'POST',
-      data: 'action=vote',
-      url: 'vote',
-      success: function (msg){
-        $('.foo').html(msg)
-      }
+      url: '/upvote/'+ id
     });
   })
 })

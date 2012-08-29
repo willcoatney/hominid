@@ -3070,12 +3070,6 @@ $(document).ready(function(){
 
   var u = $('input#color-picker').val()
 
-  // function _lighten( o ){
-  //   var e = Color( o ).lighten(0.6).desaturate(0.5).hexString()
-  //   return e;
-  // }
-
-
 
   $('section#sidebar>div.inner').css('backgroundColor', u )
   $('section#logos li div').css({ backgroundColor: u })

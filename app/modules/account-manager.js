@@ -114,7 +114,7 @@ Offer.signup = function(newData, callback){
 
 
 Offer.upvote = function( q, cb ){
-  Offer.findOne({user: q.user }, 'logo meta', function(e, o){
+  Offer.findOne({user: q.user }, 'meta', function(e, o){
     j = o.meta.votes
     o.meta.votes = j + 1
     o.save()
