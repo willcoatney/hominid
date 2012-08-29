@@ -79,7 +79,10 @@ block content
           cc = c1+c2+c3
       article.coupon(class= o.cat + tt + cc, sort-price= o.coupon_price, sort-date= o.date_numeric )
 
-        aside.hide
+        // aside
+        a.vote(href="/upvote")
+          h1 #{o.meta.votes}
+          .foo ...
         header
           | #{o.business_name}
           .symbol-container

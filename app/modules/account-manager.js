@@ -32,6 +32,10 @@ var OfferSchema = new mongoose.Schema({
   loc_quantity: Number,
   loc: [ LocationSchema ],
 
+  meta: {
+    votes: Number
+  },
+
   logo: String,
   color: String,
   cat: String,
@@ -108,6 +112,15 @@ Offer.signup = function(newData, callback){
     });
   }
 
+
+Offer.upvote = function( q, cb ){
+  Offer.findOne({user: q.user}, function(e, o){
+    o.meta.votes = 333
+
+  })
+}
+
+
 // update db%
 
 Offer.update = function( q , callback){		
@@ -154,6 +167,8 @@ Offer.update = function( q , callback){
       county : q.county_3
     });
 
+    o.meta.votes = 1;
+
 		o.logo = q.logo;
 		o.color = q.color;
 		o.cat = q.cat;
@@ -173,8 +188,7 @@ Offer.update = function( q , callback){
 	});
 }
 
-Offer.setPassword = function(oldp, newp, callback)
-{
+Offer.setPassword = function(oldp, newp, callback){
 	Offer.findOne({pass:oldp}, function(e, o){
 		Offer.saltAndHash(newp, function(hash){
 			o.pass = hash;

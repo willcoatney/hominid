@@ -1,3 +1,19 @@
+
+$( function(){
+  $('a.vote').click( function (){
+    $.ajax({
+      type: 'POST',
+      data: 'action=vote',
+      url: 'vote',
+      success: function (msg){
+        $('.foo').html(msg)
+      }
+    });
+  })
+})
+
+
+
 // isotope
 //
 
