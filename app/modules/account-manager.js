@@ -49,6 +49,11 @@ module.exports = Offer;
 
 // logging in //
 
+
+Offer.derp = function(o){
+  return o
+}
+
 Offer.autoLogin = function(user, pass, callback)
 {
 	Offer.findOne({user:user}, function(e, o) {
