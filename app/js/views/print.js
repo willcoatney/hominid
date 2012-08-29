@@ -2,8 +2,8 @@
 
 $( function(){
   $('a.vote').click( function (){
+    var el = $(this)
     var id = $(this).attr('id')
-    var el = $(this).find('h2')
     var v = parseFloat(el.text())+1
     $(el).text(v)
     $.ajax({
@@ -83,6 +83,9 @@ $container.isotope({
   getSortData : {
     cheapest: function( $elem ) {
       return parseInt( $elem.attr('sort-price'), 10 );
+    },
+    best: function( $elem ) {
+      return -(parseInt( $elem.attr('sort-rating'), 10 ))
     },
     newest: function ( $elem ) {
       return -( $elem.attr('sort-date') );

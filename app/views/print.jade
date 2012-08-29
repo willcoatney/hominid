@@ -17,7 +17,7 @@ block sidebar
           li: a.link(href='#newest') latest
           li: a.link(href='#cheapest') cheapest
           li: span.link.disabled nearest
-          li: span.link.disabled best
+          li: a.link(href='#best') best
           li.jsHide#all: a(href= '#' ) all
 
         br
@@ -77,16 +77,14 @@ block content
           c2 = o.loc[1].county != 'undefined' ? ' '+o.loc[1].county : ''
           c3 = o.loc[2].county != 'undefined' ? ' '+o.loc[2].county : ''
           cc = c1+c2+c3
-      article.coupon(class= o.cat + tt + cc, sort-price= o.coupon_price, sort-date= o.date_numeric )
+      article.coupon(class= o.cat + tt + cc, sort-price= o.coupon_price, sort-date= o.date_numeric, sort-rating= o.meta.votes )
 
         // aside
-        a.vote(id= o.user)
-          h2 #{o.meta.votes}
-          .foo ...
         header
-          | #{o.business_name}
+          .business #{o.business_name}
           .symbol-container
             .symbol(style="background-image:url(https://s3.amazonaws.com/spinly/images/"+o.logo + ".png); background-color:"+ o.color)
+            a.vote(id= o.user)= o.meta.votes
         .content
           sup.dollar $
           div.price

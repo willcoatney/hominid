@@ -12,17 +12,16 @@ block sidebar
         li: a(href='#')#offer
           i.icon-tags
           span offer
-        li.disabled: a
+        li: a(href='#')#metrics
           i.icon-magic
           span metrics
         // li: a(href='#')#features
         li.disabled: a
           i.icon-th
           span features
-        // li: a(href='#')#help
-        li.disabled: a
+        li: a(href='#')#info
           i.icon-question-sign
-          span help
+          span info
         li: a(href='#')#logout
           i.icon-signout
           span logout
@@ -36,8 +35,9 @@ block title-top
     h1#home
     h1#account Profile
     h1#offer Offer
+    h1#metrics Metrics
     h1#features Features
-    h1#help Help
+    h1#info Info
 
 block content
 
@@ -290,34 +290,70 @@ block content
         br
         br
 
-      section#features.jsHide
+      section#metrics.jsHide
         div.greeting
           div.row.headline
-            h2 People want more. They need less.
-            | Our goal is to bring people back to reality.
+            h2 Measure, grow, rinse, repeat
+            | Our metrics measurements won't be instantaneous until we get our new servers. Blast!
+            | <br>
+            | It's OK, though. As soon as you log out, your metrics update. No biggie.
+            | <br>
+            | <br>
+            | Oh, and graphs are coming. You're going to love 'em.
+
+        li.cg.metric-icons
+          .icon
+            i.icon-circle-arrow-up
+          span.data #{user.meta.votes}
+          span.little  votes
+        .clearfix
+
+        li.cg.metric-icons.disabled
+          .icon
+            i.icon-heart
+          span.data ----
+          span.little  fav's
+        .clearfix
+        li.cg.metric-icons.disabled
+          .icon
+            i.icon-eye-open
+          span.data ----
+          span.little  views
+        .clearfix
+
+      section#info.jsHide
+        div.greeting
           div.row
-            .span4
+            .span6
+              h3 
+                i.icon-large.icon-dashboard
+                |  Fat Free Information
+              | You're busy. You don't have time to read a novel. We get it. Our goal is to strip away the junk and leave you with clean, strong, delicious information.
+          div.row
+            .span6
+              h3 
+                i.icon-large.icon-time
+                |  Right Here, Right Now
+              | Life is what happens while you're making other plans. Maybe it's time we created a space to say "no plans!" and live for a minute or two?
+          div.row
+            .span6
               h3 
                 i.icon-large.icon-home
                 |  Made by KC for KC
-              | Kansas City is our home, and we can all spend a little more time enjoying being at home.
-            .span4
-              h3 
-                i.icon-large.icon-time
-                |  Right Here, Right Now
-              | Like you, we love to go above and beyond for our customers.
+              | Kansas City is the bee's knees, don't you agree? With so much to do, it's hard to decide what to do at any given minute. We hope to make it a little easier.
           div.row
-            .span4
+            .span6
               h3 
-                i.icon-large.icon-time
-                |  Right Here, Right Now
-              | Like you, we love to go above and beyond for our customers.
+                i.icon-large.icon-beaker
+                |  It Aint Easy Being Green
+              | We're still in beta, so brace for the occasional server crash. Alas, it is the nature of the beast. We're working our tails off to bring you the absolute best value and experience possible.
+          div.row
+            .span6
+              h3 
+                i.icon-large.icon-credit-card
+                |  Money, too
+              | Our service is and always will be free. However, we're people here, and we have to eat! Stay tuned as we roll out our premium tags for merchant accounts.
 
-      section#help.jsHide
-        div.greeting
-          div.row
-            h2 Hi, #{user.user}.
-            h3 Create and manage your own customized deal in 3 simple steps. Use the buttons below to get started.
 
   // div#map_canvas(style="width:100%; height:100%;")
         
