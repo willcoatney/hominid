@@ -33,7 +33,7 @@ var OfferSchema = new mongoose.Schema({
   loc: [ LocationSchema ],
 
   meta: {
-    votes: Number
+    votes: {type:Number, default:1}
   },
 
   logo: String,
