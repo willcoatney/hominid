@@ -115,7 +115,7 @@ article.coupon{width:250px;padding:15px;margin:10px;-webkit-box-shadow:0 1px 3px
 article.coupon header{text-transform:uppercase;letter-spacing:1px;font-size:12px;line-height:15px;margin:10px 45px 10px;color:#333;font-weight:700;}
 article.coupon .business{color:#fff;position:relative;z-index:1}
 article.coupon .symbol-container{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:absolute;top:0;right:0;height:62px;width:100%;margin:0 auto;}
-article.coupon .symbol-container .symbol{height:60px;-webkit-background-size:30px;background-size:30px;background-position:10px 5px;background-repeat:no-repeat;background-color:#ccc}
+article.coupon .symbol-container .symbol{height:30px;width:30px;margin:5px 10px;-webkit-background-size:30px;background-size:30px;background-position:50% bottom;background-repeat:no-repeat}
 article.coupon .symbol-container .vote{position:absolute;top:40px;left:15px;width:20px;border-top:1px solid #fff;text-align:center;letter-spacing:0;color:#fff;cursor:pointer;opacity:.5;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);filter:alpha(opacity=50);}
 article.coupon .symbol-container .vote:hover{opacity:1;-ms-filter:none;filter:none}
 article.coupon hr{margin:0 auto 10px;border-bottom:1px solid #f1f1f1;border-top:none;width:80%;padding:0 5px 10px}

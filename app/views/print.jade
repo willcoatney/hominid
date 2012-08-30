@@ -82,8 +82,8 @@ block content
         // aside
         header
           .business #{o.business_name}
-          .symbol-container
-            .symbol(style="background-image:url(https://s3.amazonaws.com/spinly/images/"+o.logo + ".png); background-color:"+ o.color)
+          .symbol-container(style="background-color:"+o.color)
+            .symbol(style="background-image:url(https://s3.amazonaws.com/spinly/images/"+o.logo + ".png)")
             a.vote(id= o.user)= o.meta.votes
         .content
           sup.dollar $
