@@ -64,7 +64,7 @@ $(document).ready(function(){
 
 
   $('section#sidebar>div.inner').css('backgroundColor', u )
-  $('section#logos li div').css({ backgroundColor: u })
+  $('section#logos li').css({ backgroundColor: u })
   $('.coupon .symbol-container .symbol').css({ backgroundColor: u })
 
   $('nav#nav-home a').on('click', function(){
@@ -115,7 +115,7 @@ $(document).ready(function(){
       var x = o.toHexString()
       var xl = Color(x).lighten(0.6).desaturate(0.5).hexString()
       $('#sidebar>.inner').css("backgroundColor", x )
-      $('section#logos li div').css("backgroundColor", x )
+      $('section#logos li').css("backgroundColor", x )
       $('button.Color').css("backgroundColor", xl )
       $('.coupon .symbol-container .symbol').css("backgroundColor", x )
       $('input#color-picker').val(x)

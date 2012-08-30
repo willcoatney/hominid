@@ -3,6 +3,7 @@
 var Offer  = require('./modules/account-manager');
 var EM  = require('./modules/email-dispatcher');
 var CT = require('./modules/categories');
+var IM = require('./modules/image-manager');
 
 module.exports = function (app) {
 
@@ -139,6 +140,7 @@ module.exports = function (app) {
 			res.render('home', {
 				locals: {
             CT: CT
+          , IM: IM
           , offers: docs
           , user: req.cookies.user
 					, udata : req.session.user

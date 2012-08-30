@@ -232,51 +232,43 @@ block content
               mixin helper( "These current symbols are only temporary. Soon we will have a very large selection from which to choose, including the optional logo attachment. If you absolutely must have the icon you desire right now, we recommend some nice green tea." )
             ul
               input(type="hidden", name='logo', value= user.logo)
-              script
-                Number.prototype.pad = function(n){
-                  return('0000000000' + this).slice((n || 2) * -1);
-                }
-              - for (var i = 1; i < 100; ++i )
-                if i < 100
-                  i = '0' + i
-                if i < 10
-                  i = '0' + i
+              each i in IM
                 if i === user.logo
-                  li.selected: div(id= 'lg_'+i, data-image= i, style="-webkit-mask-box-image:url(https://s3.amazonaws.com/spinly/images/"+ i + ".png)")
+                  li.selected: div( id='lg_'+i, data-image= i, style="background-image:url(https://s3.amazonaws.com/spinly/images/"+i+".png)")
                 else
-                  li: div(id= 'lg_'+i, data-image= i, style="-webkit-mask-box-image:url(https://s3.amazonaws.com/spinly/images/"+ i + ".png)")
+                  li: div( id='lg_'+i, data-image= i, style="background-image:url(https://s3.amazonaws.com/spinly/images/"+i+".png)")
           div.cg
             label Color
               mixin helper( 'Pick a color for your coupon backdrop. Go for something that says, "Hey, I&#39m a coupon. Check me out." Anything but neon brown.' )
             input#color-picker(type='text', name='color', value= user.color)
 
-        section#preview
-          li.cg
-            label Preview
-              mixin helper( "This is about to change completely, so don't get too attached to it." )
-          .row
-            article.coupon
-              header
-                #{user.business_name}
-                .symbol-container
-                  .symbol(style="background-image:url(https://s3.amazonaws.com/spinly/images/"+ user.logo + ".png)")
-              .content
-                sup.dollar $
-                div.price#{user.coupon_price}
-                .clearfix
-                summary #{user.coupon_title}
-              footer
-                ul
-                  li: span.date #{user.date}
-                  hr
-                  li
-                    #{user.address_street}<br>
-                    #{user.address_city}, #{user.address_state}
-                    #{user.address_zip}<br>
-                    #{user.business_phone}
-                  hr
-                  li
-                    #{user.coupon_body}
+        // section#preview
+        //   li.cg
+        //     label Preview
+        //       mixin helper( "This is about to change completely, so don't get too attached to it." )
+        //   .row
+        //     article.coupon
+        //       header
+        //         #{user.business_name}
+        //         .symbol-container
+        //           .symbol(style="background:url(https://s3.amazonaws.com/spinly/images/"+ user.logo + ".png)")
+        //       .content
+        //         sup.dollar $
+        //         div.price#{user.coupon_price}
+        //         .clearfix
+        //         summary #{user.coupon_title}
+        //       footer
+        //         ul
+        //           li: span.date #{user.date}
+        //           hr
+        //           li
+        //             #{user.address_street}<br>
+        //             #{user.address_city}, #{user.address_state}
+        //             #{user.address_zip}<br>
+        //             #{user.business_phone}
+        //           hr
+        //           li
+        //             #{user.coupon_body}
 
   
           hr.clearfix
