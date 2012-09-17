@@ -95,14 +95,20 @@ div#brand
   a
     Ffamily()
     absolute top left
-    font-weight 100
-    letter-spacing 10px
-    font-size 30px
-    line-height 100px
+    font-weight 600
+    letter-spacing 5px
+    font-size 20px
+    line-height 15px
     color white
     text-align center
     width 100%
     margin 0 auto
+    padding-top 30px
+    span
+      font-size 8px
+      letter-spacing 2px
+      font-weight 400
+      text-transform uppercase
 
 section#content
   margin-left m = 150px
@@ -275,7 +281,14 @@ nav#nav-steps
     text-transform lowercase
     font-style italic
 
-
+.intro
+  // text-transform uppercase
+  width 200%
+  margin-left -100%
+  text-align center
+  padding 15px 0
+  font-family "skolar"
+  font-style italic
 
 .dull
   i
@@ -313,6 +326,8 @@ a
 .jsOpacity
   opacity 0
 
+.Hide
+  display none
 
 // ISOTOPE STYLES
 
@@ -645,7 +660,6 @@ article.coupon
     border-bottom 1px solid #f1f1f1
     border-top none
     width 80%
-    padding 0 5px 10px
   .content
     padding 30px 0 0px
     text-align center
@@ -685,10 +699,18 @@ article.coupon
       color #555
       text-align center
       width 80%
+      padding 0 5px 10px
       margin 0 auto
       span
         font-weight 400
         margin-left 5px
+      &.large-toggle
+        padding-bottom 0
+        font-size 20px
+        color black
+        opacity 0.6
+        &:hover
+          opacity 1
 
 
 

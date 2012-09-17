@@ -15,7 +15,8 @@ input,button,select,textarea{font-family:'proxima-nova','Helvetica Neue',Helveti
 body{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#444;-webkit-hyphens:auto;-moz-hyphens:auto;-ms-hyphens:auto;hyphens:auto;background-color:#fff;display:block;position:absolute;left:0;right:0;top:0;margin:0;height:100%}
 section#sidebar .inner{width:150px;padding-left:10%;position:fixed;min-height:100%;border-right:1px solid #dbdbdb;background-color:#446190}
 div#brand{position:absolute;top:0;left:0;width:100%;height:100px;background:rgba(0,0,0,0.2);}
-div#brand a{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;position:absolute;top:0;left:0;font-weight:100;letter-spacing:10px;font-size:30px;line-height:100px;color:#fff;text-align:center;width:100%;margin:0 auto}
+div#brand a{font-family:'proxima-nova','Helvetica Neue',Helvetica,Arial,sans-serif;position:absolute;top:0;left:0;font-weight:600;letter-spacing:5px;font-size:20px;line-height:15px;color:#fff;text-align:center;width:100%;margin:0 auto;padding-top:30px;}
+div#brand a span{font-size:8px;letter-spacing:2px;font-weight:400;text-transform:uppercase}
 section#content{margin-left:150px;right:-10%;margin-right:10%;position:relative;padding:0 0 30px 0;height:100%;}
 section#content div.clearfix{margin-left:-150px;right:10%;position:relative}
 section#content .account-container{width:300px;margin:20px auto 0;}
@@ -49,6 +50,7 @@ nav#nav-steps .step ul li:nth-child(2n+1){text-align:right;left:-100%;position:r
 nav#nav-steps .step ul li:nth-child(2n+2){width:0;margin-left:5px}
 nav#nav-steps .step.area p{padding:0;margin-top:30px}
 nav#nav-steps p{color:#fff;position:relative;text-align:center;left:-50%;padding:10px 0;font-family:"skolar";text-transform:lowercase;font-style:italic}
+.intro{width:200%;margin-left:-100%;text-align:center;padding:15px 0;font-family:"skolar";font-style:italic}
 .dull i{text-shadow:0 1px 1px rgba(255,255,255,0.1),0 -1px 0 rgba(0,0,0,0.1);color:#305d7f}
 li#profile-btn-group{background:none;border:none;margin:0;}
 li#profile-btn-group button{width:255px;padding:10px}
@@ -58,6 +60,7 @@ a{text-decoration:none}
 .fadeIn{display:none}
 .jsHide{display:none}
 .jsOpacity{opacity:0;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);filter:alpha(opacity=0)}
+.Hide{display:none}
 .coupon-container{padding-bottom:20px;margin-top:10px;margin-left:10px}
 .thingy{-webkit-border-radius:0;border-radius:0}
 .isotope-item{z-index:2}
@@ -118,15 +121,17 @@ article.coupon .symbol-container{-webkit-user-select:none;-moz-user-select:none;
 article.coupon .symbol-container .symbol{height:30px;width:30px;margin:5px 10px;-webkit-background-size:30px;background-size:30px;background-position:50% bottom;background-repeat:no-repeat}
 article.coupon .symbol-container .vote{position:absolute;top:40px;left:15px;width:20px;border-top:1px solid #fff;text-align:center;letter-spacing:0;color:#fff;cursor:pointer;opacity:.5;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);filter:alpha(opacity=50);}
 article.coupon .symbol-container .vote:hover{opacity:1;-ms-filter:none;filter:none}
-article.coupon hr{margin:0 auto 10px;border-bottom:1px solid #f1f1f1;border-top:none;width:80%;padding:0 5px 10px}
+article.coupon hr{margin:0 auto 10px;border-bottom:1px solid #f1f1f1;border-top:none;width:80%}
 article.coupon .content{padding:30px 0 0;text-align:center;color:#333;font-weight:100}
 article.coupon .dollar{line-height:38px;font-size:20px;display:inline-block;vertical-align:top;font-weight:normal;margin-left:-10px}
 article.coupon .price{font-size:70px;line-height:70px;letter-spacing:-3px;display:inline-block;font-weight:100}
 article.coupon summary{font-size:12px;display:inline-block;text-align:center;padding:0 5px 10px;font-weight:500;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #f1f1f1;margin-bottom:10px;width:80%;color:#222}
 article.coupon footer{opacity:.7;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);filter:alpha(opacity=70);}
 article.coupon footer ul{text-align:center;padding-bottom:5px}
-article.coupon footer li{color:#555;text-align:center;width:80%;margin:0 auto;}
+article.coupon footer li{color:#555;text-align:center;width:80%;padding:0 5px 10px;margin:0 auto;}
 article.coupon footer li span{font-weight:400;margin-left:5px}
+article.coupon footer li.large-toggle{padding-bottom:0;font-size:20px;color:#000;opacity:.6;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=60);filter:alpha(opacity=60);}
+article.coupon footer li.large-toggle:hover{opacity:1;-ms-filter:none;filter:none}
 .chzn-container{font-size:13px;position:relative;display:inline-block;color:rgba(0,0,0,0.6);color:rgba(0,0,0,0.7);zoom:1;*display:inline;-webkit-transition:1s;-moz-transition:1s;-o-transition:1s;-ms-transition:1s;transition:1s;}
 .chzn-container .chzn-drop{background:#fff;border:1px solid #aaa;border-top:0;position:absolute;top:29px;left:0;-webkit-box-shadow:0 4px 5px rgba(0,0,0,0.15);box-shadow:0 4px 5px rgba(0,0,0,0.15);z-index:1010}
 .chzn-container-single .chzn-single{background-color:#fff;-webkit-background-clip:padding;-moz-background-clip:padding;background-clip:padding-box;border-style:solid;border-width:1px;border-color:#ddd #ccc #bbb;-webkit-box-shadow:0 0 3px #fff inset,0 1px 1px rgba(0,0,0,0.07);box-shadow:0 0 3px #fff inset,0 1px 1px rgba(0,0,0,0.07);display:block;overflow:hidden;white-space:nowrap;position:relative;padding:4px;text-decoration:none;-webkit-transition:1s;-moz-transition:1s;-o-transition:1s;-ms-transition:1s;transition:1s}

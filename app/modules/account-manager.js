@@ -29,7 +29,7 @@ var OfferSchema = new mongoose.Schema({
   coupon_price: String,
 
 
-  loc_quantity: Number,
+  loc_quantity: { type:Number, default:1 },
   loc: [ LocationSchema ],
 
   meta: {

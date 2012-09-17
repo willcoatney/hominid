@@ -187,7 +187,8 @@ $('.step.sorts a').click(function(){
 
 // change size of clicked coupon
 $container.delegate( '.coupon .large-toggle', 'click', function(){
-  $(this).parents('.coupon').toggleClass('large');
+  $(this).siblings('.Hide, br.Hide').toggle()
+  $(this).children().toggle()
   $container.isotope('reLayout');
 });
 

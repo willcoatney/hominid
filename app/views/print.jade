@@ -4,6 +4,7 @@ block sidebar
   - user = typeof(udata) != 'undefined' ? udata : {}
   .inner(style='background-color: #{user.color}')
     nav#nav-steps.fadeIn
+      .intro Click below to view deals
       .step.cats
         ul.option-set(filter-group='cats')
           each h in CT.cats
@@ -59,7 +60,9 @@ block sidebar
 
     block brand
       div#brand
-        a(href='/').fadeIn spinly
+        a(href='/').fadeIn connect.ed
+          br
+          span powered by Deffenbaugh
 
 block content
   // h1#foobar FOOBAR
@@ -97,15 +100,18 @@ block content
             li: span.date #{o.date}
             hr
             - for(var i=0; i<o.loc_quantity; i++)
-              li
+              li.Hide
                 | #{o.loc[i].street}<br>
                 | #{o.loc[i].city}, #{o.loc[i].state}
                 | #{o.loc[i].zip}<br>
                 | #{o.business_phone}
-              br
-            hr
-            li
+            hr.Hide
+            li.Hide
               | #{o.coupon_body}
+            hr.Hide
+            li.large-toggle
+              div: i.icon-caret-down
+              div.Hide: i.icon-caret-up
 
 block scripts
   script(src='/js/controllers/homeController.js')
